@@ -1,0 +1,28 @@
+@* =====================================================================
+   Unobtrusive client-side validation scripts.
+   Loaded by pages that use the asp-*-tag-helper validation tags.
+   Sourced from CDN to keep the project self-contained (no extra
+   npm packages required).
+   ===================================================================== *@
+<environment include="Development">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.20.0/dist/jquery.validate.min.js"
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.validation.unobtrusive@4.0.0/dist/jquery.validate.unobtrusive.min.js"
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+</environment>
+<environment exclude="Development">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.20.0/dist/jquery.validate.min.js"
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.validation.unobtrusive@4.0.0/dist/jquery.validate.unobtrusive.min.js"
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+</environment>

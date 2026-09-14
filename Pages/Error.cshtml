@@ -1,0 +1,79 @@
+﻿@page
+@model ErrorModel
+@{
+    ViewData["Title"] = "Đã có lỗi xảy ra";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+}
+
+@* =====================================================================
+   PRODUCTION ERROR PAGE
+   Phase 08 polish: matches the editorial design system and never leaks
+   stack traces. The same page is also used by `UseExceptionHandler("/Error")`
+   outside Development. Detailed exception info is logged server-side
+   only and is NOT rendered here.
+   ===================================================================== *@
+
+<section class="booking-page" aria-labelledby="error-heading">
+    <div class="container">
+        <div class="booking-page__head">
+            <p class="eyebrow">KHÔNG THỂ XỬ LÝ YÊU CẦU</p>
+            <h1 id="error-heading" class="booking-page__title">
+                <span>Đã có lỗi xảy ra</span>
+            </h1>
+            <p class="booking-page__lede">
+                Hệ thống gặp sự cố trong quá trình xử lý yêu cầu của bạn.
+                Vui lòng thử lại sau ít phút hoặc quay lại trang chủ để tiếp tục.
+            </p>
+        </div>
+
+        <div class="booking-page__layout">
+            <div class="booking-page__main">
+                <div class="booking-form booking-form--error">
+                    <p class="booking-form__intro">
+                        Nếu sự cố vẫn tiếp diễn, bạn có thể gửi yêu cầu tư vấn
+                        để đội ngũ Phì Lũ hỗ trợ trực tiếp.
+                    </p>
+
+                    @if (Model.ShowRequestId)
+                    {
+                        <p class="booking-form__notice" role="status">
+                            Mã tham chiếu: <code>@Model.RequestId</code>
+                        </p>
+                    }
+
+                    <div class="booking-form__actions">
+                        <a class="btn btn--primary" asp-page="/Index">
+                            VỀ TRANG CHỦ
+                            <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                        </a>
+                        <a class="link-arrow" asp-page="/DatTiec">
+                            GỬI YÊU CẦU TƯ VẤN
+                            <span aria-hidden="true">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="booking-page__trust" aria-label="Hỗ trợ">
+                <div class="booking-trust">
+                    <p class="eyebrow">HỖ TRỢ NHANH</p>
+                    <h2 class="booking-trust__title">
+                        <span>Bạn cần hỗ trợ?</span>
+                        <span>Đội ngũ Phì Lũ sẵn sàng</span>
+                    </h2>
+                    <p class="booking-trust__note">
+                        Gửi yêu cầu tư vấn để được phản hồi trong thời gian sớm nhất.
+                        Mọi thông tin bạn cung cấp chỉ được dùng để liên hệ tư vấn.
+                    </p>
+                    <a class="link-arrow" asp-page="/TiecCuoi">
+                        XEM SẢNH TIỆC
+                        <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,54 @@
+# .NET / Visual Studio build output
+bin/
+obj/
+out/
+
+# IDE folders
+.vs/
+.vscode/
+.idea/
+
+# Local user-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ASP.NET Core / dotnet test output
+TestResults/
+coverage.*
+*.coverage
+
+# Logs / crash dumps
+*.log
+*.log.*
+*.dmp
+
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets / local configuration overrides
+appsettings.*.Local.json
+appsettings.Local.json
+secrets.json
+
+# Cloudinary / DB credentials (if accidentally dropped next to the project)
+*.pfx
+*.p12
+*.key
+*.pem
+
+# Docker / container metadata
+Dockerfile.local
+docker-compose.override.yml
+
+# Node / front-end noise (project is currently server-only, but safe to keep)
+node_modules/
+wwwroot/lib/
+
+# Reports / coverage / publish profiles
+*.trx
+*.coverage
+PublishProfiles/

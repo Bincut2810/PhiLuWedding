@@ -1,0 +1,190 @@
+@page "/tiec-cuoi/{id:int}"
+@model PhiluWedding.Pages.TiecCuoi.DetailsModel
+@{
+    ViewData["Title"] = Model.Hall?.Name ?? "Sảnh tiệc cưới";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/halls.css" asp-append-version="true" />
+}
+
+@* =====================================================================
+   PUBLIC WEDDING HALL DETAIL
+   Renders one hall with its image gallery and a booking CTA.
+   When the database is unavailable or the hall is not found, the
+   page returns 404 from the page model — never a 500.
+   ===================================================================== *@
+
+@if (Model.Hall is null)
+{
+    <section class="halls-page halls-page--notfound">
+        <div class="container">
+            <p class="eyebrow">SẢNH TIỆC</p>
+            <h1 class="halls-page__title">
+                <span>Không tìm thấy sảnh tiệc</span>
+            </h1>
+            <p class="halls-page__lede">
+                Sảnh tiệc bạn đang tìm không tồn tại hoặc đã được ẩn khỏi trang
+                công khai. Vui lòng quay lại danh sách sảnh tiệc để tiếp tục.
+            </p>
+            <a class="link-arrow" asp-page="/TiecCuoi">
+                QUAY LẠI DANH SÁCH SẢNH
+                <span aria-hidden="true">&rarr;</span>
+            </a>
+        </div>
+    </section>
+    return;
+}
+
+<section class="halls-page halls-detail" aria-labelledby="hall-detail-heading">
+    <div class="container">
+        <nav class="halls-detail__crumbs" aria-label="Breadcrumb">
+            <a asp-page="/Index">Trang chủ</a>
+            <span aria-hidden="true">›</span>
+            <a asp-page="/TiecCuoi">Sảnh tiệc</a>
+            <span aria-hidden="true">›</span>
+            <span aria-current="page">@Model.Hall.Name</span>
+        </nav>
+
+        <header class="halls-detail__head">
+            <p class="eyebrow">SẢNH TIỆC CƯỚI</p>
+            <h1 id="hall-detail-heading" class="halls-page__title">
+                <span>@Model.Hall.Name</span>
+            </h1>
+            @if (!string.IsNullOrWhiteSpace(Model.Hall.ShortDescription))
+            {
+                <p class="halls-detail__lede">@Model.Hall.ShortDescription</p>
+            }
+            else if (!string.IsNullOrWhiteSpace(Model.Hall.Description))
+            {
+                <p class="halls-detail__lede">@Model.Hall.Description</p>
+            }
+        </header>
+
+        @* ---------- Gallery ---------- *@
+        @if (Model.Hall.Images.Count > 0)
+        {
+            <div class="halls-gallery" role="region" aria-label="Thư viện hình ảnh sảnh tiệc">
+                @{
+                    var primary = Model.Hall.Images.FirstOrDefault();
+                    var gallery = Model.Hall.Images.ToList();
+                }
+                @if (primary is not null && !string.IsNullOrEmpty(primary.Url))
+                {
+                    <figure class="halls-gallery__primary">
+                        <img src="@primary.Url"
+                             alt="@(primary.AltText ?? $"Không gian {Model.Hall.Name}")"
+                             loading="eager"
+                             fetchpriority="high" />
+                    </figure>
+                }
+                else
+                {
+                    <figure class="halls-gallery__primary halls-gallery__primary--placeholder" aria-hidden="true">
+                        <span>Hình ảnh sẽ được cập nhật</span>
+                    </figure>
+                }
+
+                @if (gallery.Count > 1)
+                {
+                    <ul class="halls-gallery__thumbs" role="list">
+                        @foreach (var img in gallery)
+                        {
+                            <li class="halls-gallery__thumb">
+                                @if (!string.IsNullOrEmpty(img.Url))
+                                {
+                                    <img src="@img.Url"
+                                         alt="@(img.AltText ?? $"Hình ảnh {Model.Hall.Name}")"
+                                         loading="lazy" />
+                                }
+                                else
+                                {
+                                    <div class="halls-gallery__thumb-placeholder" aria-hidden="true"></div>
+                                }
+                            </li>
+                        }
+                    </ul>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="halls-gallery halls-gallery--empty" role="status">
+                <p>Hình ảnh của sảnh tiệc đang được cập nhật.</p>
+            </div>
+        }
+
+        @* ---------- Details + booking CTA ---------- *@
+        <div class="halls-detail__grid">
+            <div class="halls-detail__body">
+                <h2 class="halls-detail__sub">Giới thiệu sảnh</h2>
+                @if (!string.IsNullOrWhiteSpace(Model.Hall.Description))
+                {
+                    <p class="halls-detail__description">@Model.Hall.Description</p>
+                }
+                else if (!string.IsNullOrWhiteSpace(Model.Hall.ShortDescription))
+                {
+                    <p class="halls-detail__description">@Model.Hall.ShortDescription</p>
+                }
+                else
+                {
+                    <p class="halls-detail__description">
+                        Thông tin chi tiết về sảnh tiệc đang được cập nhật. Vui lòng liên hệ
+                        trực tiếp với nhà hàng để được tư vấn chi tiết.
+                    </p>
+                }
+            </div>
+
+            <aside class="halls-detail__meta" aria-label="Thông tin sảnh">
+                <h2 class="halls-detail__sub">Thông tin</h2>
+                <dl class="halls-detail__list">
+                    <div class="halls-detail__row">
+                        <dt>Tên sảnh</dt>
+                        <dd>@Model.Hall.Name</dd>
+                    </div>
+                    @if (Model.Hall.CapacityMin.HasValue || Model.Hall.CapacityMax.HasValue)
+                    {
+                        <div class="halls-detail__row">
+                            <dt>Sức chứa</dt>
+                            <dd>@FormatCapacity(Model.Hall.CapacityMin, Model.Hall.CapacityMax)</dd>
+                        </div>
+                    }
+                </dl>
+
+                <a class="btn btn--primary halls-detail__cta"
+                   asp-page="/DatTiec"
+                   asp-route-hallId="@Model.Hall.Id">
+                    LIÊN HỆ ĐẶT TIỆC
+                    <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                </a>
+                <p class="halls-detail__cta-note">
+                    Đội ngũ Phì Lũ sẽ liên hệ lại để tư vấn chi tiết về
+                    không gian và phương án tiệc phù hợp.
+                </p>
+                <a class="link-arrow halls-detail__back" asp-page="/TiecCuoi">
+                    QUAY LẠI DANH SÁCH SẢNH
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+            </aside>
+        </div>
+    </div>
+</section>
+
+@functions {
+    private static string FormatCapacity(int? min, int? max)
+    {
+        if (min.HasValue && max.HasValue)
+        {
+            return $"{min.Value} – {max.Value} khách";
+        }
+        if (max.HasValue)
+        {
+            return $"đến {max.Value} khách";
+        }
+        if (min.HasValue)
+        {
+            return $"từ {min.Value} khách";
+        }
+        return string.Empty;
+    }
+}

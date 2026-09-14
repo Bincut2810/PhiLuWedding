@@ -1,0 +1,31 @@
+# Files excluded from Docker build context for PhiLuWedding.
+# Keeping this list minimal means CI / Railway builds copy only what is
+# strictly needed for `dotnet publish`.
+bin/
+obj/
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.cachefile
+
+# Local secrets and dev artifacts
+appsettings.*.Local.json
+appsettings.Local.json
+*.pfx
+*.p12
+*.key
+
+# Source-control noise
+.git/
+.gitignore
+.gitattributes
+
+# Documentation that is not needed at runtime
+README.md
+docs/
+
+# Test artifacts
+TestResults/
+coverage.*

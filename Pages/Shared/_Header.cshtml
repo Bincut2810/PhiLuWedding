@@ -1,0 +1,57 @@
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@using Microsoft.AspNetCore.Mvc.RazorPages
+@{
+    var brandName = Configuration["Brand:Name"] ?? "NHÀ HÀNG PHÌ LŨ";
+
+    // Decide which nav item is active based on the current page route.
+    // This works for both the listing page ("/TiecCuoi") and the
+    // detail page ("/TiecCuoi/Details"), which both live under the
+    // "sảnh tiệc" navigation group.
+    var currentPage = (ViewContext?.RouteData.Values["page"] as string) ?? string.Empty;
+    var isHome = string.Equals(currentPage, "/Index", StringComparison.OrdinalIgnoreCase);
+    var isHalls = currentPage.StartsWith("/TiecCuoi", StringComparison.OrdinalIgnoreCase);
+    var isBooking = string.Equals(currentPage, "/DatTiec", StringComparison.OrdinalIgnoreCase);
+}
+<header class="site-header" data-header>
+    <div class="container site-header__inner">
+        <a class="site-brand" asp-page="/Index" aria-label="@brandName — Trang chủ">
+            <span class="site-brand__mark">Phì Lũ</span>
+            <span class="site-brand__rule" aria-hidden="true"></span>
+            <span class="site-brand__name">NHÀ HÀNG TIỆC CƯỚI</span>
+        </a>
+
+        <button class="site-nav-toggle"
+                type="button"
+                aria-controls="primary-nav"
+                aria-expanded="false"
+                aria-label="Mở menu điều hướng"
+                data-nav-toggle>
+            <span class="site-nav-toggle__bar" aria-hidden="true"></span>
+            <span class="site-nav-toggle__bar" aria-hidden="true"></span>
+            <span class="site-nav-toggle__bar" aria-hidden="true"></span>
+        </button>
+
+        <nav class="site-nav" id="primary-nav" data-nav aria-label="Điều hướng chính">
+            <ul class="site-nav__list">
+                <li>
+                    <a class="site-nav__link @(isHome ? "is-active" : null)"
+                       asp-page="/Index"
+                       aria-current="@(isHome ? "page" : null)">TRANG CHỦ</a>
+                </li>
+                <li>
+                    <a class="site-nav__link @(isHalls ? "is-active" : null)"
+                       asp-page="/TiecCuoi"
+                       aria-current="@(isHalls ? "page" : null)">SẢNH TIỆC</a>
+                </li>
+                <li><a class="site-nav__link" href="#thuc-don">THỰC ĐƠN</a></li>
+                <li>
+                    <a class="site-nav__link @(isBooking ? "is-active" : null)"
+                       asp-page="/DatTiec"
+                       aria-current="@(isBooking ? "page" : null)">ĐẶT TIỆC</a>
+                </li>
+                <li><a class="site-nav__link" href="#lien-he">LIÊN HỆ</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>

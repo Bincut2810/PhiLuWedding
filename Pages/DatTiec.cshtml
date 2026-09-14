@@ -1,0 +1,291 @@
+@page "/dat-tiec"
+@model PhiluWedding.Pages.DatTiec.DatTiecModel
+@{
+    ViewData["Title"] = "Đặt lịch tư vấn tiệc cưới";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/booking.css" asp-append-version="true" />
+}
+
+@* =====================================================================
+   PUBLIC WEDDING BOOKING REQUEST
+   A consultation request, not an automatic booking confirmation.
+     * Above the fold: headline + reassurance + form + alt CTA
+     * Trust panel: 3-step process next to the form
+     * Grouped fields: liên hệ / tiệc cưới / mong muốn thêm
+     * Polished success state, gated by TempData (cannot be opened by URL)
+   ===================================================================== *@
+
+<section class="booking-page" aria-labelledby="booking-page-heading">
+    <div class="container booking-page__shell">
+        <header class="booking-page__head">
+            <p class="eyebrow">ĐẶT LỊCH TƯ VẤN</p>
+            <h1 id="booking-page-heading" class="booking-page__title">
+                <span>Cùng Phì Lũ chuẩn bị</span>
+                <span>một ngày cưới trọn vẹn</span>
+            </h1>
+            <p class="booking-page__lede">
+                Vui lòng để lại thông tin liên hệ và một vài chi tiết về buổi tiệc.
+                Đội ngũ NHÀ HÀNG TIỆC CƯỚI PHÌ LŨ sẽ liên hệ lại để cùng bạn
+                trao đổi về không gian và phương án tiệc phù hợp — bạn chưa cần
+                quyết định ngay.
+            </p>
+        </header>
+
+        <div class="booking-page__layout">
+            <div class="booking-page__main">
+                @if (Model.Submitted)
+                {
+                    <div class="booking-page__success" role="status" aria-live="polite">
+                        <p class="eyebrow">ĐÃ TIẾP NHẬN</p>
+                        <h2 class="booking-page__success-title">
+                            <span>Cảm ơn bạn đã gửi thông tin.</span>
+                        </h2>
+                        <p class="booking-page__success-body">
+                            Thông tin của bạn đã được tiếp nhận. Đội ngũ Phì Lũ sẽ liên hệ
+                            lại để tư vấn chi tiết về không gian và phương án tiệc phù hợp.
+                        </p>
+                        <p class="booking-page__success-note">
+                            Vui lòng giữ điện thoại hoặc email để nhận cuộc gọi / thư từ nhà hàng.
+                            Yêu cầu này là <strong>đăng ký tư vấn</strong>, chưa phải xác nhận đặt tiệc.
+                        </p>
+                        <div class="booking-page__success-actions">
+                            <a class="btn btn--primary" asp-page="/Index">
+                                VỀ TRANG CHỦ
+                                <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                            </a>
+                            <a class="link-arrow" asp-page="/TiecCuoi">
+                                KHÁM PHÁ SẢNH TIỆC
+                                <span aria-hidden="true">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <form class="booking-form"
+                          method="post"
+                          novalidate
+                          aria-describedby="booking-form-intro">
+                        @Html.AntiForgeryToken()
+
+                        @* Hidden: the resolved PreferredHallId. The hidden field is
+                           always repopulated from a verified, published hall so the
+                           value can never be tampered with into persisting a fake id. *@
+                        @if (Model.PreferredHall is not null)
+                        {
+                            <input type="hidden" asp-for="Input.PreferredHallId" />
+                        }
+
+                        @if (Model.PreferredHall is not null)
+                        {
+                            <div class="booking-form__selected" role="note">
+                                <p class="booking-form__selected-label">Sảnh tiệc quan tâm</p>
+                                <p class="booking-form__selected-name">@Model.PreferredHall.Name</p>
+                                @if (!string.IsNullOrWhiteSpace(Model.PreferredHall.ShortDescription))
+                                {
+                                    <p class="booking-form__selected-desc">@Model.PreferredHall.ShortDescription</p>
+                                }
+                                <p class="booking-form__selected-note">
+                                    Bạn có thể thay đổi lựa chọn khi trao đổi cùng đội ngũ tư vấn.
+                                </p>
+                            </div>
+                        }
+
+                        <p id="booking-form-intro" class="booking-form__intro">
+                            Các trường có dấu <span aria-hidden="true">*</span>
+                            <span class="visually-hidden">bắt buộc</span> là bắt buộc.
+                        </p>
+
+                        @if (!Model.DatabaseAvailable)
+                        {
+                            <div class="booking-form__notice" role="alert">
+                                Hệ thống đang bận. Vui lòng thử lại sau ít phút hoặc liên hệ
+                                trực tiếp với nhà hàng để được hỗ trợ.
+                            </div>
+                        }
+
+                        <div asp-validation-summary="ModelOnly" class="booking-form__summary" role="alert"></div>
+
+                        <div class="booking-form__groups">
+                            @* ---------- Group: Thông tin liên hệ ---------- *@
+                            <fieldset class="booking-form__group">
+                                <legend class="booking-form__legend">Thông tin liên hệ</legend>
+                                <p class="booking-form__legend-hint">
+                                    Để đội ngũ Phì Lũ có thể liên hệ tư vấn chi tiết cho bạn.
+                                </p>
+                                <div class="booking-form__grid">
+                                    <div class="booking-form__field booking-form__field--full">
+                                        <label asp-for="Input.CustomerName"></label>
+                                        <input asp-for="Input.CustomerName"
+                                               autocomplete="name"
+                                               maxlength="200"
+                                               aria-required="true" />
+                                        <span asp-validation-for="Input.CustomerName" class="booking-form__error"></span>
+                                    </div>
+
+                                    <div class="booking-form__field">
+                                        <label asp-for="Input.PhoneNumber"></label>
+                                        <input asp-for="Input.PhoneNumber"
+                                               type="tel"
+                                               inputmode="tel"
+                                               autocomplete="tel"
+                                               maxlength="30"
+                                               aria-required="true"
+                                               aria-describedby="hint-phone" />
+                                        <small id="hint-phone" class="booking-form__hint">
+                                            Số điện thoại để Phì Lũ tiện liên hệ tư vấn.
+                                        </small>
+                                        <span asp-validation-for="Input.PhoneNumber" class="booking-form__error"></span>
+                                    </div>
+
+                                    <div class="booking-form__field">
+                                        <label asp-for="Input.Email"></label>
+                                        <input asp-for="Input.Email"
+                                               type="email"
+                                               inputmode="email"
+                                               autocomplete="email"
+                                               maxlength="200" />
+                                        <small class="booking-form__hint">Không bắt buộc — chỉ dùng nếu bạn muốn nhận tư vấn qua email.</small>
+                                        <span asp-validation-for="Input.Email" class="booking-form__error"></span>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            @* ---------- Group: Thông tin tiệc cưới ---------- *@
+                            <fieldset class="booking-form__group">
+                                <legend class="booking-form__legend">Thông tin tiệc cưới</legend>
+                                <p class="booking-form__legend-hint">
+                                    Bạn có thể ghi nhận dự kiến — chưa cần là ngày chính thức.
+                                </p>
+                                <div class="booking-form__grid">
+                                    <div class="booking-form__field">
+                                        <label asp-for="Input.EventDate"></label>
+                                        <input asp-for="Input.EventDate"
+                                               type="date"
+                                               min="@Model.MinEventDate.ToString("yyyy-MM-dd")"
+                                               aria-required="true"
+                                               aria-describedby="hint-eventdate" />
+                                        <small id="hint-eventdate" class="booking-form__hint">
+                                            Bạn có thể chọn ngày dự kiến, chưa cần là ngày chính thức.
+                                        </small>
+                                        <span asp-validation-for="Input.EventDate" class="booking-form__error"></span>
+                                    </div>
+
+                                    <div class="booking-form__field">
+                                        <label asp-for="Input.EventType"></label>
+                                        <select asp-for="Input.EventType"
+                                                asp-items="@(new SelectList(Model.EventTypeOptions))"
+                                                aria-required="true">
+                                            <option value="">— Chọn loại sự kiện —</option>
+                                        </select>
+                                        <span asp-validation-for="Input.EventType" class="booking-form__error"></span>
+                                    </div>
+
+                                    <div class="booking-form__field booking-form__field--full">
+                                        <label asp-for="Input.EstimatedGuestCount"></label>
+                                        <input asp-for="Input.EstimatedGuestCount"
+                                               type="number"
+                                               inputmode="numeric"
+                                               min="1"
+                                               max="5000"
+                                               step="1"
+                                               aria-required="true"
+                                               aria-describedby="hint-guests" />
+                                        <small id="hint-guests" class="booking-form__hint">
+                                            Nếu chưa xác định, hãy ghi chú để đội ngũ tư vấn thêm.
+                                        </small>
+                                        <span asp-validation-for="Input.EstimatedGuestCount" class="booking-form__error"></span>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            @* ---------- Group: Mong muốn thêm ---------- *@
+                            <fieldset class="booking-form__group">
+                                <legend class="booking-form__legend">Mong muốn thêm</legend>
+                                <p class="booking-form__legend-hint">
+                                    Chia sẻ thêm để buổi tư vấn được chuẩn bị chu đáo hơn.
+                                </p>
+                                <div class="booking-form__grid">
+                                    <div class="booking-form__field booking-form__field--full">
+                                        <label asp-for="Input.Note"></label>
+                                        <textarea asp-for="Input.Note"
+                                                  rows="5"
+                                                  maxlength="2000"
+                                                  placeholder="Yêu cầu đặc biệt, sở thích, hoặc câu hỏi dành cho nhà hàng."></textarea>
+                                        <span asp-validation-for="Input.Note" class="booking-form__error"></span>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="booking-form__actions">
+                            <button type="submit" class="btn btn--primary">
+                                GỬI YÊU CẦU TƯ VẤN
+                                <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                            </button>
+                            <a class="link-arrow" asp-page="/TiecCuoi">
+                                XEM SẢNH TIỆC TRƯỚC
+                                <span aria-hidden="true">&rarr;</span>
+                            </a>
+                        </div>
+
+                        <p class="booking-form__footnote">
+                            Gửi yêu cầu là bước đầu tiên để trao đổi cùng đội ngũ Phì Lũ.
+                            Đây <strong>không phải xác nhận đặt tiệc</strong>.
+                        </p>
+                    </form>
+                }
+            </div>
+
+            @* ---------- Trust / process panel ---------- *@
+            <aside class="booking-page__trust" aria-labelledby="booking-trust-heading">
+                <div class="booking-trust">
+                    <p class="eyebrow">QUY TRÌNH TƯ VẤN</p>
+                    <h2 id="booking-trust-heading" class="booking-trust__title">
+                        <span>Ba bước đơn giản</span>
+                        <span>để bạn an tâm</span>
+                    </h2>
+                    <ol class="booking-trust__list" role="list">
+                        <li class="booking-trust__step">
+                            <span class="booking-trust__num" aria-hidden="true">01</span>
+                            <div>
+                                <p class="booking-trust__step-title">Bạn gửi thông tin dự kiến.</p>
+                                <p class="booking-trust__step-body">
+                                    Chỉ cần những thông tin cơ bản để đội ngũ có thể liên hệ.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="booking-trust__step">
+                            <span class="booking-trust__num" aria-hidden="true">02</span>
+                            <div>
+                                <p class="booking-trust__step-title">Đội ngũ Phì Lũ liên hệ trao đổi.</p>
+                                <p class="booking-trust__step-body">
+                                    Nhà hàng sẽ gọi điện hoặc phản hồi email để cùng bạn tìm hiểu nhu cầu.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="booking-trust__step">
+                            <span class="booking-trust__num" aria-hidden="true">03</span>
+                            <div>
+                                <p class="booking-trust__step-title">Hai bên thống nhất không gian và phương án tiệc.</p>
+                                <p class="booking-trust__step-body">
+                                    Sau khi trao đổi, bạn mới quyết định có đặt tiệc hay không.
+                                </p>
+                            </div>
+                        </li>
+                    </ol>
+                    <p class="booking-trust__note">
+                        Gửi yêu cầu chưa phải xác nhận đặt tiệc — bạn có thể cung cấp
+                        thông tin dự kiến và chỉnh sửa lại sau cùng đội ngũ tư vấn.
+                    </p>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

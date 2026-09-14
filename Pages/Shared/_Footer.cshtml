@@ -1,0 +1,47 @@
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    var brandName = Configuration["Brand:Name"] ?? "NHÀ HÀNG PHÌ LŨ";
+    var brandCity = Configuration["Brand:City"] ?? "Đà Nẵng";
+    var year = DateTime.UtcNow.Year;
+}
+<footer class="site-footer" id="lien-he">
+    <div class="container site-footer__inner">
+        <div class="site-footer__brand">
+            <p class="site-footer__name">@brandName</p>
+            <p class="site-footer__tagline">Nhà Hàng Tiệc Cưới — @brandCity, Việt Nam</p>
+            <p class="site-footer__claim">
+                Đội ngũ Phì Lũ đồng hành cùng bạn chuẩn bị không gian và phương án
+                tiệc phù hợp cho ngày trọng đại.
+            </p>
+        </div>
+
+        <nav class="site-footer__nav" aria-label="Điều hướng chân trang">
+            <p class="site-footer__label">Khám phá</p>
+            <ul>
+                <li><a asp-page="/Index">Trang chủ</a></li>
+                <li><a asp-page="/TiecCuoi">Sảnh tiệc</a></li>
+                <li><a href="#thuc-don">Thực đơn</a></li>
+                <li><a asp-page="/DatTiec">Đặt tiệc</a></li>
+                <li><a href="#lien-he">Liên hệ</a></li>
+            </ul>
+        </nav>
+
+        <div class="site-footer__contact">
+            <p class="site-footer__label">Liên hệ tư vấn</p>
+            <p class="site-footer__placeholder">Địa chỉ: <em>(cập nhật sau)</em></p>
+            <p class="site-footer__placeholder">Hotline: <em>(cập nhật sau)</em></p>
+            <p class="site-footer__placeholder">Email: <em>(cập nhật sau)</em></p>
+            <a class="link-arrow site-footer__cta" asp-page="/DatTiec">
+                GỬI YÊU CẦU TƯ VẤN
+                <span aria-hidden="true">&rarr;</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="site-footer__bottom">
+        <div class="container">
+            <p>&copy; @year @brandName. Bảo lưu mọi quyền.</p>
+        </div>
+    </div>
+</footer>

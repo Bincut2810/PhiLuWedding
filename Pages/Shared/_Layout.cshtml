@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNetCore.Mvc.RazorPages
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+@{
+    var brandName = Configuration["Brand:Name"] ?? "NHÀ HÀNG PHÌ LŨ";
+    var brandCity = Configuration["Brand:City"] ?? "Đà Nẵng";
+    var pageTitle = ViewData["Title"] as string;
+    var fullTitle = string.IsNullOrEmpty(pageTitle)
+        ? $"{brandName} — Nhà Hàng Tiệc Cưới {brandCity}"
+        : $"{pageTitle} — {brandName}";
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="@brandName — Nhà hàng tiệc cưới sang trọng tại Đà Nẵng. Không gian tinh tế, ẩm thực tinh hoa, dịch vụ tận tâm." />
+    <title>@fullTitle</title>
+
+    <!-- Fonts: Cormorant Garamond (serif) + Inter (sans-serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Bỏ qua đến nội dung chính</a>
+
+    @await Html.PartialAsync("_Header")
+
+    <main id="main-content" role="main">
+        @RenderBody()
+    </main>
+
+    @await Html.PartialAsync("_Footer")
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

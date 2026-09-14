@@ -1,0 +1,139 @@
+﻿@page
+@model PhiluWedding.Pages.IndexModel
+@{
+    ViewData["Title"] = "Trang chủ";
+}
+@* =====================================================================
+   HOME PAGE — NHÀ HÀNG PHÌ LŨ
+   Visual foundation only. Content is temporary and can be refined later.
+   Image URLs are temporary placeholders (Unsplash) and will be replaced
+   with Cloudinary assets in a later phase.
+   ===================================================================== *@
+
+@* ---------- HERO ---------- *@
+<section class="hero" aria-label="Giới thiệu nhà hàng">
+    <div class="hero__grid">
+        <div class="hero__media">
+            <img class="hero__image"
+                 src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=80"
+                 alt="Không gian sảnh tiệc cưới sang trọng với ánh nến và hoa trắng — hình minh họa tạm thời"
+                 loading="eager"
+                 fetchpriority="high" />
+        </div>
+        <div class="hero__content">
+            <p class="eyebrow">NHÀ HÀNG TIỆC CƯỚI</p>
+            <h1 class="hero__title">
+                <span>Nơi hạnh phúc</span>
+                <span>được kiến tạo</span>
+                <span>bằng từng</span>
+                <span>khoảnh khắc</span>
+            </h1>
+            <p class="hero__lede">
+                Không gian sang trọng &mdash; Ẩm thực tinh hoa &mdash; Dịch vụ tận tâm.
+            </p>
+            <a class="btn btn--primary" href="#sanh-tiec">
+                KHÁM PHÁ SẢNH TIỆC
+                <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+            </a>
+        </div>
+    </div>
+    <div class="hero__botanical" aria-hidden="true"></div>
+</section>
+
+@* ---------- INTRODUCTION ---------- *@
+<section class="intro" aria-labelledby="intro-heading">
+    <div class="container">
+        <div class="intro__grid">
+            <div class="intro__text">
+                <p class="eyebrow">VỀ NHÀ HÀNG PHÌ LŨ</p>
+                <h2 id="intro-heading" class="section-title">
+                    <span>Tinh hoa ẩm thực</span>
+                    <span>cho ngày trọng đại</span>
+                </h2>
+                <p class="intro__lede">
+                    Nhà hàng Phì Lũ là điểm đến cho những buổi tiệc cưới sang trọng tại Đà Nẵng.
+                    Mỗi không gian được chăm chút tỉ mỉ, mỗi thực đơn được gói ghém tinh tế,
+                    để mỗi khoảnh khắc của bạn đều trở nên đáng nhớ.
+                </p>
+                <a class="link-arrow" href="#sanh-tiec">
+                    TÌM HIỂU THÊM
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+            <div class="intro__media">
+                <div class="intro__frame">
+                    <img class="intro__image"
+                         src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1200&q=80"
+                         alt="Sảnh tiệc được trang trí hoa và ánh sáng dịu — hình minh họa tạm thời"
+                         loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@* ---------- HALLS PREVIEW ---------- *@
+<section class="halls" id="sanh-tiec" aria-labelledby="halls-heading">
+    <div class="container">
+        <header class="section-head section-head--center">
+            <p class="eyebrow">KHÁM PHÁ 4 SẢNH TIỆC</p>
+            <h2 id="halls-heading" class="section-title">
+                <span>Bốn không gian,</span>
+                <span>một ngày trọng đại</span>
+            </h2>
+        </header>
+
+        <ul class="hall-grid" role="list">
+            @foreach (var hall in Model.Halls)
+            {
+                <li class="hall-card">
+                    <a class="hall-card__link" href="#sanh-tiec" aria-label="@($"Xem chi tiết {hall.Name}")">
+                        <div class="hall-card__media">
+                            <img src="@hall.ImageUrl"
+                                 alt="@hall.AltText"
+                                 loading="lazy" />
+                        </div>
+                        <div class="hall-card__body">
+                            <p class="hall-card__meta">@hall.Name</p>
+                            <h3 class="hall-card__title">@hall.ShortTitle</h3>
+                            <p class="hall-card__desc">@hall.Description</p>
+                            <span class="link-arrow link-arrow--inline">
+                                Xem chi tiết
+                                <span aria-hidden="true">&rarr;</span>
+                            </span>
+                        </div>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</section>
+
+@* ---------- BOOKING CTA ---------- *@
+<section class="booking" id="dat-tiec" aria-labelledby="booking-heading">
+    <div class="container booking__inner">
+        <div class="booking__frame">
+            <p class="eyebrow">ĐẶT TIỆC &amp; TƯ VẤN</p>
+            <h2 id="booking-heading" class="section-title">
+                <span>Cùng bạn chuẩn bị</span>
+                <span>ngày trọng đại</span>
+            </h2>
+            <p class="booking__lede">
+                Hãy để chúng tôi đồng hành và tư vấn chi tiết cho buổi tiệc của bạn.
+                Đội ngũ Phì Lũ sẽ liên hệ lại để cùng bạn trao đổi về không gian và
+                phương án tiệc phù hợp — bạn chưa cần quyết định ngay.
+            </p>
+            <div class="booking__actions">
+                <a class="btn btn--outline" asp-page="/DatTiec">
+                    LIÊN HỆ TƯ VẤN
+                    <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                </a>
+                <a class="link-arrow" asp-page="/TiecCuoi">
+                    KHÁM PHÁ SẢNH TIỆC
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+        </div>
+        <div class="booking__botanical" aria-hidden="true"></div>
+    </div>
+</section>
