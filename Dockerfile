@@ -43,9 +43,7 @@ WORKDIR /app
 COPY --from=build /app/publish ./
 
 # Run as a non-root user for safer container security defaults.
-RUN groupadd --system --gid 1001 app \
-    && useradd --system --uid 1001 --gid app app \
-    && chown -R app:app /app
+
 USER app
 
 # Default ASP.NET Core port. The actual port Railway uses is supplied
