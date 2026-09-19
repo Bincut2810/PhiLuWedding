@@ -27,6 +27,10 @@ public class WeddingHallConfiguration : IEntityTypeConfiguration<WeddingHall>
             .HasMaxLength(200)
             .IsRequired();
 
+        builder.Property(x => x.VenueKey)
+            .HasColumnName("venue_key")
+            .HasMaxLength(50);
+
         builder.Property(x => x.ShortDescription)
             .HasColumnName("short_description")
             .HasMaxLength(500);
@@ -57,6 +61,11 @@ public class WeddingHallConfiguration : IEntityTypeConfiguration<WeddingHall>
         builder.HasIndex(x => x.Slug)
             .IsUnique()
             .HasDatabaseName("ix_wedding_halls_slug");
+
+        // Supports the public venue-based listing:
+        //   WHERE venue_key = @venue AND is_published = true ORDER BY sort_order
+        builder.HasIndex(x => new { x.VenueKey, x.IsPublished, x.SortOrder })
+            .HasDatabaseName("ix_wedding_halls_venue_published_sort");
 
         builder.HasIndex(x => new { x.IsPublished, x.SortOrder })
             .HasDatabaseName("ix_wedding_halls_published_sort");

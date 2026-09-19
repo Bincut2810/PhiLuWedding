@@ -5,20 +5,37 @@
     var brandName = Configuration["Brand:Name"] ?? "NHÀ HÀNG PHÌ LŨ";
 
     // Decide which nav item is active based on the current page route.
-    // This works for both the listing page ("/TiecCuoi") and the
-    // detail page ("/TiecCuoi/Details"), which both live under the
-    // "sảnh tiệc" navigation group.
+    // The "Sảnh tiệc" item covers both /TiecCuoi and /TiecCuoi/Details.
+    // The "Thực đơn" item covers /ThucDon, /ThucDon/Details,
+    // /ThucDon/ComboDetails, and /ThucDon/DishDetails.
     var currentPage = (ViewContext?.RouteData.Values["page"] as string) ?? string.Empty;
     var isHome = string.Equals(currentPage, "/Index", StringComparison.OrdinalIgnoreCase);
     var isHalls = currentPage.StartsWith("/TiecCuoi", StringComparison.OrdinalIgnoreCase);
+    var isMenus = currentPage.StartsWith("/ThucDon", StringComparison.OrdinalIgnoreCase);
     var isBooking = string.Equals(currentPage, "/DatTiec", StringComparison.OrdinalIgnoreCase);
 }
 <header class="site-header" data-header>
     <div class="container site-header__inner">
-        <a class="site-brand" asp-page="/Index" aria-label="@brandName — Trang chủ">
-            <span class="site-brand__mark">Phì Lũ</span>
-            <span class="site-brand__rule" aria-hidden="true"></span>
-            <span class="site-brand__name">NHÀ HÀNG TIỆC CƯỚI</span>
+        <a class="site-brand" asp-page="/Index" aria-label="@($"{brandName} — Trang chủ")">
+            <span class="site-brand-logos" aria-hidden="true">
+                <img class="site-brand-logos__img site-brand-logos__img--philu"
+                     src="~/images/logo/logoPhiLu.webp"
+                     alt=""
+                     asp-append-version="true"
+                     width="142"
+                     height="197" />
+                <img class="site-brand-logos__img site-brand-logos__img--golden"
+                     src="~/images/logo/logoGolden.webp"
+                     alt=""
+                     asp-append-version="true"
+                     width="67"
+                     height="208" />
+            </span>
+            <span class="site-brand__text">
+                <span class="site-brand__mark">Phì Lũ</span>
+                <span class="site-brand__rule" aria-hidden="true"></span>
+                <span class="site-brand__name">NHÀ HÀNG TIỆC CƯỚI</span>
+            </span>
         </a>
 
         <button class="site-nav-toggle"
@@ -44,7 +61,11 @@
                        asp-page="/TiecCuoi"
                        aria-current="@(isHalls ? "page" : null)">SẢNH TIỆC</a>
                 </li>
-                <li><a class="site-nav__link" href="#thuc-don">THỰC ĐƠN</a></li>
+                <li>
+                    <a class="site-nav__link @(isMenus ? "is-active" : null)"
+                       asp-page="/ThucDon/Index"
+                       aria-current="@(isMenus ? "page" : null)">THỰC ĐƠN</a>
+                </li>
                 <li>
                     <a class="site-nav__link @(isBooking ? "is-active" : null)"
                        asp-page="/DatTiec"

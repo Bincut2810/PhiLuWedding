@@ -1,151 +1,94 @@
 @page "/tiec-cuoi"
 @model PhiluWedding.Pages.TiecCuoiModel
 @{
-    ViewData["Title"] = "Sảnh tiệc cưới";
+    ViewData["Title"] = "Không gian tiệc cưới";
 }
 
 @section Styles {
-    <link rel="stylesheet" href="~/css/halls.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/venues.css" asp-append-version="true" />
 }
 
 @* =====================================================================
-   PUBLIC WEDDING HALLS LISTING
-   Reads from the database via TiecCuoiModel. The page renders a
-   grid of cards; when the database is unavailable or has no rows yet,
-   it shows a polite empty state instead of crashing.
+   PUBLIC WEDDING VENUE SELECTION
+   Customer journey step 1: the customer picks which wedding venue they
+   want to explore. Each venue card links to its hall selection page
+   (/tiec-cuoi/golden-phoenix, /tiec-cuoi/philu).
    ===================================================================== *@
 
-<section class="halls-page" aria-labelledby="halls-page-heading">
+<section class="venues-page" aria-labelledby="venues-page-heading">
     <div class="container">
-        <header class="halls-page__head">
+        <header class="venues-page__head">
             <p class="eyebrow">KHÔNG GIAN TIỆC CƯỚI</p>
-            <h1 id="halls-page-heading" class="halls-page__title">
-                <span>Mỗi sảnh tiệc,</span>
-                <span>một câu chuyện riêng</span>
+            <h1 id="venues-page-heading" class="venues-page__title">
+                <span>Lựa chọn không gian phù hợp</span>
+                <span>cho ngày trọng đại của bạn</span>
             </h1>
-            <p class="halls-page__lede">
-                Khám phá các không gian tiệc cưới của NHÀ HÀNG TIỆC CƯỚI PHÌ LŨ.
-                Mỗi sảnh được chăm chút với phong cách riêng, sẵn sàng đồng hành
-                cùng ngày trọng đại của bạn.
+            <p class="venues-page__lede">
+                NHÀ HÀNG TIỆC CƯỚI PHÌ Lũ hiện có hai không gian tiệc cưới.
+                Mỗi nơi có phong cách và các sảnh tiệc riêng — hãy chọn
+                không gian bạn muốn khám phá trước.
             </p>
         </header>
 
-        @if (!Model.DatabaseAvailable)
-        {
-            <div class="halls-page__notice" role="status">
-                <p class="halls-page__notice-title">Hệ thống đang cập nhật danh sách sảnh tiệc.</p>
-                <p class="halls-page__notice-body">
-                    Vui lòng quay lại sau ít phút hoặc liên hệ trực tiếp với nhà hàng
-                    để được tư vấn về sảnh phù hợp.
-                </p>
-            </div>
-        }
-        else if (Model.Halls.Count == 0)
-        {
-            <div class="halls-page__notice" role="status">
-                <p class="halls-page__notice-title">Danh sách sảnh tiệc đang được cập nhật.</p>
-                <p class="halls-page__notice-body">
-                    Nhà hàng đang hoàn thiện hình ảnh và thông tin cho từng sảnh.
-                    Xin vui lòng quay lại sau hoặc liên hệ để được tư vấn.
-                </p>
-                <a class="link-arrow" asp-page="/DatTiec">
-                    LIÊN HỆ TƯ VẤN
-                    <span aria-hidden="true">&rarr;</span>
+        <ul class="venues-page__grid" role="list">
+            <li class="venue-card venue-card--page">
+                <a class="venue-card__link"
+                   asp-page="/TiecCuoi/GoldenPhoenix"
+                   aria-label="Khám phá Golden Phoenix — nhà hàng tiệc cưới">
+                    <div class="venue-card__media">
+                        <img src="~/images/venues/golden-phoenix/cover.webp"
+                             alt="Golden Phoenix — khu đón khách"
+                             loading="eager"
+                             fetchpriority="high"
+                             asp-append-version="true" />
+                    </div>
+                    <div class="venue-card__body">
+                        <p class="venue-card__meta">NHÀ HÀNG TIỆC CƯỚI</p>
+                        <h2 class="venue-card__title">Golden Phoenix</h2>
+                        <p class="venue-card__desc">Bốn sảnh tiệc theo từng sức chứa — từ tiệc nhỏ đến sự kiện lớn.</p>
+                        <span class="link-arrow link-arrow--inline">
+                            Khám phá sảnh
+                            <span aria-hidden="true">&rarr;</span>
+                        </span>
+                    </div>
                 </a>
-            </div>
-        }
-        else
-        {
-            <ul class="halls-page__grid" role="list">
-                @foreach (var hall in Model.Halls)
-                {
-                    <li class="halls-card">
-                        <a class="halls-card__link"
-                           asp-page="/TiecCuoi/Details"
-                           asp-route-id="@hall.Id"
-                           aria-label="@($"Xem chi tiết {hall.Name}")">
-                            <div class="halls-card__media">
-                                @if (!string.IsNullOrEmpty(hall.ImageUrl))
-                                {
-                                    <img src="@hall.ImageUrl"
-                                         alt="@(hall.ImageAlt ?? $"Không gian {hall.Name}")"
-                                         loading="lazy" />
-                                }
-                                else
-                                {
-                                    <div class="halls-card__placeholder" aria-hidden="true">
-                                        <span>Hình ảnh sẽ được cập nhật</span>
-                                    </div>
-                                }
-                            </div>
-                            <div class="halls-card__body">
-                                <p class="halls-card__meta">@hall.Name</p>
-                                @if (!string.IsNullOrWhiteSpace(hall.ShortDescription))
-                                {
-                                    <h2 class="halls-card__title">@hall.ShortDescription</h2>
-                                }
-                                else if (!string.IsNullOrWhiteSpace(hall.Description))
-                                {
-                                    <h2 class="halls-card__title">@hall.Description</h2>
-                                }
-                                else
-                                {
-                                    <h2 class="halls-card__title">Không gian tiệc cưới</h2>
-                                }
-
-                                @if (hall.CapacityMin.HasValue || hall.CapacityMax.HasValue)
-                                {
-                                    <p class="halls-card__meta-row">
-                                        <span class="halls-card__meta-label">Sức chứa</span>
-                                        <span class="halls-card__meta-value">
-                                            @FormatCapacity(hall.CapacityMin, hall.CapacityMax)
-                                        </span>
-                                    </p>
-                                }
-
-                                <span class="link-arrow link-arrow--inline">
-                                    Xem chi tiết
-                                    <span aria-hidden="true">&rarr;</span>
-                                </span>
-                            </div>
-                        </a>
-                    </li>
-                }
-            </ul>
-
-            <div class="halls-page__cta">
-                <p class="halls-page__cta-note">
-                    Mỗi sảnh có phong cách và sức chứa khác nhau. Hãy để đội ngũ
-                    Phì Lũ giúp bạn chọn không gian phù hợp nhất.
-                </p>
-                <a class="btn btn--primary" asp-page="/DatTiec">
-                    ĐẶT LỊCH TƯ VẤN
-                    <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+            </li>
+            <li class="venue-card venue-card--page">
+                <a class="venue-card__link"
+                   asp-page="/TiecCuoi/PhiLu"
+                   aria-label="Khám phá Trung tâm Hội nghị Tiệc cưới Phì Lũ">
+                    <div class="venue-card__media">
+                        <img src="~/images/venues/philu/cover.webp"
+                             alt="Trung tâm Hội nghị Tiệc cưới Phì Lũ — sảnh đón khách"
+                             loading="eager"
+                             fetchpriority="high"
+                             asp-append-version="true" />
+                    </div>
+                    <div class="venue-card__body">
+                        <p class="venue-card__meta">TRUNG TÂM HỘI NGHỊ TIỆC CƯỚI</p>
+                        <h2 class="venue-card__title">Phì Lũ</h2>
+                        <p class="venue-card__desc">Bốn sảnh Amber, Pearl, Diamond, Crystal — đa dạng phong cách và quy mô.</p>
+                        <span class="link-arrow link-arrow--inline">
+                            Khám phá sảnh
+                            <span aria-hidden="true">&rarr;</span>
+                        </span>
+                    </div>
                 </a>
-                <a class="link-arrow halls-page__cta-secondary" asp-page="/Index">
-                    VỀ TRANG CHỦ
-                    <span aria-hidden="true">&rarr;</span>
-                </a>
-            </div>
-        }
+            </li>
+        </ul>
+
+        <div class="venues-page__cta">
+            <p class="venues-page__cta-note">
+                Bạn có thể liên hệ đội ngũ Phì Lũ để được tư vấn không gian phù hợp nhất.
+            </p>
+            <a class="btn btn--primary" asp-page="/DatTiec">
+                LIÊN HỆ TƯ VẤN
+                <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="link-arrow venues-page__cta-home" asp-page="/Index">
+                VỀ TRANG CHỦ
+                <span aria-hidden="true">&rarr;</span>
+            </a>
+        </div>
     </div>
 </section>
-
-@functions {
-    private static string FormatCapacity(int? min, int? max)
-    {
-        if (min.HasValue && max.HasValue)
-        {
-            return $"{min.Value} – {max.Value} khách";
-        }
-        if (max.HasValue)
-        {
-            return $"đến {max.Value} khách";
-        }
-        if (min.HasValue)
-        {
-            return $"từ {min.Value} khách";
-        }
-        return string.Empty;
-    }
-}

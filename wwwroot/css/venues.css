@@ -1,0 +1,340 @@
+/* =====================================================================
+   VENUES — NHÀ HÀNG PHÌ LŨ
+   Phase 12 — public venue selection and per-venue hall grid.
+
+   Sections:
+     1. Homepage venue cards (.venues + .venue-card)
+     2. Standalone /tiec-cuoi venue selection page (.venues-page)
+     3. Per-venue hall grid (.venue-hall-grid + .venue-hall-card)
+
+   All classes use the `venue-` prefix so they never collide with the
+   homepage `.hall-*` rules or the halls listing `.halls-*` rules.
+   ===================================================================== */
+
+/* ---------- Homepage venue section (.venues) ---------- */
+.venues {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
+    background-color: var(--color-paper);
+}
+
+.venues .section-head--center {
+    margin-bottom: var(--space-10);
+}
+
+.venues__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-9) var(--space-7);
+}
+
+/* ---------- Venue card (shared) ---------- */
+.venue-card {
+    background-color: transparent;
+}
+
+.venue-card__link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.venue-card__media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: var(--color-cream);
+    margin-bottom: var(--space-6);
+    border: 1px solid var(--color-border);
+    transition: border-color var(--dur-base) var(--ease-soft);
+}
+
+.venue-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 720ms var(--ease-soft);
+}
+
+.venue-card__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(44, 36, 28, 0.18));
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+.venue-card__link:hover .venue-card__media,
+.venue-card__link:focus-visible .venue-card__media {
+    border-color: var(--color-champagne);
+}
+
+.venue-card__link:hover .venue-card__media img,
+.venue-card__link:focus-visible .venue-card__media img {
+    transform: scale(1.035);
+}
+
+.venue-card__body {
+    text-align: center;
+    padding: 0 var(--space-2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.venue-card__meta {
+    font-family: var(--font-sans);
+    font-size: var(--fs-eyebrow);
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--color-muted-brown);
+    margin-bottom: var(--space-3);
+}
+
+.venue-card__title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 1.2rem + 1.4vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--color-ink);
+    margin-bottom: var(--space-3);
+    /* Keep long Phì Lũ title on one line — scale-down at very narrow widths. */
+    word-break: keep-all;
+    overflow-wrap: normal;
+    text-wrap: balance;
+}
+
+.venue-card__desc {
+    font-size: var(--fs-body);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--color-muted-brown);
+    line-height: 1.7;
+    max-width: 48ch;
+    margin-bottom: var(--space-2);
+}
+
+.venue-card .link-arrow--inline {
+    margin-top: var(--space-5);
+}
+
+/* ---------- Standalone /tiec-cuoi venue selection ---------- */
+.venues-page {
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-12);
+    background-color: var(--color-paper);
+}
+
+.venues-page__head {
+    max-width: 760px;
+    margin: 0 auto var(--space-10);
+    text-align: center;
+}
+
+.venues-page__head .eyebrow {
+    justify-content: center;
+}
+
+.venues-page__title {
+    font-size: var(--fs-h1);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--color-ink);
+}
+
+.venues-page__title span {
+    display: block;
+}
+
+.venues-page__title span:nth-child(even) {
+    font-style: italic;
+    color: var(--color-brown);
+}
+
+.venues-page__lede {
+    margin-top: var(--space-5);
+    font-size: var(--fs-body-lg);
+    color: var(--color-muted-brown);
+    line-height: 1.75;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.venues-page__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-9) var(--space-7);
+    margin-bottom: var(--space-10);
+}
+
+.venue-card--page .venue-card__title {
+    font-size: clamp(2rem, 1.4rem + 1.6vw, 2.75rem);
+}
+
+.venues-page__cta {
+    text-align: center;
+}
+
+.venues-page__cta-note {
+    max-width: 56ch;
+    margin: 0 auto var(--space-6);
+    font-size: var(--fs-body-lg);
+    color: var(--color-muted-brown);
+    line-height: 1.7;
+}
+
+.venues-page__cta .btn {
+    margin-bottom: var(--space-3);
+}
+
+.venues-page__cta-home {
+    margin-top: var(--space-3);
+}
+
+@media (min-width: 600px) {
+    .venues__grid,
+    .venues-page__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-9) var(--space-7);
+    }
+}
+
+@media (min-width: 1024px) {
+    .venues__grid,
+    .venues-page__grid {
+        gap: var(--space-10) var(--space-8);
+    }
+}
+
+/* ---------- Per-venue hall grid (.venue-hall-grid) ---------- */
+.venue-hall-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8) var(--space-6);
+    margin-bottom: var(--space-10);
+}
+
+.venue-hall-card {
+    background-color: transparent;
+}
+
+.venue-hall-card__link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.venue-hall-card__media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: var(--color-cream);
+    margin-bottom: var(--space-5);
+    border: 1px solid var(--color-border);
+    transition: border-color var(--dur-base) var(--ease-soft);
+}
+
+.venue-hall-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 720ms var(--ease-soft);
+}
+
+.venue-hall-card__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 65%, rgba(74, 58, 46, 0.10));
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+.venue-hall-card__placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-5);
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: var(--fs-body-sm);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-muted-brown);
+    background:
+        linear-gradient(135deg, transparent 49%, var(--color-line) 49% 51%, transparent 51%) center / 22px 22px no-repeat,
+        var(--color-cream);
+}
+
+.venue-hall-card__link:hover .venue-hall-card__media,
+.venue-hall-card__link:focus-visible .venue-hall-card__media {
+    border-color: var(--color-champagne);
+}
+
+.venue-hall-card__link:hover .venue-hall-card__media img,
+.venue-hall-card__link:focus-visible .venue-hall-card__media img {
+    transform: scale(1.04);
+}
+
+.venue-hall-card__body {
+    text-align: center;
+    padding: 0 var(--space-2);
+}
+
+.venue-hall-card__meta {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: var(--space-3);
+    line-height: 1.2;
+    letter-spacing: 0.005em;
+}
+
+.venue-hall-card__capacity {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: var(--fs-eyebrow);
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-brown);
+    margin: 0 0 var(--space-2);
+}
+
+.venue-hall-card .link-arrow--inline {
+    margin-top: var(--space-5);
+}
+
+/* The 2x2 desktop grid: exactly 2 columns, 2 rows visible at once. */
+@media (min-width: 720px) {
+    .venue-hall-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-9) var(--space-7);
+    }
+}
+
+/* ---------- Venue page header (shared) ---------- */
+.halls-venue .halls-page__title {
+    font-size: var(--fs-h1);
+}
+
+.halls-page__cta-back {
+    display: inline-flex;
+    margin-bottom: var(--space-6);
+    letter-spacing: 0.18em;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .venue-card__media img,
+    .venue-hall-card__media img {
+        transition: none;
+    }
+}

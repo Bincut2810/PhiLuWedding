@@ -2,7 +2,10 @@
    SITE DESIGN SYSTEM — NHÀ HÀNG PHÌ LŨ
    --------------------------------------------------------------------
    Custom CSS only. No UI framework. Light, editorial luxury palette.
-   Refined for Phase 02 — typography, header, footer, buttons.
+   Phase 11 polish:
+     * Two wedding logos in the header (side-by-side, intrinsic aspect)
+     * Floating Facebook + Zalo contact bubbles
+     * Slightly thicker/bolder typography for stronger hierarchy
    ===================================================================== */
 
 /* ---------- Design tokens ---------- */
@@ -18,7 +21,8 @@
     --color-ink: #2C241C;
     --color-line: #E5DCC9;
 
-    /* Typography */
+    /* Typography — Phase 11: weights nudged slightly heavier for
+       a stronger editorial hierarchy. Body copy stays readable. */
     --font-serif: "Cormorant Garamond", "Times New Roman", Georgia, serif;
     --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 
@@ -78,7 +82,7 @@ body {
     font-family: var(--font-sans);
     font-size: var(--fs-body);
     line-height: 1.7;
-    font-weight: 400;
+    font-weight: 500;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -124,7 +128,7 @@ ol {
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     font-family: var(--font-serif);
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1.18;
     color: var(--color-ink);
     letter-spacing: -0.005em;
@@ -183,7 +187,7 @@ main {
     gap: var(--space-3);
     font-family: var(--font-sans);
     font-size: var(--fs-eyebrow);
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--color-muted-brown);
@@ -200,7 +204,7 @@ main {
 
 .section-title {
     font-size: var(--fs-h2);
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1.12;
     color: var(--color-ink);
     letter-spacing: -0.005em;
@@ -232,7 +236,7 @@ main {
     padding: var(--space-4) var(--space-7);
     font-family: var(--font-sans);
     font-size: var(--fs-body-sm);
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     border: 1px solid transparent;
@@ -287,7 +291,7 @@ main {
     padding-bottom: var(--space-2);
     font-family: var(--font-sans);
     font-size: var(--fs-body-sm);
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--color-brown);
@@ -329,26 +333,61 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-6);
-    padding-top: var(--space-4);
-    padding-bottom: var(--space-4);
+    gap: var(--space-5);
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-3);
+    flex-wrap: wrap;
 }
 
+/* Brand area: two logos + brand text */
 .site-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-4);
+    line-height: 1;
+    text-decoration: none;
+    color: var(--color-ink);
+    min-width: 0;
+}
+
+/* Logos: each image preserves its intrinsic aspect ratio. The
+   taller Golden logo sits beside the PhiLu logo at a unified cap so
+   the pair looks balanced at every viewport. */
+.site-brand-logos {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(0.4rem, 0.8vw, 0.75rem);
+    flex-shrink: 0;
+}
+
+.site-brand-logos__img {
+    display: block;
+    height: 56px;
+    width: auto;
+    max-width: none;
+    transition: transform var(--dur-base) var(--ease-soft),
+                opacity var(--dur-base) var(--ease-soft);
+}
+
+.site-brand:hover .site-brand-logos__img,
+.site-brand:focus-visible .site-brand-logos__img {
+    transform: translateY(-1px);
+}
+
+.site-brand__text {
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
     line-height: 1;
-    text-decoration: none;
-    color: var(--color-ink);
     gap: 4px;
+    min-width: 0;
 }
 
 .site-brand__mark {
     font-family: var(--font-serif);
     font-size: 1.625rem;
     font-style: italic;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.005em;
     color: var(--color-brown);
     line-height: 1;
@@ -367,7 +406,7 @@ main {
 .site-brand__name {
     font-family: var(--font-sans);
     font-size: 0.625rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.36em;
     text-transform: uppercase;
     color: var(--color-muted-brown);
@@ -383,6 +422,35 @@ main {
 .site-brand:focus-visible .site-brand__rule {
     width: 44px;
     background-color: var(--color-brown);
+}
+
+/* Compact header on small screens — keep both visible but trim size */
+@media (max-width: 575.98px) {
+    .site-header__inner {
+        padding-top: var(--space-2);
+        padding-bottom: var(--space-2);
+    }
+
+    .site-brand-logos__img {
+        height: 44px;
+    }
+
+    .site-brand__mark {
+        font-size: 1.375rem;
+    }
+
+    .site-brand__name {
+        font-size: 0.5625rem;
+    }
+}
+
+/* Below 420px: drop the brand text beside the logos — the logos
+   alone are enough to identify the venue and the navigation toggle
+   needs the room. */
+@media (max-width: 419.98px) {
+    .site-brand__text {
+        display: none;
+    }
 }
 
 /* Nav toggle (mobile) */
@@ -419,10 +487,14 @@ main {
 }
 
 /* Nav */
+.site-nav {
+    margin-left: auto;
+}
+
 .site-nav__list {
     display: flex;
     align-items: center;
-    gap: clamp(1.25rem, 2.6vw, 2.5rem);
+    gap: clamp(1rem, 2vw, 2.25rem);
 }
 
 .site-nav__link {
@@ -431,7 +503,7 @@ main {
     padding: var(--space-2) 0;
     font-family: var(--font-sans);
     font-size: var(--fs-body-sm);
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--color-brown);
@@ -467,6 +539,7 @@ main {
 @media (max-width: 767.98px) {
     .site-nav-toggle {
         display: inline-flex;
+        margin-left: auto;
     }
 
     .site-nav {
@@ -540,7 +613,7 @@ main {
 .site-footer__name {
     font-family: var(--font-serif);
     font-size: 1.625rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--color-ink);
     margin-bottom: var(--space-3);
     letter-spacing: 0.005em;
@@ -549,7 +622,7 @@ main {
 .site-footer__tagline {
     font-family: var(--font-sans);
     font-size: 0.7rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--color-muted-brown);
@@ -573,7 +646,7 @@ main {
 .site-footer__nav a {
     font-family: var(--font-sans);
     font-size: 0.75rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--color-brown);
@@ -588,7 +661,7 @@ main {
 .site-footer__label {
     font-family: var(--font-sans);
     font-size: var(--fs-eyebrow);
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--color-muted-brown);
@@ -626,6 +699,121 @@ main {
     .site-footer__inner {
         grid-template-columns: 1.5fr 1fr 1.2fr;
         gap: var(--space-10);
+    }
+}
+
+/* ---------- Floating contact bubbles (Phase 11) ----------
+   Two stacked icon-only buttons in the bottom-right. They float above
+   the page content, stay visible while scrolling, do not block the
+   booking CTA (they sit below it on desktop), and use recognizable
+   inline SVG icons so we don't pull in an icon library. */
+.contact-bubbles {
+    position: fixed;
+    right: clamp(0.75rem, 2vw, 1.25rem);
+    bottom: clamp(0.75rem, 2vw, 1.5rem);
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--space-3);
+    pointer-events: none; /* let the document receive clicks beneath */
+}
+
+.contact-bubbles__item {
+    pointer-events: auto;
+}
+
+.contact-bubbles__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: var(--color-paper);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 8px 24px rgba(44, 36, 28, 0.10),
+                0 2px 6px rgba(44, 36, 28, 0.06);
+    color: var(--color-brown);
+    transition: transform var(--dur-base) var(--ease-soft),
+                background-color var(--dur-base) var(--ease-soft),
+                border-color var(--dur-base) var(--ease-soft),
+                color var(--dur-base) var(--ease-soft),
+                box-shadow var(--dur-base) var(--ease-soft);
+}
+
+.contact-bubbles__link svg {
+    width: 26px;
+    height: 26px;
+    fill: currentColor;
+}
+
+.contact-bubbles__link:hover,
+.contact-bubbles__link:focus-visible {
+    transform: translateY(-2px);
+    background-color: var(--color-brown);
+    border-color: var(--color-brown);
+    color: var(--color-paper);
+    box-shadow: 0 12px 30px rgba(44, 36, 28, 0.18);
+}
+
+/* Brand-tinted hover for the two services. Default uses neutral
+   brown; hover reveals the service's recognizable color so the
+   icon area feels like the platform brand while resting. */
+.contact-bubbles__link--facebook:hover,
+.contact-bubbles__link--facebook:focus-visible {
+    background-color: #1877F2;
+    border-color: #1877F2;
+}
+
+.contact-bubbles__link--zalo:hover,
+.contact-bubbles__link--zalo:focus-visible {
+    background-color: #0068FF;
+    border-color: #0068FF;
+}
+
+.contact-bubbles__tooltip {
+    position: absolute;
+    right: calc(100% + 0.5rem);
+    top: 50%;
+    transform: translateY(-50%) translateX(6px);
+    padding: 0.4rem 0.65rem;
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--dur-fast) var(--ease-soft),
+                transform var(--dur-fast) var(--ease-soft);
+}
+
+.contact-bubbles__item {
+    position: relative;
+}
+
+.contact-bubbles__link:hover + .contact-bubbles__tooltip,
+.contact-bubbles__link:focus-visible + .contact-bubbles__tooltip {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+@media (max-width: 575.98px) {
+    .contact-bubbles__link {
+        width: 46px;
+        height: 46px;
+    }
+
+    .contact-bubbles__link svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .contact-bubbles__tooltip {
+        display: none;
     }
 }
 

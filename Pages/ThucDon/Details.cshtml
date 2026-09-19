@@ -1,0 +1,175 @@
+@page "/thuc-don/{id:int}"
+@model PhiluWedding.Pages.ThucDon.DetailsModel
+@using System.Globalization
+@{
+    ViewData["Title"] = Model.MenuSet?.Name ?? "Thực đơn";
+    var vi = CultureInfo.GetCultureInfo("vi-VN");
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/menus.css" asp-append-version="true" />
+}
+
+@* =====================================================================
+   PUBLIC MENU SET DETAIL
+   Renders one menu set with all its published combos. Each combo card
+   links to its own detail page. When the database is unavailable or
+   the menu set is not found, the page returns 404 from the page model.
+   ===================================================================== *@
+
+@if (Model.MenuSet is null)
+{
+    <section class="menus-page menus-page--notfound">
+        <div class="container">
+            <p class="eyebrow">THỰC ĐƠN</p>
+            <h1 class="menus-page__title">
+                <span>Không tìm thấy thực đơn</span>
+            </h1>
+            <p class="menus-page__lede">
+                Bộ thực đơn bạn đang tìm không tồn tại hoặc đã được ẩn khỏi trang
+                công khai. Vui lòng quay lại danh sách thực đơn để tiếp tục.
+            </p>
+            <a class="link-arrow" asp-page="/ThucDon/Index">
+                QUAY LẠI DANH SÁCH THỰC ĐƠN
+                <span aria-hidden="true">&rarr;</span>
+            </a>
+        </div>
+    </section>
+    return;
+}
+
+<section class="menus-page menus-detail" aria-labelledby="menus-detail-heading">
+    <div class="container">
+        <nav class="menus-detail__crumbs" aria-label="Breadcrumb">
+            <a asp-page="/Index">Trang chủ</a>
+            <span aria-hidden="true">›</span>
+            <a asp-page="/ThucDon/Index">Thực đơn</a>
+            <span aria-hidden="true">›</span>
+            <span aria-current="page">@Model.MenuSet.Name</span>
+        </nav>
+
+        <header class="menus-detail__head">
+            <p class="eyebrow">BỘ THỰC ĐƠN</p>
+            <h1 id="menus-detail-heading" class="menus-page__title">
+                <span>@Model.MenuSet.Name</span>
+            </h1>
+            @if (!string.IsNullOrWhiteSpace(Model.MenuSet.ShortDescription))
+            {
+                <p class="menus-detail__lede">@Model.MenuSet.ShortDescription</p>
+            }
+            else if (!string.IsNullOrWhiteSpace(Model.MenuSet.Description))
+            {
+                <p class="menus-detail__lede">@Model.MenuSet.Description</p>
+            }
+        </header>
+
+        @* ---------- Long description ---------- *@
+        @if (!string.IsNullOrWhiteSpace(Model.MenuSet.Description))
+        {
+            <div class="menus-detail__intro">
+                <p>@Model.MenuSet.Description</p>
+            </div>
+        }
+
+        @* ---------- Combos ---------- *@
+        @if (Model.MenuSet.Combos.Count == 0)
+        {
+            <div class="menus-detail__empty" role="status">
+                <p>Thông tin thực đơn đang được cập nhật.</p>
+                <a class="link-arrow" asp-page="/ThucDon/Index">
+                    QUAY LẠI DANH SÁCH THỰC ĐƠN
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+        }
+        else
+        {
+            <ul class="menus-detail__combos" role="list">
+                @foreach (var combo in Model.MenuSet.Combos)
+                {
+                    <li class="combo-card">
+                        <div class="combo-card__body">
+                            <p class="combo-card__meta">COMBO</p>
+                            <h2 class="combo-card__title">@combo.Name</h2>
+
+                            @if (combo.Price.HasValue)
+                            {
+                                <p class="combo-card__price">
+                                    <span class="combo-card__price-amount">
+                                        @combo.Price.Value.ToString("N0", vi)
+                                    </span>
+                                    <span class="combo-card__price-unit">VNĐ / bàn</span>
+                                </p>
+                            }
+                            else
+                            {
+                                <p class="combo-card__price">
+                                    <span class="combo-card__price-note">Giá đang được cập nhật</span>
+                                </p>
+                            }
+
+                            @if (!string.IsNullOrWhiteSpace(combo.Description))
+                            {
+                                <p class="combo-card__desc">@combo.Description</p>
+                            }
+
+                            @if (combo.DishPreviews.Count > 0)
+                            {
+                                <p class="combo-card__dishes-label">Món nổi bật trong combo</p>
+                                <ul class="combo-card__dishes" role="list">
+                                    @foreach (var dish in combo.DishPreviews.Take(4))
+                                    {
+                                        <li class="combo-card__dish">
+                                            <div class="combo-card__dish-media" aria-hidden="true">
+                                                @if (!string.IsNullOrEmpty(dish.ImageUrl))
+                                                {
+                                                    <img src="@dish.ImageUrl"
+                                                         alt="@(dish.ImageAlt ?? $"Hình ảnh {dish.Name}")"
+                                                         loading="lazy" />
+                                                }
+                                                else
+                                                {
+                                                    <div class="combo-card__dish-placeholder">
+                                                        <span>Đang cập nhật</span>
+                                                    </div>
+                                                }
+                                            </div>
+                                            <p class="combo-card__dish-name">@dish.Name</p>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <p class="combo-card__dishes-empty">Danh sách món đang được cập nhật.</p>
+                            }
+
+                            <a class="btn btn--outline combo-card__cta"
+                               asp-page="/ThucDon/ComboDetails"
+                               asp-route-id="@combo.Id">
+                                XEM CHI TIẾT COMBO
+                                <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                            </a>
+                        </div>
+                    </li>
+                }
+            </ul>
+        }
+
+        @* ---------- Bottom CTA ---------- *@
+        <div class="menus-detail__cta">
+            <p class="menus-detail__cta-note">
+                Mỗi combo có thể được điều chỉnh theo sảnh tiệc và yêu cầu riêng của
+                bạn. Hãy để đội ngũ Phì Lũ tư vấn chi tiết.
+            </p>
+            <a class="btn btn--primary" asp-page="/DatTiec">
+                LIÊN HỆ ĐẶT TIỆC
+                <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="link-arrow menus-detail__back" asp-page="/ThucDon/Index">
+                QUAY LẠI DANH SÁCH THỰC ĐƠN
+                <span aria-hidden="true">&rarr;</span>
+            </a>
+        </div>
+    </div>
+</section>

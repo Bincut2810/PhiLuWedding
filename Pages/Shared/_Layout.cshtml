@@ -36,6 +36,11 @@
 
     @await Html.PartialAsync("_Footer")
 
+    @* Floating contact bubbles (Facebook + Zalo). Always visible on
+       public pages; the partial is a no-op markup when the brand
+       configuration is missing the contact keys. *@
+    @await Html.PartialAsync("_ContactBubbles")
+
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

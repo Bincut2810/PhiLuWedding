@@ -17,6 +17,7 @@ builder.Services.Configure<CloudinaryOptions>(
     builder.Configuration.GetSection(CloudinaryOptions.SectionName));
 builder.Services.AddSingleton<ICloudinaryService, CloudinaryService>();
 builder.Services.AddSingleton<IHallImageUrlResolver, HallImageUrlResolver>();
+builder.Services.AddSingleton<IDishImageUrlResolver, DishImageUrlResolver>();
 
 // PostgreSQL via Npgsql. The connection string is read from
 // appsettings.json (ConnectionStrings:DefaultConnection) or

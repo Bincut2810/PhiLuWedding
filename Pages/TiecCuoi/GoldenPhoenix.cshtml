@@ -1,0 +1,142 @@
+@page "/tiec-cuoi/golden-phoenix"
+@model PhiluWedding.Pages.TiecCuoi.GoldenPhoenixModel
+@{
+    ViewData["Title"] = "Golden Phoenix — Sảnh tiệc cưới";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/halls.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/venues.css" asp-append-version="true" />
+}
+
+@* =====================================================================
+   GOLDEN PHOENIX — HALL SELECTION
+   Customer journey step 2: shows exactly the four halls that belong to
+   Golden Phoenix. Each hall card links to the existing detail route
+   /tiec-cuoi/{id}. The hall detail page itself is redesigned in a
+   later phase.
+   ===================================================================== *@
+
+<section class="halls-page halls-venue" aria-labelledby="venue-halls-heading">
+    <div class="container">
+        <nav class="halls-detail__crumbs" aria-label="Breadcrumb">
+            <a asp-page="/Index">Trang chủ</a>
+            <span aria-hidden="true">›</span>
+            <a asp-page="/TiecCuoi">Tiệc cưới</a>
+            <span aria-hidden="true">›</span>
+            <span aria-current="page">Golden Phoenix</span>
+        </nav>
+
+        <header class="halls-page__head">
+            <p class="eyebrow">GOLDEN PHOENIX</p>
+            <h1 id="venue-halls-heading" class="halls-page__title">
+                <span>Bốn sảnh tiệc,</span>
+                <span>một đẳng cấp</span>
+            </h1>
+            <p class="halls-page__lede">
+                Mỗi sảnh tại Golden Phoenix được chăm chút với phong cách riêng,
+                sẵn sàng đồng hành cùng ngày trọng đại của bạn.
+            </p>
+        </header>
+
+        @if (!Model.DatabaseAvailable)
+        {
+            <div class="halls-page__notice" role="status">
+                <p class="halls-page__notice-title">Hệ thống đang cập nhật danh sách sảnh tiệc.</p>
+                <p class="halls-page__notice-body">
+                    Vui lòng quay lại sau ít phút hoặc liên hệ trực tiếp với nhà hàng
+                    để được tư vấn về sảnh phù hợp.
+                </p>
+            </div>
+        }
+        else if (Model.Halls.Count == 0)
+        {
+            <div class="halls-page__notice" role="status">
+                <p class="halls-page__notice-title">Danh sách sảnh tiệc đang được cập nhật.</p>
+                <p class="halls-page__notice-body">
+                    Golden Phoenix đang hoàn thiện hình ảnh và thông tin cho từng sảnh.
+                    Xin vui lòng quay lại sau hoặc liên hệ để được tư vấn.
+                </p>
+                <a class="link-arrow" asp-page="/DatTiec">
+                    LIÊN HỆ TƯ VẤN
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+        }
+        else
+        {
+            <ul class="venue-hall-grid" role="list">
+                @foreach (var hall in Model.Halls)
+                {
+                    <li class="venue-hall-card">
+                        <a class="venue-hall-card__link"
+                           asp-page="/TiecCuoi/Details"
+                           asp-route-id="@hall.Id"
+                           aria-label="@($"Xem chi tiết {hall.Name} — Golden Phoenix")">
+                            <div class="venue-hall-card__media">
+                                @if (!string.IsNullOrEmpty(hall.ImageUrl))
+                                {
+                                    <img src="@hall.ImageUrl"
+                                         alt="@(hall.ImageAlt ?? $"{hall.Name} — Golden Phoenix")"
+                                         loading="lazy" />
+                                }
+                                else
+                                {
+                                    <div class="venue-hall-card__placeholder" aria-hidden="true">
+                                        <span>Hình ảnh sẽ được cập nhật</span>
+                                    </div>
+                                }
+                            </div>
+                            <div class="venue-hall-card__body">
+                                <p class="venue-hall-card__meta">@hall.Name</p>
+                                @if (hall.CapacityMin.HasValue || hall.CapacityMax.HasValue)
+                                {
+                                    <p class="venue-hall-card__capacity">
+                                        @FormatCapacity(hall.CapacityMin, hall.CapacityMax)
+                                    </p>
+                                }
+                                <span class="link-arrow link-arrow--inline">
+                                    Xem sảnh
+                                    <span aria-hidden="true">&rarr;</span>
+                                </span>
+                            </div>
+                        </a>
+                    </li>
+                }
+            </ul>
+
+            <div class="halls-page__cta">
+                <a class="link-arrow halls-page__cta-back" asp-page="/TiecCuoi">
+                    ← Chọn nhà hàng
+                </a>
+                <p class="halls-page__cta-note">
+                    Bạn có thể liên hệ đội ngũ Phì Lũ để được tư vấn chi tiết về
+                    sảnh tiệc phù hợp với quy mô buổi tiệc của mình.
+                </p>
+                <a class="btn btn--primary" asp-page="/DatTiec">
+                    ĐẶT LỊCH TƯ VẤN
+                    <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+        }
+    </div>
+</section>
+
+@functions {
+    private static string FormatCapacity(int? min, int? max)
+    {
+        if (min.HasValue && max.HasValue)
+        {
+            return $"{min.Value:N0} – {max.Value:N0} khách";
+        }
+        if (max.HasValue)
+        {
+            return $"đến {max.Value:N0} khách";
+        }
+        if (min.HasValue)
+        {
+            return $"từ {min.Value:N0} khách";
+        }
+        return string.Empty;
+    }
+}

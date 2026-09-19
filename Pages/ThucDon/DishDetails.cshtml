@@ -1,0 +1,212 @@
+@page "/thuc-don/mon-an/{id:int}"
+@model PhiluWedding.Pages.ThucDon.DishDetailsModel
+@using System.Globalization
+@{
+    ViewData["Title"] = Model.Dish?.Name ?? "Món ăn";
+    var vi = CultureInfo.GetCultureInfo("vi-VN");
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/menus.css" asp-append-version="true" />
+}
+
+@* =====================================================================
+   PUBLIC DISH DETAIL
+   Renders one dish with its image gallery and a list of menu combos
+   that include it. When the database is unavailable or the dish is
+   not found, the page returns 404 from the page model.
+   ===================================================================== *@
+
+@if (Model.Dish is null)
+{
+    <section class="menus-page menus-page--notfound">
+        <div class="container">
+            <p class="eyebrow">MÓN ĂN</p>
+            <h1 class="menus-page__title">
+                <span>Không tìm thấy món ăn</span>
+            </h1>
+            <p class="menus-page__lede">
+                Món ăn bạn đang tìm không tồn tại hoặc đã được ẩn khỏi trang
+                công khai. Vui lòng quay lại danh sách thực đơn để tiếp tục.
+            </p>
+            <a class="link-arrow" asp-page="/ThucDon/Index">
+                QUAY LẠI DANH SÁCH THỰC ĐƠN
+                <span aria-hidden="true">&rarr;</span>
+            </a>
+        </div>
+    </section>
+    return;
+}
+
+<section class="menus-page menus-detail" aria-labelledby="dish-detail-heading">
+    <div class="container">
+        <nav class="menus-detail__crumbs" aria-label="Breadcrumb">
+            <a asp-page="/Index">Trang chủ</a>
+            <span aria-hidden="true">›</span>
+            <a asp-page="/ThucDon/Index">Thực đơn</a>
+            <span aria-hidden="true">›</span>
+            <span aria-current="page">@Model.Dish.Name</span>
+        </nav>
+
+        <header class="menus-detail__head">
+            <p class="eyebrow">MÓN ĂN</p>
+            <h1 id="dish-detail-heading" class="menus-page__title">
+                <span>@Model.Dish.Name</span>
+            </h1>
+            @if (Model.Dish.Price.HasValue)
+            {
+                <p class="combo-detail__price">
+                    <span class="combo-detail__price-amount">
+                        @Model.Dish.Price.Value.ToString("N0", vi)
+                    </span>
+                    <span class="combo-detail__price-unit">VNĐ / phần</span>
+                </p>
+            }
+        </header>
+
+        @* ---------- Gallery ---------- *@
+        @if (Model.Dish.Images.Count > 0)
+        {
+            <div class="dish-gallery" role="region" aria-label="Thư viện hình ảnh món ăn">
+                @{
+                    var primary = Model.Dish.Images.FirstOrDefault();
+                    var gallery = Model.Dish.Images.ToList();
+                }
+                @if (primary is not null && !string.IsNullOrEmpty(primary.Url))
+                {
+                    <figure class="dish-gallery__primary">
+                        <img src="@primary.Url"
+                             alt="@(primary.AltText ?? $"Hình ảnh {Model.Dish.Name}")"
+                             loading="eager"
+                             fetchpriority="high" />
+                    </figure>
+                }
+                else
+                {
+                    <figure class="dish-gallery__primary dish-gallery__primary--placeholder" aria-hidden="true">
+                        <span>Hình ảnh sẽ được cập nhật</span>
+                    </figure>
+                }
+
+                @if (gallery.Count > 1)
+                {
+                    <ul class="dish-gallery__thumbs" role="list">
+                        @foreach (var img in gallery)
+                        {
+                            <li class="dish-gallery__thumb">
+                                @if (!string.IsNullOrEmpty(img.Url))
+                                {
+                                    <img src="@img.Url"
+                                         alt="@(img.AltText ?? $"Hình ảnh {Model.Dish.Name}")"
+                                         loading="lazy" />
+                                }
+                                else
+                                {
+                                    <div class="dish-gallery__thumb-placeholder" aria-hidden="true"></div>
+                                }
+                            </li>
+                        }
+                    </ul>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="dish-gallery dish-gallery--empty" role="status">
+                <p>Hình ảnh của món ăn đang được cập nhật.</p>
+            </div>
+        }
+
+        @* ---------- Description + ingredients ---------- *@
+        <div class="dish-detail__grid">
+            <div class="dish-detail__body">
+                <h2 class="menus-detail__sub">Giới thiệu món</h2>
+                @if (!string.IsNullOrWhiteSpace(Model.Dish.Description))
+                {
+                    <p class="dish-detail__description">@Model.Dish.Description</p>
+                }
+                else
+                {
+                    <p class="dish-detail__description">
+                        Thông tin chi tiết về món ăn đang được cập nhật. Vui lòng
+                        liên hệ trực tiếp với nhà hàng để được tư vấn chi tiết.
+                    </p>
+                }
+
+                @if (!string.IsNullOrWhiteSpace(Model.Dish.Ingredients))
+                {
+                    <h2 class="menus-detail__sub">Nguyên liệu</h2>
+                    <p class="dish-detail__ingredients">@Model.Dish.Ingredients</p>
+                }
+            </div>
+
+            <aside class="dish-detail__aside" aria-label="Thông tin món">
+                <h2 class="menus-detail__sub">Thông tin</h2>
+                <dl class="dish-detail__list">
+                    <div class="dish-detail__row">
+                        <dt>Tên món</dt>
+                        <dd>@Model.Dish.Name</dd>
+                    </div>
+                    @if (Model.Dish.Price.HasValue)
+                    {
+                        <div class="dish-detail__row">
+                            <dt>Giá tham khảo</dt>
+                            <dd>@Model.Dish.Price.Value.ToString("N0", vi) VNĐ / phần</dd>
+                        </div>
+                    }
+                </dl>
+
+                <a class="btn btn--primary dish-detail__cta"
+                   asp-page="/DatTiec">
+                    LIÊN HỆ ĐẶT TIỆC
+                    <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                </a>
+                <p class="dish-detail__cta-note">
+                    Đội ngũ Phì Lũ sẽ liên hệ lại để tư vấn chi tiết về
+                    món ăn và phương án tiệc phù hợp.
+                </p>
+            </aside>
+        </div>
+
+        @* ---------- Related combos ---------- *@
+        @if (Model.Dish.Combos.Count > 0)
+        {
+            <div class="dish-detail__combos">
+                <h2 class="menus-detail__sub">Món này có trong các combo</h2>
+                <ul class="dish-detail__combo-list" role="list">
+                    @foreach (var combo in Model.Dish.Combos)
+                    {
+                        <li class="dish-detail__combo-item">
+                            <a class="dish-detail__combo-link"
+                               asp-page="/ThucDon/ComboDetails"
+                               asp-route-id="@combo.Id">
+                                <p class="dish-detail__combo-meta">
+                                    <span>@combo.ParentMenuSet.ParentMenuSetName</span>
+                                </p>
+                                <p class="dish-detail__combo-name">@combo.Name</p>
+                                @if (combo.Price.HasValue)
+                                {
+                                    <p class="dish-detail__combo-price">
+                                        @combo.Price.Value.ToString("N0", vi) VNĐ / bàn
+                                    </p>
+                                }
+                                else
+                                {
+                                    <p class="dish-detail__combo-price">Giá đang được cập nhật</p>
+                                }
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+
+        @* ---------- Bottom navigation ---------- *@
+        <div class="menus-detail__cta">
+            <a class="link-arrow menus-detail__back" asp-page="/ThucDon/Index">
+                QUAY LẠI DANH SÁCH THỰC ĐƠN
+                <span aria-hidden="true">&rarr;</span>
+            </a>
+        </div>
+    </div>
+</section>

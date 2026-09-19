@@ -3,9 +3,11 @@
    Sections:
      1. Hero (split editorial)
      2. Introduction (framed two-column)
-     3. Halls preview (4 cards)
+     3. Venue selection (.venues + .venue-card — styles in venues.css)
      4. Booking CTA (framed centered)
-   Refined for Phase 02 — proportions, hierarchy, responsive balance.
+   Phase 12 — the hall preview 4-card section was replaced by the
+   two venue cards in venues.css; only the surrounding section shell
+   (.venues padding + .section-head spacing) lives here.
    ===================================================================== */
 
 /* ---------- Hero ---------- */
@@ -51,7 +53,7 @@
 
 .hero__title {
     font-size: var(--fs-h1);
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.08;
     letter-spacing: -0.015em;
     color: var(--color-ink);
@@ -64,7 +66,7 @@
 .hero__title span:nth-child(even) {
     font-style: italic;
     color: var(--color-brown);
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .hero__lede {
@@ -211,116 +213,11 @@
     }
 }
 
-/* ---------- Halls preview ---------- */
-.halls {
+/* ---------- Venue selection shell (cards live in venues.css) ---------- */
+.venues {
     padding-top: var(--space-12);
     padding-bottom: var(--space-12);
     background-color: var(--color-paper);
-}
-
-.hall-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
-    margin-top: var(--space-10);
-}
-
-.hall-card {
-    background-color: transparent;
-}
-
-.hall-card__link {
-    display: block;
-    color: inherit;
-}
-
-.hall-card__media {
-    position: relative;
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-    background-color: var(--color-cream);
-    margin-bottom: var(--space-6);
-    border: 1px solid var(--color-border);
-    transition: border-color var(--dur-base) var(--ease-soft);
-}
-
-.hall-card__media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 720ms var(--ease-soft);
-}
-
-.hall-card__media::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 65%, rgba(74, 58, 46, 0.08));
-    pointer-events: none;
-    opacity: 0.85;
-}
-
-.hall-card__link:hover .hall-card__media,
-.hall-card__link:focus-visible .hall-card__media {
-    border-color: var(--color-champagne);
-}
-
-.hall-card__link:hover .hall-card__media img,
-.hall-card__link:focus-visible .hall-card__media img {
-    transform: scale(1.04);
-}
-
-.hall-card__body {
-    text-align: center;
-    padding: 0 var(--space-2);
-}
-
-.hall-card__meta {
-    font-family: var(--font-sans);
-    font-size: var(--fs-eyebrow);
-    font-weight: 500;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--color-muted-brown);
-    margin-bottom: var(--space-3);
-}
-
-.hall-card__title {
-    font-family: var(--font-serif);
-    font-size: 1.625rem;
-    font-weight: 500;
-    color: var(--color-ink);
-    margin-bottom: var(--space-2);
-    line-height: 1.2;
-}
-
-.hall-card__desc {
-    font-size: var(--fs-body-sm);
-    letter-spacing: 0.14em;
-    color: var(--color-muted-brown);
-    line-height: 1.6;
-}
-
-.hall-card .link-arrow--inline {
-    margin-top: var(--space-6);
-}
-
-@media (min-width: 600px) {
-    .hall-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-8) var(--space-6);
-    }
-}
-
-@media (min-width: 1024px) {
-    .hall-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: var(--space-7) var(--space-5);
-    }
-
-    .hall-card__title {
-        font-size: 1.5rem;
-    }
 }
 
 /* ---------- Booking CTA ---------- */
@@ -428,15 +325,5 @@
 @media (max-width: 599.98px) {
     .hero__botanical {
         display: none;
-    }
-
-    .hall-card__title {
-        font-size: 1.5rem;
-    }
-}
-
-@media (min-width: 600px) and (max-width: 1023.98px) {
-    .hall-card__title {
-        font-size: 1.5rem;
     }
 }

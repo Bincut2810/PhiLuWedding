@@ -1,0 +1,121 @@
+@page "/thuc-don"
+@model PhiluWedding.Pages.ThucDon.IndexModel
+@{
+    ViewData["Title"] = "Thực đơn";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/menus.css" asp-append-version="true" />
+}
+
+@* =====================================================================
+   PUBLIC MENU LISTING
+   Reads from the database via IndexModel. The page renders a grid
+   of menu set cards; when the database is unavailable or has no rows
+   yet, it shows a polite empty state instead of crashing.
+   ===================================================================== *@
+
+<section class="menus-page" aria-labelledby="menus-page-heading">
+    <div class="container">
+        <header class="menus-page__head">
+            <p class="eyebrow">THỰC ĐƠƠN TIỆC CƯỚI</p>
+            <h1 id="menus-page-heading" class="menus-page__title">
+                <span>Tinh hoa ẩm thực,</span>
+                <span>chọn lọc cho ngày trọng đại</span>
+            </h1>
+            <p class="menus-page__lede">
+                Khám phá các bộ thực đơn tiệc cưới của NHÀ HÀNG TIỆC CƯỚI PHÌ LŨ.
+                Mỗi bộ thực đơn được chăm chút với sự cân bằng giữa hương vị,
+                hình thức và phong cách phục vụ.
+            </p>
+        </header>
+
+        @if (!Model.DatabaseAvailable)
+        {
+            <div class="menus-page__notice" role="status">
+                <p class="menus-page__notice-title">Hệ thống đang cập nhật danh sách thực đơn.</p>
+                <p class="menus-page__notice-body">
+                    Vui lòng quay lại sau ít phút hoặc liên hệ trực tiếp với nhà hàng
+                    để được tư vấn về thực đơn phù hợp.
+                </p>
+            </div>
+        }
+        else if (Model.MenuSets.Count == 0)
+        {
+            <div class="menus-page__notice" role="status">
+                <p class="menus-page__notice-title">Danh sách thực đơn đang được cập nhật.</p>
+                <p class="menus-page__notice-body">
+                    Nhà hàng đang hoàn thiện thông tin cho từng bộ thực đơn.
+                    Xin vui lòng quay lại sau hoặc liên hệ để được tư vấn.
+                </p>
+                <a class="link-arrow" asp-page="/DatTiec">
+                    LIÊN HỆ TƯ VẤN
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+        }
+        else
+        {
+            <ul class="menus-page__grid" role="list">
+                @foreach (var menuSet in Model.MenuSets)
+                {
+                    <li class="menus-card">
+                        <a class="menus-card__link"
+                           asp-page="/ThucDon/Details"
+                           asp-route-id="@menuSet.Id"
+                           aria-label="@($"Xem chi tiết {menuSet.Name}")">
+                            <div class="menus-card__media" aria-hidden="true">
+                                <div class="menus-card__placeholder-mark">
+                                    <span>THỰC ĐƠN</span>
+                                </div>
+                            </div>
+                            <div class="menus-card__body">
+                                <p class="menus-card__meta">BỘ THỰC ĐƠN</p>
+                                <h2 class="menus-card__title">@menuSet.Name</h2>
+                                @if (!string.IsNullOrWhiteSpace(menuSet.ShortDescription))
+                                {
+                                    <p class="menus-card__desc">@menuSet.ShortDescription</p>
+                                }
+                                else if (!string.IsNullOrWhiteSpace(menuSet.Description))
+                                {
+                                    <p class="menus-card__desc">@menuSet.Description</p>
+                                }
+                                else
+                                {
+                                    <p class="menus-card__desc">Thông tin thực đơn đang được cập nhật.</p>
+                                }
+
+                                <p class="menus-card__meta-row">
+                                    <span class="menus-card__meta-label">Số combo</span>
+                                    <span class="menus-card__meta-value">
+                                        @(menuSet.ComboCount > 0 ? menuSet.ComboCount.ToString() : "—")
+                                    </span>
+                                </p>
+
+                                <span class="link-arrow link-arrow--inline">
+                                    Xem thực đơn
+                                    <span aria-hidden="true">&rarr;</span>
+                                </span>
+                            </div>
+                        </a>
+                    </li>
+                }
+            </ul>
+
+            <div class="menus-page__cta">
+                <p class="menus-page__cta-note">
+                    Mỗi bộ thực đơn có phong cách và mức giá khác nhau. Hãy để đội ngũ
+                    Phì Lũ giúp bạn chọn thực đơn phù hợp nhất với sảnh và ngân sách.
+                </p>
+                <a class="btn btn--primary" asp-page="/DatTiec">
+                    ĐẶT LỊCH TƯ VẤN
+                    <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                </a>
+                <a class="link-arrow menus-page__cta-secondary" asp-page="/Index">
+                    VỀ TRANG CHỦ
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+        }
+    </div>
+</section>
