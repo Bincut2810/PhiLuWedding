@@ -11,11 +11,16 @@
    homepage `.hall-*` rules or the halls listing `.halls-*` rules.
    ===================================================================== */
 
-/* ---------- Homepage venue section (.venues) ---------- */
+/* ---------- Homepage venue section (.venues) ----------
+   Cream-yellow page tint so the venue cards (which carry the same
+   cream-yellow "paper" inside their gold border) read as physical
+   invitation cards resting on a single surface — the cream flows
+   from the page into the card, leaving the champagne border +
+   chamfered inner frame + corner dots to do the invitation work. */
 .venues {
     padding-top: var(--space-12);
     padding-bottom: var(--space-12);
-    background-color: var(--color-paper);
+    background-color: var(--color-card-cream);
 }
 
 .venues .section-head--center {
@@ -46,39 +51,78 @@
     text-decoration: none;
 }
 
+/* Cream-paper card: the image sits ON TOP of a warm cream paper
+   backing (think of a wedding invitation card — aged stationery with
+   a photo mounted in the middle). The padding reveals a generous
+   cream border; the inner gold frame lives in that border; small
+   decorative gold dots sit at the four outer corners like real
+   invitation ornaments. */
 .venue-card__media {
     position: relative;
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    background-color: var(--color-cream);
+    background-color: var(--color-card-cream);
     margin-bottom: var(--space-6);
-    border: 1px solid var(--color-border);
-    transition: border-color var(--dur-base) var(--ease-soft);
+    border: 1.5px solid var(--color-champagne);
+    padding: clamp(1.25rem, 2.4vw, 1.75rem);
+    transition: border-color var(--dur-base) var(--ease-soft),
+                box-shadow var(--dur-base) var(--ease-soft);
+    /* Subtle lift off the page — reads as a physical invitation card. */
+    box-shadow: 0 8px 24px rgba(74, 58, 46, 0.08);
 }
 
-.venue-card__media img {
+.venue-card__media > img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 720ms var(--ease-soft);
+    /* Tiny drop on the photo so it reads as a print glued on the paper. */
+    box-shadow: 0 2px 6px rgba(74, 58, 46, 0.12);
 }
 
+/* Inner gold chamfered frame — sits in the cream border just outside
+   the photo edge. Slightly inset from the padding so a thin cream
+   gap shows between the frame and the photo (the photo is mounted
+   on the cream, the frame is printed around it). */
+.venue-card__media::before {
+    content: "";
+    position: absolute;
+    inset: calc(clamp(1.25rem, 2.4vw, 1.75rem) - 8px);
+    border: 1px solid var(--color-champagne);
+    pointer-events: none;
+    z-index: 3;
+    transition: border-color var(--dur-base) var(--ease-soft);
+    clip-path: polygon(
+        14px 0,
+        calc(100% - 14px) 0,
+        100% 14px,
+        100% calc(100% - 14px),
+        calc(100% - 14px) 100%,
+        14px 100%,
+        0 calc(100% - 14px),
+        0 14px
+    );
+}
+
+/* Decorative gold corner ornaments — four small dots on the cream
+   paper, between the chamfered frame and the outer gold border.
+   Pure CSS via four radial-gradient backgrounds, one per corner. */
 .venue-card__media::after {
     content: "";
     position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 60%, rgba(44, 36, 28, 0.18));
+    inset: 10px;
     pointer-events: none;
-    opacity: 0.85;
+    z-index: 4;
+    background:
+        radial-gradient(circle, var(--color-champagne) 2px, transparent 2.5px) top left / 6px 6px no-repeat,
+        radial-gradient(circle, var(--color-champagne) 2px, transparent 2.5px) top right / 6px 6px no-repeat,
+        radial-gradient(circle, var(--color-champagne) 2px, transparent 2.5px) bottom left / 6px 6px no-repeat,
+        radial-gradient(circle, var(--color-champagne) 2px, transparent 2.5px) bottom right / 6px 6px no-repeat;
 }
 
-.venue-card__link:hover .venue-card__media,
-.venue-card__link:focus-visible .venue-card__media {
-    border-color: var(--color-champagne);
-}
-
-.venue-card__link:hover .venue-card__media img,
-.venue-card__link:focus-visible .venue-card__media img {
+.venue-card__link:hover .venue-card__media > img,
+.venue-card__link:focus-visible .venue-card__media > img {
     transform: scale(1.035);
 }
 
@@ -239,26 +283,62 @@
     position: relative;
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    background-color: var(--color-cream);
+    background-color: var(--color-card-cream);
     margin-bottom: var(--space-5);
-    border: 1px solid var(--color-border);
-    transition: border-color var(--dur-base) var(--ease-soft);
+    border: 1.5px solid var(--color-champagne);
+    padding: clamp(1.125rem, 2.2vw, 1.5rem);
+    transition: border-color var(--dur-base) var(--ease-soft),
+                box-shadow var(--dur-base) var(--ease-soft);
+    box-shadow: 0 8px 24px rgba(74, 58, 46, 0.08);
 }
 
-.venue-hall-card__media img {
+.venue-hall-card__media > img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 720ms var(--ease-soft);
+    box-shadow: 0 2px 6px rgba(74, 58, 46, 0.12);
 }
 
+/* Inner gold chamfered frame — same envelope-cut as venue cards, scaled
+   down slightly for the smaller hall cards. Sits in the cream border
+   just outside the photo so a thin cream gap shows between the frame
+   and the photo edge. */
+.venue-hall-card__media::before {
+    content: "";
+    position: absolute;
+    inset: calc(clamp(1.125rem, 2.2vw, 1.5rem) - 7px);
+    border: 1px solid var(--color-champagne);
+    pointer-events: none;
+    z-index: 3;
+    transition: border-color var(--dur-base) var(--ease-soft);
+    clip-path: polygon(
+        12px 0,
+        calc(100% - 12px) 0,
+        100% 12px,
+        100% calc(100% - 12px),
+        calc(100% - 12px) 100%,
+        12px 100%,
+        0 calc(100% - 12px),
+        0 12px
+    );
+}
+
+/* Decorative gold corner ornaments — four small dots on the cream
+   paper. Same vocabulary as venue cards so every card type reads
+   as the same invitation style. */
 .venue-hall-card__media::after {
     content: "";
     position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 65%, rgba(74, 58, 46, 0.10));
+    inset: 9px;
     pointer-events: none;
-    opacity: 0.9;
+    z-index: 4;
+    background:
+        radial-gradient(circle, var(--color-champagne) 2px, transparent 2.5px) top left / 6px 6px no-repeat,
+        radial-gradient(circle, var(--color-champagne) 2px, transparent 2.5px) top right / 6px 6px no-repeat,
+        radial-gradient(circle, var(--color-champagne) 2px, transparent 2.5px) bottom left / 6px 6px no-repeat,
+        radial-gradient(circle, var(--color-champagne) 2px, transparent 2.5px) bottom right / 6px 6px no-repeat;
 }
 
 .venue-hall-card__placeholder {
@@ -281,11 +361,12 @@
 
 .venue-hall-card__link:hover .venue-hall-card__media,
 .venue-hall-card__link:focus-visible .venue-hall-card__media {
-    border-color: var(--color-champagne);
+    border-color: var(--color-brown);
+    box-shadow: 0 12px 30px rgba(74, 58, 46, 0.14);
 }
 
-.venue-hall-card__link:hover .venue-hall-card__media img,
-.venue-hall-card__link:focus-visible .venue-hall-card__media img {
+.venue-hall-card__link:hover .venue-hall-card__media > img,
+.venue-hall-card__link:focus-visible .venue-hall-card__media > img {
     transform: scale(1.04);
 }
 

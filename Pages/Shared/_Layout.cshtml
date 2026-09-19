@@ -7,6 +7,17 @@
     var fullTitle = string.IsNullOrEmpty(pageTitle)
         ? $"{brandName} — Nhà Hàng Tiệc Cưới {brandCity}"
         : $"{pageTitle} — {brandName}";
+
+    // Page-scoped body class so each page can pick its own background
+    // (e.g. homepage uses a warm cream-yellow tint to make the venue
+    // cards read as physical invitation cards resting on a surface).
+    var currentPath = Context.Request.Path.Value ?? string.Empty;
+    var bodyClass = currentPath switch
+    {
+        var p when string.Equals(p, "/", StringComparison.Ordinal)
+                || string.Equals(p, "", StringComparison.Ordinal) => "page-home",
+        _ => string.Empty
+    };
 }
 <!DOCTYPE html>
 <html lang="vi">
@@ -26,8 +37,14 @@
     <link rel="stylesheet" href="~/css/venues.css" asp-append-version="true" />
     @await RenderSectionAsync("Styles", required: false)
 </head>
-<body>
+<body class="@bodyClass">
     <a class="skip-link" href="#main-content">Bỏ qua đến nội dung chính</a>
+
+    @* Brand-mark page loader. Rendered before the header so it sits at
+       the top of the visual stack on the very first paint; site.js
+       hides it once the page is ready and animates it out again
+       before intra-site navigation completes. *@
+    @await Html.PartialAsync("_PageLoader")
 
     @await Html.PartialAsync("_Header")
 

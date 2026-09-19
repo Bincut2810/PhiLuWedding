@@ -185,14 +185,27 @@
     background-color: var(--color-paper);
 }
 
-/* Decorative offset border to feel editorial */
+/* Wedding-invitation style — inner frame with chamfered corners
+   (the classic thiệp cưới envelope-cut look). The clip-path cuts the
+   4 corners at a 45° so the border line reads as a soft envelope flap. */
 .intro__frame::before {
     content: "";
     position: absolute;
     inset: 14px;
-    border: 1px solid var(--color-line);
+    border: 1px solid var(--color-champagne);
     pointer-events: none;
     z-index: 1;
+    transition: border-color var(--dur-base) var(--ease-soft);
+    clip-path: polygon(
+        28px 0,
+        calc(100% - 28px) 0,
+        100% 28px,
+        100% calc(100% - 28px),
+        calc(100% - 28px) 100%,
+        28px 100%,
+        0 calc(100% - 28px),
+        0 28px
+    );
 }
 
 .intro__image {
@@ -213,11 +226,15 @@
     }
 }
 
-/* ---------- Venue selection shell (cards live in venues.css) ---------- */
+/* ---------- Venue selection shell (cards live in venues.css) ----------
+   Cream-yellow page tint so the venue cards read as physical
+   invitation cards resting on the page surface (see venues.css for
+   the full reasoning). The home.css copy is kept in sync — venues.css
+   wins on load order, but having both explicit prevents drift. */
 .venues {
     padding-top: var(--space-12);
     padding-bottom: var(--space-12);
-    background-color: var(--color-paper);
+    background-color: var(--color-card-cream);
 }
 
 /* ---------- Booking CTA ---------- */

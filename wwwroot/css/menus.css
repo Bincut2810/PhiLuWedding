@@ -113,6 +113,29 @@
     transition: border-color var(--dur-base) var(--ease-soft);
 }
 
+/* Wedding-invitation style — inner frame with chamfered corners
+   (the classic thiệp cưới envelope-cut look). The clip-path cuts the
+   4 corners at a 45° so the border line reads as a soft envelope flap. */
+.menus-card__media::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px solid var(--color-champagne);
+    pointer-events: none;
+    z-index: 3;
+    transition: border-color var(--dur-base) var(--ease-soft);
+    clip-path: polygon(
+        22px 0,
+        calc(100% - 22px) 0,
+        100% 22px,
+        100% calc(100% - 22px),
+        calc(100% - 22px) 100%,
+        22px 100%,
+        0 calc(100% - 22px),
+        0 22px
+    );
+}
+
 .menus-card__placeholder-mark {
     position: absolute;
     inset: 0;
@@ -458,9 +481,39 @@
 }
 
 .combo-card__dish-media {
+    position: relative;
     aspect-ratio: 4 / 3;
     overflow: hidden;
     background-color: var(--color-cream);
+    border: 1px solid var(--color-border);
+    transition: border-color var(--dur-base) var(--ease-soft);
+}
+
+/* Wedding-invitation style — inner frame with chamfered corners
+   scaled down for the smaller combo-dish thumbnail. */
+.combo-card__dish-media::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 1px solid var(--color-champagne);
+    pointer-events: none;
+    z-index: 3;
+    transition: border-color var(--dur-base) var(--ease-soft);
+    clip-path: polygon(
+        14px 0,
+        calc(100% - 14px) 0,
+        100% 14px,
+        100% calc(100% - 14px),
+        calc(100% - 14px) 100%,
+        14px 100%,
+        0 calc(100% - 14px),
+        0 14px
+    );
+}
+
+.combo-card__dish:hover .combo-card__dish-media,
+.combo-card__dish:focus-within .combo-card__dish-media {
+    border-color: var(--color-champagne);
 }
 
 .combo-card__dish-media img {
@@ -583,9 +636,39 @@
 }
 
 .combo-dish__media {
+    position: relative;
     aspect-ratio: 16 / 10;
     overflow: hidden;
     background-color: var(--color-cream);
+    border: 1px solid var(--color-border);
+    transition: border-color var(--dur-base) var(--ease-soft);
+}
+
+/* Wedding-invitation style — inner frame with chamfered corners
+   (the classic thiệp cưới envelope-cut look). */
+.combo-dish__media::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid var(--color-champagne);
+    pointer-events: none;
+    z-index: 3;
+    transition: border-color var(--dur-base) var(--ease-soft);
+    clip-path: polygon(
+        18px 0,
+        calc(100% - 18px) 0,
+        100% 18px,
+        100% calc(100% - 18px),
+        calc(100% - 18px) 100%,
+        18px 100%,
+        0 calc(100% - 18px),
+        0 18px
+    );
+}
+
+.combo-dish:hover .combo-dish__media,
+.combo-dish:focus-within .combo-dish__media {
+    border-color: var(--color-champagne);
 }
 
 .combo-dish__media img {

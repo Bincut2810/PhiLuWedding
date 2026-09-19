@@ -1,0 +1,40 @@
+@* =====================================================================
+   PAGE LOADER — animated brand-mark reveal
+
+   Full-screen cream overlay shown on first paint and again on every
+   intra-site navigation. Mirrors the intro used on luxury wedding
+   sites: a single brand mark (Phì Lũ) wipes in from the center with
+   a soft upward drift, a small serif tagline fades in underneath,
+   then the whole overlay dissolves upward to reveal the page below.
+
+   Markup is rendered server-side so the overlay is in the DOM on the
+   very first byte — no flash of unstyled content, no layout shift
+   when it appears. A progressive-enhancement script in site.js hides
+   it once the page is ready and respects reduced-motion preferences.
+   ===================================================================== *@
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    var brandName = Configuration["Brand:Name"] ?? "NHÀ HÀNG PHÌ LŨ";
+    var brandCity = Configuration["Brand:City"] ?? "Đà Nẵng";
+}
+
+<div class="page-loader"
+     data-page-loader
+     role="status"
+     aria-live="polite"
+     aria-label="Đang tải trang @brandName">
+    <div class="page-loader__contain">
+        <img class="page-loader__logo"
+             src="~/images/logo/logoPhiLu.png"
+             alt="@brandName"
+             asp-append-version="true"
+             width="311"
+             height="150" />
+        <p class="page-loader__caption" aria-hidden="true">
+            <span class="page-loader__caption-name">@brandName</span>
+            <span class="page-loader__caption-sep">·</span>
+            <span class="page-loader__caption-city">@brandCity</span>
+        </p>
+    </div>
+</div>

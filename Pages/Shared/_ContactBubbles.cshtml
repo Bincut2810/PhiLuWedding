@@ -46,20 +46,18 @@
            target="_blank"
            rel="noopener noreferrer"
            aria-label="Mở cuộc trò chuyện Zalo với Nhà hàng tiệc cưới Phì Lũ trong cửa sổ mới">
-            @* Stylized "Z" mark drawn as a single stroked path on a
-               generous viewBox so the lines stay crisp at any
-               rendered size. The subtle upward flick at the end of
-               the bottom bar echoes the official Zalo brand mark.
-               currentColor on the stroke inherits from the link so
-               the icon adapts to the bubble's hover state. *@
-            <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-                <path d="M 17 17 H 47 L 17 47 H 38 Q 47 47 47 38"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="8"
-                      stroke-linecap="round"
-                      stroke-linejoin="round" />
-            </svg>
+            @* Official Zalo brand mark — the JPG is shipped from
+               /wwwroot/images/logo/logoZalo.jpg so the icon stays
+               pixel-identical to the source the design team
+               approved, including the gradient and the speech-bubble
+               shape. Rendered as an <img> so it scales cleanly inside
+               the 52px bubble without any inline-SVG markup getting
+               in the way. *@
+            <img src="~/images/logo/logoZalo.jpg"
+                 alt=""
+                 asp-append-version="true"
+                 width="866"
+                 height="650" />
         </a>
         <span class="contact-bubbles__tooltip" role="tooltip">Chat Zalo</span>
     </div>

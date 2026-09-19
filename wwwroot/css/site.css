@@ -14,6 +14,7 @@
     --color-ivory: #F8F6F0;
     --color-cream: #F1EBDD;
     --color-paper: #FFFDF9;
+    --color-card-cream: #F1E2B6;
     --color-brown: #4A3A2E;
     --color-muted-brown: #8A7866;
     --color-champagne: #CDBA9B;
@@ -86,6 +87,18 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+}
+
+/* ---------- Page-scoped backgrounds ----------
+   The homepage uses a warm cream-yellow page tint so the venue cards
+   (which carry the same cream-yellow "paper" inside their gold border)
+   read as physical invitation cards resting on a single surface —
+   the cream of the card and the cream of the page flow into each
+   other, leaving the champagne border + chamfered inner frame +
+   corner dots to do the invitation work. Other pages keep the
+   default paper background. */
+body.page-home {
+    background-color: var(--color-card-cream);
 }
 
 img,
@@ -675,10 +688,27 @@ main {
                 box-shadow var(--dur-base) var(--ease-soft);
 }
 
-.contact-bubbles__link svg {
+/* Both the inline SVG (Facebook mark) and the <img> (Zalo mark)
+   share these dimensions so the brand badges stay the same visual
+   size regardless of how they're embedded. */
+.contact-bubbles__link svg,
+.contact-bubbles__link img {
     width: 26px;
     height: 26px;
+    display: block;
+}
+
+/* `fill: currentColor` only makes sense for inline SVG — the Zalo
+   JPG carries its own brand colors, so it's scoped to the SVG. */
+.contact-bubbles__link svg {
     fill: currentColor;
+}
+
+/* The Zalo JPG already has a square aspect ratio with its own
+   rounded corners, so it just sits flush inside the circular
+   bubble without further cropping. */
+.contact-bubbles__link img {
+    border-radius: 4px;
 }
 
 .contact-bubbles__link:hover,
@@ -759,5 +789,149 @@ main {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
+    }
+}
+
+/* ---------- Page loader (brand-mark reveal) ----------
+   Full-screen cream overlay shown on first paint and on every
+   intra-site navigation. The Phì Lũ logo opens outward from the
+   center with a soft upward drift, a small serif tagline fades
+   in underneath, and the whole overlay dissolves upward to reveal
+   the page beneath.
+
+   The animation runs from pure CSS so no JavaScript framework is
+   needed. site.js handles the auto-hide timing and the fade-out
+   on the next navigation, but the overlay still looks correct even
+   if JavaScript never runs (it just stays in place). */
+.page-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    background:
+        radial-gradient(ellipse at center,
+            rgba(205, 186, 155, 0.20) 0%,
+            rgba(241, 235, 221, 0) 60%),
+        var(--color-cream);
+    overflow: hidden;
+    /* sits above every layer, including the contact bubbles */
+}
+
+.page-loader__contain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1rem, 2.4vw, 1.5rem);
+    padding: 1.5rem;
+    /* keep the overlay above page content even on extreme zoom */
+    position: relative;
+    z-index: 1;
+}
+
+.page-loader__logo {
+    display: block;
+    width: clamp(180px, 26vw, 280px);
+    height: auto;
+    /* Open-from-center reveal: clip-path shrinks inward to a single
+       point so all four edges retract toward the middle, then the
+       image settles into place with a soft fade and upward drift.
+       Works on the raster .png image without requiring an inline
+       SVG — mimicking the strokebuild feel of the reference site. */
+    opacity: 0;
+    transform: translateY(10px) scale(0.94);
+    clip-path: inset(50% 50% 50% 50%);
+    filter: drop-shadow(0 2px 14px rgba(74, 58, 46, 0.10));
+    animation: page-loader-reveal 1300ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.page-loader__caption {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-brown);
+    opacity: 0;
+    transform: translateY(8px);
+    animation: page-loader-caption 800ms ease-out 900ms forwards;
+    white-space: nowrap;
+}
+
+.page-loader__caption-sep {
+    margin: 0 0.6em;
+    color: rgba(74, 58, 46, 0.45);
+}
+
+@keyframes page-loader-reveal {
+    0% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.94);
+        clip-path: inset(50% 50% 50% 50%);
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes page-loader-caption {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Exit: the overlay dissolves upward to reveal the page. Triggered
+   by site.js adding the .is-leaving class. The page above stays
+   interactive the moment this transition starts so the click that
+   started it never feels blocked. */
+.page-loader.is-leaving {
+    opacity: 0;
+    transform: translateY(-2vh);
+    transition:
+        opacity 620ms ease-in,
+        transform 620ms cubic-bezier(0.55, 0, 0.45, 1);
+    pointer-events: none;
+}
+
+/* After the transition, the element is removed from the layout
+   entirely (set by site.js via the [hidden] attribute). */
+.page-loader[hidden] {
+    display: none;
+}
+
+/* When the user's system asks for reduced motion: collapse the
+   reveal to a single instant paint with a short fade. The overlay
+   still appears and disappears but skips the wipe + drift + scale. */
+@media (prefers-reduced-motion: reduce) {
+    .page-loader__logo,
+    .page-loader__caption {
+        animation-duration: 1ms !important;
+        animation-delay: 0 !important;
+        opacity: 1 !important;
+        transform: none !important;
+        clip-path: none !important;
+    }
+
+    .page-loader.is-leaving {
+        transition-duration: 200ms !important;
+        transform: none !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .page-loader__logo {
+        width: clamp(150px, 46vw, 220px);
+    }
+
+    .page-loader__caption {
+        font-size: 0.78rem;
+        letter-spacing: 0.18em;
     }
 }

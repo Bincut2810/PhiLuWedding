@@ -107,26 +107,63 @@
     position: relative;
     aspect-ratio: 4 / 5;
     overflow: hidden;
-    background-color: var(--color-cream);
+    background-color: var(--color-card-cream);
     margin-bottom: var(--space-6);
-    border: 1px solid var(--color-border);
-    transition: border-color var(--dur-base) var(--ease-soft);
+    border: 1.5px solid var(--color-champagne);
+    padding: clamp(1.125rem, 2.2vw, 1.5rem);
+    transition: border-color var(--dur-base) var(--ease-soft),
+                box-shadow var(--dur-base) var(--ease-soft);
+    box-shadow: 0 8px 24px rgba(74, 58, 46, 0.08);
 }
 
-.halls-card__media img {
+.halls-card__media > img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 720ms var(--ease-soft);
+    box-shadow: 0 2px 6px rgba(74, 58, 46, 0.12);
 }
 
+/* Inner gold chamfered frame — same envelope-cut look as the venue
+   cards, scaled to the taller 4/5 hall card. Sits in the cream
+   border just outside the photo edge so a thin cream gap shows
+   between the frame and the photo (the photo is mounted, the frame
+   is printed around it). */
+.halls-card__media::before {
+    content: "";
+    position: absolute;
+    inset: calc(clamp(1.125rem, 2.2vw, 1.5rem) - 7px);
+    border: 1px solid var(--color-champagne);
+    pointer-events: none;
+    z-index: 3;
+    transition: border-color var(--dur-base) var(--ease-soft);
+    clip-path: polygon(
+        12px 0,
+        calc(100% - 12px) 0,
+        100% 12px,
+        100% calc(100% - 12px),
+        calc(100% - 12px) 100%,
+        12px 100%,
+        0 calc(100% - 12px),
+        0 12px
+    );
+}
+
+/* Decorative gold corner ornaments — four small dots on the cream
+   paper. Same vocabulary across all card types so every card reads
+   as part of the same invitation design language. */
 .halls-card__media::after {
     content: "";
     position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 65%, rgba(74, 58, 46, 0.08));
+    inset: 9px;
     pointer-events: none;
-    opacity: 0.85;
+    z-index: 4;
+    background:
+        radial-gradient(circle, var(--color-champagne) 2px, transparent 2.5px) top left / 6px 6px no-repeat,
+        radial-gradient(circle, var(--color-champagne) 2px, transparent 2.5px) top right / 6px 6px no-repeat,
+        radial-gradient(circle, var(--color-champagne) 2px, transparent 2.5px) bottom left / 6px 6px no-repeat,
+        radial-gradient(circle, var(--color-champagne) 2px, transparent 2.5px) bottom right / 6px 6px no-repeat;
 }
 
 .halls-card__placeholder {
@@ -149,11 +186,12 @@
 
 .halls-card__link:hover .halls-card__media,
 .halls-card__link:focus-visible .halls-card__media {
-    border-color: var(--color-champagne);
+    border-color: var(--color-brown);
+    box-shadow: 0 12px 30px rgba(74, 58, 46, 0.14);
 }
 
-.halls-card__link:hover .halls-card__media img,
-.halls-card__link:focus-visible .halls-card__media img {
+.halls-card__link:hover .halls-card__media > img,
+.halls-card__link:focus-visible .halls-card__media > img {
     transform: scale(1.04);
 }
 
