@@ -1,0 +1,202 @@
+@model PhiluWedding.Pages.TiecCuoi.HallViewModel
+@{
+    // backToHref is supplied by the calling page via ViewData so this
+    // partial can stay route-agnostic.
+    var backToHref = ViewData["BackHref"] as string ?? "/TiecCuoi";
+}
+
+@* =====================================================================
+   HALL DETAIL — SHARED PARTIAL
+   Renders a single hall. Used by both:
+     * Pages/TiecCuoi/Details.cshtml (database-backed, /tiec-cuoi/{id:int})
+     * Pages/TiecCuoi/Hall.cshtml    (static catalogue, /tiec-cuoi/hall/{slug})
+   The calling page must supply Model (HallViewModel) and ViewData["BackHref"].
+   ===================================================================== *@
+
+@if (Model is null)
+{
+    <section class="halls-page halls-page--notfound">
+        <div class="container">
+            <p class="eyebrow">SẢNH TIỆC</p>
+            <h1 class="halls-page__title">
+                <span>Không tìm thấy sảnh tiệc</span>
+            </h1>
+            <p class="halls-page__lede">
+                Sảnh tiệc bạn đang tìm không tồn tại hoặc đã được ẩn khỏi trang
+                công khai. Vui lòng quay lại danh sách sảnh tiệc để tiếp tục.
+            </p>
+            <a class="link-arrow" href="@backToHref">
+                QUAY LẠI DANH SÁCH SẢNH
+                <span aria-hidden="true">&rarr;</span>
+            </a>
+        </div>
+    </section>
+    return;
+}
+
+<section class="halls-page halls-detail" aria-labelledby="hall-detail-heading">
+    <div class="container">
+        <nav class="halls-detail__crumbs" aria-label="Breadcrumb">
+            <a asp-page="/Index">Trang chủ</a>
+            <span aria-hidden="true">›</span>
+            <a href="@backToHref">Sảnh tiệc</a>
+            <span aria-hidden="true">›</span>
+            <span aria-current="page">@Model.Name</span>
+        </nav>
+
+        <header class="halls-detail__head">
+            <p class="eyebrow">SẢNH TIỆC CƯỚI</p>
+            <h1 id="hall-detail-heading" class="halls-page__title">
+                <span>@Model.Name</span>
+            </h1>
+            @if (!string.IsNullOrWhiteSpace(Model.ShortDescription))
+            {
+                <p class="halls-detail__lede">@Model.ShortDescription</p>
+            }
+            else if (!string.IsNullOrWhiteSpace(Model.Description))
+            {
+                <p class="halls-detail__lede">@Model.Description</p>
+            }
+        </header>
+
+        @* ---------- Gallery ---------- *@
+        @if (Model.Images.Count > 0)
+        {
+            <div class="halls-gallery" role="region" aria-label="Thư viện hình ảnh sảnh tiệc">
+                @{
+                    var primary = Model.Images.FirstOrDefault();
+                    var gallery = Model.Images.ToList();
+                }
+                @if (primary is not null && !string.IsNullOrEmpty(primary.Url))
+                {
+                    <figure class="halls-gallery__primary">
+                        <img src="@primary.Url"
+                             alt="@(primary.AltText ?? $"Không gian {Model.Name}")"
+                             loading="eager"
+                             fetchpriority="high" />
+                    </figure>
+                }
+                else
+                {
+                    <figure class="halls-gallery__primary halls-gallery__primary--placeholder" aria-hidden="true">
+                        <span>Hình ảnh sẽ được cập nhật</span>
+                    </figure>
+                }
+
+                @if (gallery.Count > 1)
+                {
+                    <ul class="halls-gallery__thumbs" role="list">
+                        @foreach (var img in gallery)
+                        {
+                            <li class="halls-gallery__thumb">
+                                @if (!string.IsNullOrEmpty(img.Url))
+                                {
+                                    <img src="@img.Url"
+                                         alt="@(img.AltText ?? $"Hình ảnh {Model.Name}")"
+                                         loading="lazy" />
+                                }
+                                else
+                                {
+                                    <div class="halls-gallery__thumb-placeholder" aria-hidden="true"></div>
+                                }
+                            </li>
+                        }
+                    </ul>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="halls-gallery halls-gallery--empty" role="status">
+                <p>Hình ảnh của sảnh tiệc đang được cập nhật.</p>
+            </div>
+        }
+
+        @* ---------- Details + booking CTA ---------- *@
+        <div class="halls-detail__grid">
+            <div class="halls-detail__body">
+                <h2 class="halls-detail__sub">Giới thiệu sảnh</h2>
+                @if (!string.IsNullOrWhiteSpace(Model.Description))
+                {
+                    <p class="halls-detail__description">@Model.Description</p>
+                }
+                else if (!string.IsNullOrWhiteSpace(Model.ShortDescription))
+                {
+                    <p class="halls-detail__description">@Model.ShortDescription</p>
+                }
+                else
+                {
+                    <p class="halls-detail__description">
+                        Thông tin chi tiết về sảnh tiệc đang được cập nhật. Vui lòng liên hệ
+                        trực tiếp với nhà hàng để được tư vấn chi tiết.
+                    </p>
+                }
+            </div>
+
+            <aside class="halls-detail__meta" aria-label="Thông tin sảnh">
+                <h2 class="halls-detail__sub">Thông tin</h2>
+                <dl class="halls-detail__list">
+                    <div class="halls-detail__row">
+                        <dt>Tên sảnh</dt>
+                        <dd>@Model.Name</dd>
+                    </div>
+                    @if (Model.CapacityMin.HasValue || Model.CapacityMax.HasValue)
+                    {
+                        <div class="halls-detail__row">
+                            <dt>Sức chứa</dt>
+                            <dd>@FormatCapacity(Model.CapacityMin, Model.CapacityMax)</dd>
+                        </div>
+                    }
+                </dl>
+
+                @if (Model.IsFromStaticCatalog)
+                {
+                    <a class="btn btn--primary halls-detail__cta"
+                       asp-page="/DatTiec">
+                        LIÊN HỆ ĐẶT TIỆC
+                        <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                    <p class="halls-detail__cta-note">
+                        Bạn sẽ chọn sảnh yêu thích cùng đội ngũ tư vấn ở bước tiếp theo.
+                    </p>
+                }
+                else
+                {
+                    <a class="btn btn--primary halls-detail__cta"
+                       asp-page="/DatTiec"
+                       asp-route-hallId="@Model.Id">
+                        LIÊN HỆ ĐẶT TIỆC
+                        <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                    <p class="halls-detail__cta-note">
+                        Đội ngũ Phì Lũ sẽ liên hệ lại để tư vấn chi tiết về
+                        không gian và phương án tiệc phù hợp.
+                    </p>
+                }
+                <a class="link-arrow halls-detail__back" href="@backToHref">
+                    QUAY LẠI DANH SÁCH SẢNH
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+            </aside>
+        </div>
+    </div>
+</section>
+
+@functions {
+    private static string FormatCapacity(int? min, int? max)
+    {
+        if (min.HasValue && max.HasValue)
+        {
+            return $"{min.Value} – {max.Value} khách";
+        }
+        if (max.HasValue)
+        {
+            return $"đến {max.Value} khách";
+        }
+        if (min.HasValue)
+        {
+            return $"từ {min.Value} khách";
+        }
+        return string.Empty;
+    }
+}

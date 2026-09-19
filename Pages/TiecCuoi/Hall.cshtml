@@ -1,5 +1,5 @@
-@page "/tiec-cuoi/{id:int}"
-@model PhiluWedding.Pages.TiecCuoi.DetailsModel
+@page "/tiec-cuoi/hall/{slug}"
+@model PhiluWedding.Pages.TiecCuoi.HallModel
 @{
     ViewData["Title"] = Model.Hall?.Name ?? "Sảnh tiệc cưới";
     ViewData["BackHref"] = Model.BackHref;

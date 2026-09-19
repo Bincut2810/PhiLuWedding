@@ -8,11 +8,16 @@ using PhiluWedding.Services;
 namespace PhiluWedding.Pages.TiecCuoi;
 
 /// <summary>
-/// Public detail page for a single <see cref="WeddingHall"/>. The
-/// route is overridden in <c>Details.cshtml</c> via
-/// <c>@page "/tiec-cuoi/{id:int}"</c> so the URL is
-/// <c>/tiec-cuoi/&lt;id&gt;</c> while the file still lives at
-/// <c>Pages/TiecCuoi/Details.cshtml</c>.
+/// Public detail page for a single <see cref="WeddingHall"/>. Route is
+/// <c>/tiec-cuoi/{id:int}</c>. Data comes from the database.
+///
+/// <para>
+/// The companion slug-based route
+/// <c>/tiec-cuoi/hall/{slug}</c> lives in <see cref="HallModel"/> and
+/// renders the same template (via the shared
+/// <c>Pages/TiecCuoi/_HallDetail.cshtml</c> partial) using the
+/// <see cref="StaticVenueCatalog"/>.
+/// </para>
 /// </summary>
 public class DetailsModel : PageModel
 {
@@ -22,7 +27,8 @@ public class DetailsModel : PageModel
 
     public HallViewModel? Hall { get; private set; }
 
-    public bool DatabaseAvailable { get; private set; } = true;
+    /// <summary>Back-target URL for the breadcrumb / "Quay lại" link.</summary>
+    public string BackHref { get; private set; } = "/TiecCuoi";
 
     public DetailsModel(
         IHallImageUrlResolver imageUrl,
@@ -38,14 +44,11 @@ public class DetailsModel : PageModel
     {
         if (_db is null)
         {
-            DatabaseAvailable = false;
             return NotFound();
         }
 
         try
         {
-            // AsNoTracking, single round-trip. Only published halls are
-            // publicly visible.
             var hall = await _db.WeddingHalls
                 .AsNoTracking()
                 .Where(h => h.Id == id && h.IsPublished)
@@ -56,11 +59,6 @@ public class DetailsModel : PageModel
                 return NotFound();
             }
 
-            // Images are loaded in a separate, sorted query — also
-            // AsNoTracking — so the gallery order is deterministic
-            // and we avoid pulling the entire entity graph. The URL
-            // resolver runs in-memory after the SQL projection so EF
-            // does not have to translate a managed method.
             var imageEntities = await _db.HallImages
                 .AsNoTracking()
                 .Where(i => i.WeddingHallId == id)
@@ -78,23 +76,21 @@ public class DetailsModel : PageModel
                 .ToList();
 
             Hall = new HallViewModel(
-                hall.Id,
-                hall.Name,
-                hall.Slug,
-                hall.ShortDescription,
-                hall.Description,
-                hall.CapacityMin,
-                hall.CapacityMax,
-                images);
+                Id: hall.Id,
+                Name: hall.Name,
+                Slug: hall.Slug,
+                ShortDescription: hall.ShortDescription,
+                Description: hall.Description,
+                CapacityMin: hall.CapacityMin,
+                CapacityMax: hall.CapacityMax,
+                Images: images,
+                IsFromStaticCatalog: false);
 
+            BackHref = StaticVenueHrefResolver.ResolveForVenue(hall.VenueKey);
             return Page();
         }
         catch (Exception ex)
         {
-            DatabaseAvailable = false;
-            // Log only the message — never the full exception object —
-            // to avoid surfacing EF Core / Npgsql connection metadata
-            // (host, port, database name) in production logs.
             _logger.LogWarning(
                 "TiecCuoi/Details({Id}): database unavailable. {Message}",
                 id,
@@ -102,21 +98,4 @@ public class DetailsModel : PageModel
             return NotFound();
         }
     }
-
-    /// <summary>Flat view model used by the Razor view.</summary>
-    public sealed record HallViewModel(
-        int Id,
-        string Name,
-        string Slug,
-        string? ShortDescription,
-        string? Description,
-        int? CapacityMin,
-        int? CapacityMax,
-        IReadOnlyList<HallImageViewModel> Images);
-
-    public sealed record HallImageViewModel(
-        int Id,
-        string? Url,
-        string? AltText,
-        bool IsPrimary);
 }

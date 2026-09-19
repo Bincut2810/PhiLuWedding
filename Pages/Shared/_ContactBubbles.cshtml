@@ -46,8 +46,19 @@
            target="_blank"
            rel="noopener noreferrer"
            aria-label="Mở cuộc trò chuyện Zalo với Nhà hàng tiệc cưới Phì Lũ trong cửa sổ mới">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M12 2C6.48 2 2 6.05 2 11.07c0 2.83 1.41 5.34 3.62 7.02-.13.92-.46 2.27-.5 2.55-.06.39.14.39.29.28.12-.08 1.66-1.13 2.36-1.6.71.13 1.45.2 2.23.2 5.52 0 10-4.05 10-9.07C22 6.05 17.52 2 12 2zm-3.86 9.86h-.92v3.7H5.85v-3.7h-.92v-.81h3.21v.81zm2.18 3.7h-1.43v-4.51h1.43v4.51zm5.42-2.4c0 .91-.5 1.46-1.27 1.46-.51 0-.92-.27-1.13-.65h-.02v.59h-1.34v-6.07h1.38v2.18h.02c.21-.39.62-.65 1.13-.65.76 0 1.23.55 1.23 1.46v1.68zm5.21-1.12c0 1.27-.74 1.96-1.93 1.96-1.18 0-1.93-.69-1.93-1.96v-1.36h1.36v1.27c0 .49.22.77.57.77.36 0 .57-.28.57-.77v-1.27h1.36v1.36zm-8.69 1.51v-4.32h1.36v.62h.02c.21-.43.65-.66 1.16-.66.32 0 .61.11.81.31l-.71.85c-.13-.13-.27-.19-.45-.19-.36 0-.6.27-.6.75v2.64h-1.59zm-3.95-3.51h-.92v3.7H5.85v-3.7h-.92v-.81h3.21v.81h-.92v.81h1.86v-.81h-.92zm6.06 1.92c0-.4-.22-.65-.57-.65-.36 0-.57.25-.57.65v.07h1.14v-.07zm-3.95-1.92h-.92v3.7h1.85v-.81h-.93v-.81h.93v-.81h-.93v-.81h.93v-.81h-.93v-.46zm5.95 3.51v-4.32h1.36v4.32h-1.36z" />
+            @* Stylized "Z" mark drawn as a single stroked path on a
+               generous viewBox so the lines stay crisp at any
+               rendered size. The subtle upward flick at the end of
+               the bottom bar echoes the official Zalo brand mark.
+               currentColor on the stroke inherits from the link so
+               the icon adapts to the bubble's hover state. *@
+            <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                <path d="M 17 17 H 47 L 17 47 H 38 Q 47 47 47 38"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round" />
             </svg>
         </a>
         <span class="contact-bubbles__tooltip" role="tooltip">Chat Zalo</span>

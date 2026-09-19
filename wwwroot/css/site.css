@@ -362,7 +362,7 @@ main {
 
 .site-brand-logos__img {
     display: block;
-    height: 56px;
+    height: 88px;
     width: auto;
     max-width: none;
     transition: transform var(--dur-base) var(--ease-soft),
@@ -374,56 +374,6 @@ main {
     transform: translateY(-1px);
 }
 
-.site-brand__text {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    line-height: 1;
-    gap: 4px;
-    min-width: 0;
-}
-
-.site-brand__mark {
-    font-family: var(--font-serif);
-    font-size: 1.625rem;
-    font-style: italic;
-    font-weight: 600;
-    letter-spacing: 0.005em;
-    color: var(--color-brown);
-    line-height: 1;
-}
-
-.site-brand__rule {
-    display: inline-block;
-    width: 32px;
-    height: 1px;
-    background-color: var(--color-champagne);
-    margin: 2px 0;
-    transition: width var(--dur-base) var(--ease-soft),
-                background-color var(--dur-base) var(--ease-soft);
-}
-
-.site-brand__name {
-    font-family: var(--font-sans);
-    font-size: 0.625rem;
-    font-weight: 600;
-    letter-spacing: 0.36em;
-    text-transform: uppercase;
-    color: var(--color-muted-brown);
-    line-height: 1;
-}
-
-.site-brand:hover .site-brand__mark,
-.site-brand:focus-visible .site-brand__mark {
-    color: var(--color-ink);
-}
-
-.site-brand:hover .site-brand__rule,
-.site-brand:focus-visible .site-brand__rule {
-    width: 44px;
-    background-color: var(--color-brown);
-}
-
 /* Compact header on small screens — keep both visible but trim size */
 @media (max-width: 575.98px) {
     .site-header__inner {
@@ -432,24 +382,7 @@ main {
     }
 
     .site-brand-logos__img {
-        height: 44px;
-    }
-
-    .site-brand__mark {
-        font-size: 1.375rem;
-    }
-
-    .site-brand__name {
-        font-size: 0.5625rem;
-    }
-}
-
-/* Below 420px: drop the brand text beside the logos — the logos
-   alone are enough to identify the venue and the navigation toggle
-   needs the room. */
-@media (max-width: 419.98px) {
-    .site-brand__text {
-        display: none;
+        height: 68px;
     }
 }
 

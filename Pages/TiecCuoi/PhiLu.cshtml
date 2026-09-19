@@ -39,17 +39,7 @@
             </p>
         </header>
 
-        @if (!Model.DatabaseAvailable)
-        {
-            <div class="halls-page__notice" role="status">
-                <p class="halls-page__notice-title">Hệ thống đang cập nhật danh sách sảnh tiệc.</p>
-                <p class="halls-page__notice-body">
-                    Vui lòng quay lại sau ít phút hoặc liên hệ trực tiếp với nhà hàng
-                    để được tư vấn về sảnh phù hợp.
-                </p>
-            </div>
-        }
-        else if (Model.Halls.Count == 0)
+        @if (Model.Halls.Count == 0)
         {
             <div class="halls-page__notice" role="status">
                 <p class="halls-page__notice-title">Danh sách sảnh tiệc đang được cập nhật.</p>
@@ -70,8 +60,7 @@
                 {
                     <li class="venue-hall-card">
                         <a class="venue-hall-card__link"
-                           asp-page="/TiecCuoi/Details"
-                           asp-route-id="@hall.Id"
+                           href="@hall.DetailHref"
                            aria-label="@($"Xem chi tiết {hall.Name} — Trung tâm Hội nghị Tiệc cưới Phì Lũ")">
                             <div class="venue-hall-card__media">
                                 @if (!string.IsNullOrEmpty(hall.ImageUrl))

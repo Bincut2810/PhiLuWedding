@@ -22,10 +22,17 @@
     margin-bottom: var(--space-10);
 }
 
+/* Two venue cards side-by-side from 480px and up.
+   Below that (very narrow phones) we still stack to keep each
+   card readable. The grid is tightened on the smallest breakpoint
+   so the 2-column row reads as a balanced pair rather than a stack. */
 .venues__grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-9) var(--space-7);
+    gap: var(--space-8) var(--space-5);
+    max-width: 1040px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* ---------- Venue card (shared) ---------- */
@@ -195,11 +202,11 @@
     margin-top: var(--space-3);
 }
 
-@media (min-width: 600px) {
+@media (min-width: 480px) {
     .venues__grid,
     .venues-page__grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-9) var(--space-7);
+        gap: var(--space-9) var(--space-6);
     }
 }
 
