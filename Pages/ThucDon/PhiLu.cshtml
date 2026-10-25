@@ -1,0 +1,14 @@
+@page "/thuc-don/philu"
+@model PhiluWedding.Pages.ThucDon.MenuPhiLuModel
+@{
+    ViewData["Title"] = "Thực đơn tiệc cưới Phì Lũ";
+    ViewData["Description"] =
+        "Bảng giá thực đơn tiệc cưới tại Trung tâm Hội nghị Tiệc cưới Phì Lũ: các mức giá, " +
+        "phương án món ăn, dịch vụ thêm, nước uống, ưu đãi theo số bàn và điều khoản đặt cọc.";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/menu-venue.css" asp-append-version="true" />
+}
+
+<partial name="_MenuVenueContent" model="Model" />

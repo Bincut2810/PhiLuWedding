@@ -995,6 +995,34 @@
     }
 }
 
+/* ---------- Venue price sheets ---------- */
+.menus-page__venues {
+    margin-top: var(--space-9);
+    padding-top: var(--space-7);
+    border-top: 1px solid var(--color-line);
+    text-align: center;
+}
+
+.menus-page__venues-title {
+    font-family: var(--font-sans);
+    font-size: var(--fs-eyebrow);
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-muted-brown);
+    margin-bottom: var(--space-4);
+}
+
+.menus-page__venues-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-6);
+    justify-content: center;
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
     .combo-card__dish-media img,

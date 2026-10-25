@@ -278,6 +278,197 @@ namespace PhiluWedding.Migrations
                     b.ToTable("hall_images", (string)null);
                 });
 
+            modelBuilder.Entity("PhiluWedding.Domain.Entities.MenuAppetizerNut", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text")
+                        .HasColumnName("description");
+
+                    b.Property<bool>("IsPublished")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true)
+                        .HasColumnName("is_published");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("key");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)")
+                        .HasColumnName("name");
+
+                    b.Property<string>("Note")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)")
+                        .HasColumnName("note");
+
+                    b.Property<decimal?>("Price")
+                        .HasColumnType("numeric(18,0)")
+                        .HasColumnName("price");
+
+                    b.Property<string>("PriceType")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)")
+                        .HasColumnName("price_type");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)")
+                        .HasColumnName("slug");
+
+                    b.Property<int>("SortOrder")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0)
+                        .HasColumnName("sort_order");
+
+                    b.Property<string>("Unit")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("unit");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.Property<string>("VenueScope")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
+                        .HasColumnName("venue_scope");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Key")
+                        .IsUnique()
+                        .HasDatabaseName("ix_menu_appetizer_nuts_key");
+
+                    b.HasIndex("Slug")
+                        .IsUnique()
+                        .HasDatabaseName("ix_menu_appetizer_nuts_slug");
+
+                    b.HasIndex("VenueScope", "SortOrder")
+                        .HasDatabaseName("ix_menu_appetizer_nuts_scope_sort");
+
+                    b.ToTable("menu_appetizer_nuts", (string)null);
+                });
+
+            modelBuilder.Entity("PhiluWedding.Domain.Entities.MenuBeverage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<bool>("IsPublished")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true)
+                        .HasColumnName("is_published");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("key");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)")
+                        .HasColumnName("name");
+
+                    b.Property<string>("Note")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)")
+                        .HasColumnName("note");
+
+                    b.Property<decimal?>("PriceAboveThreshold")
+                        .HasColumnType("numeric(18,0)")
+                        .HasColumnName("price_above_threshold");
+
+                    b.Property<decimal?>("PriceBelowThreshold")
+                        .HasColumnType("numeric(18,0)")
+                        .HasColumnName("price_below_threshold");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)")
+                        .HasColumnName("slug");
+
+                    b.Property<int>("SortOrder")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0)
+                        .HasColumnName("sort_order");
+
+                    b.Property<string>("ThresholdNote")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)")
+                        .HasColumnName("threshold_note");
+
+                    b.Property<int>("ThresholdTableCount")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(25)
+                        .HasColumnName("threshold_table_count");
+
+                    b.Property<string>("Unit")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("unit");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.Property<string>("VenueScope")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
+                        .HasColumnName("venue_scope");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Key")
+                        .IsUnique()
+                        .HasDatabaseName("ix_menu_beverages_key");
+
+                    b.HasIndex("Slug")
+                        .IsUnique()
+                        .HasDatabaseName("ix_menu_beverages_slug");
+
+                    b.HasIndex("VenueScope", "SortOrder")
+                        .HasDatabaseName("ix_menu_beverages_scope_sort");
+
+                    b.ToTable("menu_beverages", (string)null);
+                });
+
             modelBuilder.Entity("PhiluWedding.Domain.Entities.MenuCombo", b =>
                 {
                     b.Property<int>("Id")
@@ -309,11 +500,26 @@ namespace PhiluWedding.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("menu_set_id");
 
+                    b.Property<int?>("MenuTierId")
+                        .HasColumnType("integer")
+                        .HasColumnName("menu_tier_id");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)")
                         .HasColumnName("name");
+
+                    b.Property<string>("OptionCode")
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)")
+                        .HasColumnName("option_code");
+
+                    b.Property<int>("OptionSortOrder")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0)
+                        .HasColumnName("option_sort_order");
 
                     b.Property<decimal?>("Price")
                         .HasColumnType("numeric(18,2)")
@@ -340,6 +546,13 @@ namespace PhiluWedding.Migrations
                     b.HasIndex("MenuSetId", "Slug")
                         .IsUnique()
                         .HasDatabaseName("ix_menu_combos_set_slug");
+
+                    b.HasIndex("MenuTierId", "OptionCode")
+                        .IsUnique()
+                        .HasDatabaseName("ix_menu_combos_tier_option");
+
+                    b.HasIndex("MenuTierId", "OptionSortOrder")
+                        .HasDatabaseName("ix_menu_combos_tier_option_sort");
 
                     b.HasIndex("MenuSetId", "IsPublished", "SortOrder")
                         .HasDatabaseName("ix_menu_combos_set_published_sort");
@@ -383,6 +596,450 @@ namespace PhiluWedding.Migrations
                         .HasDatabaseName("ix_menu_combo_dishes_combo_sort");
 
                     b.ToTable("menu_combo_dishes", (string)null);
+                });
+
+            modelBuilder.Entity("PhiluWedding.Domain.Entities.MenuDepositTerm", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal?>("Amount")
+                        .HasColumnType("numeric(18,0)")
+                        .HasColumnName("amount");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)")
+                        .HasColumnName("description");
+
+                    b.Property<string>("HallName")
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)")
+                        .HasColumnName("hall_name");
+
+                    b.Property<string>("HallSlug")
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)")
+                        .HasColumnName("hall_slug");
+
+                    b.Property<bool>("IsPublished")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true)
+                        .HasColumnName("is_published");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("key");
+
+                    b.Property<int>("SortOrder")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0)
+                        .HasColumnName("sort_order");
+
+                    b.Property<int>("Stage")
+                        .HasColumnType("integer")
+                        .HasColumnName("stage");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.Property<string>("VenueScope")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
+                        .HasColumnName("venue_scope");
+
+                    b.Property<int?>("WeddingHallId")
+                        .HasColumnType("integer")
+                        .HasColumnName("wedding_hall_id");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Key")
+                        .IsUnique()
+                        .HasDatabaseName("ix_menu_deposit_terms_key");
+
+                    b.HasIndex("WeddingHallId");
+
+                    b.HasIndex("VenueScope", "SortOrder")
+                        .HasDatabaseName("ix_menu_deposit_terms_scope_sort");
+
+                    b.HasIndex("VenueScope", "HallSlug", "Stage")
+                        .IsUnique()
+                        .HasDatabaseName("ix_menu_deposit_terms_scope_hall_stage");
+
+                    b.ToTable("menu_deposit_terms", (string)null);
+                });
+
+            modelBuilder.Entity("PhiluWedding.Domain.Entities.MenuPriceNote", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("content");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<bool>("IsPublished")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true)
+                        .HasColumnName("is_published");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("key");
+
+                    b.Property<string>("Note")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)")
+                        .HasColumnName("note");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)")
+                        .HasColumnName("slug");
+
+                    b.Property<int>("SortOrder")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0)
+                        .HasColumnName("sort_order");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)")
+                        .HasColumnName("title");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.Property<DateOnly?>("ValidUntil")
+                        .HasColumnType("date")
+                        .HasColumnName("valid_until");
+
+                    b.Property<string>("VatNote")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)")
+                        .HasColumnName("vat_note");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Key")
+                        .IsUnique()
+                        .HasDatabaseName("ix_menu_price_notes_key");
+
+                    b.HasIndex("Slug")
+                        .IsUnique()
+                        .HasDatabaseName("ix_menu_price_notes_slug");
+
+                    b.ToTable("menu_price_notes", (string)null);
+                });
+
+            modelBuilder.Entity("PhiluWedding.Domain.Entities.MenuPromotion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("BasePromotionId")
+                        .HasColumnType("integer")
+                        .HasColumnName("base_promotion_id");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<bool>("IncludesPreviousTier")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true)
+                        .HasColumnName("includes_previous_tier");
+
+                    b.Property<bool>("IsPublished")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true)
+                        .HasColumnName("is_published");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("key");
+
+                    b.Property<int?>("MaxTableCount")
+                        .HasColumnType("integer")
+                        .HasColumnName("max_table_count");
+
+                    b.Property<int?>("MinTableCount")
+                        .HasColumnType("integer")
+                        .HasColumnName("min_table_count");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)")
+                        .HasColumnName("name");
+
+                    b.Property<string>("RangeLabel")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("range_label");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)")
+                        .HasColumnName("slug");
+
+                    b.Property<int>("SortOrder")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0)
+                        .HasColumnName("sort_order");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.Property<string>("VenueScope")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
+                        .HasColumnName("venue_scope");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BasePromotionId");
+
+                    b.HasIndex("Key")
+                        .IsUnique()
+                        .HasDatabaseName("ix_menu_promotions_key");
+
+                    b.HasIndex("Slug")
+                        .IsUnique()
+                        .HasDatabaseName("ix_menu_promotions_slug");
+
+                    b.HasIndex("MinTableCount", "MaxTableCount")
+                        .HasDatabaseName("ix_menu_promotions_table_range");
+
+                    b.ToTable("menu_promotions", (string)null);
+                });
+
+            modelBuilder.Entity("PhiluWedding.Domain.Entities.MenuPromotionBenefit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("MenuPromotionId")
+                        .HasColumnType("integer")
+                        .HasColumnName("menu_promotion_id");
+
+                    b.Property<int>("SortOrder")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0)
+                        .HasColumnName("sort_order");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MenuPromotionId", "SortOrder")
+                        .HasDatabaseName("ix_menu_promotion_benefits_promotion_sort");
+
+                    b.ToTable("menu_promotion_benefits", (string)null);
+                });
+
+            modelBuilder.Entity("PhiluWedding.Domain.Entities.MenuPromotionTerm", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("content");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<bool>("IsPublished")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true)
+                        .HasColumnName("is_published");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("key");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)")
+                        .HasColumnName("slug");
+
+                    b.Property<int>("SortOrder")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0)
+                        .HasColumnName("sort_order");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Key")
+                        .IsUnique()
+                        .HasDatabaseName("ix_menu_promotion_terms_key");
+
+                    b.HasIndex("Slug")
+                        .IsUnique()
+                        .HasDatabaseName("ix_menu_promotion_terms_slug");
+
+                    b.ToTable("menu_promotion_terms", (string)null);
+                });
+
+            modelBuilder.Entity("PhiluWedding.Domain.Entities.MenuService", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<bool>("IsPublished")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true)
+                        .HasColumnName("is_published");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("key");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)")
+                        .HasColumnName("name");
+
+                    b.Property<string>("Note")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)")
+                        .HasColumnName("note");
+
+                    b.Property<decimal?>("PriceFrom")
+                        .HasColumnType("numeric(18,0)")
+                        .HasColumnName("price_from");
+
+                    b.Property<decimal?>("PriceTo")
+                        .HasColumnType("numeric(18,0)")
+                        .HasColumnName("price_to");
+
+                    b.Property<string>("PriceType")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)")
+                        .HasColumnName("price_type");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)")
+                        .HasColumnName("slug");
+
+                    b.Property<int>("SortOrder")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0)
+                        .HasColumnName("sort_order");
+
+                    b.Property<string>("Unit")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("unit");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.Property<string>("VenueScope")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
+                        .HasColumnName("venue_scope");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Key")
+                        .IsUnique()
+                        .HasDatabaseName("ix_menu_services_key");
+
+                    b.HasIndex("Slug")
+                        .IsUnique()
+                        .HasDatabaseName("ix_menu_services_slug");
+
+                    b.HasIndex("VenueScope", "SortOrder")
+                        .HasDatabaseName("ix_menu_services_scope_sort");
+
+                    b.ToTable("menu_services", (string)null);
                 });
 
             modelBuilder.Entity("PhiluWedding.Domain.Entities.MenuSet", b =>
@@ -435,6 +1092,14 @@ namespace PhiluWedding.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("updated_at");
 
+                    b.Property<string>("VenueScope")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
+                        .HasDefaultValue("Both")
+                        .HasColumnName("venue_scope");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Slug")
@@ -444,7 +1109,93 @@ namespace PhiluWedding.Migrations
                     b.HasIndex("IsPublished", "SortOrder")
                         .HasDatabaseName("ix_menu_sets_published_sort");
 
+                    b.HasIndex("VenueScope", "SortOrder")
+                        .HasDatabaseName("ix_menu_sets_scope_sort");
+
                     b.ToTable("menu_sets", (string)null);
+                });
+
+            modelBuilder.Entity("PhiluWedding.Domain.Entities.MenuTier", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text")
+                        .HasColumnName("description");
+
+                    b.Property<int>("GuestsPerTable")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(10)
+                        .HasColumnName("guests_per_table");
+
+                    b.Property<bool>("IsPublished")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true)
+                        .HasColumnName("is_published");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("key");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)")
+                        .HasColumnName("name");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("numeric(18,0)")
+                        .HasColumnName("price");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)")
+                        .HasColumnName("slug");
+
+                    b.Property<int>("SortOrder")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0)
+                        .HasColumnName("sort_order");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.Property<string>("VenueScope")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
+                        .HasColumnName("venue_scope");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Key")
+                        .IsUnique()
+                        .HasDatabaseName("ix_menu_tiers_key");
+
+                    b.HasIndex("Slug")
+                        .IsUnique()
+                        .HasDatabaseName("ix_menu_tiers_slug");
+
+                    b.HasIndex("VenueScope", "SortOrder")
+                        .HasDatabaseName("ix_menu_tiers_scope_sort");
+
+                    b.ToTable("menu_tiers", (string)null);
                 });
 
             modelBuilder.Entity("PhiluWedding.Domain.Entities.WeddingHall", b =>
@@ -565,7 +1316,14 @@ namespace PhiluWedding.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("PhiluWedding.Domain.Entities.MenuTier", "MenuTier")
+                        .WithMany("Options")
+                        .HasForeignKey("MenuTierId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.Navigation("MenuSet");
+
+                    b.Navigation("MenuTier");
                 });
 
             modelBuilder.Entity("PhiluWedding.Domain.Entities.MenuComboDish", b =>
@@ -587,6 +1345,37 @@ namespace PhiluWedding.Migrations
                     b.Navigation("MenuCombo");
                 });
 
+            modelBuilder.Entity("PhiluWedding.Domain.Entities.MenuDepositTerm", b =>
+                {
+                    b.HasOne("PhiluWedding.Domain.Entities.WeddingHall", "WeddingHall")
+                        .WithMany()
+                        .HasForeignKey("WeddingHallId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("WeddingHall");
+                });
+
+            modelBuilder.Entity("PhiluWedding.Domain.Entities.MenuPromotion", b =>
+                {
+                    b.HasOne("PhiluWedding.Domain.Entities.MenuPromotion", "BasePromotion")
+                        .WithMany("DerivedPromotions")
+                        .HasForeignKey("BasePromotionId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("BasePromotion");
+                });
+
+            modelBuilder.Entity("PhiluWedding.Domain.Entities.MenuPromotionBenefit", b =>
+                {
+                    b.HasOne("PhiluWedding.Domain.Entities.MenuPromotion", "MenuPromotion")
+                        .WithMany("Benefits")
+                        .HasForeignKey("MenuPromotionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MenuPromotion");
+                });
+
             modelBuilder.Entity("PhiluWedding.Domain.Entities.Dish", b =>
                 {
                     b.Navigation("ComboDishes");
@@ -599,9 +1388,21 @@ namespace PhiluWedding.Migrations
                     b.Navigation("ComboDishes");
                 });
 
+            modelBuilder.Entity("PhiluWedding.Domain.Entities.MenuPromotion", b =>
+                {
+                    b.Navigation("Benefits");
+
+                    b.Navigation("DerivedPromotions");
+                });
+
             modelBuilder.Entity("PhiluWedding.Domain.Entities.MenuSet", b =>
                 {
                     b.Navigation("Combos");
+                });
+
+            modelBuilder.Entity("PhiluWedding.Domain.Entities.MenuTier", b =>
+                {
+                    b.Navigation("Options");
                 });
 
             modelBuilder.Entity("PhiluWedding.Domain.Entities.WeddingHall", b =>

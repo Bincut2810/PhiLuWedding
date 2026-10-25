@@ -64,14 +64,22 @@ PhiluWedding/
 │   ├── PhiluWeddingDbContext.cs
 │   └── Configurations/         # EF Core Fluent API per entity
 ├── Domain/
-│   ├── Entities/               # WeddingHall, HallImage, MenuSet, Dish, BookingRequest, ...
-│   └── Enums/BookingStatus.cs
+│   ├── Entities/               # WeddingHall, HallImage, MenuSet, MenuTier, Dish, BookingRequest, ...
+│   ├── Enums/BookingStatus.cs
+│   ├── MenuPriceTypes.cs       # How a price is quoted (Fixed, From, Range, ...)
+│   └── MenuVenueScopes.cs      # Which venue a menu row applies to
 ├── Migrations/                 # EF Core migrations (single source of truth)
+├── Seed/
+│   └── menu-catalog.json       # Fixed menu catalog (version controlled, embedded)
 ├── Services/
 │   ├── CloudinaryService.cs
 │   ├── DbSeeder.cs             # Opt-in demo seeder (DEMO-prefixed rows)
+│   ├── MenuCatalogSeeder.cs    # Idempotent menu catalog seeder
+│   ├── MenuCatalogDocument.cs  # Typed view of Seed/menu-catalog.json
+│   ├── MenuSeedReport.cs       # What the seeder created / kept / conflicted on
 │   ├── HallImageUrlResolver.cs
 │   └── ICloudinaryService.cs
+├── PhiluWedding.Tests/         # xUnit test project
 ├── Properties/
 │   └── launchSettings.json
 ├── appsettings.json
@@ -166,9 +174,11 @@ opt-in flag exists for development convenience only.
 
 ### Seed data
 
-The `DbSeeder` only ever inserts rows prefixed with `DEMO` / `SẢNH DEMO`
-/ `MENU DEMO` / `COMBO DEMO` / `MÓN DEMO`. To seed a fresh database
-for development:
+There are two independent seeders.
+
+**Demo seed (development only).** The `DbSeeder` only ever inserts rows
+prefixed with `DEMO` / `SẢNH DEMO` / `MENU DEMO` / `COMBO DEMO` / `MÓN DEMO`.
+To seed a fresh database for development:
 
 ```powershell
 dotnet run -- --seed
@@ -176,11 +186,105 @@ dotnet run -- --seed
 
 Never run `--seed` in production.
 
+**Menu catalog seed.** The fixed wedding-menu catalog (eight shared price
+tiers, seventeen menu options, the ordered dish lists, and the additional
+menu sections) lives in the version-controlled file `Seed/menu-catalog.json`
+and is embedded into the assembly. To apply it:
+
+```powershell
+dotnet run -- --seed-menu
+```
+
+The seeder is **idempotent**:
+
+- Nothing is ever deleted.
+- Rows that already exist are left untouched; only missing rows are inserted.
+- Prices are written when a price row is first created. A price an
+  administrator has edited is never reset — the difference is logged as a
+  conflict instead.
+- Publication flags and admin-maintained notes are never reset.
+- Every record is matched on its own stable key, so one existing row never
+  blocks the rest of the catalog from being seeded.
+
+You can also enable it with `Database:SeedMenuOnStartup = true`
+(or `Database__SeedMenuOnStartup=true`), but the CLI flag is preferred
+because startup seeding runs on every boot.
+
+#### Venue applicability
+Menu content carries an explicit `venue_scope`:
+
+| Scope | Meaning |
+|---|---|
+| `Both` | Confirmed for Phì Lũ **and** Golden Phoenix |
+| `PhiLu` | Confirmed for Phì Lũ only |
+| `GoldenPhoenix` | Confirmed for Golden Phoenix only |
+
+The price tiers and the wedding menu set are `Both`. Everything that comes
+from the Phì Lũ source price sheet — services, beverages, appetizer nuts,
+promotions and deposit terms — is `PhiLu` until the business confirms it
+also applies to Golden Phoenix. `Both` always means "confirmed for both",
+never "unknown".
+
+### Public wedding-menu pages
+
+Two public pages show the wedding-menu price sheet:
+
+| URL | Venue |
+|---|---|
+| `/thuc-don/philu` | Trung tâm Hội nghị Tiệc cưới Phì Lũ |
+| `/thuc-don/golden-phoenix` | Golden Phoenix |
+
+Both pages share one body (`Pages/Shared/_MenuVenueContent.cshtml`) and one
+page model (`Pages/ThucDon/MenuVenuePageModel.cs`), so the eight price tiers
+and their options can never drift apart between the two venues. The pages
+are read-only: they never write, migrate or seed.
+
+The price sheet shows, in this order: the eight price tiers (one tile per
+tier, the selected tier is opened with `?muc=<slug>`), the menu options of
+the selected tier, the additional services, the beverages, the appetizer
+nuts, the promotion tiers with their conditions, the deposit terms and the
+notes about the prices.
+
+Every wording comes from the source price sheet:
+
+- The unit of a price is shown only where the source states one.
+- The two beverage prices keep the "dưới 25 bàn" / "trên 25 bàn" wording,
+  including the note that the source says nothing about exactly 25 tables.
+- A row without a numeric price shows the source wording instead of `0đ`.
+- The promotion tiers list the benefits of the tier they inherit from, and
+  the conditions apply to the tiers as a whole.
+- The price notes keep the validity date and the VAT note of the source.
+
+Sections that are scoped to one venue are only shown on that venue's page.
+Golden Phoenix therefore shows a short notice that the services, beverages,
+appetizer nuts, promotions and deposit terms are currently published for
+Phì Lũ.
+
 ### Public URL
 
 After the first successful deploy, Railway assigns a public URL such as
 `https://<service>.up.railway.app`. Do not hardcode this URL anywhere
 in the application; the platform sets it automatically.
+
+---
+
+## Tests
+
+```powershell
+dotnet test PhiluWedding.Tests\PhiluWedding.Tests.csproj
+```
+
+The test project uses xUnit with the EF Core in-memory provider. It covers
+the menu catalog data integrity (tier and option counts, option ordering,
+repeated dishes across options, Vietnamese round-trip, service / beverage /
+nut / promotion / deposit semantics), the shared Option C pricing, the
+idempotency of the seeder and the independence of prices from dish
+composition, and the two public menu pages (shared tiers and prices,
+option names, the beverage units and threshold, the venue scope of the
+supporting sections, the inherited promotion benefits and the deposit
+terms).
+
+The tests do not require a running database.
 
 ---
 

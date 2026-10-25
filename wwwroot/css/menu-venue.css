@@ -1,0 +1,652 @@
+/* =====================================================================
+   PUBLIC WEDDING MENU — VENUE PAGES
+   Used by /thuc-don/philu and /thuc-don/golden-phoenix. All classes
+   are prefixed with `menu-` so they never collide with the other
+   pages. The layout is fluid: the price tiles fall back to one column
+   on very narrow screens, two columns on phones, three on tablets and
+   four on wide desktops — never wider than the viewport, so the page
+   never scrolls sideways.
+   ===================================================================== */
+
+.menu-page {
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-12);
+    background-color: var(--color-paper);
+}
+
+.menu-page__head {
+    max-width: 780px;
+    margin: 0 auto var(--space-8);
+    text-align: center;
+}
+
+.menu-page__head .eyebrow {
+    justify-content: center;
+}
+
+.menu-page__title {
+    font-size: var(--fs-h2);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+}
+
+.menu-page__title span {
+    display: block;
+}
+
+.menu-page__lede {
+    margin-top: var(--space-5);
+    font-size: var(--fs-body-lg);
+    color: var(--color-muted-brown);
+    line-height: 1.75;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ---------- Notices (database down / empty catalog) ---------- */
+.menu-page__notice {
+    max-width: 720px;
+    margin: var(--space-8) auto;
+    padding: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 4vw, 2.75rem);
+    text-align: center;
+    background-color: var(--color-ivory);
+    border: 1px solid var(--color-border);
+}
+
+.menu-page__notice::before {
+    content: "";
+    display: block;
+    width: 36px;
+    height: 1px;
+    background-color: var(--color-champagne);
+    margin: 0 auto var(--space-6);
+}
+
+.menu-page__notice-title {
+    font-family: var(--font-serif);
+    font-size: 1.625rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: var(--space-3);
+    line-height: 1.3;
+}
+
+.menu-page__notice-body {
+    font-size: var(--fs-body);
+    color: var(--color-muted-brown);
+    line-height: 1.75;
+    margin-bottom: var(--space-5);
+}
+
+/* ---------- Jump navigation ---------- */
+.menu-jump {
+    margin-bottom: var(--space-9);
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+}
+
+.menu-jump__list {
+    list-style: none;
+    margin: 0;
+    padding: var(--space-4) 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-6);
+    justify-content: center;
+}
+
+.menu-jump__link {
+    font-family: var(--font-sans);
+    font-size: var(--fs-eyebrow);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-brown);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: color var(--dur-fast) var(--ease-soft),
+                border-color var(--dur-fast) var(--ease-soft);
+}
+
+.menu-jump__link:hover,
+.menu-jump__link:focus-visible {
+    color: var(--color-ink);
+    border-bottom-color: var(--color-champagne);
+}
+
+/* ---------- Sections ---------- */
+.menu-section {
+    margin-bottom: var(--space-10);
+    scroll-margin-top: var(--space-7);
+}
+
+.menu-section__title {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--color-ink);
+    margin-top: var(--space-2);
+}
+
+.menu-section__lede {
+    margin-top: var(--space-3);
+    max-width: 68ch;
+    font-size: var(--fs-body);
+    color: var(--color-muted-brown);
+    line-height: 1.75;
+}
+
+.menu-section__note {
+    margin-top: var(--space-4);
+    font-size: var(--fs-body-sm);
+    color: var(--color-muted-brown);
+    line-height: 1.7;
+    max-width: 72ch;
+}
+
+/* ---------- Price tiles ---------- */
+.menu-tiers {
+    list-style: none;
+    margin: var(--space-7) 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+}
+
+.menu-tier {
+    display: flex;
+    min-width: 0;
+}
+
+.menu-tier__link {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    height: 100%;
+    padding: var(--space-5) var(--space-4);
+    background-color: var(--color-ivory);
+    border: 1px solid var(--color-border);
+    color: inherit;
+    text-decoration: none;
+    transition: border-color var(--dur-base) var(--ease-soft),
+                transform var(--dur-base) var(--ease-soft),
+                background-color var(--dur-base) var(--ease-soft);
+}
+
+.menu-tier__link:hover,
+.menu-tier__link:focus-visible {
+    border-color: var(--color-champagne);
+    transform: translateY(-2px);
+    background-color: var(--color-paper);
+}
+
+.menu-tier--current .menu-tier__link {
+    border-color: var(--color-champagne);
+    background-color: var(--color-paper);
+    box-shadow: inset 0 0 0 1px var(--color-champagne);
+}
+
+.menu-tier__price {
+    font-family: var(--font-serif);
+    font-size: clamp(1.375rem, 1.1rem + 1.2vw, 1.75rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-brown);
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+}
+
+.menu-tier__unit {
+    font-family: var(--font-sans);
+    font-size: var(--fs-eyebrow);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-muted-brown);
+}
+
+.menu-tier__name {
+    margin-top: var(--space-2);
+    font-family: var(--font-sans);
+    font-size: var(--fs-body-sm);
+    font-weight: 600;
+    color: var(--color-ink);
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.menu-tier__desc {
+    font-family: var(--font-sans);
+    font-size: var(--fs-body-sm);
+    color: var(--color-muted-brown);
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.menu-tier__cta {
+    margin-top: auto;
+    padding-top: var(--space-3);
+    font-family: var(--font-sans);
+    font-size: var(--fs-eyebrow);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-brown);
+}
+
+/* ---------- Menu options (A / B / C) ---------- */
+.menu-options {
+    margin-top: var(--space-6);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+}
+
+.menu-option {
+    min-width: 0;
+    padding: var(--space-5);
+    background-color: var(--color-paper);
+    border: 1px solid var(--color-line);
+}
+
+.menu-option__title {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h5);
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--color-champagne);
+}
+
+.menu-option__dishes {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-3);
+}
+
+.menu-option__dish {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-3);
+    align-items: baseline;
+    font-size: var(--fs-body);
+    color: var(--color-ink);
+    line-height: 1.6;
+}
+
+.menu-option__dish-name {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.menu-option__dish-note {
+    font-size: var(--fs-body-sm);
+    color: var(--color-muted-brown);
+}
+
+/* ---------- Price lists (services, nuts) ---------- */
+.menu-list {
+    list-style: none;
+    margin: var(--space-6) 0 0;
+    padding: 0;
+    border-top: 1px solid var(--color-line);
+}
+
+.menu-list__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-5);
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--color-line);
+}
+
+.menu-list__name {
+    flex: 1 1 16rem;
+    min-width: 0;
+    font-size: var(--fs-body);
+    color: var(--color-ink);
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.menu-list__desc {
+    display: block;
+    font-size: var(--fs-body-sm);
+    color: var(--color-muted-brown);
+}
+
+.menu-list__price {
+    flex: 0 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--space-1);
+    text-align: right;
+}
+
+.menu-list__amount {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h5);
+    font-weight: 600;
+    color: var(--color-brown);
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+}
+
+.menu-list__amount--na {
+    font-family: var(--font-sans);
+    font-size: var(--fs-body-sm);
+    font-weight: 500;
+    color: var(--color-muted-brown);
+    max-width: 26ch;
+}
+
+.menu-list__note {
+    font-size: var(--fs-body-sm);
+    color: var(--color-muted-brown);
+    max-width: 34ch;
+}
+
+/* ---------- Tables ---------- */
+.menu-table-wrap {
+    margin-top: var(--space-6);
+    /* The table keeps its own width; the wrapper scrolls instead of the
+       page, so a wide table never makes the whole page scroll sideways. */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.menu-table {
+    width: 100%;
+    min-width: 30rem;
+    border-collapse: collapse;
+    font-size: var(--fs-body-sm);
+}
+
+.menu-table__caption {
+    caption-side: top;
+    text-align: left;
+    font-family: var(--font-sans);
+    font-size: var(--fs-eyebrow);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-muted-brown);
+    padding-bottom: var(--space-3);
+}
+
+.menu-table th,
+.menu-table td {
+    padding: var(--space-3) var(--space-3);
+    border-bottom: 1px solid var(--color-line);
+    text-align: left;
+    vertical-align: top;
+}
+
+.menu-table thead th {
+    font-family: var(--font-sans);
+    font-size: var(--fs-eyebrow);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted-brown);
+    border-bottom-color: var(--color-champagne);
+    white-space: nowrap;
+}
+
+.menu-table tbody th {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    color: var(--color-ink);
+}
+
+.menu-table td {
+    font-variant-numeric: tabular-nums;
+    color: var(--color-brown);
+    white-space: nowrap;
+}
+
+.menu-table__amount {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: var(--fs-h5);
+    font-weight: 600;
+    color: var(--color-brown);
+}
+
+.menu-table__hint {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: var(--fs-body-sm);
+    color: var(--color-muted-brown);
+    white-space: normal;
+    max-width: 24ch;
+}
+
+/* ---------- Promotions ---------- */
+.menu-promotions {
+    list-style: none;
+    margin: var(--space-6) 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+}
+
+.menu-promo {
+    min-width: 0;
+    padding: var(--space-5);
+    background-color: var(--color-ivory);
+    border: 1px solid var(--color-border);
+}
+
+.menu-promo__head {
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--color-champagne);
+}
+
+.menu-promo__title {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h5);
+    font-weight: 600;
+    color: var(--color-ink);
+}
+
+.menu-promo__inherit {
+    margin-top: var(--space-1);
+    font-size: var(--fs-body-sm);
+    color: var(--color-muted-brown);
+}
+
+.menu-promo__benefits {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-2);
+}
+
+.menu-promo__benefits li {
+    position: relative;
+    padding-left: var(--space-5);
+    font-size: var(--fs-body-sm);
+    color: var(--color-ink);
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.menu-promo__benefits li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 10px;
+    height: 1px;
+    background-color: var(--color-champagne);
+}
+
+.menu-terms {
+    margin-top: var(--space-6);
+    padding: var(--space-5);
+    border: 1px dashed var(--color-border);
+}
+
+.menu-terms__title {
+    font-family: var(--font-sans);
+    font-size: var(--fs-eyebrow);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-muted-brown);
+    margin-bottom: var(--space-3);
+}
+
+.menu-terms__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-2);
+}
+
+.menu-terms__list li {
+    font-size: var(--fs-body-sm);
+    color: var(--color-muted-brown);
+    line-height: 1.7;
+}
+
+/* ---------- Notes ---------- */
+.menu-note {
+    margin-top: var(--space-5);
+    padding: var(--space-5);
+    background-color: var(--color-ivory);
+    border-left: 2px solid var(--color-champagne);
+}
+
+.menu-note__title {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h5);
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: var(--space-2);
+}
+
+.menu-note__body {
+    font-size: var(--fs-body-sm);
+    color: var(--color-brown);
+    line-height: 1.75;
+}
+
+.menu-note__meta {
+    margin-top: var(--space-2);
+    font-size: var(--fs-body-sm);
+    color: var(--color-muted-brown);
+}
+
+.menu-note--scope {
+    margin-top: var(--space-6);
+}
+
+.menu-note--scope p {
+    font-size: var(--fs-body-sm);
+    color: var(--color-brown);
+    line-height: 1.75;
+}
+
+/* ---------- Call to action ---------- */
+.menu-cta {
+    margin-top: var(--space-10);
+    padding: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 4vw, 3rem);
+    text-align: center;
+    background-color: var(--color-ivory);
+    border: 1px solid var(--color-border);
+}
+
+.menu-cta__title {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    color: var(--color-ink);
+    line-height: 1.3;
+}
+
+.menu-cta__note {
+    margin: var(--space-4) auto var(--space-6);
+    max-width: 58ch;
+    font-size: var(--fs-body);
+    color: var(--color-muted-brown);
+    line-height: 1.75;
+}
+
+.menu-cta__links {
+    margin-top: var(--space-5);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-6);
+    justify-content: center;
+}
+
+/* =====================================================================
+   RESPONSIVE
+   Phones: two price columns, one column below 360px.
+   Tablets: three price columns, two menu option columns.
+   Desktops: four price columns, three menu option and promotion columns.
+   ===================================================================== */
+
+@media (min-width: 360px) {
+    .menu-tiers {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 700px) {
+    .menu-tiers {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .menu-options {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .menu-promotions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1100px) {
+    .menu-tiers {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .menu-options {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .menu-promotions {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .menu-tier__link {
+        transition: none;
+    }
+
+    .menu-tier__link:hover,
+    .menu-tier__link:focus-visible {
+        transform: none;
+    }
+}

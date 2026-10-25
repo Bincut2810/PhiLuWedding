@@ -37,6 +37,16 @@ public class MenuComboConfiguration : IEntityTypeConfiguration<MenuCombo>
             .HasColumnName("price")
             .HasColumnType("numeric(18,2)");
 
+        builder.Property(x => x.MenuTierId).HasColumnName("menu_tier_id");
+
+        builder.Property(x => x.OptionCode)
+            .HasColumnName("option_code")
+            .HasMaxLength(10);
+
+        builder.Property(x => x.OptionSortOrder)
+            .HasColumnName("option_sort_order")
+            .HasDefaultValue(0);
+
         builder.Property(x => x.GuestCount).HasColumnName("guest_count");
 
         builder.Property(x => x.SortOrder)
@@ -63,9 +73,26 @@ public class MenuComboConfiguration : IEntityTypeConfiguration<MenuCombo>
         builder.HasIndex(x => new { x.MenuSetId, x.IsPublished, x.SortOrder })
             .HasDatabaseName("ix_menu_combos_set_published_sort");
 
+        // An option code is unique inside its price tier. PostgreSQL treats
+        // NULLs as distinct, so non-tiered combos (NULL tier, NULL code) are
+        // not affected by this constraint.
+        builder.HasIndex(x => new { x.MenuTierId, x.OptionCode })
+            .IsUnique()
+            .HasDatabaseName("ix_menu_combos_tier_option");
+
+        builder.HasIndex(x => new { x.MenuTierId, x.OptionSortOrder })
+            .HasDatabaseName("ix_menu_combos_tier_option_sort");
+
         builder.HasMany(x => x.ComboDishes)
             .WithOne(x => x.MenuCombo!)
             .HasForeignKey(x => x.MenuComboId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        // A tier is referenced by its options; deleting a tier must not
+        // silently delete the options and their dish composition.
+        builder.HasOne(x => x.MenuTier)
+            .WithMany(x => x.Options)
+            .HasForeignKey(x => x.MenuTierId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

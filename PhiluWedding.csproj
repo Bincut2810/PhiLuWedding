@@ -18,4 +18,26 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <!--
+      The test project lives inside the repository but is a separate project.
+      These files must not be compiled into the web application.
+    -->
+    <Compile Remove="PhiluWedding.Tests\**" />
+    <Content Remove="PhiluWedding.Tests\**" />
+    <EmbeddedResource Remove="PhiluWedding.Tests\**" />
+    <None Remove="PhiluWedding.Tests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--
+      The fixed menu catalog lives in a version-controlled JSON file and is
+      embedded into the assembly, so the published Docker image always ships
+      exactly the data that is stored in the repository. The file is also
+      copied next to the binary so it stays easy to inspect and diff.
+    -->
+    <EmbeddedResource Include="Seed\menu-catalog.json" />
+    <None Include="Seed\menu-catalog.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

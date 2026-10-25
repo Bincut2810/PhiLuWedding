@@ -1,0 +1,766 @@
+{
+  "menuSet": {
+    "key": "wedding-menu",
+    "name": "Thực đơn tiệc cưới",
+    "slug": "menu-tiec-cuoi",
+    "shortDescription": "Thực đơn tiệc cưới dùng chung cho Trung tâm Hội nghị Tiệc cưới Phì Lũ và Golden Phoenix.",
+    "description": "Giá theo bàn 10 khách. Tám mức giá, mỗi mức có phương án A và B; phương án C chỉ có ở mức 5.000.000 đồng.",
+    "venueScope": "Both",
+    "sortOrder": 10
+  },
+
+  "tiers": [
+    {
+      "key": "tier-01",
+      "name": "Thực đơn 2.200.000 đồng/bàn",
+      "slug": "menu-tiec-cuoi-tier-01",
+      "description": "Mức giá 2.200.000 đồng cho một bàn 10 khách.",
+      "price": 2200000,
+      "guestsPerTable": 10,
+      "sortOrder": 10,
+      "venueScope": "Both",
+      "options": [
+        {
+          "code": "A",
+          "name": "Phương án A",
+          "sortOrder": 10,
+          "dishes": [
+            "Gỏi Phượng Hoàng + bpt",
+            "Súp hạt sen tam vị",
+            "Tôm bạc rang muối ớt",
+            "Vịt sốt tiêu",
+            "Sườn non nấu lagu + bánh mỳ",
+            "Rau câu"
+          ]
+        },
+        {
+          "code": "B",
+          "name": "Phương án B",
+          "sortOrder": 20,
+          "dishes": [
+            "Nem, chả, gỏi thập cẩm + bpt",
+            "Súp bóng cá gà xé",
+            "Tôm bạc xóc tỏi",
+            "Gà quay bơ",
+            "Cơm chiên Dương Châu",
+            "Rau câu"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "tier-02",
+      "name": "Thực đơn 2.500.000 đồng/bàn",
+      "slug": "menu-tiec-cuoi-tier-02",
+      "description": "Mức giá 2.500.000 đồng cho một bàn 10 khách.",
+      "price": 2500000,
+      "guestsPerTable": 10,
+      "sortOrder": 20,
+      "venueScope": "Both",
+      "options": [
+        {
+          "code": "A",
+          "name": "Phương án A",
+          "sortOrder": 10,
+          "dishes": [
+            "Gỏi hoa chuối + bpt",
+            "Súp bí đao thập cẩm",
+            "Phi lê cá basa xóc tỏi",
+            "Hoành thánh chiên",
+            "Vịt hầm khoai môn + bánh mỳ",
+            "Trái cây"
+          ]
+        },
+        {
+          "code": "B",
+          "name": "Phương án B",
+          "sortOrder": 20,
+          "dishes": [
+            "Salad mầm cải cá ngừ",
+            "Súp nấm nấu gà",
+            "Cá diêu hồng phi lê rang muối",
+            "Chả giò thanh cua cuộn rong biển",
+            "Giò heo áp cải sốt XO + bánh mỳ",
+            "Trái cây"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "tier-03",
+      "name": "Thực đơn 2.800.000 đồng/bàn",
+      "slug": "menu-tiec-cuoi-tier-03",
+      "description": "Mức giá 2.800.000 đồng cho một bàn 10 khách.",
+      "price": 2800000,
+      "guestsPerTable": 10,
+      "sortOrder": 30,
+      "venueScope": "Both",
+      "options": [
+        {
+          "code": "A",
+          "name": "Phương án A",
+          "sortOrder": 10,
+          "dishes": [
+            "Khai vị HongKong",
+            "Súp bắp cua",
+            "Vịt sốt tiêu + bánh bao chiên",
+            "Tôm bạc rang muối ớt",
+            "Nạm bò hầm ngũ vị + bánh mỳ",
+            "Rau câu"
+          ]
+        },
+        {
+          "code": "B",
+          "name": "Phương án B",
+          "sortOrder": 20,
+          "dishes": [
+            "Khai vị Tình Yêu",
+            "Súp rong biển hải sản",
+            "Tôm sú sốt kiểu Âu",
+            "Gà hấp lá chanh",
+            "Cơm chiên Dương Châu",
+            "Rau câu"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "tier-04",
+      "name": "Thực đơn 3.000.000 đồng/bàn",
+      "slug": "menu-tiec-cuoi-tier-04",
+      "description": "Mức giá 3.000.000 đồng cho một bàn 10 khách.",
+      "price": 3000000,
+      "guestsPerTable": 10,
+      "sortOrder": 40,
+      "venueScope": "Both",
+      "options": [
+        {
+          "code": "A",
+          "name": "Phương án A",
+          "sortOrder": 10,
+          "dishes": [
+            "Khai vị HongKong",
+            "Súp hoành thánh",
+            "Gà quay bơ",
+            "Cá basa phi lê rang muối",
+            "Sườn non nấu cary + bánh mỳ",
+            "Trái cây"
+          ]
+        },
+        {
+          "code": "B",
+          "name": "Phương án B",
+          "sortOrder": 20,
+          "dishes": [
+            "Khai vị Ordeux & kim chi",
+            "Súp cá hồi ngũ vị",
+            "Bắp bò phá lấu + kim chi",
+            "Tôm bạc xóc tỏi",
+            "Vịt hầm khoai môn + bánh mỳ",
+            "Trái cây"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "tier-05",
+      "name": "Thực đơn 3.300.000 đồng/bàn",
+      "slug": "menu-tiec-cuoi-tier-05",
+      "description": "Mức giá 3.300.000 đồng cho một bàn 10 khách.",
+      "price": 3300000,
+      "guestsPerTable": 10,
+      "sortOrder": 50,
+      "venueScope": "Both",
+      "options": [
+        {
+          "code": "A",
+          "name": "Phương án A",
+          "sortOrder": 10,
+          "dishes": [
+            "Gỏi hải sản kiểu Thái + bpt",
+            "Súp bóng cá gà xé",
+            "Tôm sú sốt kiểu Âu",
+            "Gà quay + xôi chiên phồng",
+            "Giò heo áp cải sốt XO + bánh mỳ",
+            "Trái cây"
+          ]
+        },
+        {
+          "code": "B",
+          "name": "Phương án B",
+          "sortOrder": 20,
+          "dishes": [
+            "Khai vị Tứ quý",
+            "Súp hạt sen tam vị",
+            "Tôm sú xóc tỏi",
+            "Gà phá lấu Trung hoa",
+            "Giò heo Bát Trân + bánh mỳ",
+            "Trái cây"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "tier-06",
+      "name": "Thực đơn 3.500.000 đồng/bàn",
+      "slug": "menu-tiec-cuoi-tier-06",
+      "description": "Mức giá 3.500.000 đồng cho một bàn 10 khách.",
+      "price": 3500000,
+      "guestsPerTable": 10,
+      "sortOrder": 60,
+      "venueScope": "Both",
+      "options": [
+        {
+          "code": "A",
+          "name": "Phương án A",
+          "sortOrder": 10,
+          "dishes": [
+            "Khai vị Nhật Bản",
+            "Súp rong biển hải sản",
+            "Mực chiên bơ tỏi",
+            "Vịt sốt tiêu",
+            "Nạm bò nấu lagu + bánh mỳ",
+            "Rau câu"
+          ]
+        },
+        {
+          "code": "B",
+          "name": "Phương án B",
+          "sortOrder": 20,
+          "dishes": [
+            "Khai vị Tứ Quý",
+            "Súp bắp cua",
+            "Tôm sú sốt kiểu Âu",
+            "Gà rang muối",
+            "Bắp bò sốt tiêu xanh + bánh mỳ",
+            "Chè sen"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "tier-07",
+      "name": "Thực đơn 4.000.000 đồng/bàn",
+      "slug": "menu-tiec-cuoi-tier-07",
+      "description": "Mức giá 4.000.000 đồng cho một bàn 10 khách.",
+      "price": 4000000,
+      "guestsPerTable": 10,
+      "sortOrder": 70,
+      "venueScope": "Both",
+      "options": [
+        {
+          "code": "A",
+          "name": "Phương án A",
+          "sortOrder": 10,
+          "dishes": [
+            "Gỏi bắp bò bóp thấu + bpt",
+            "Súp hải sâm 03 vị",
+            "Bồ câu quay + bánh bao chiên",
+            "Tôm sú cocktail",
+            "Giò heo Bát Trân + bánh mỳ",
+            "Đông sương trái cây"
+          ]
+        },
+        {
+          "code": "B",
+          "name": "Phương án B",
+          "sortOrder": 20,
+          "dishes": [
+            "Khai vị Tình Yêu",
+            "Súp tóc tiên hải sản",
+            "Tôm sú sốt XO",
+            "Cá mú hấp xì dầu",
+            "Vịt tiềm sen + bánh mỳ",
+            "Trái cây"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "tier-08",
+      "name": "Thực đơn 5.000.000 đồng/bàn",
+      "slug": "menu-tiec-cuoi-tier-08",
+      "description": "Mức giá 5.000.000 đồng cho một bàn 10 khách. Ngoài phương án A và B, mức giá này có thêm phương án C dùng chung mức giá.",
+      "price": 5000000,
+      "guestsPerTable": 10,
+      "sortOrder": 80,
+      "venueScope": "Both",
+      "options": [
+        {
+          "code": "A",
+          "name": "Phương án A",
+          "sortOrder": 10,
+          "dishes": [
+            "Khai vị Nhật Bản",
+            "Súp tóc tiên hải sản",
+            "Gà quay + xôi chiên",
+            "Cá hồi nướng phomai kèm rau củ",
+            "Giò heo sốt nấm đông cô + bánh mỳ",
+            "Sữa chua"
+          ]
+        },
+        {
+          "code": "B",
+          "name": "Phương án B",
+          "sortOrder": 20,
+          "dishes": [
+            "Khai vị Tứ Quý",
+            "Súp rong biển hải sản",
+            "Tôm sú nướng sốt Wasabi",
+            "Sườn bò Mỹ sốt tiêu",
+            "Cá mú hấp",
+            "Gà hầm ngũ vị + bánh mỳ",
+            "Rau câu plan"
+          ]
+        },
+        {
+          "code": "C",
+          "name": "Phương án C",
+          "sortOrder": 30,
+          "dishes": [
+            "Khai vị HongKong",
+            "Súp hoành thánh",
+            "Bồ câu quay + bánh bao",
+            "Tôm sú hấp dừa",
+            "Cá Sapa nướng giấy bạc",
+            "Bò nấu kiểu Ý + bánh mỳ",
+            "Trái cây (02 loại)"
+          ]
+        }
+      ]
+    }
+  ],
+
+  "services": [
+    {
+      "key": "service-dance-4-performers",
+      "name": "Bài múa hoặc bài nhảy (4 diễn viên)",
+      "priceType": "Fixed",
+      "priceFrom": 1500000,
+      "sortOrder": 10
+    },
+    {
+      "key": "service-dance-6-performers",
+      "name": "Bài múa hoặc bài nhảy (6 diễn viên)",
+      "priceType": "Fixed",
+      "priceFrom": 2000000,
+      "sortOrder": 20
+    },
+    {
+      "key": "service-light-music-singer",
+      "name": "Ca sỹ nhạc nhẹ (tùy ca sỹ)",
+      "priceType": "From",
+      "priceFrom": 2000000,
+      "sortOrder": 30
+    },
+    {
+      "key": "service-big-band-organ",
+      "name": "Dàn nhạc lớn + organ",
+      "priceType": "Fixed",
+      "priceFrom": 3000000,
+      "sortOrder": 40
+    },
+    {
+      "key": "service-organ",
+      "name": "Organ",
+      "priceType": "Fixed",
+      "priceFrom": 1000000,
+      "sortOrder": 50
+    },
+    {
+      "key": "service-big-music-1-drum-2-guitar",
+      "name": "Nhạc lớn (1 trống + 2 ghita)",
+      "priceType": "Fixed",
+      "priceFrom": 2000000,
+      "sortOrder": 60
+    },
+    {
+      "key": "service-full-event-ensemble",
+      "name": "Hòa tấu cả buổi tiệc",
+      "priceType": "Fixed",
+      "priceFrom": 3500000,
+      "sortOrder": 70
+    },
+    {
+      "key": "service-violin",
+      "name": "Violon",
+      "priceType": "Fixed",
+      "priceFrom": 1500000,
+      "sortOrder": 80
+    },
+    {
+      "key": "service-mc",
+      "name": "MC",
+      "priceType": "Fixed",
+      "priceFrom": 1000000,
+      "sortOrder": 90
+    },
+    {
+      "key": "service-ice-pouring-statue",
+      "name": "Tượng băng đăng rót rượu",
+      "priceType": "Fixed",
+      "priceFrom": 1800000,
+      "sortOrder": 100
+    },
+    {
+      "key": "service-guest-gifts",
+      "name": "Quà tặng dành cho khách dự tiệc",
+      "priceType": "DependsOnType",
+      "note": "Giá tùy thuộc vào loại quà tặng.",
+      "sortOrder": 110
+    },
+    {
+      "key": "service-vip-service-style",
+      "name": "Phong cách phục vụ VIP",
+      "priceType": "Fixed",
+      "priceFrom": 200000,
+      "unit": "bàn",
+      "sortOrder": 120
+    },
+    {
+      "key": "service-customer-brings-drinks",
+      "name": "Khách hàng mang nước uống đến",
+      "priceType": "Fixed",
+      "priceFrom": 150000,
+      "unit": "bàn",
+      "note": "Phí phục vụ.",
+      "sortOrder": 130
+    },
+    {
+      "key": "service-brings-wine-fee",
+      "name": "Phí mang rượu vào",
+      "priceType": "Fixed",
+      "priceFrom": 300000,
+      "unit": "bàn",
+      "sortOrder": 140
+    },
+    {
+      "key": "service-brings-music-fee",
+      "name": "Phí mang nhạc vào",
+      "priceType": "Fixed",
+      "priceFrom": 1000000,
+      "sortOrder": 150
+    },
+    {
+      "key": "service-karaoke",
+      "name": "Karaoke + màn hình + máy chiếu",
+      "priceType": "Fixed",
+      "priceFrom": 2000000,
+      "sortOrder": 160
+    },
+    {
+      "key": "service-decoration-cleanup-fee",
+      "name": "Phí vệ sinh khi khách mang hoa và đồ vật trang trí đến",
+      "priceType": "Range",
+      "priceFrom": 1000000,
+      "priceTo": 3000000,
+      "note": "Liên hệ nhân viên để được tư vấn.",
+      "sortOrder": 170
+    }
+  ],
+
+  "beverages": [
+    { "key": "beverage-laru-lon-vang", "name": "Laru lon vàng", "priceBelowThreshold": 17500, "priceAboveThreshold": 16500, "unit": "lon", "sortOrder": 10 },
+    { "key": "beverage-laru-smooth", "name": "Laru smooth", "priceBelowThreshold": 17500, "priceAboveThreshold": 16500, "sortOrder": 20 },
+    { "key": "beverage-heineken-lon-xanh", "name": "Heineken lon xanh", "priceBelowThreshold": 25500, "priceAboveThreshold": 24500, "unit": "lon", "sortOrder": 30 },
+    { "key": "beverage-heineken-lon-bac", "name": "Heineken lon bạc", "priceBelowThreshold": 26500, "priceAboveThreshold": 25500, "unit": "lon", "sortOrder": 40 },
+    { "key": "beverage-heineken-chai-xanh", "name": "Heineken chai xanh", "priceBelowThreshold": 24000, "priceAboveThreshold": 23000, "unit": "chai", "sortOrder": 50 },
+    { "key": "beverage-heineken-chai-bac", "name": "Heineken chai bạc", "priceBelowThreshold": 24000, "priceAboveThreshold": 23000, "unit": "chai", "sortOrder": 60 },
+    { "key": "beverage-tiger-lon-xanh", "name": "Tiger lon xanh", "priceBelowThreshold": 23500, "priceAboveThreshold": 22500, "unit": "lon", "sortOrder": 70 },
+    { "key": "beverage-tiger-lon-bac", "name": "Tiger lon bạc", "priceBelowThreshold": 24500, "priceAboveThreshold": 23500, "unit": "lon", "sortOrder": 80 },
+    { "key": "beverage-tiger-chai-nau", "name": "Tiger chai nâu", "priceBelowThreshold": 22500, "priceAboveThreshold": 21500, "unit": "chai", "sortOrder": 90 },
+    { "key": "beverage-tiger-chai-bac", "name": "Tiger chai bạc", "priceBelowThreshold": 23500, "priceAboveThreshold": 22500, "unit": "chai", "sortOrder": 100 },
+    { "key": "beverage-ngot-lon", "name": "Ngọt lon", "priceBelowThreshold": 14000, "priceAboveThreshold": 13000, "unit": "lon", "sortOrder": 110 },
+    { "key": "beverage-suoi-dasani", "name": "Suối Dasani", "priceBelowThreshold": 10000, "priceAboveThreshold": 9000, "sortOrder": 120 },
+    { "key": "beverage-suoi-aquafina", "name": "Suối Aquafina", "priceBelowThreshold": 10000, "priceAboveThreshold": 9000, "sortOrder": 130 }
+  ],
+
+  "nuts": [
+    {
+      "key": "nut-hat-dua",
+      "name": "Hạt dưa",
+      "priceType": "TimeDependent",
+      "note": "Giá phụ thuộc giá thị trường hiện tại.",
+      "sortOrder": 10
+    },
+    {
+      "key": "nut-hat-dieu",
+      "name": "Hạt điều",
+      "priceType": "TimeDependent",
+      "note": "Giá phụ thuộc giá thị trường hiện tại.",
+      "sortOrder": 20
+    },
+    {
+      "key": "nut-hat-dau-nanh-say",
+      "name": "Hạt đậu nành sấy",
+      "priceType": "Unspecified",
+      "sortOrder": 30
+    },
+    {
+      "key": "nut-hat-huong-duong",
+      "name": "Hạt hướng dương",
+      "priceType": "Unspecified",
+      "sortOrder": 40
+    },
+    {
+      "key": "nut-dau-phong-rang-muoi",
+      "name": "Đậu phộng rang muối",
+      "priceType": "Unspecified",
+      "sortOrder": 50
+    },
+    {
+      "key": "nut-dau-phong-da-ca-rim-toi-ot",
+      "name": "Đậu phộng da cá rim tỏi ớt",
+      "priceType": "Unspecified",
+      "sortOrder": 60
+    }
+  ],
+
+  "promotions": [
+    {
+      "key": "promo-14-24",
+      "name": "Ưu đãi 14–24 bàn",
+      "rangeLabel": "14–24 bàn",
+      "minTableCount": 14,
+      "maxTableCount": 24,
+      "sortOrder": 10,
+      "benefits": [
+        "Bông trang trí bàn tiệc",
+        "Hệ thống âm thanh hiện đại",
+        "Tháp champagne"
+      ]
+    },
+    {
+      "key": "promo-25-35",
+      "name": "Ưu đãi 25–35 bàn",
+      "rangeLabel": "25–35 bàn",
+      "minTableCount": 25,
+      "maxTableCount": 35,
+      "baseKey": "promo-14-24",
+      "sortOrder": 20,
+      "benefits": [
+        "Sân khấu LED hiện đại",
+        "Bàn tiếp khách trang trí",
+        "Bánh kem trang trí",
+        "Hỗ trợ 50% bàn dùng thử 6 người",
+        "Đồ ăn nhẹ cho cô dâu chú rể",
+        "Đồ ăn nhẹ cho cả hai bên cha mẹ",
+        "MC tiệc cưới",
+        "Organ trong suốt buổi tiệc",
+        "Bốn diễn viên nhảy múa dẫn dắt cô dâu",
+        "Backdrop tiếp khách tiêu chuẩn"
+      ]
+    },
+    {
+      "key": "promo-36-45",
+      "name": "Ưu đãi 36–45 bàn",
+      "rangeLabel": "36–45 bàn",
+      "minTableCount": 36,
+      "maxTableCount": 45,
+      "baseKey": "promo-25-35",
+      "sortOrder": 30,
+      "benefits": [
+        "Bàn dùng thử 6 người",
+        "Sáu diễn viên nhảy múa dẫn dắt cô dâu",
+        "Violon tiếp khách 30 phút trước lễ cưới"
+      ]
+    },
+    {
+      "key": "promo-46-55",
+      "name": "Ưu đãi 46–55 bàn",
+      "rangeLabel": "46–55 bàn",
+      "minTableCount": 46,
+      "maxTableCount": 55,
+      "baseKey": "promo-36-45",
+      "sortOrder": 40,
+      "benefits": [
+        "Tượng băng đăng rót rượu"
+      ]
+    },
+    {
+      "key": "promo-56-70",
+      "name": "Ưu đãi 56–70 bàn",
+      "rangeLabel": "56–70 bàn",
+      "minTableCount": 56,
+      "maxTableCount": 70,
+      "baseKey": "promo-46-55",
+      "sortOrder": 50,
+      "benefits": [
+        "Bàn dùng thử 10 người",
+        "Nhạc tiếp khách (piano + violon)",
+        "Ca sĩ mở màn",
+        "Ban nhạc lớn (1 trống + 2 ghita)"
+      ]
+    },
+    {
+      "key": "promo-71-85",
+      "name": "Ưu đãi 71–85 bàn",
+      "rangeLabel": "71–85 bàn",
+      "minTableCount": 71,
+      "maxTableCount": 85,
+      "baseKey": "promo-56-70",
+      "sortOrder": 60,
+      "benefits": [
+        "Nước ngọt miễn phí cho khách (2 lon mỗi bàn)",
+        "Miễn phí 1 bàn dùng sau tiệc (không trừ vào số bàn đã đặt)",
+        "Hạt dẻ ăn khai"
+      ]
+    },
+    {
+      "key": "promo-86-95",
+      "name": "Ưu đãi 86–95 bàn",
+      "rangeLabel": "86–95 bàn",
+      "minTableCount": 86,
+      "maxTableCount": 95,
+      "baseKey": "promo-71-85",
+      "sortOrder": 70,
+      "benefits": [
+        "Violon trong suốt buổi tiệc",
+        "Saxophone trong suốt buổi tiệc",
+        "Múa đường sôi động"
+      ]
+    },
+    {
+      "key": "promo-over-95",
+      "name": "Ưu đãi trên 95 bàn",
+      "rangeLabel": "Trên 95 bàn",
+      "minTableCount": 96,
+      "maxTableCount": null,
+      "baseKey": "promo-86-95",
+      "sortOrder": 80,
+      "benefits": [
+        "Miễn phí 2 bàn dùng sau tiệc (không trừ vào số bàn đã đặt)"
+      ]
+    }
+  ],
+
+  "promotionTerms": [
+    {
+      "key": "promotion-term-booked-tables",
+      "content": "Khuyến mãi chỉ áp dụng cho số bàn đã đặt chính thức trong hợp đồng, không áp dụng cho các bàn phát sinh thêm trong buổi tiệc.",
+      "sortOrder": 10
+    },
+    {
+      "key": "promotion-term-no-cash-conversion",
+      "content": "Quà tặng không quy đổi thành tiền mặt hoặc quà tặng khác.",
+      "sortOrder": 20
+    },
+    {
+      "key": "promotion-term-subject-to-change",
+      "content": "Khuyến mãi mang tính tham khảo và có thể thay đổi mà không cần báo trước.",
+      "sortOrder": 30
+    }
+  ],
+
+  "depositTerms": [
+    {
+      "key": "deposit-first-amber",
+      "venueScope": "PhiLu",
+      "hallSlug": "philu-sanh-amber",
+      "hallName": "Sảnh Amber",
+      "stage": "First",
+      "amount": 12000000,
+      "description": "Đặt cọc giữ chỗ.",
+      "sortOrder": 10
+    },
+    {
+      "key": "deposit-first-pearl",
+      "venueScope": "PhiLu",
+      "hallSlug": "philu-sanh-pearl",
+      "hallName": "Sảnh Pearl",
+      "stage": "First",
+      "amount": 8000000,
+      "description": "Đặt cọc giữ chỗ.",
+      "sortOrder": 20
+    },
+    {
+      "key": "deposit-first-crystal",
+      "venueScope": "PhiLu",
+      "hallSlug": "philu-sanh-crystal",
+      "hallName": "Sảnh Crystal",
+      "stage": "First",
+      "amount": 5000000,
+      "description": "Đặt cọc giữ chỗ.",
+      "sortOrder": 30
+    },
+    {
+      "key": "deposit-first-diamond",
+      "venueScope": "PhiLu",
+      "hallSlug": "philu-sanh-diamond",
+      "hallName": "Sảnh Diamond",
+      "stage": "First",
+      "amount": 5000000,
+      "description": "Đặt cọc giữ chỗ.",
+      "sortOrder": 40
+    },
+    {
+      "key": "deposit-second-amber",
+      "venueScope": "PhiLu",
+      "hallSlug": "philu-sanh-amber",
+      "hallName": "Sảnh Amber",
+      "stage": "Second",
+      "amount": 18000000,
+      "description": "Đặt cọc xác nhận thực đơn.",
+      "sortOrder": 50
+    },
+    {
+      "key": "deposit-second-pearl",
+      "venueScope": "PhiLu",
+      "hallSlug": "philu-sanh-pearl",
+      "hallName": "Sảnh Pearl",
+      "stage": "Second",
+      "amount": 12000000,
+      "description": "Đặt cọc xác nhận thực đơn.",
+      "sortOrder": 60
+    },
+    {
+      "key": "deposit-second-crystal",
+      "venueScope": "PhiLu",
+      "hallSlug": "philu-sanh-crystal",
+      "hallName": "Sảnh Crystal",
+      "stage": "Second",
+      "amount": 5000000,
+      "description": "Đặt cọc xác nhận thực đơn.",
+      "sortOrder": 70
+    },
+    {
+      "key": "deposit-second-diamond",
+      "venueScope": "PhiLu",
+      "hallSlug": "philu-sanh-diamond",
+      "hallName": "Sảnh Diamond",
+      "stage": "Second",
+      "amount": 5000000,
+      "description": "Đặt cọc xác nhận thực đơn.",
+      "sortOrder": 80
+    },
+    {
+      "key": "deposit-final-payment",
+      "venueScope": "PhiLu",
+      "hallSlug": null,
+      "hallName": null,
+      "stage": "Final",
+      "amount": null,
+      "description": "Thanh toán phần còn lại ngay sau khi kết thúc tiệc.",
+      "sortOrder": 90
+    }
+  ],
+
+  "priceNotes": [
+    {
+      "key": "price-note-provisional-validity",
+      "title": "Giá tham khảo",
+      "content": "Các mức giá trong bảng thực đơn là giá tham khảo tạm thời theo bảng giá gốc của nhà hàng. Hiệu lực của bảng giá gốc đã kết thúc vào tháng 8/2026. Vui lòng liên hệ nhà hàng để xác nhận mức giá áp dụng thực tế.",
+      "validUntil": "2026-08-31",
+      "vatNote": "Giá chưa bao gồm VAT (theo bảng giá gốc).",
+      "sortOrder": 10
+    },
+    {
+      "key": "price-note-beverage",
+      "title": "Giá nước uống",
+      "content": "Giá nước uống được tính theo đơn vị tại thời điểm tổ chức tiệc và chưa bao gồm VAT.",
+      "validUntil": "2026-08-31",
+      "vatNote": "Giá chưa bao gồm VAT (theo bảng giá gốc).",
+      "sortOrder": 20
+    }
+  ]
+}

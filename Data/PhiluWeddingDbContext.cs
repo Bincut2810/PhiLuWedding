@@ -25,6 +25,19 @@ public class PhiluWeddingDbContext : DbContext
     public DbSet<MenuComboDish> MenuComboDishes => Set<MenuComboDish>();
     public DbSet<DishImage> DishImages => Set<DishImage>();
 
+    // Wedding-menu price tiers (one shared price per tier, both venues) and
+    // the additional menu sections: services, beverages, appetizer nuts,
+    // promotions, deposit terms and price metadata.
+    public DbSet<MenuTier> MenuTiers => Set<MenuTier>();
+    public DbSet<MenuService> MenuServices => Set<MenuService>();
+    public DbSet<MenuBeverage> MenuBeverages => Set<MenuBeverage>();
+    public DbSet<MenuAppetizerNut> MenuAppetizerNuts => Set<MenuAppetizerNut>();
+    public DbSet<MenuPromotion> MenuPromotions => Set<MenuPromotion>();
+    public DbSet<MenuPromotionBenefit> MenuPromotionBenefits => Set<MenuPromotionBenefit>();
+    public DbSet<MenuPromotionTerm> MenuPromotionTerms => Set<MenuPromotionTerm>();
+    public DbSet<MenuDepositTerm> MenuDepositTerms => Set<MenuDepositTerm>();
+    public DbSet<MenuPriceNote> MenuPriceNotes => Set<MenuPriceNote>();
+
     public DbSet<BookingRequest> BookingRequests => Set<BookingRequest>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

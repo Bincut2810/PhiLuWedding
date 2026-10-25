@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using PhiluWedding.Domain;
 using PhiluWedding.Domain.Entities;
 
 namespace PhiluWedding.Data.Configurations;
@@ -35,6 +36,12 @@ public class MenuSetConfiguration : IEntityTypeConfiguration<MenuSet>
             .HasColumnName("description")
             .HasColumnType("text");
 
+        builder.Property(x => x.VenueScope)
+            .HasColumnName("venue_scope")
+            .HasMaxLength(50)
+            .IsRequired()
+            .HasDefaultValue(MenuVenueScopes.BothVenues);
+
         builder.Property(x => x.SortOrder)
             .HasColumnName("sort_order")
             .HasDefaultValue(0);
@@ -57,6 +64,9 @@ public class MenuSetConfiguration : IEntityTypeConfiguration<MenuSet>
 
         builder.HasIndex(x => new { x.IsPublished, x.SortOrder })
             .HasDatabaseName("ix_menu_sets_published_sort");
+
+        builder.HasIndex(x => new { x.VenueScope, x.SortOrder })
+            .HasDatabaseName("ix_menu_sets_scope_sort");
 
         builder.HasMany(x => x.Combos)
             .WithOne(x => x.MenuSet!)

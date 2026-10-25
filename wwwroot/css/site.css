@@ -825,7 +825,7 @@ main {
     gap: clamp(1rem, 2.4vw, 1.5rem);
     padding: 1.5rem;
     /* keep the overlay above page content even on extreme zoom */
-    position: relative;
+  position: relative;
     z-index: 1;
 }
 

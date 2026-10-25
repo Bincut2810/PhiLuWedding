@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using PhiluWedding.Domain;
 
 namespace PhiluWedding.Domain.Entities;
 
@@ -17,6 +18,12 @@ public class MenuSet
     public string? ShortDescription { get; set; }
 
     public string? Description { get; set; }
+
+    /// <summary>
+    /// Venue applicability of the whole menu set — see <see cref="MenuVenueScopes"/>.
+    /// The wedding menu set is shared by both venues.
+    /// </summary>
+    public string VenueScope { get; set; } = MenuVenueScopes.BothVenues;
 
     public int SortOrder { get; set; }
 

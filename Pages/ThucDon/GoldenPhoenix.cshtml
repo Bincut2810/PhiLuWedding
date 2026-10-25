@@ -1,0 +1,14 @@
+@page "/thuc-don/golden-phoenix"
+@model PhiluWedding.Pages.ThucDon.MenuGoldenPhoenixModel
+@{
+    ViewData["Title"] = "Thực đơn tiệc cưới Golden Phoenix";
+    ViewData["Description"] =
+        "Bảng giá thực đơn tiệc cưới tại Golden Phoenix: các mức giá và phương án món ăn " +
+        "dùng chung với Trung tâm Hội nghị Tiệc cưới Phì Lũ.";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/menu-venue.css" asp-append-version="true" />
+}
+
+<partial name="_MenuVenueContent" model="Model" />

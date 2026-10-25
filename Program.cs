@@ -106,6 +106,11 @@ app.MapRazorPages();
 //   Database__AutoMigrateOnStartup = true  (environment variable)
 //
 //   dotnet run -- --seed                   (CLI argument, runs the demo seeder)
+//   dotnet run -- --seed-menu              (CLI argument, seeds the fixed
+//                                          wedding-menu catalog)
+//
+//   Database:SeedMenuOnStartup = true      (config) or
+//   Database__SeedMenuOnStartup = true     (environment variable)
 //
 // All startup database operations are BEST-EFFORT: failures are logged as
 // warnings and the application keeps serving. NEVER run destructive database
@@ -120,8 +125,10 @@ app.MapRazorPages();
 // ===========================================================================
 var autoMigrate = builder.Configuration.GetValue<bool>("Database:AutoMigrateOnStartup");
 var seedRequested = args.Any(a => string.Equals(a, "--seed", StringComparison.OrdinalIgnoreCase));
+var seedMenuRequested = args.Any(a => string.Equals(a, "--seed-menu", StringComparison.OrdinalIgnoreCase));
+var seedMenuOnStartup = builder.Configuration.GetValue<bool>("Database:SeedMenuOnStartup");
 
-if (hasConnectionString && (autoMigrate || seedRequested))
+if (hasConnectionString && (autoMigrate || seedRequested || seedMenuRequested || seedMenuOnStartup))
 {
     using var scope = app.Services.CreateScope();
     var logger = scope.ServiceProvider.GetRequiredService<ILoggerFactory>().CreateLogger("Database");
@@ -149,6 +156,23 @@ if (hasConnectionString && (autoMigrate || seedRequested))
                     logger.LogInformation("Migrations applied.");
                 }
                 await DbSeeder.SeedAsync(db, logger);
+            }
+
+            if (seedMenuRequested || seedMenuOnStartup)
+            {
+                // The menu catalog needs its tables, so the schema is brought
+                // up to date first when it is not already done.
+                if (!autoMigrate && !seedRequested)
+                {
+                    logger.LogInformation("Applying pending migrations before seeding the menu catalog...");
+                    await db.Database.MigrateAsync();
+                    logger.LogInformation("Migrations applied.");
+                }
+
+                // Seeding is idempotent: existing rows are kept, missing rows
+                // are inserted, and prices that were edited are never reset.
+                var report = await MenuCatalogSeeder.SeedAsync(db, logger);
+                logger.LogInformation("Menu catalog seed finished. {Summary}", report.Summary());
             }
         }
         catch (Exception ex)

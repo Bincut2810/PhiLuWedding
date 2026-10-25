@@ -71,8 +71,15 @@
     //    onward to another page in the same session
     var loader = document.querySelector("[data-page-loader]");
     if (loader) {
-        var minShowMs = 900;   // shortest time the overlay is ever shown
-        var maxShowMs = 5000;  // safety cap in case a load event never fires
+        // Tuned so the logo reveal (~1300ms from page render) is always
+        // finished BEFORE we start the fade-out, then we hold for a beat
+        // (~1100–1550ms depending on how fast window.load fires) so the
+        // brand mark has a clear "pause for recognition" before it
+        // dissolves upward. Net minimum total visible time ≈ 3.02s
+        // (was ≈ 2.27s) — another ~0.75s slowdown so the logo has more
+        // time to register on quick loads.
+        var minShowMs = 2400;  // shortest time the overlay is ever shown
+        var maxShowMs = 6000;  // safety cap in case a load event never fires
         var fadeOutMs = 620;   // matches the .is-leaving transition in site.css
         var hideTimer = null;
         var armedTimer = null;

@@ -116,6 +116,27 @@
                     <span aria-hidden="true">&rarr;</span>
                 </a>
             </div>
+
         }
+
+        @* The venue price sheets are published under their own pages, so they
+           stay reachable even when the menu-set list cannot be loaded. *@
+        <nav class="menus-page__venues" aria-label="Thực đơn theo nhà hàng">
+            <p class="menus-page__venues-title">Bảng giá thực đơn theo nhà hàng</p>
+            <ul class="menus-page__venues-list" role="list">
+                <li>
+                    <a class="link-arrow" asp-page="/ThucDon/PhiLu">
+                        THỰC ĐƠN TRUNG TÂM HỘI NGHỊ TIỆC CƯỚI PHÌ LŨ
+                        <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="link-arrow" asp-page="/ThucDon/GoldenPhoenix">
+                        THỰC ĐƠN GOLDEN PHOENIX
+                        <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </section>
