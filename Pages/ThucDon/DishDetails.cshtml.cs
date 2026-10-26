@@ -72,32 +72,49 @@ public class DishDetailsModel : PageModel
                 .ToList();
 
             // Combos that include this dish, only through published menus.
-            var combos = await _db.MenuComboDishes
+            // The public scope keeps excluded wedding-menu options out of
+            // the list, so the dish page never links to a hidden option.
+            var scope = await PublicMenuScope.CreateFilterAsync(_db);
+
+            var publishedMenuSetIds = await _db.MenuSets
                 .AsNoTracking()
-                .Where(cd => cd.DishId == id
-                    && cd.MenuCombo != null
-                    && cd.MenuCombo.IsPublished
-                    && cd.MenuCombo.MenuSet != null
-                    && cd.MenuCombo.MenuSet.IsPublished)
-                .OrderBy(cd => cd.MenuCombo!.SortOrder)
-                .ThenBy(cd => cd.MenuComboId)
-                .Select(cd => new
-                {
-                    cd.MenuComboId,
-                    cd.Quantity,
-                    cd.Note,
-                    Combo = cd.MenuCombo!,
-                    ParentMenuSetId = cd.MenuCombo!.MenuSetId,
-                    ParentMenuSetName = cd.MenuCombo!.MenuSet!.Name,
-                    ParentMenuSetSlug = cd.MenuCombo!.MenuSet!.Slug
-                })
+                .Where(m => m.IsPublished)
+                .Select(m => m.Id)
+                .ToListAsync();
+
+            var eligibleComboIds = await scope.ApplyTo(_db.MenuCombos.AsNoTracking())
+                .Where(c => c.IsPublished && publishedMenuSetIds.Contains(c.MenuSetId))
+                .Select(c => c.Id)
+                .ToListAsync();
+
+            // The links, the option and its menu set are read with explicit
+            // joins, so the query never depends on a navigation property
+            // being loaded.
+            var combos = await (from link in _db.MenuComboDishes.AsNoTracking()
+                                where link.DishId == id && eligibleComboIds.Contains(link.MenuComboId)
+                                join combo in _db.MenuCombos.AsNoTracking() on link.MenuComboId equals combo.Id
+                                join menuSet in _db.MenuSets.AsNoTracking() on combo.MenuSetId equals menuSet.Id
+                                orderby combo.SortOrder, link.MenuComboId
+                                select new
+                                {
+                                    link.MenuComboId,
+                                    link.Quantity,
+                                    link.Note,
+                                    ComboId = combo.Id,
+                                    ComboName = combo.Name,
+                                    ComboSlug = combo.Slug,
+                                    ComboPrice = combo.Price,
+                                    ParentMenuSetId = menuSet.Id,
+                                    ParentMenuSetName = menuSet.Name,
+                                    ParentMenuSetSlug = menuSet.Slug
+                                })
                 .ToListAsync();
 
             var comboVms = combos.Select(c => new DishComboViewModel(
-                c.Combo.Id,
-                c.Combo.Name,
-                c.Combo.Slug,
-                c.Combo.Price,
+                c.ComboId,
+                c.ComboName,
+                c.ComboSlug,
+                c.ComboPrice,
                 c.Quantity,
                 c.Note,
                 new MenuSetSummary(ParentMenuSetId: c.ParentMenuSetId,

@@ -1,15 +1,14 @@
 @model PhiluWedding.Pages.ThucDon.MenuVenuePageModel
 @{
     var tier = Model.SelectedTier;
-    var threshold = Model.BeverageThresholdTableCount;
 }
 
 @* =====================================================================
    PUBLIC WEDDING MENU — SHARED BODY
    Used by /thuc-don/philu and /thuc-don/golden-phoenix. Both venues
-   read the same shared price tiers; the venue only decides which
-   supporting sections are in scope. Every wording below comes from the
-   source price sheet, so nothing is invented here.
+   read the same shared price tiers and the same menu options. Every
+   wording below comes from the source price sheet, so nothing is
+   invented here.
    ===================================================================== *@
 
 <section class="menu-page" aria-labelledby="menu-page-heading">
@@ -57,26 +56,6 @@
                 <ul class="menu-jump__list" role="list">
                     <li><a class="menu-jump__link" href="#menu-prices">Mức giá</a></li>
                     <li><a class="menu-jump__link" href="#menu-options">Phương án món ăn</a></li>
-                    @if (Model.HasServices)
-                    {
-                        <li><a class="menu-jump__link" href="#menu-services">Dịch vụ thêm</a></li>
-                    }
-                    @if (Model.HasBeverages)
-                    {
-                        <li><a class="menu-jump__link" href="#menu-beverages">Nước uống</a></li>
-                    }
-                    @if (Model.HasNuts)
-                    {
-                        <li><a class="menu-jump__link" href="#menu-nuts">Hạt ăn khai</a></li>
-                    }
-                    @if (Model.HasPromotions)
-                    {
-                        <li><a class="menu-jump__link" href="#menu-promotions">Ưu đãi</a></li>
-                    }
-                    @if (Model.HasDepositTerms)
-                    {
-                        <li><a class="menu-jump__link" href="#menu-deposit">Đặt cọc</a></li>
-                    }
                     @if (Model.PriceNotes.Count > 0)
                     {
                         <li><a class="menu-jump__link" href="#menu-notes">Ghi chú về giá</a></li>
@@ -165,233 +144,6 @@
                 </section>
             }
 
-            @* ---------- Additional services ---------- *@
-            @if (Model.HasServices)
-            {
-                <section class="menu-section" id="menu-services" aria-labelledby="menu-services-heading">
-                    <p class="eyebrow">DỊCH VỤ THÊM</p>
-                    <h2 id="menu-services-heading" class="menu-section__title">Dịch vụ và phí phụ</h2>
-                    <p class="menu-section__lede">
-                        Các dịch vụ và khoản phí có thể thêm vào gói thực đơn.
-                    </p>
-                    <ul class="menu-list" role="list">
-                        @foreach (var service in Model.Services)
-                        {
-                            <li class="menu-list__row">
-                                <span class="menu-list__name">@service.Name</span>
-                                <span class="menu-list__price">
-                                    @if (service.PriceDisplay is not null)
-                                    {
-                                        <span class="menu-list__amount">@service.PriceDisplay</span>
-                                        @if (!string.IsNullOrWhiteSpace(service.Note))
-                                        {
-                                            <span class="menu-list__note">@service.Note</span>
-                                        }
-                                    }
-                                    else
-                                    {
-                                        <span class="menu-list__amount menu-list__amount--na">@service.PriceFallback</span>
-                                    }
-                                </span>
-                            </li>
-                        }
-                    </ul>
-                </section>
-            }
-
-            @* ---------- Beverages ---------- *@
-            @if (Model.HasBeverages)
-            {
-                <section class="menu-section" id="menu-beverages" aria-labelledby="menu-beverages-heading">
-                    <p class="eyebrow">THỰC ĐƠN NƯỚC UỐNG</p>
-                    <h2 id="menu-beverages-heading" class="menu-section__title">Nước uống</h2>
-                    <p class="menu-section__lede">
-                        Giá theo đơn vị, tính theo số bàn của buổi tiệc.
-                    </p>
-                    <div class="menu-table-wrap">
-                        <table class="menu-table">
-                            <caption class="menu-table__caption">Bảng giá nước uống</caption>
-                            <thead>
-                                <tr>
-                                    <th scope="col">Món</th>
-                                    <th scope="col">Dưới @threshold bàn</th>
-                                    <th scope="col">Trên @threshold bàn</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var beverage in Model.Beverages)
-                                {
-                                    <tr>
-                                        <th scope="row">@beverage.Name</th>
-                                        <td>@(beverage.PriceBelowDisplay ?? "—")</td>
-                                        <td>@(beverage.PriceAboveDisplay ?? "—")</td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                    @if (!string.IsNullOrWhiteSpace(Model.BeverageThresholdNote))
-                    {
-                        <p class="menu-section__note">@Model.BeverageThresholdNote</p>
-                    }
-                </section>
-            }
-
-            @* ---------- Appetizer nuts ---------- *@
-            @if (Model.HasNuts)
-            {
-                <section class="menu-section" id="menu-nuts" aria-labelledby="menu-nuts-heading">
-                    <p class="eyebrow">ĂN KHAI</p>
-                    <h2 id="menu-nuts-heading" class="menu-section__title">Hạt ăn khai</h2>
-                    <ul class="menu-list" role="list">
-                        @foreach (var nut in Model.Nuts)
-                        {
-                            <li class="menu-list__row">
-                                <span class="menu-list__name">
-                                    @nut.Name
-                                    @if (!string.IsNullOrWhiteSpace(nut.Description))
-                                    {
-                                        <span class="menu-list__desc">@nut.Description</span>
-                                    }
-                                </span>
-                                <span class="menu-list__price">
-                                    @if (nut.PriceDisplay is not null)
-                                    {
-                                        <span class="menu-list__amount">@nut.PriceDisplay</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="menu-list__amount menu-list__amount--na">@nut.PriceFallback</span>
-                                    }
-                                </span>
-                            </li>
-                        }
-                    </ul>
-                </section>
-            }
-
-            @* ---------- Promotions ---------- *@
-            @if (Model.HasPromotions)
-            {
-                <section class="menu-section" id="menu-promotions" aria-labelledby="menu-promotions-heading">
-                    <p class="eyebrow">ƯU ĐÃI THEO SỐ BÀN</p>
-                    <h2 id="menu-promotions-heading" class="menu-section__title">Quyền lợi theo số bàn</h2>
-                    <p class="menu-section__lede">
-                        Quyền lợi được tính theo số bàn đã đặt trong hợp đồng.
-                    </p>
-                    <ul class="menu-promotions" role="list">
-                        @foreach (var promotion in Model.Promotions)
-                        {
-                            <li class="menu-promo">
-                                <div class="menu-promo__head">
-                                    <h3 class="menu-promo__title">@promotion.RangeLabel</h3>
-                                    @if (promotion.IncludesPreviousTier && !string.IsNullOrWhiteSpace(promotion.BaseRangeLabel))
-                                    {
-                                        <p class="menu-promo__inherit">
-                                            Bao gồm quyền lợi của mức @promotion.BaseRangeLabel.
-                                        </p>
-                                    }
-                                </div>
-                                <ul class="menu-promo__benefits" role="list">
-                                    @foreach (var benefit in promotion.CumulativeBenefits)
-                                    {
-                                        <li>@benefit</li>
-                                    }
-                                </ul>
-                            </li>
-                        }
-                    </ul>
-                    @if (Model.PromotionTerms.Count > 0)
-                    {
-                        <div class="menu-terms">
-                            <h3 class="menu-terms__title">Điều kiện áp dụng</h3>
-                            <ul class="menu-terms__list" role="list">
-                                @foreach (var term in Model.PromotionTerms)
-                                {
-                                    <li>@term.Content</li>
-                                }
-                            </ul>
-                        </div>
-                    }
-                </section>
-            }
-
-            @* ---------- Deposit terms ---------- *@
-            @if (Model.HasDepositTerms)
-            {
-                <section class="menu-section" id="menu-deposit" aria-labelledby="menu-deposit-heading">
-                    <p class="eyebrow">ĐIỀU KHOẢN</p>
-                    <h2 id="menu-deposit-heading" class="menu-section__title">Điều khoản đặt cọc</h2>
-                    <div class="menu-table-wrap">
-                        <table class="menu-table">
-                            <caption class="menu-table__caption">Bảng đặt cọc theo sảnh</caption>
-                            <thead>
-                                <tr>
-                                    <th scope="col">Sảnh</th>
-                                    <th scope="col">Đặt cọc lần 1</th>
-                                    <th scope="col">Đặt cọc lần 2</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var hall in Model.DepositHalls)
-                                {
-                                    <tr>
-                                        <th scope="row">@hall.HallName</th>
-                                        <td>
-                                            @if (hall.First is not null)
-                                            {
-                                                <span class="menu-table__amount">@(hall.First.AmountDisplay ?? "—")</span>
-                                                @if (!string.IsNullOrWhiteSpace(hall.First.Description))
-                                                {
-                                                    <span class="menu-table__hint">@hall.First.Description</span>
-                                                }
-                                            }
-                                            else
-                                            {
-                                                <span class="menu-table__amount">—</span>
-                                            }
-                                        </td>
-                                        <td>
-                                            @if (hall.Second is not null)
-                                            {
-                                                <span class="menu-table__amount">@(hall.Second.AmountDisplay ?? "—")</span>
-                                                @if (!string.IsNullOrWhiteSpace(hall.Second.Description))
-                                                {
-                                                    <span class="menu-table__hint">@hall.Second.Description</span>
-                                                }
-                                            }
-                                            else
-                                            {
-                                                <span class="menu-table__amount">—</span>
-                                            }
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                    @foreach (var stage in Model.VenueWideDepositStages)
-                    {
-                        <p class="menu-section__note">
-                            @if (!string.IsNullOrWhiteSpace(stage.Description)
-                                && stage.Description.StartsWith(stage.Label, StringComparison.OrdinalIgnoreCase))
-                            {
-                                @stage.Description
-                            }
-                            else
-                            {
-                                <strong>@stage.Label:</strong>
-                                @if (stage.AmountDisplay is not null)
-                                {
-                                    <text> @stage.AmountDisplay — </text>
-                                }
-                                @stage.Description
-                            }
-                        </p>
-                    }
-                </section>
-            }
-
             @* ---------- Notes about the prices ---------- *@
             @if (Model.PriceNotes.Count > 0)
             {
@@ -410,18 +162,6 @@
                         </div>
                     }
                 </section>
-            }
-
-            @* ---------- Scope notice ---------- *@
-            @if (Model.HasNoSupportingSections)
-            {
-                <div class="menu-note menu-note--scope" role="note">
-                    <p>
-                        Các mục dịch vụ thêm, nước uống, hạt ăn khai, ưu đãi theo số bàn và
-                        điều khoản đặt cọc hiện được công bố cho @Model.OtherVenueName.
-                        Vui lòng liên hệ nhà hàng để được xác nhận cho @Model.VenueName.
-                    </p>
-                </div>
             }
 
             @* ---------- Call to action ---------- *@

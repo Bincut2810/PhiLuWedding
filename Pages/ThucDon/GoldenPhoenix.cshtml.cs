@@ -10,12 +10,10 @@ namespace PhiluWedding.Pages.ThucDon;
 ///
 /// <para>
 /// The page shares its whole presentation with
-/// <see cref="MenuPhiLuModel"/>: both venues read the same eight shared
-/// price tiers and the same option composition, so the price of a tier is
-/// never duplicated per venue. The venue only decides which supporting
-/// sections are in scope — the additional services, beverages, appetizer
-/// nuts, promotions and deposit terms come from the Phì Lũ source price
-/// sheet and stay scoped to Phì Lũ until the business confirms otherwise.
+/// <see cref="MenuPhiLuModel"/>: both venues read the same four shared
+/// price tiers and the same nine menu options, so the price of a tier is
+/// never duplicated per venue. Which tiers and options are public is
+/// decided by <see cref="PublicMenuScope"/>.
 /// </para>
 /// </summary>
 public class MenuGoldenPhoenixModel : MenuVenuePageModel

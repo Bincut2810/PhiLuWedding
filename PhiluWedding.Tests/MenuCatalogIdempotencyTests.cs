@@ -31,9 +31,11 @@ public class MenuCatalogIdempotencyTests
         Assert.Equal(0, second.Created("options"));
         Assert.Equal(0, second.Created("dishes"));
         Assert.Equal(0, second.Created("dishLinks"));
-        Assert.Equal(8, second.Kept("tiers"));
-        Assert.Equal(17, second.Kept("options"));
-        Assert.Equal(104, second.Kept("dishLinks"));
+        Assert.Equal(4, second.Kept("tiers"));
+        Assert.Equal(9, second.Kept("options"));
+
+        // 6 + 6 + 6 + 6 + 6 + 6 + 6 + 7 + 7 dish links.
+        Assert.Equal(56, second.Kept("dishLinks"));
     }
 
     [Fact]
@@ -57,64 +59,30 @@ public class MenuCatalogIdempotencyTests
     }
 
     [Fact]
-    public async Task An_edited_service_price_is_not_reset_by_reseeding()
-    {
-        var db = TestDbContextFactory.Create();
-        await MenuCatalogSeeder.SeedAsync(db, TestDbContextFactory.Logger);
-
-        var service = await db.MenuServices.FirstAsync(s => s.Key == "service-mc");
-        service.PriceFrom = 1234000m;
-        await db.SaveChangesAsync();
-
-        await MenuCatalogSeeder.SeedAsync(db, TestDbContextFactory.Logger);
-
-        var after = await db.MenuServices.FirstAsync(s => s.Key == "service-mc");
-        Assert.Equal(1234000m, after.PriceFrom);
-    }
-
-    [Fact]
-    public async Task An_edited_beverage_price_is_not_reset_by_reseeding()
-    {
-        var db = TestDbContextFactory.Create();
-        await MenuCatalogSeeder.SeedAsync(db, TestDbContextFactory.Logger);
-
-        var beverage = await db.MenuBeverages.FirstAsync(b => b.Key == "beverage-suoi-dasani");
-        beverage.PriceBelowThreshold = 11000m;
-        beverage.PriceAboveThreshold = 10000m;
-        await db.SaveChangesAsync();
-
-        await MenuCatalogSeeder.SeedAsync(db, TestDbContextFactory.Logger);
-
-        var after = await db.MenuBeverages.FirstAsync(b => b.Key == "beverage-suoi-dasani");
-        Assert.Equal(11000m, after.PriceBelowThreshold);
-        Assert.Equal(10000m, after.PriceAboveThreshold);
-    }
-
-    [Fact]
     public async Task Publication_status_and_notes_are_not_reset()
     {
         var db = TestDbContextFactory.Create();
         await MenuCatalogSeeder.SeedAsync(db, TestDbContextFactory.Logger);
 
-        var tier = await db.MenuTiers.FirstAsync(t => t.Key == "tier-05");
+        var tier = await db.MenuTiers.FirstAsync(t => t.Key == "tier-04");
         tier.IsPublished = false;
         tier.Description = "Ghi chú do quản trị viên thêm.";
 
-        var service = await db.MenuServices.FirstAsync(s => s.Key == "service-mc");
-        service.IsPublished = false;
-        service.Note = "Ghi chú của quản trị viên.";
+        var note = await db.MenuPriceNotes.FirstAsync(n => n.Key == "price-note-provisional-validity");
+        note.IsPublished = false;
+        note.Content = "Ghi chú của quản trị viên.";
 
         await db.SaveChangesAsync();
 
         await MenuCatalogSeeder.SeedAsync(db, TestDbContextFactory.Logger);
 
-        var afterTier = await db.MenuTiers.FirstAsync(t => t.Key == "tier-05");
+        var afterTier = await db.MenuTiers.FirstAsync(t => t.Key == "tier-04");
         Assert.False(afterTier.IsPublished);
         Assert.Equal("Ghi chú do quản trị viên thêm.", afterTier.Description);
 
-        var afterService = await db.MenuServices.FirstAsync(s => s.Key == "service-mc");
-        Assert.False(afterService.IsPublished);
-        Assert.Equal("Ghi chú của quản trị viên.", afterService.Note);
+        var afterNote = await db.MenuPriceNotes.FirstAsync(n => n.Key == "price-note-provisional-validity");
+        Assert.False(afterNote.IsPublished);
+        Assert.Equal("Ghi chú của quản trị viên.", afterNote.Content);
     }
 
     [Fact]
@@ -154,6 +122,59 @@ public class MenuCatalogIdempotencyTests
     }
 
     [Fact]
+    public async Task A_dish_that_is_no_longer_used_is_not_removed()
+    {
+        var db = TestDbContextFactory.Create();
+        await MenuCatalogSeeder.SeedAsync(db, TestDbContextFactory.Logger);
+
+        // A dish of a price tier that is no longer part of the public menu.
+        // It is not referenced by any option any more, but it must stay in
+        // the database.
+        var unusedDish = new Dish
+        {
+            Name = "Món của mức giá đã bị gỡ",
+            Slug = "mon-cua-muc-gia-da-bi-go",
+            SortOrder = 9999,
+            IsPublished = true,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
+        };
+
+        db.Dishes.Add(unusedDish);
+        await db.SaveChangesAsync();
+
+        await MenuCatalogSeeder.SeedAsync(db, TestDbContextFactory.Logger);
+
+        Assert.True(await db.Dishes.AnyAsync(d => d.Id == unusedDish.Id));
+    }
+
+    [Fact]
+    public async Task The_seeder_never_creates_the_removed_supporting_sections()
+    {
+        var db = TestDbContextFactory.Create();
+
+        await MenuCatalogSeeder.SeedAsync(db, TestDbContextFactory.Logger);
+
+        Assert.Equal(0, await db.MenuServices.CountAsync());
+        Assert.Equal(0, await db.MenuBeverages.CountAsync());
+        Assert.Equal(0, await db.MenuAppetizerNuts.CountAsync());
+        Assert.Equal(0, await db.MenuPromotions.CountAsync());
+        Assert.Equal(0, await db.MenuPromotionBenefits.CountAsync());
+        Assert.Equal(0, await db.MenuPromotionTerms.CountAsync());
+        Assert.Equal(0, await db.MenuDepositTerms.CountAsync());
+
+        // Running the seed again changes nothing.
+        var second = await MenuCatalogSeeder.SeedAsync(db, TestDbContextFactory.Logger);
+
+        Assert.Equal(0, second.Created("services"));
+        Assert.Equal(0, second.Created("beverages"));
+        Assert.Equal(0, second.Created("nuts"));
+        Assert.Equal(0, second.Created("promotions"));
+        Assert.Equal(0, second.Created("promotionTerms"));
+        Assert.Equal(0, second.Created("depositTerms"));
+    }
+
+    [Fact]
     public async Task One_existing_menu_record_does_not_block_the_rest_of_the_catalog()
     {
         var db = TestDbContextFactory.Create();
@@ -172,10 +193,10 @@ public class MenuCatalogIdempotencyTests
         var report = await MenuCatalogSeeder.SeedAsync(db, TestDbContextFactory.Logger);
 
         // The whole catalog was still seeded.
-        Assert.Equal(8, await db.MenuTiers.CountAsync());
-        Assert.Equal(17, await db.MenuCombos.CountAsync(c => c.OptionCode != null));
-        Assert.Equal(8, report.Created("tiers"));
-        Assert.Equal(17, report.Created("options"));
+        Assert.Equal(4, await db.MenuTiers.CountAsync());
+        Assert.Equal(9, await db.MenuCombos.CountAsync(c => c.OptionCode != null));
+        Assert.Equal(4, report.Created("tiers"));
+        Assert.Equal(9, report.Created("options"));
     }
 
     [Fact]
@@ -185,7 +206,7 @@ public class MenuCatalogIdempotencyTests
         await MenuCatalogSeeder.SeedAsync(db, TestDbContextFactory.Logger);
 
         // Remove one tier and its options to simulate a partial seed.
-        var tier = await db.MenuTiers.FirstAsync(t => t.Key == "tier-06");
+        var tier = await db.MenuTiers.FirstAsync(t => t.Key == "tier-04");
         var optionIds = await db.MenuCombos
             .Where(c => c.MenuTierId == tier.Id)
             .Select(c => c.Id)
@@ -199,8 +220,8 @@ public class MenuCatalogIdempotencyTests
         var report = await MenuCatalogSeeder.SeedAsync(db, TestDbContextFactory.Logger);
 
         // The missing tier is back, and everything else is untouched.
-        Assert.Equal(8, await db.MenuTiers.CountAsync());
-        Assert.Equal(17, await db.MenuCombos.CountAsync(c => c.OptionCode != null));
+        Assert.Equal(4, await db.MenuTiers.CountAsync());
+        Assert.Equal(9, await db.MenuCombos.CountAsync(c => c.OptionCode != null));
         Assert.Equal(1, report.Created("tiers"));
         Assert.Equal(2, report.Created("options"));
 
@@ -209,17 +230,92 @@ public class MenuCatalogIdempotencyTests
     }
 
     [Fact]
-    public async Task The_cumulative_promotion_benefit_list_stays_deterministic_after_reseeding()
+    public async Task A_tierless_option_with_the_catalog_slug_is_linked_to_its_tier()
     {
         var db = TestDbContextFactory.Create();
+
+        var menuSet = new MenuSet
+        {
+            Name = "Thực đơn tiệc cưới",
+            Slug = "menu-tiec-cuoi",
+            SortOrder = 10,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
+        };
+
+        db.MenuSets.Add(menuSet);
+        await db.SaveChangesAsync();
+
+        // The option exists, but the link to its price tier is missing.
+        db.MenuCombos.Add(new MenuCombo
+        {
+            MenuSetId = menuSet.Id,
+            OptionCode = "A",
+            OptionSortOrder = 10,
+            Name = "Thực đơn 2.500.000 đồng/bàn - Phương án A",
+            Slug = "menu-tiec-cuoi-tier-02-a",
+            SortOrder = 1010,
+            IsPublished = true,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
+        });
+
+        await db.SaveChangesAsync();
+
+        var report = await MenuCatalogSeeder.SeedAsync(db, TestDbContextFactory.Logger);
+
+        var option = await db.MenuCombos
+            .Include(c => c.MenuTier!)
+            .SingleAsync(c => c.Slug == "menu-tiec-cuoi-tier-02-a");
+
+        Assert.Equal("tier-02", option.MenuTier!.Key);
+        Assert.Contains(report.Conflicts, c => c.Contains("tier-02") && c.Contains("link"));
+    }
+
+    [Fact]
+    public async Task An_ambiguous_tierless_option_is_not_attached_to_a_tier()
+    {
+        var db = TestDbContextFactory.Create();
+
+        var menuSet = new MenuSet
+        {
+            Name = "Thực đơn tiệc cưới",
+            Slug = "menu-tiec-cuoi",
+            SortOrder = 10,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
+        };
+
+        db.MenuSets.Add(menuSet);
+        await db.SaveChangesAsync();
+
+        // A legacy row of the wedding menu set with an option code but
+        // without a price tier. Its tier cannot be verified.
+        db.MenuCombos.Add(new MenuCombo
+        {
+            MenuSetId = menuSet.Id,
+            OptionCode = "A",
+            OptionSortOrder = 10,
+            Name = "Phương án A (legacy)",
+            Slug = "phuong-an-a-legacy",
+            SortOrder = 10,
+            IsPublished = true,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
+        });
+
+        await db.SaveChangesAsync();
+
         await MenuCatalogSeeder.SeedAsync(db, TestDbContextFactory.Logger);
 
-        var before = await BuildCumulativeAsync(db);
-        await MenuCatalogSeeder.SeedAsync(db, TestDbContextFactory.Logger);
-        var after = await BuildCumulativeAsync(db);
+        // The legacy row keeps its state; it was not attached to a tier.
+        var legacy = await db.MenuCombos.SingleAsync(c => c.Slug == "phuong-an-a-legacy");
+        Assert.Null(legacy.MenuTierId);
 
-        Assert.Equal(before, after);
-        Assert.Equal(28, after.Count);
+        // The catalog option was created as a row of its own.
+        var tier = await db.MenuTiers.FirstAsync(t => t.Key == "tier-02");
+        var option = await db.MenuCombos.FirstAsync(c => c.MenuTierId == tier.Id && c.OptionCode == "A");
+        Assert.Equal("menu-tiec-cuoi-tier-02-a", option.Slug);
     }
 
     [Fact]
@@ -241,7 +337,11 @@ public class MenuCatalogIdempotencyTests
             Assert.Equal(catalog.Tiers[i].Name, tiers[i].Name);
         }
 
-        // Sections.
+        // Options.
+        var options = await db.MenuCombos.Where(c => c.OptionCode != null).ToListAsync();
+        Assert.Equal(catalog.Tiers.Sum(t => t.Options.Count), options.Count);
+
+        // The removed supporting sections stay empty.
         Assert.Equal(catalog.Services.Count, await db.MenuServices.CountAsync());
         Assert.Equal(catalog.Beverages.Count, await db.MenuBeverages.CountAsync());
         Assert.Equal(catalog.Nuts.Count, await db.MenuAppetizerNuts.CountAsync());
@@ -262,42 +362,10 @@ public class MenuCatalogIdempotencyTests
         var dishes = await db.Dishes.OrderBy(d => d.Id).Select(d => $"{d.Name}|{d.Slug}").ToListAsync();
         var links = await db.MenuComboDishes
             .OrderBy(l => l.MenuComboId).ThenBy(l => l.SortOrder)
-            .Select(l => $"{l.MenuComboId}:{l.DishId}:{l.SortOrder}")
+            .Select(l => $"{l.MenuComboId}:{l.DishId}:{l.SortOrder}:{l.Quantity}")
             .ToListAsync();
-        var services = await db.MenuServices.OrderBy(s => s.Key).Select(s => $"{s.Key}:{s.PriceFrom}:{s.PriceTo}").ToListAsync();
-        var beverages = await db.MenuBeverages.OrderBy(b => b.Key).Select(b => $"{b.Key}:{b.PriceBelowThreshold}:{b.PriceAboveThreshold}").ToListAsync();
-        var nuts = await db.MenuAppetizerNuts.OrderBy(n => n.Key).Select(n => $"{n.Key}:{n.PriceType}:{n.Price}").ToListAsync();
-        var promotions = await db.MenuPromotions.OrderBy(p => p.Key).Select(p => $"{p.Key}:{p.MinTableCount}:{p.MaxTableCount}").ToListAsync();
-        var deposits = await db.MenuDepositTerms.OrderBy(t => t.Key).Select(t => $"{t.Key}:{t.Amount}:{t.Stage}").ToListAsync();
         var notes = await db.MenuPriceNotes.OrderBy(n => n.Key).Select(n => $"{n.Key}:{n.ValidUntil}").ToListAsync();
 
-        return string.Join("\n", tiers.Concat(options).Concat(dishes).Concat(links)
-            .Concat(services).Concat(beverages).Concat(nuts).Concat(promotions)
-            .Concat(deposits).Concat(notes));
-    }
-
-    private static async Task<List<string>> BuildCumulativeAsync(PhiluWeddingDbContext db)
-    {
-        var promotions = await db.MenuPromotions
-            .Include(p => p.Benefits)
-            .Include(p => p.BasePromotion!)
-            .OrderBy(p => p.SortOrder)
-            .ToListAsync();
-
-        var top = promotions.Last();
-        var chain = new List<MenuPromotion>();
-        var current = top;
-
-        while (current is not null)
-        {
-            chain.Add(current);
-            current = current.BasePromotion;
-        }
-
-        chain.Reverse();
-
-        return chain
-            .SelectMany(p => p.Benefits.OrderBy(b => b.SortOrder).Select(b => b.Text))
-            .ToList();
+        return string.Join("\n", tiers.Concat(options).Concat(dishes).Concat(links).Concat(notes));
     }
 }

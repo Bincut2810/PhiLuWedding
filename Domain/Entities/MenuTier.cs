@@ -27,7 +27,7 @@ public class MenuTier
     /// <summary>Stable natural key used by the seeder to match rows.</summary>
     public string Key { get; set; } = null!;
 
-    /// <summary>Display name of the tier, for example "Thực đơn 2.200.000 đồng/bàn".</summary>
+    /// <summary>Display name of the tier, for example "Thực đơn 2.500.000 đồng/bàn".</summary>
     public string Name { get; set; } = null!;
 
     public string Slug { get; set; } = null!;

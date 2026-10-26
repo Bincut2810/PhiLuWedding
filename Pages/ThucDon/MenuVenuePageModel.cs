@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using PhiluWedding.Data;
 using PhiluWedding.Domain;
 using PhiluWedding.Domain.Entities;
-using PhiluWedding.Domain.Enums;
 using PhiluWedding.Services;
 using MenuViewModels = PhiluWedding.Pages.ThucDon.MenuVenueViewModels;
 
@@ -15,13 +14,12 @@ namespace PhiluWedding.Pages.ThucDon;
 /// (<c>/thuc-don/philu</c> and <c>/thuc-don/golden-phoenix</c>).
 ///
 /// <para>
-/// <b>What is shared and what is not.</b> The eight wedding-menu price tiers
-/// and their options (A, B, C) come from one shared catalog, so both venues
-/// read exactly the same tier rows and therefore exactly the same prices.
-/// The supporting sections (services, beverages, appetizer nuts, promotions,
-/// deposit terms) carry a venue scope in the data model and are filtered by
-/// it here — a row scoped to one venue is never shown on the other venue's
-/// page.
+/// <b>What is shared and what is not.</b> The wedding menu has four price
+/// tiers and nine menu options in total. They come from one shared catalog,
+/// so both venues read exactly the same tier rows and therefore exactly the
+/// same prices. Which tiers and options are public is decided by
+/// <see cref="PublicMenuScope"/>, the single rule every public menu route
+/// applies.
 /// </para>
 ///
 /// <para>
@@ -40,13 +38,6 @@ namespace PhiluWedding.Pages.ThucDon;
 /// </summary>
 public abstract class MenuVenuePageModel : PageModel
 {
-    /// <summary>
-    /// Longest inheritance chain walked when the cumulative promotion
-    /// benefits are rebuilt. The catalog has eight tiers; the limit only
-    /// protects against a cycle introduced by bad data.
-    /// </summary>
-    private const int MaxPromotionChainLength = 64;
-
     private readonly PhiluWeddingDbContext? _db;
     private readonly ILogger _logger;
 
@@ -97,40 +88,12 @@ public abstract class MenuVenuePageModel : PageModel
     // Page state
     // -----------------------------------------------------------------
 
-    /// <summary>The eight shared price tiers, in their configured order.</summary>
+    /// <summary>The public price tiers, in their configured order.</summary>
     public IReadOnlyList<MenuViewModels.MenuTierViewModel> Tiers { get; private set; } =
         Array.Empty<MenuViewModels.MenuTierViewModel>();
 
     /// <summary>The tier the visitor is currently looking at.</summary>
     public MenuViewModels.MenuTierViewModel? SelectedTier { get; private set; }
-
-    /// <summary>Additional services and fees in scope for this venue.</summary>
-    public IReadOnlyList<MenuViewModels.MenuServiceViewModel> Services { get; private set; } =
-        Array.Empty<MenuViewModels.MenuServiceViewModel>();
-
-    /// <summary>Beverages in scope for this venue.</summary>
-    public IReadOnlyList<MenuViewModels.MenuBeverageViewModel> Beverages { get; private set; } =
-        Array.Empty<MenuViewModels.MenuBeverageViewModel>();
-
-    /// <summary>Appetizer nuts in scope for this venue.</summary>
-    public IReadOnlyList<MenuViewModels.MenuAppetizerNutViewModel> Nuts { get; private set; } =
-        Array.Empty<MenuViewModels.MenuAppetizerNutViewModel>();
-
-    /// <summary>Promotion tiers in scope for this venue.</summary>
-    public IReadOnlyList<MenuViewModels.MenuPromotionViewModel> Promotions { get; private set; } =
-        Array.Empty<MenuViewModels.MenuPromotionViewModel>();
-
-    /// <summary>The shared conditions of the promotion tiers.</summary>
-    public IReadOnlyList<MenuViewModels.MenuPromotionTermViewModel> PromotionTerms { get; private set; } =
-        Array.Empty<MenuViewModels.MenuPromotionTermViewModel>();
-
-    /// <summary>The deposit milestones of the halls of this venue.</summary>
-    public IReadOnlyList<MenuViewModels.MenuDepositHallViewModel> DepositHalls { get; private set; } =
-        Array.Empty<MenuViewModels.MenuDepositHallViewModel>();
-
-    /// <summary>Deposit milestones that apply to the whole venue.</summary>
-    public IReadOnlyList<MenuViewModels.MenuDepositStageViewModel> VenueWideDepositStages { get; private set; } =
-        Array.Empty<MenuViewModels.MenuDepositStageViewModel>();
 
     /// <summary>Notes about the prices (provisional status, validity, VAT).</summary>
     public IReadOnlyList<MenuViewModels.MenuPriceNoteViewModel> PriceNotes { get; private set; } =
@@ -148,40 +111,6 @@ public abstract class MenuVenuePageModel : PageModel
     /// </summary>
     public bool CatalogEmpty { get; private set; }
 
-    /// <summary>True when the venue page shows the deposit terms.</summary>
-    public bool HasDepositTerms =>
-        DepositHalls.Count > 0 || VenueWideDepositStages.Count > 0;
-
-    /// <summary>True when the venue page shows the promotion section.</summary>
-    public bool HasPromotions => Promotions.Count > 0;
-
-    /// <summary>True when the venue page shows the beverage section.</summary>
-    public bool HasBeverages => Beverages.Count > 0;
-
-    /// <summary>True when the venue page shows the appetizer nut section.</summary>
-    public bool HasNuts => Nuts.Count > 0;
-
-    /// <summary>True when the venue page shows the services and fees section.</summary>
-    public bool HasServices => Services.Count > 0;
-
-    /// <summary>
-    /// The table count that separates the two source beverage prices. All
-    /// beverages of the catalog share it.
-    /// </summary>
-    public int BeverageThresholdTableCount =>
-        Beverages.Count > 0 ? Beverages[0].ThresholdTableCount : 0;
-
-    /// <summary>The wording of the beverage threshold, exactly as the source states it.</summary>
-    public string? BeverageThresholdNote =>
-        Beverages.Count > 0 ? Beverages[0].ThresholdNote : null;
-
-    /// <summary>
-    /// True when the venue has no supporting section in scope, so the page
-    /// explains that those items are published for the other venue only.
-    /// </summary>
-    public bool HasNoSupportingSections =>
-        !HasServices && !HasBeverages && !HasNuts && !HasPromotions && !HasDepositTerms;
-
     // -----------------------------------------------------------------
     // Loading
     // -----------------------------------------------------------------
@@ -191,7 +120,8 @@ public abstract class MenuVenuePageModel : PageModel
     /// </summary>
     /// <param name="tierSelector">
     /// The slug (or the stable key) of the price tier the visitor asked
-    /// for. An unknown selector falls back to the first tier.
+    /// for. An unknown selector — and a selector of a tier that is not
+    /// public — falls back to the first tier.
     /// </param>
     protected async Task LoadMenuAsync(string? tierSelector)
     {
@@ -206,7 +136,11 @@ public abstract class MenuVenuePageModel : PageModel
 
         try
         {
-            var tierRows = await LoadTiersAsync();
+            // One scope for the whole request: it knows which price tiers are
+            // public and which menu options belong to them.
+            var scope = await PublicMenuScope.CreateFilterAsync(_db, VenueKey);
+
+            var tierRows = scope.Tiers;
 
             if (tierRows.Count == 0)
             {
@@ -217,33 +151,12 @@ public abstract class MenuVenuePageModel : PageModel
                 return;
             }
 
-            var tierIds = tierRows.Select(t => t.Id).ToList();
-            var optionRows = await LoadOptionsAsync(tierIds);
+            var optionRows = await LoadOptionsAsync(scope);
             await ReportLegacyOptionsAsync();
 
             Tiers = BuildTiers(tierRows, optionRows);
 
-            var services = await LoadServicesAsync();
-            var beverages = await LoadBeveragesAsync();
-            var nuts = await LoadNutsAsync();
-            var promotions = await LoadPromotionsAsync();
-            var depositTerms = await LoadDepositTermsAsync();
-            var priceNotes = await LoadPriceNotesAsync();
-
-            Services = BuildServices(services);
-            Beverages = BuildBeverages(beverages);
-            Nuts = BuildNuts(nuts);
-            Promotions = BuildPromotions(promotions);
-            PriceNotes = BuildPriceNotes(priceNotes);
-
-            // The promotion conditions belong to the promotion tiers. When no
-            // promotion is in scope for this venue, the conditions are not
-            // shown either.
-            PromotionTerms = promotions.Count > 0
-                ? BuildPromotionTerms(await LoadPromotionTermsAsync())
-                : Array.Empty<MenuViewModels.MenuPromotionTermViewModel>();
-
-            ApplyDepositTerms(depositTerms);
+            PriceNotes = BuildPriceNotes(await LoadPriceNotesAsync());
 
             SelectedTier = ResolveSelectedTier(Tiers, tierSelector);
         }
@@ -266,20 +179,7 @@ public abstract class MenuVenuePageModel : PageModel
     // Queries
     // -----------------------------------------------------------------
 
-    private async Task<List<MenuTier>> LoadTiersAsync()
-    {
-        var venueKey = VenueKey;
-
-        return await _db!.MenuTiers
-            .AsNoTracking()
-            .Where(t => t.IsPublished)
-            .Where(t => t.VenueScope == MenuVenueScopes.BothVenues || t.VenueScope == venueKey)
-            .OrderBy(t => t.SortOrder)
-            .ThenBy(t => t.Id)
-            .ToListAsync();
-    }
-
-    private async Task<List<OptionRow>> LoadOptionsAsync(IReadOnlyCollection<int> tierIds)
+    private async Task<List<OptionRow>> LoadOptionsAsync(PublicMenuFilter scope)
     {
         // The options are matched by their price tier, so an option that
         // belongs to no tier (a legacy menu row) can never leak into the
@@ -287,11 +187,14 @@ public abstract class MenuVenuePageModel : PageModel
         //
         // "?? 0" keeps the collection comparable: an id of 0 never exists,
         // and the null check above already removed those rows.
-        var ids = tierIds.ToList();
+        var ids = scope.Tiers.Select(t => t.Id).ToList();
 
-        var rows = await _db!.MenuCombos
+        var query = _db!.MenuCombos
             .AsNoTracking()
-            .Where(c => c.IsPublished && c.MenuTierId.HasValue && ids.Contains(c.MenuTierId ?? 0))
+            .Where(c => c.IsPublished && c.MenuTierId.HasValue && ids.Contains(c.MenuTierId ?? 0));
+
+        // The public scope decides which options of those tiers are public.
+        var rows = await scope.ApplyTo(query)
             .OrderBy(c => c.MenuTierId)
             .ThenBy(c => c.OptionSortOrder)
             .ThenBy(c => c.Id)
@@ -318,95 +221,6 @@ public abstract class MenuVenuePageModel : PageModel
             .ToListAsync();
 
         return rows;
-    }
-
-    private async Task<List<MenuService>> LoadServicesAsync()
-    {
-        var venueKey = VenueKey;
-
-        return await _db!.MenuServices
-            .AsNoTracking()
-            .Where(s => s.IsPublished)
-            .Where(s => s.VenueScope == MenuVenueScopes.BothVenues || s.VenueScope == venueKey)
-            .OrderBy(s => s.SortOrder)
-            .ThenBy(s => s.Id)
-            .ToListAsync();
-    }
-
-    private async Task<List<MenuBeverage>> LoadBeveragesAsync()
-    {
-        var venueKey = VenueKey;
-
-        return await _db!.MenuBeverages
-            .AsNoTracking()
-            .Where(b => b.IsPublished)
-            .Where(b => b.VenueScope == MenuVenueScopes.BothVenues || b.VenueScope == venueKey)
-            .OrderBy(b => b.SortOrder)
-            .ThenBy(b => b.Id)
-            .ToListAsync();
-    }
-
-    private async Task<List<MenuAppetizerNut>> LoadNutsAsync()
-    {
-        var venueKey = VenueKey;
-
-        return await _db!.MenuAppetizerNuts
-            .AsNoTracking()
-            .Where(n => n.IsPublished)
-            .Where(n => n.VenueScope == MenuVenueScopes.BothVenues || n.VenueScope == venueKey)
-            .OrderBy(n => n.SortOrder)
-            .ThenBy(n => n.Id)
-            .ToListAsync();
-    }
-
-    private async Task<List<PromotionRow>> LoadPromotionsAsync()
-    {
-        var venueKey = VenueKey;
-
-        return await _db!.MenuPromotions
-            .AsNoTracking()
-            .Where(p => p.IsPublished)
-            .Where(p => p.VenueScope == MenuVenueScopes.BothVenues || p.VenueScope == venueKey)
-            .OrderBy(p => p.SortOrder)
-            .ThenBy(p => p.Id)
-            .Select(p => new PromotionRow(
-                p.Id,
-                p.Name,
-                p.RangeLabel,
-                p.MinTableCount,
-                p.MaxTableCount,
-                p.BasePromotionId,
-                p.IncludesPreviousTier,
-                p.SortOrder,
-                p.Benefits
-                    .OrderBy(b => b.SortOrder)
-                    .ThenBy(b => b.Id)
-                    .Select(b => b.Text)
-                    .ToList()))
-            .ToListAsync();
-    }
-
-    private async Task<List<MenuPromotionTerm>> LoadPromotionTermsAsync()
-    {
-        return await _db!.MenuPromotionTerms
-            .AsNoTracking()
-            .Where(t => t.IsPublished)
-            .OrderBy(t => t.SortOrder)
-            .ThenBy(t => t.Id)
-            .ToListAsync();
-    }
-
-    private async Task<List<MenuDepositTerm>> LoadDepositTermsAsync()
-    {
-        var venueKey = VenueKey;
-
-        return await _db!.MenuDepositTerms
-            .AsNoTracking()
-            .Where(t => t.IsPublished)
-            .Where(t => t.VenueScope == MenuVenueScopes.BothVenues || t.VenueScope == venueKey)
-            .OrderBy(t => t.SortOrder)
-            .ThenBy(t => t.Id)
-            .ToListAsync();
     }
 
     private async Task<List<MenuPriceNote>> LoadPriceNotesAsync()
@@ -521,7 +335,7 @@ public abstract class MenuVenuePageModel : PageModel
 
     /// <summary>
     /// Builds the short name of a menu option. The stored name repeats the
-    /// price tier ("Thực đơn 2.200.000 đồng/bàn - Phương án A"); the page
+    /// price tier ("Thực đơn 2.500.000 đồng/bàn - Phương án A"); the page
     /// shows the part after the separator, because the tier is already
     /// visible in the heading of the section.
     /// </summary>
@@ -540,171 +354,6 @@ public abstract class MenuVenuePageModel : PageModel
         }
 
         return name.Trim();
-    }
-
-    private static IReadOnlyList<MenuViewModels.MenuServiceViewModel> BuildServices(
-        IReadOnlyList<MenuService> rows)
-    {
-        return rows
-            .Select(s =>
-            {
-                var price = MenuPriceFormatter.FormatServicePrice(s);
-
-                return new MenuViewModels.MenuServiceViewModel(
-                    s.Id,
-                    s.Name,
-                    s.PriceType,
-                    price,
-                    price is null ? MenuPriceFormatter.DescribeUnpriced(s.PriceType, s.Note) : null,
-                    s.Unit,
-                    s.Note,
-                    s.SortOrder);
-            })
-            .ToList();
-    }
-
-    private static IReadOnlyList<MenuViewModels.MenuBeverageViewModel> BuildBeverages(
-        IReadOnlyList<MenuBeverage> rows)
-    {
-        return rows
-            .Select(b => new MenuViewModels.MenuBeverageViewModel(
-                b.Id,
-                b.Name,
-                MenuPriceFormatter.FormatAmountWithUnit(b.PriceBelowThreshold, b.Unit),
-                MenuPriceFormatter.FormatAmountWithUnit(b.PriceAboveThreshold, b.Unit),
-                b.ThresholdTableCount,
-                b.ThresholdNote,
-                b.Unit,
-                b.Note,
-                b.SortOrder))
-            .ToList();
-    }
-
-    private static IReadOnlyList<MenuViewModels.MenuAppetizerNutViewModel> BuildNuts(
-        IReadOnlyList<MenuAppetizerNut> rows)
-    {
-        return rows
-            .Select(n =>
-            {
-                var price = MenuPriceFormatter.FormatAppetizerNutPrice(n);
-
-                return new MenuViewModels.MenuAppetizerNutViewModel(
-                    n.Id,
-                    n.Name,
-                    n.Description,
-                    price,
-                    price is null ? MenuPriceFormatter.DescribeUnpriced(n.PriceType, n.Note) : null,
-                    n.Unit,
-                    n.Note,
-                    n.SortOrder);
-            })
-            .ToList();
-    }
-
-    private static IReadOnlyList<MenuViewModels.MenuPromotionViewModel> BuildPromotions(
-        IReadOnlyList<PromotionRow> rows)
-    {
-        var byId = rows.ToDictionary(r => r.Id);
-
-        var result = new List<MenuViewModels.MenuPromotionViewModel>(rows.Count);
-
-        foreach (var row in rows)
-        {
-            var chain = new List<PromotionRow>();
-            var current = row;
-            var guard = 0;
-
-            while (current is not null && guard++ < MaxPromotionChainLength)
-            {
-                chain.Add(current);
-
-                if (!current.BasePromotionId.HasValue)
-                {
-                    break;
-                }
-
-                current = byId.TryGetValue(current.BasePromotionId.Value, out var parent) ? parent : null;
-            }
-
-            chain.Reverse();
-
-            var cumulative = chain
-                .SelectMany(c => c.Benefits)
-                .ToList();
-
-            var baseRangeLabel = row.BasePromotionId.HasValue
-                && byId.TryGetValue(row.BasePromotionId.Value, out var baseRow)
-                    ? baseRow.RangeLabel
-                    : null;
-
-            result.Add(new MenuViewModels.MenuPromotionViewModel(
-                row.Id,
-                row.Name,
-                row.RangeLabel,
-                row.MinTableCount,
-                row.MaxTableCount,
-                row.IncludesPreviousTier,
-                baseRangeLabel,
-                row.Benefits,
-                cumulative,
-                row.SortOrder));
-        }
-
-        return result;
-    }
-
-    private void ApplyDepositTerms(IReadOnlyList<MenuDepositTerm> rows)
-    {
-        var halls = new List<MenuViewModels.MenuDepositHallViewModel>();
-        var venueWide = new List<MenuViewModels.MenuDepositStageViewModel>();
-
-        // Group by the stable hall slug, never by a database id, so the
-        // terms still resolve before the hall rows exist.
-        var byHall = rows
-            .Where(t => !string.IsNullOrWhiteSpace(t.HallSlug))
-            .GroupBy(t => t.HallSlug!, StringComparer.OrdinalIgnoreCase);
-
-        foreach (var group in byHall)
-        {
-            var first = group.FirstOrDefault(t => t.Stage == DepositStage.First);
-            var second = group.FirstOrDefault(t => t.Stage == DepositStage.Second);
-
-            halls.Add(new MenuViewModels.MenuDepositHallViewModel(
-                group.Key,
-                group.Select(t => t.HallName).FirstOrDefault(n => !string.IsNullOrWhiteSpace(n)) ?? group.Key,
-                group.Select(t => t.WeddingHallId).FirstOrDefault(id => id.HasValue),
-                first is null ? null : BuildStage(first),
-                second is null ? null : BuildStage(second)));
-        }
-
-        venueWide.AddRange(rows
-            .Where(t => string.IsNullOrWhiteSpace(t.HallSlug))
-            .Select(BuildStage));
-
-        DepositHalls = halls;
-        VenueWideDepositStages = venueWide;
-    }
-
-    private static MenuViewModels.MenuDepositStageViewModel BuildStage(MenuDepositTerm term)
-    {
-        return new MenuViewModels.MenuDepositStageViewModel(
-            term.Stage switch
-            {
-                DepositStage.First => "Đặt cọc lần 1",
-                DepositStage.Second => "Đặt cọc lần 2",
-                DepositStage.Final => "Thanh toán phần còn lại",
-                _ => term.Stage.ToString()
-            },
-            MenuPriceFormatter.FormatAmount(term.Amount),
-            term.Description);
-    }
-
-    private static IReadOnlyList<MenuViewModels.MenuPromotionTermViewModel> BuildPromotionTerms(
-        IReadOnlyList<MenuPromotionTerm> rows)
-    {
-        return rows
-            .Select(t => new MenuViewModels.MenuPromotionTermViewModel(t.Id, t.Content, t.SortOrder))
-            .ToList();
     }
 
     private static IReadOnlyList<MenuViewModels.MenuPriceNoteViewModel> BuildPriceNotes(
@@ -784,15 +433,4 @@ public abstract class MenuVenuePageModel : PageModel
         int SortOrder,
         int Quantity,
         string? Note);
-
-    private sealed record PromotionRow(
-        int Id,
-        string Name,
-        string RangeLabel,
-        int? MinTableCount,
-        int? MaxTableCount,
-        int? BasePromotionId,
-        bool IncludesPreviousTier,
-        int SortOrder,
-        List<string> Benefits);
 }

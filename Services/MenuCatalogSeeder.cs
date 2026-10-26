@@ -40,6 +40,16 @@ namespace PhiluWedding.Services;
 /// match the catalog exactly; none of them is an administrator-maintained
 /// value.
 /// </para>
+///
+/// <para>
+/// The catalog file is the single source of truth for the public menu. The
+/// current catalog holds four price tiers and nine options; the additional
+/// sections (services, beverages, appetizer nuts, promotions, promotion
+/// terms, deposit terms) are empty, so this seeder can never recreate the
+/// content that was removed from the public menu. Rows that already exist in
+/// the database are unpublished by the explicit
+/// <see cref="MenuCatalogPruner"/> command, never by the seeder.
+/// </para>
 /// </summary>
 public static class MenuCatalogSeeder
 {
@@ -257,17 +267,35 @@ public static class MenuCatalogSeeder
                     // The option may exist but have no price-tier link yet
                     // (a partially seeded catalog). It is linked to the tier
                     // instead of creating a second option with the same code.
+                    //
+                    // The link is only filled in when it is unambiguous: there
+                    // must be exactly one tier-less option with that code in
+                    // the menu set, and its slug must be the slug the catalog
+                    // gives that option. A tier-less row that does not match
+                    // is an ambiguous legacy row — it is reported and left
+                    // alone, because attaching it to a tier would publish a
+                    // dish composition that was never verified.
                     var unlinked = await db.MenuCombos
-                        .FirstOrDefaultAsync(c => c.MenuSetId == menuSet.Id && c.OptionCode == code && c.MenuTierId == null, ct);
+                        .Where(c => c.MenuSetId == menuSet.Id && c.OptionCode == code && c.MenuTierId == null)
+                        .ToListAsync(ct);
 
-                    if (unlinked is not null)
+                    var expectedSlug = $"{tierDefinition.Slug}-{code.ToLowerInvariant()}";
+
+                    if (unlinked.Count == 1
+                        && string.Equals(unlinked[0].Slug, expectedSlug, StringComparison.OrdinalIgnoreCase))
                     {
-                        unlinked.MenuTierId = tier.Id;
-                        unlinked.UpdatedAt = now;
+                        unlinked[0].MenuTierId = tier.Id;
+                        unlinked[0].UpdatedAt = now;
                         report.Conflicts.Add(
                             $"Menu option '{code}' of tier '{tierDefinition.Key}' existed without a price-tier link; the link was filled in.");
                         report.CountKept("options");
                         continue;
+                    }
+
+                    if (unlinked.Count > 0)
+                    {
+                        report.Conflicts.Add(
+                            $"Menu option '{code}' of tier '{tierDefinition.Key}' has {unlinked.Count} legacy option(s) without a price-tier link. The legacy rows were left unlinked, because their tier cannot be verified.");
                     }
                 }
 

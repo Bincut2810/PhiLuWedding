@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging.Abstractions;
 using PhiluWedding.Data;
 using PhiluWedding.Pages.ThucDon;
@@ -9,8 +10,8 @@ namespace PhiluWedding.Tests;
 /// <summary>
 /// Tests for the two public wedding-menu pages
 /// (<c>/thuc-don/philu</c> and <c>/thuc-don/golden-phoenix</c>): the shared
-/// price tiers, the venue scope of the supporting sections and the wording
-/// the pages show.
+/// price tiers, the public menu options and the fallback of a price tier
+/// that is not public.
 /// </summary>
 public class MenuVenuePageTests
 {
@@ -28,7 +29,7 @@ public class MenuVenuePageTests
         new(NullLogger<MenuGoldenPhoenixModel>.Instance, db);
 
     [Fact]
-    public async Task Both_venues_show_the_same_eight_price_tiers_with_the_same_prices()
+    public async Task Both_venues_show_the_same_four_price_tiers_with_the_same_prices()
     {
         var db = await SeedAsync();
 
@@ -38,19 +39,46 @@ public class MenuVenuePageTests
         var goldenPhoenix = GoldenPhoenix(db);
         await goldenPhoenix.OnGetAsync(null);
 
-        Assert.Equal(8, phiLu.Tiers.Count);
-        Assert.Equal(8, goldenPhoenix.Tiers.Count);
+        Assert.Equal(4, phiLu.Tiers.Count);
+        Assert.Equal(4, goldenPhoenix.Tiers.Count);
 
         Assert.Equal(
             phiLu.Tiers.Select(t => t.Price),
             goldenPhoenix.Tiers.Select(t => t.Price));
 
         Assert.Equal(
-            new[] { "2.200.000đ", "2.500.000đ", "2.800.000đ", "3.000.000đ", "3.300.000đ", "3.500.000đ", "4.000.000đ", "5.000.000đ" },
+            new[] { "2.500.000đ", "3.000.000đ", "4.000.000đ", "5.000.000đ" },
             phiLu.Tiers.Select(t => t.PriceDisplay));
 
         // Every tier is priced identically for both venues.
         Assert.All(phiLu.Tiers, t => Assert.True(t.IsSharedPrice));
+    }
+
+    [Fact]
+    public async Task The_nine_public_options_are_shown_across_the_four_tiers()
+    {
+        var db = await SeedAsync();
+
+        var model = PhiLu(db);
+        await model.OnGetAsync(null);
+
+        var options = model.Tiers.SelectMany(t => t.Options).ToList();
+
+        Assert.Equal(9, options.Count);
+        Assert.Equal(4, options.Count(o => o.Code == "A"));
+        Assert.Equal(4, options.Count(o => o.Code == "B"));
+        Assert.Equal(1, options.Count(o => o.Code == "C"));
+
+        // The first three tiers sell A and B, the 5.000.000 VND tier sells
+        // A, B and C.
+        foreach (var tier in model.Tiers.Take(3))
+        {
+            Assert.Equal(new[] { "A", "B" }, tier.Options.Select(o => o.Code).ToArray());
+        }
+
+        var lastTier = model.Tiers[^1];
+        Assert.Equal("menu-tiec-cuoi-tier-08", lastTier.Slug);
+        Assert.Equal(new[] { "A", "B", "C" }, lastTier.Options.Select(o => o.Code).ToArray());
     }
 
     [Fact]
@@ -80,116 +108,70 @@ public class MenuVenuePageTests
         await model.OnGetAsync("khong-ton-tai");
 
         Assert.NotNull(model.SelectedTier);
-        Assert.Equal("menu-tiec-cuoi-tier-01", model.SelectedTier!.Slug);
+        Assert.Equal("menu-tiec-cuoi-tier-02", model.SelectedTier!.Slug);
     }
 
     [Fact]
-    public async Task The_beverage_unit_is_only_shown_where_the_source_states_one()
+    public async Task The_selector_of_an_excluded_tier_falls_back_to_the_first_tier()
     {
         var db = await SeedAsync();
+
+        // The tiers that are no longer part of the public menu are not
+        // selectable, so their slug falls back to the first public tier.
+        foreach (var slug in new[]
+        {
+            "menu-tiec-cuoi-tier-01",
+            "menu-tiec-cuoi-tier-03",
+            "menu-tiec-cuoi-tier-05",
+            "menu-tiec-cuoi-tier-06"
+        })
+        {
+            var model = PhiLu(db);
+            await model.OnGetAsync(slug);
+
+            Assert.NotNull(model.SelectedTier);
+            Assert.Equal("menu-tiec-cuoi-tier-02", model.SelectedTier!.Slug);
+        }
+    }
+
+    [Fact]
+    public async Task An_unpublished_tier_is_not_shown()
+    {
+        var db = await SeedAsync();
+
+        var tier = await db.MenuTiers.FirstAsync(t => t.Key == "tier-04");
+        tier.IsPublished = false;
+        await db.SaveChangesAsync();
 
         var model = PhiLu(db);
         await model.OnGetAsync(null);
 
-        var laru = model.Beverages.First(b => b.Name == "Laru lon vàng");
-        Assert.Equal("17.500đ / lon", laru.PriceBelowDisplay);
-        Assert.Equal("16.500đ / lon", laru.PriceAboveDisplay);
-
-        var laruSmooth = model.Beverages.First(b => b.Name == "Laru smooth");
-        Assert.Equal("17.500đ", laruSmooth.PriceBelowDisplay);
-        Assert.Equal("16.500đ", laruSmooth.PriceAboveDisplay);
-
-        // The threshold and its wording come from the source sheet.
-        Assert.Equal(25, model.BeverageThresholdTableCount);
-        Assert.Contains("25 bàn", model.BeverageThresholdNote);
+        Assert.Equal(3, model.Tiers.Count);
+        Assert.DoesNotContain(model.Tiers, t => t.Key == "tier-04");
     }
 
     [Fact]
-    public async Task The_supporting_sections_are_scoped_to_the_venue_they_belong_to()
+    public async Task An_unpublished_option_is_not_shown()
     {
         var db = await SeedAsync();
 
-        var phiLu = PhiLu(db);
-        await phiLu.OnGetAsync(null);
+        var tier = await db.MenuTiers.FirstAsync(t => t.Key == "tier-08");
+        var option = await db.MenuCombos
+            .FirstAsync(c => c.MenuTierId == tier.Id && c.OptionCode == "C");
 
-        Assert.True(phiLu.HasServices);
-        Assert.True(phiLu.HasBeverages);
-        Assert.True(phiLu.HasNuts);
-        Assert.True(phiLu.HasPromotions);
-        Assert.True(phiLu.HasDepositTerms);
-        Assert.False(phiLu.HasNoSupportingSections);
-
-        var goldenPhoenix = GoldenPhoenix(db);
-        await goldenPhoenix.OnGetAsync(null);
-
-        Assert.False(goldenPhoenix.HasServices);
-        Assert.False(goldenPhoenix.HasBeverages);
-        Assert.False(goldenPhoenix.HasNuts);
-        Assert.False(goldenPhoenix.HasPromotions);
-        Assert.False(goldenPhoenix.HasDepositTerms);
-        Assert.True(goldenPhoenix.HasNoSupportingSections);
-
-        // The price tiers are still shown on both pages.
-        Assert.Equal(8, goldenPhoenix.Tiers.Count);
-    }
-
-    [Fact]
-    public async Task A_service_without_a_price_shows_the_source_wording()
-    {
-        var db = await SeedAsync();
+        option.IsPublished = false;
+        await db.SaveChangesAsync();
 
         var model = PhiLu(db);
-        await model.OnGetAsync(null);
+        await model.OnGetAsync("menu-tiec-cuoi-tier-08");
 
-        var gifts = model.Services.First(s => s.Name == "Quà tặng dành cho khách dự tiệc");
-        Assert.Null(gifts.PriceDisplay);
-        Assert.Equal("Giá tùy thuộc vào loại quà tặng.", gifts.PriceFallback);
-
-        // A service with a price keeps the unit of the source sheet.
-        var vip = model.Services.First(s => s.Name == "Phong cách phục vụ VIP");
-        Assert.Equal("200.000đ / bàn", vip.PriceDisplay);
+        var selected = model.SelectedTier;
+        Assert.NotNull(selected);
+        Assert.Equal(new[] { "A", "B" }, selected!.Options.Select(o => o.Code).ToArray());
     }
 
     [Fact]
-    public async Task The_promotion_benefits_of_a_tier_include_the_inherited_ones()
-    {
-        var db = await SeedAsync();
-
-        var model = PhiLu(db);
-        await model.OnGetAsync(null);
-
-        var first = model.Promotions.First(p => p.RangeLabel == "14–24 bàn");
-        Assert.False(first.IncludesPreviousTier);
-        Assert.Equal(3, first.CumulativeBenefits.Count);
-
-        var second = model.Promotions.First(p => p.RangeLabel == "25–35 bàn");
-        Assert.True(second.IncludesPreviousTier);
-        Assert.Equal("14–24 bàn", second.BaseRangeLabel);
-        Assert.Equal(3 + 10, second.CumulativeBenefits.Count);
-    }
-
-    [Fact]
-    public async Task The_deposit_terms_are_grouped_per_hall()
-    {
-        var db = await SeedAsync();
-
-        var model = PhiLu(db);
-        await model.OnGetAsync(null);
-
-        Assert.Equal(4, model.DepositHalls.Count);
-
-        var amber = model.DepositHalls.First(h => h.HallName == "Sảnh Amber");
-        Assert.Equal("12.000.000đ", amber.First!.AmountDisplay);
-        Assert.Equal("18.000.000đ", amber.Second!.AmountDisplay);
-        Assert.Equal("Đặt cọc giữ chỗ.", amber.First.Description);
-
-        // The final payment applies to the whole venue and carries no amount.
-        Assert.Single(model.VenueWideDepositStages);
-        Assert.Null(model.VenueWideDepositStages[0].AmountDisplay);
-    }
-
-    [Fact]
-    public async Task A_price_note_keeps_its_validity_and_vat_wording()
+    public async Task The_price_notes_are_still_shown()
     {
         var db = await SeedAsync();
 

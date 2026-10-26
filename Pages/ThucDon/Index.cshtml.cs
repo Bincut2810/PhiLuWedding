@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using PhiluWedding.Data;
 using PhiluWedding.Domain.Entities;
+using PhiluWedding.Services;
 
 namespace PhiluWedding.Pages.ThucDon;
 
@@ -46,27 +47,31 @@ public class IndexModel : PageModel
 
         try
         {
-            // AsNoTracking + single round-trip. Combo count is projected
-            // so the Razor view never has to iterate collections.
-            var rows = await _db.MenuSets
+            // The public scope is the same rule the detail pages use, so a
+            // combo that is not public never inflates the count of a card.
+            var scope = await PublicMenuScope.CreateFilterAsync(_db);
+
+            var countRows = await scope.ApplyTo(_db.MenuCombos.AsNoTracking().Where(c => c.IsPublished))
+                .GroupBy(c => c.MenuSetId)
+                .Select(g => new { MenuSetId = g.Key, Count = g.Count() })
+                .ToListAsync();
+
+            var counts = countRows.ToDictionary(r => r.MenuSetId, r => r.Count);
+
+            var menuSets = await _db.MenuSets
                 .AsNoTracking()
                 .Where(m => m.IsPublished)
                 .OrderBy(m => m.SortOrder)
                 .ThenBy(m => m.Id)
-                .Select(m => new
-                {
-                    MenuSet = m,
-                    ComboCount = m.Combos.Count(c => c.IsPublished)
-                })
                 .ToListAsync();
 
-            MenuSets = rows.Select(r => new MenuSetCardViewModel(
-                r.MenuSet.Id,
-                r.MenuSet.Name,
-                r.MenuSet.Slug,
-                r.MenuSet.ShortDescription,
-                r.MenuSet.Description,
-                r.ComboCount)).ToList();
+            MenuSets = menuSets.Select(m => new MenuSetCardViewModel(
+                m.Id,
+                m.Name,
+                m.Slug,
+                m.ShortDescription,
+                m.Description,
+                counts.GetValueOrDefault(m.Id))).ToList();
         }
         catch (Exception ex)
         {

@@ -108,9 +108,23 @@ app.MapRazorPages();
 //   dotnet run -- --seed                   (CLI argument, runs the demo seeder)
 //   dotnet run -- --seed-menu              (CLI argument, seeds the fixed
 //                                          wedding-menu catalog)
+//   dotnet run -- --prune-menu-catalog     (CLI argument, cleans the menu
+//                                          catalog up — see below)
 //
 //   Database:SeedMenuOnStartup = true      (config) or
 //   Database__SeedMenuOnStartup = true     (environment variable)
+//
+// The cleanup command is OPT-IN and never runs automatically:
+//
+//   dotnet run -- --prune-menu-catalog     (CLI argument only)
+//
+// It unpublishes the price tiers and menu options that are no longer part
+// of the public menu and unpublishes the supporting sections (services,
+// beverages, appetizer nuts, promotions, promotion terms, deposit terms).
+// It never deletes a row — no dish, no dish image, no menu_combo_dishes
+// row, no menu option, no price tier and no table — so the change is
+// reversible by publishing the rows again. The command is NOT coupled to
+// --seed-menu: both are invoked explicitly and separately.
 //
 // All startup database operations are BEST-EFFORT: failures are logged as
 // warnings and the application keeps serving. NEVER run destructive database
@@ -126,9 +140,10 @@ app.MapRazorPages();
 var autoMigrate = builder.Configuration.GetValue<bool>("Database:AutoMigrateOnStartup");
 var seedRequested = args.Any(a => string.Equals(a, "--seed", StringComparison.OrdinalIgnoreCase));
 var seedMenuRequested = args.Any(a => string.Equals(a, "--seed-menu", StringComparison.OrdinalIgnoreCase));
+var pruneMenuRequested = args.Any(a => string.Equals(a, "--prune-menu-catalog", StringComparison.OrdinalIgnoreCase));
 var seedMenuOnStartup = builder.Configuration.GetValue<bool>("Database:SeedMenuOnStartup");
 
-if (hasConnectionString && (autoMigrate || seedRequested || seedMenuRequested || seedMenuOnStartup))
+if (hasConnectionString && (autoMigrate || seedRequested || seedMenuRequested || pruneMenuRequested || seedMenuOnStartup))
 {
     using var scope = app.Services.CreateScope();
     var logger = scope.ServiceProvider.GetRequiredService<ILoggerFactory>().CreateLogger("Database");
@@ -174,6 +189,23 @@ if (hasConnectionString && (autoMigrate || seedRequested || seedMenuRequested ||
                 var report = await MenuCatalogSeeder.SeedAsync(db, logger);
                 logger.LogInformation("Menu catalog seed finished. {Summary}", report.Summary());
             }
+
+            if (pruneMenuRequested)
+            {
+                // The cleanup needs the menu tables, so the schema is brought
+                // up to date first when it is not already done.
+                if (!autoMigrate && !seedRequested && !seedMenuRequested)
+                {
+                    logger.LogInformation("Applying pending migrations before cleaning up the menu catalog...");
+                    await db.Database.MigrateAsync();
+                    logger.LogInformation("Migrations applied.");
+                }
+
+                // The cleanup only clears publication flags and normalizes the
+                // sort order of the retained tiers. It never deletes a row.
+                var pruneReport = await MenuCatalogPruner.PruneAsync(db, logger);
+                logger.LogInformation("Menu catalog cleanup finished. {Summary}", pruneReport.Summary());
+            }
         }
         catch (Exception ex)
         {
@@ -186,3 +218,12 @@ if (hasConnectionString && (autoMigrate || seedRequested || seedMenuRequested ||
 }
 
 app.Run();
+
+/// <summary>
+/// Exposed so the integration tests can boot the application with
+/// <c>WebApplicationFactory</c>. The class is intentionally empty: it only
+/// makes the generated entry point visible to the test project.
+/// </summary>
+public partial class Program
+{
+}

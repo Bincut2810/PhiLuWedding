@@ -58,9 +58,14 @@ public class DetailsModel : PageModel
             // gallery order is deterministic. The image URL resolver
             // runs in-memory after the SQL projection so EF does not
             // have to translate a managed method.
-            var combos = await _db.MenuCombos
-                .AsNoTracking()
-                .Where(c => c.MenuSetId == id && c.IsPublished)
+            //
+            // The public scope decides which options of the set are
+            // public, so an excluded option never appears in the list.
+            var scope = await PublicMenuScope.CreateFilterAsync(_db);
+
+            var combos = await scope.ApplyTo(_db.MenuCombos
+                    .AsNoTracking()
+                    .Where(c => c.MenuSetId == id && c.IsPublished))
                 .OrderBy(c => c.SortOrder)
                 .ThenBy(c => c.Id)
                 .Select(c => new

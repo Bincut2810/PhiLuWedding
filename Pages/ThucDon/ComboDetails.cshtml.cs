@@ -43,9 +43,15 @@ public class ComboDetailsModel : PageModel
 
         try
         {
-            var combo = await _db.MenuCombos
-                .AsNoTracking()
-                .Where(c => c.Id == id && c.IsPublished)
+            // The public scope decides whether the requested option is
+            // public. An option of a price tier that is not public (or an
+            // option that is not published) is treated as "not found",
+            // exactly like a row that does not exist.
+            var scope = await PublicMenuScope.CreateFilterAsync(_db);
+
+            var combo = await scope.ApplyTo(_db.MenuCombos
+                    .AsNoTracking()
+                    .Where(c => c.Id == id && c.IsPublished))
                 .FirstOrDefaultAsync();
 
             if (combo is null)
