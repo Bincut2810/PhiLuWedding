@@ -8,6 +8,10 @@
    Phase 12 — the hall preview 4-card section was replaced by the
    two venue cards in venues.css; only the surrounding section shell
    (.venues padding + .section-head spacing) lives here.
+
+   Phase UI/UX-03 — the shared foundations from site.css (semantic
+   text colours, --font-weight-* tokens, --measure-text) are applied
+   here so every page speaks the same type vocabulary.
    ===================================================================== */
 
 /* ---------- Hero ---------- */
@@ -51,29 +55,33 @@
     width: 100%;
 }
 
+/* Phase 02B: the hero title used to be four <span> blocks, each on
+   its own line, with every even span switched to italic — the title
+   read as four fragments and the italic had nothing to emphasise.
+   It is now one sentence with a single deliberate italic accent on
+   the closing phrase, so the eye has one place to land. */
 .hero__title {
-    font-size: var(--fs-h1);
-    font-weight: 500;
-    line-height: 1.08;
-    letter-spacing: -0.015em;
-    color: var(--color-ink);
+    font-size: var(--fs-display);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--lh-display);
+    letter-spacing: var(--ls-display);
+    color: var(--color-text-strong);
+    /* The accent sits on its own line on wide screens, but the title
+       must never be forced into a fixed number of lines. */
+    max-width: 22ch;
+    text-wrap: balance;
 }
 
-.hero__title span {
+.hero__title .title-accent {
     display: block;
-}
-
-.hero__title span:nth-child(even) {
-    font-style: italic;
-    color: var(--color-brown);
-    font-weight: 600;
+    margin-top: var(--space-2);
 }
 
 .hero__lede {
     font-size: var(--fs-body-lg);
-    color: var(--color-muted-brown);
-    max-width: 36ch;
-    line-height: 1.65;
+    color: var(--color-text-muted);
+    max-width: 38ch;
+    line-height: var(--lh-relaxed);
 }
 
 .hero__rule {
@@ -141,6 +149,21 @@
     }
 }
 
+@media (min-width: 1024px) and (max-width: 1279.98px) {
+    /* The two-column hero is at its narrowest here: the text
+       column keeps roughly 360px after padding, so the display
+       size steps down a notch and the padding loosens, keeping
+       the title to four calm lines instead of five cramped ones. */
+    .hero__content {
+        padding: var(--space-10) var(--space-8);
+    }
+
+    .hero__title {
+        font-size: clamp(2.5rem, 1.35rem + 2.6vw, 3.1rem);
+        max-width: 24ch;
+    }
+}
+
 @media (min-width: 768px) and (max-width: 1023.98px) {
     .hero__content {
         padding: var(--space-10) var(--space-8);
@@ -169,8 +192,8 @@
     margin-top: var(--space-6);
     margin-bottom: var(--space-8);
     font-size: var(--fs-body-lg);
-    color: var(--color-muted-brown);
-    line-height: 1.75;
+    color: var(--color-text-muted);
+    line-height: var(--lh-relaxed);
 }
 
 .intro__media {
@@ -291,8 +314,8 @@
     margin: var(--space-6) auto var(--space-8);
     max-width: 44ch;
     font-size: var(--fs-body-lg);
-    color: var(--color-muted-brown);
-    line-height: 1.75;
+    color: var(--color-text-muted);
+    line-height: var(--lh-relaxed);
 }
 
 .booking__actions {

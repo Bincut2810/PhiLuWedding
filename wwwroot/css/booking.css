@@ -11,6 +11,10 @@
      - Hall preselection card above the form
      - Polished success state with primary + secondary actions
      - Mobile: trust panel stacks below the form
+
+   Phase UI/UX-03 — the shared foundations from site.css (semantic
+   text colours, --font-weight-* tokens, --measure-text, focus ring)
+   are applied here so every page speaks the same type vocabulary.
    ===================================================================== */
 
 /* ---------- Page shell ---------- */
@@ -32,28 +36,26 @@
 
 .booking-page__title {
     font-size: var(--fs-h1);
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -0.015em;
-    color: var(--color-ink);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--lh-display);
+    letter-spacing: var(--ls-display);
+    color: var(--color-text-strong);
 }
 
+
+/* Phase 02B: the booking title used the alternating italic <span>
+   rule. The heading is upright; the one italic accent on this page
+   is in the trust panel, where it carries an actual emphasis. */
 .booking-page__title span {
-    display: block;
-}
-
-.booking-page__title span:nth-child(even) {
-    font-style: italic;
-    color: var(--color-brown);
-    font-weight: 600;
+    display: inline;
 }
 
 .booking-page__lede {
     margin-top: var(--space-5);
     font-size: var(--fs-body-lg);
-    color: var(--color-muted-brown);
-    line-height: 1.75;
-    max-width: 60ch;
+    color: var(--color-text-muted);
+    line-height: var(--lh-relaxed);
+    max-width: var(--measure-text);
     margin-left: auto;
     margin-right: auto;
 }
@@ -101,18 +103,19 @@
     margin-bottom: var(--space-6);
     font-family: var(--font-sans);
     font-size: var(--fs-body-sm);
-    color: var(--color-muted-brown);
-    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+    letter-spacing: var(--ls-body);
 }
+
 
 .booking-form__notice {
     margin-bottom: var(--space-6);
     padding: var(--space-4) var(--space-5);
     background-color: var(--color-paper);
     border-left: 2px solid var(--color-brown);
-    color: var(--color-brown);
+    color: var(--color-text);
     font-size: var(--fs-body-sm);
-    line-height: 1.7;
+    line-height: var(--lh-body);
 }
 
 .booking-form__summary {
@@ -120,9 +123,9 @@
     padding: var(--space-4) var(--space-5);
     background-color: var(--color-paper);
     border-left: 2px solid var(--color-brown);
-    color: var(--color-brown);
+    color: var(--color-text);
     font-size: var(--fs-body-sm);
-    line-height: 1.6;
+    line-height: var(--lh-body);
 }
 
 .booking-form__summary:empty {
@@ -155,19 +158,20 @@
     padding-bottom: var(--space-3);
     border-bottom: 1px solid var(--color-line);
     font-family: var(--font-serif);
-    font-size: 1.375rem;
-    font-weight: 600;
-    color: var(--color-ink);
-    letter-spacing: -0.005em;
-    line-height: 1.3;
+    font-size: var(--fs-h5);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
+    letter-spacing: var(--ls-heading);
+    line-height: var(--lh-tight);
 }
+
 
 .booking-form__legend-hint {
     margin: 0 0 var(--space-5);
     font-family: var(--font-sans);
     font-size: var(--fs-body-sm);
-    color: var(--color-muted-brown);
-    line-height: 1.6;
+    color: var(--color-text-muted);
+    line-height: var(--lh-body);
 }
 
 /* ---------- Grid ---------- */
@@ -188,14 +192,18 @@
     grid-column: 1 / -1;
 }
 
+/* Phase 02B: form labels are the one micro-label a user has to read
+   carefully before typing, so they are set in sentence case at a
+   readable size instead of uppercase with wide tracking. The
+   uppercase treatment now belongs to the eyebrows only. */
 .booking-form__field label {
     font-family: var(--font-sans);
-    font-size: var(--fs-eyebrow);
-    font-weight: 500;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: var(--color-muted-brown);
+    font-size: var(--fs-body-sm);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--ls-body);
+    color: var(--color-text);
 }
+
 
 .booking-form__field input,
 .booking-form__field select,
@@ -204,7 +212,7 @@
     padding: var(--space-3) var(--space-4);
     font-family: var(--font-sans);
     font-size: var(--fs-body);
-    color: var(--color-brown);
+    color: var(--color-text);
     background-color: var(--color-paper);
     border: 1px solid var(--color-border);
     border-radius: 0;
@@ -216,32 +224,53 @@
 .booking-form__field textarea {
     resize: vertical;
     min-height: 7.5rem;
-    line-height: 1.7;
+    line-height: var(--lh-body);
 }
 
+/* The field glow marks the active field. The keyboard focus ring that
+   site.css draws for every :focus-visible control is never removed
+   here — it is the only indicator a keyboard user gets. */
 .booking-form__field input:focus,
 .booking-form__field select:focus,
 .booking-form__field textarea:focus {
-    outline: none;
     border-color: var(--color-brown);
     background-color: var(--color-paper);
     box-shadow: 0 0 0 3px rgba(74, 58, 46, 0.10);
 }
 
+/* Pointer focus keeps the quiet glow only. */
+.booking-form__field input:focus:not(:focus-visible),
+.booking-form__field select:focus:not(:focus-visible),
+.booking-form__field textarea:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Keyboard focus adds the shared ring outside the field glow, so the
+   two indicators never overlap. */
+.booking-form__field input:focus-visible,
+.booking-form__field select:focus-visible,
+.booking-form__field textarea:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+}
+
 .booking-form__field input::placeholder,
 .booking-form__field textarea::placeholder {
-    color: var(--color-muted-brown);
+    /* Placeholder text is a hint, not a sentence the visitor has to
+       read — the subtle tone is enough. */
+    color: var(--color-text-subtle);
     font-style: italic;
     opacity: 0.7;
 }
 
 .booking-form__hint {
     font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    color: var(--color-muted-brown);
-    line-height: 1.55;
+    font-size: var(--fs-body-sm);
+    color: var(--color-text-muted);
+    line-height: var(--lh-body);
     margin-top: var(--space-1);
 }
+
 
 /* invalid state — added by jQuery unobtrusive validation */
 .booking-form__field input.input-validation-error,
@@ -258,7 +287,7 @@
     font-family: var(--font-sans);
     font-size: var(--fs-body-sm);
     color: #B45252;
-    letter-spacing: 0.01em;
+    letter-spacing: var(--ls-body);
     /* Prevent long error messages from overflowing the field on small screens */
     overflow-wrap: anywhere;
     word-break: break-word;
@@ -280,34 +309,35 @@
 
 .booking-form__selected-label {
     font-family: var(--font-sans);
-    font-size: var(--fs-eyebrow);
-    font-weight: 500;
-    letter-spacing: 0.28em;
+    font-size: var(--fs-label);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--ls-label);
     text-transform: uppercase;
-    color: var(--color-muted-brown);
+    color: var(--color-text-muted);
     margin-bottom: var(--space-2);
 }
 
+
 .booking-form__selected-name {
     font-family: var(--font-serif);
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-ink);
-    line-height: 1.25;
+    font-size: var(--fs-h4);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
+    line-height: var(--lh-tight);
     margin-bottom: var(--space-2);
 }
 
 .booking-form__selected-desc {
     font-size: var(--fs-body-sm);
-    color: var(--color-brown);
-    line-height: 1.6;
+    color: var(--color-text);
+    line-height: var(--lh-body);
     margin-bottom: var(--space-3);
 }
 
 .booking-form__selected-note {
-    font-size: 0.8125rem;
-    color: var(--color-muted-brown);
-    line-height: 1.6;
+    font-size: var(--fs-body-sm);
+    color: var(--color-text-muted);
+    line-height: var(--lh-body);
 }
 
 /* ---------- Actions ---------- */
@@ -330,8 +360,8 @@
 .booking-form__footnote {
     margin-top: var(--space-6);
     font-size: var(--fs-body-sm);
-    color: var(--color-muted-brown);
-    line-height: 1.6;
+    color: var(--color-text-muted);
+    line-height: var(--lh-body);
 }
 
 .booking-form--error {
@@ -351,7 +381,7 @@
 .booking-form--error .booking-form__notice code {
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size: 0.85em;
-    color: var(--color-ink);
+    color: var(--color-text-strong);
     word-break: break-all;
 }
 
@@ -385,11 +415,11 @@
 
 .booking-page__success-title {
     font-family: var(--font-serif);
-    font-size: clamp(1.75rem, 1.2rem + 1.5vw, 2.25rem);
-    font-weight: 600;
-    color: var(--color-ink);
+    font-size: var(--fs-h2);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
     margin-bottom: var(--space-5);
-    line-height: 1.25;
+    line-height: var(--lh-display);
 }
 
 .booking-page__success-title span {
@@ -398,16 +428,16 @@
 
 .booking-page__success-body {
     font-size: var(--fs-body-lg);
-    color: var(--color-brown);
-    line-height: 1.75;
+    color: var(--color-text);
+    line-height: var(--lh-relaxed);
     margin-bottom: var(--space-3);
 }
 
 .booking-page__success-note {
-    color: var(--color-muted-brown);
+    color: var(--color-text-muted);
     font-size: var(--fs-body-sm);
     margin-bottom: var(--space-7);
-    line-height: 1.7;
+    line-height: var(--lh-body);
 }
 
 .booking-page__success-actions {
@@ -454,21 +484,25 @@
 
 .booking-trust__title {
     font-family: var(--font-serif);
-    font-size: clamp(1.5rem, 1.1rem + 1vw, 1.875rem);
-    font-weight: 600;
-    color: var(--color-ink);
-    line-height: 1.2;
+    font-size: var(--fs-h3);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
+    line-height: var(--lh-tight);
     margin-bottom: var(--space-6);
 }
 
 .booking-trust__title span {
-    display: block;
+    display: inline;
 }
 
+/* Phase 02B: the second line of the trust title is the one place on
+   this page where the italic earns its place — it separates the
+   promise ("Ba bước đơn giản") from the reassurance ("để bạn an
+   tâm"). */
 .booking-trust__title span:nth-child(even) {
     font-style: italic;
-    color: var(--color-brown);
-    font-weight: 600;
+    color: var(--color-text);
+    font-weight: var(--font-weight-normal);
 }
 
 .booking-trust__list {
@@ -492,9 +526,9 @@
     width: 44px;
     height: 44px;
     font-family: var(--font-serif);
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--color-brown);
+    font-size: var(--fs-h6);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
     background-color: var(--color-ivory);
     border: 1px solid var(--color-border);
     border-radius: 50%;
@@ -503,24 +537,24 @@
 .booking-trust__step-title {
     font-family: var(--font-sans);
     font-size: var(--fs-body);
-    font-weight: 600;
-    color: var(--color-ink);
-    line-height: 1.45;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
+    line-height: var(--lh-snug);
     margin-bottom: var(--space-2);
 }
 
 .booking-trust__step-body {
     font-size: var(--fs-body-sm);
-    color: var(--color-muted-brown);
-    line-height: 1.65;
+    color: var(--color-text-muted);
+    line-height: var(--lh-body);
 }
 
 .booking-trust__note {
     padding-top: var(--space-4);
     border-top: 1px solid var(--color-line);
     font-size: var(--fs-body-sm);
-    color: var(--color-muted-brown);
-    line-height: 1.7;
+    color: var(--color-text-muted);
+    line-height: var(--lh-body);
 }
 
 /* ---------- Visually-hidden helper ---------- */
@@ -561,7 +595,7 @@
 
 @media (max-width: 599.98px) {
     .booking-form__legend {
-        font-size: 1.25rem;
+        font-size: var(--fs-h5);
     }
 
     .booking-trust__step {
@@ -572,7 +606,7 @@
     .booking-trust__num {
         width: 36px;
         height: 36px;
-        font-size: 1rem;
+        font-size: var(--fs-body);
     }
 
     .booking-page__success-actions {

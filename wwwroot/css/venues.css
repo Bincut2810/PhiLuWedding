@@ -9,6 +9,10 @@
 
    All classes use the `venue-` prefix so they never collide with the
    homepage `.hall-*` rules or the halls listing `.halls-*` rules.
+
+   Phase UI/UX-03 — the shared foundations from site.css (semantic
+   text colours, --font-weight-* tokens, --measure-text) are applied
+   here so every page speaks the same type vocabulary.
    ===================================================================== */
 
 /* ---------- Homepage venue section (.venues) ----------
@@ -134,22 +138,26 @@
     align-items: center;
 }
 
+/* Phase 02B: the card meta was the widest-tracked small type on the
+   site (0.14em over an uppercase sans, on top of an uppercase
+   string). The tracking is now the standard label scale and the
+   string is sentence case, so the card reads as a caption rather
+   than as a stamped seal. */
 .venue-card__meta {
     font-family: var(--font-sans);
-    font-size: var(--fs-eyebrow);
-    font-weight: 600;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--color-muted-brown);
+    font-size: var(--fs-body-sm);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--ls-body);
+    color: var(--color-text-muted);
     margin-bottom: var(--space-3);
 }
 
 .venue-card__title {
     font-family: var(--font-serif);
-    font-size: clamp(1.75rem, 1.2rem + 1.4vw, 2.5rem);
-    font-weight: 600;
-    line-height: 1.15;
-    color: var(--color-ink);
+    font-size: clamp(1.5rem, 1.15rem + 1.1vw, 2.15rem);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--lh-display);
+    color: var(--color-text-strong);
     margin-bottom: var(--space-3);
     /* Keep long Phì Lũ title on one line — scale-down at very narrow widths. */
     word-break: keep-all;
@@ -159,13 +167,14 @@
 
 .venue-card__desc {
     font-size: var(--fs-body);
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    color: var(--color-muted-brown);
-    line-height: 1.7;
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--ls-body);
+    color: var(--color-text-muted);
+    line-height: var(--lh-body);
     max-width: 48ch;
     margin-bottom: var(--space-2);
 }
+
 
 .venue-card .link-arrow--inline {
     margin-top: var(--space-5);
@@ -178,41 +187,45 @@
     background-color: var(--color-paper);
 }
 
+/* Phase 02B: the venue selection head used to be a centred block
+   with the title split across two <span> lines, the second one
+   italic — the same centred/italic/uppercase pattern that appeared
+   on every other page. The head is now left-aligned and the title
+   reads as one sentence, which is what a printed contents page
+   would do. */
 .venues-page__head {
-    max-width: 760px;
-    margin: 0 auto var(--space-10);
-    text-align: center;
+    max-width: 720px;
+    margin: 0 0 var(--space-10);
+    text-align: left;
 }
 
 .venues-page__head .eyebrow {
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .venues-page__title {
     font-size: var(--fs-h1);
-    font-weight: 600;
-    line-height: 1.1;
-    letter-spacing: -0.015em;
-    color: var(--color-ink);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--lh-display);
+    letter-spacing: var(--ls-display);
+    color: var(--color-text-strong);
+    max-width: 20ch;
 }
 
+/* The two <span>s are line-break hints, not a two-slab layout: the
+   sentence flows and wraps where the measure asks it to. */
 .venues-page__title span {
-    display: block;
-}
-
-.venues-page__title span:nth-child(even) {
-    font-style: italic;
-    color: var(--color-brown);
+    display: inline;
 }
 
 .venues-page__lede {
     margin-top: var(--space-5);
     font-size: var(--fs-body-lg);
-    color: var(--color-muted-brown);
-    line-height: 1.75;
-    max-width: 60ch;
-    margin-left: auto;
-    margin-right: auto;
+    color: var(--color-text-muted);
+    line-height: var(--lh-relaxed);
+    max-width: var(--measure-text);
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .venues-page__grid {
@@ -222,8 +235,10 @@
     margin-bottom: var(--space-10);
 }
 
+/* The venue name on the selection page is the card title at page
+   scale — the same clamp, one step up. */
 .venue-card--page .venue-card__title {
-    font-size: clamp(2rem, 1.4rem + 1.6vw, 2.75rem);
+    font-size: clamp(1.75rem, 1.3rem + 1.4vw, 2.4rem);
 }
 
 .venues-page__cta {
@@ -231,11 +246,11 @@
 }
 
 .venues-page__cta-note {
-    max-width: 56ch;
+    max-width: var(--measure-text);
     margin: 0 auto var(--space-6);
     font-size: var(--fs-body-lg);
-    color: var(--color-muted-brown);
-    line-height: 1.7;
+    color: var(--color-text-muted);
+    line-height: var(--lh-body);
 }
 
 .venues-page__cta .btn {
@@ -351,9 +366,10 @@
     text-align: center;
     font-family: var(--font-sans);
     font-size: var(--fs-body-sm);
-    letter-spacing: 0.18em;
+    letter-spacing: var(--ls-caption);
     text-transform: uppercase;
-    color: var(--color-muted-brown);
+    /* Decorative placeholder — the subtle tone is enough. */
+    color: var(--color-text-subtle);
     background:
         linear-gradient(135deg, transparent 49%, var(--color-line) 49% 51%, transparent 51%) center / 22px 22px no-repeat,
         var(--color-cream);
@@ -377,22 +393,23 @@
 
 .venue-hall-card__meta {
     font-family: var(--font-serif);
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-ink);
+    font-size: var(--fs-h4);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
     margin-bottom: var(--space-3);
-    line-height: 1.2;
-    letter-spacing: 0.005em;
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-serif);
 }
+
 
 .venue-hall-card__capacity {
     display: inline-block;
     font-family: var(--font-sans);
-    font-size: var(--fs-eyebrow);
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-brown);
+    font-size: var(--fs-body-sm);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--ls-body);
+    line-height: var(--lh-snug);
+    color: var(--color-text);
     margin: 0 0 var(--space-2);
 }
 
@@ -416,8 +433,9 @@
 .halls-page__cta-back {
     display: inline-flex;
     margin-bottom: var(--space-6);
-    letter-spacing: 0.18em;
+    letter-spacing: var(--ls-caption);
 }
+
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {

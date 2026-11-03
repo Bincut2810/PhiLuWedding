@@ -1,0 +1,540 @@
+[
+ {
+  "page": "home",
+  "url": "/",
+  "vw": 1280,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "52.32px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal",
+   "IBM Plex Sans 600 normal"
+  ]
+ },
+ {
+  "page": "home",
+  "url": "/",
+  "vw": 390,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "36px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal"
+  ]
+ },
+ {
+  "page": "home",
+  "url": "/",
+  "vw": 1024,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "47.456px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal",
+   "IBM Plex Sans 600 normal"
+  ]
+ },
+ {
+  "page": "home",
+  "url": "/",
+  "vw": 360,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "36px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal"
+  ]
+ },
+ {
+  "page": "menus",
+  "url": "/thuc-don",
+  "vw": 1280,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "52.32px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 400 normal",
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal",
+   "IBM Plex Sans 600 normal"
+  ]
+ },
+ {
+  "page": "menus",
+  "url": "/thuc-don",
+  "vw": 390,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "36px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 400 normal",
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal",
+   "IBM Plex Sans 600 normal"
+  ]
+ },
+ {
+  "page": "menus",
+  "url": "/thuc-don",
+  "vw": 1024,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "47.456px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 400 normal",
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal",
+   "IBM Plex Sans 600 normal"
+  ]
+ },
+ {
+  "page": "menus",
+  "url": "/thuc-don",
+  "vw": 360,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "36px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 400 normal",
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal",
+   "IBM Plex Sans 600 normal"
+  ]
+ },
+ {
+  "page": "combo",
+  "url": "/thuc-don/combo/3",
+  "vw": 1280,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "45.28px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal",
+   "IBM Plex Sans 600 normal"
+  ]
+ },
+ {
+  "page": "combo",
+  "url": "/thuc-don/combo/3",
+  "vw": 390,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "32px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal"
+  ]
+ },
+ {
+  "page": "combo",
+  "url": "/thuc-don/combo/3",
+  "vw": 1024,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "41.184px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal",
+   "IBM Plex Sans 600 normal"
+  ]
+ },
+ {
+  "page": "combo",
+  "url": "/thuc-don/combo/3",
+  "vw": 360,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "32px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal"
+  ]
+ },
+ {
+  "page": "venues",
+  "url": "/tiec-cuoi",
+  "vw": 1280,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "45.28px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal",
+   "IBM Plex Sans 600 normal"
+  ]
+ },
+ {
+  "page": "venues",
+  "url": "/tiec-cuoi",
+  "vw": 390,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "32px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal"
+  ]
+ },
+ {
+  "page": "venues",
+  "url": "/tiec-cuoi",
+  "vw": 1024,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "41.184px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal",
+   "IBM Plex Sans 600 normal"
+  ]
+ },
+ {
+  "page": "venues",
+  "url": "/tiec-cuoi",
+  "vw": 360,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "32px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal"
+  ]
+ },
+ {
+  "page": "philu",
+  "url": "/tiec-cuoi/philu",
+  "vw": 1280,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "45.28px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal",
+   "IBM Plex Sans 600 normal"
+  ]
+ },
+ {
+  "page": "philu",
+  "url": "/tiec-cuoi/philu",
+  "vw": 390,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "32px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal"
+  ]
+ },
+ {
+  "page": "philu",
+  "url": "/tiec-cuoi/philu",
+  "vw": 1024,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "41.184px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal",
+   "IBM Plex Sans 600 normal"
+  ]
+ },
+ {
+  "page": "philu",
+  "url": "/tiec-cuoi/philu",
+  "vw": 360,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "32px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal"
+  ]
+ },
+ {
+  "page": "golden",
+  "url": "/tiec-cuoi/golden-phoenix",
+  "vw": 1280,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "45.28px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal",
+   "IBM Plex Sans 600 normal"
+  ]
+ },
+ {
+  "page": "golden",
+  "url": "/tiec-cuoi/golden-phoenix",
+  "vw": 390,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "32px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal"
+  ]
+ },
+ {
+  "page": "golden",
+  "url": "/tiec-cuoi/golden-phoenix",
+  "vw": 1024,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "41.184px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal",
+   "IBM Plex Sans 600 normal"
+  ]
+ },
+ {
+  "page": "golden",
+  "url": "/tiec-cuoi/golden-phoenix",
+  "vw": 360,
+  "status": 200,
+  "overflow": 0,
+  "errors": [],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "32px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal"
+  ]
+ },
+ {
+  "page": "booking",
+  "url": "/dat-tiec",
+  "vw": 1280,
+  "status": 200,
+  "overflow": 0,
+  "errors": [
+   "Failed to load resource: the server responded with a status of 404 ()",
+   "Refused to execute script from 'https://cdn.jsdelivr.net/npm/jquery.validation.unobtrusive@4.0.0/dist/jquery.validate.unobtrusive.min.js' because its MIME type ('text/plain') is not executable, and strict MIME type checking is enabled."
+  ],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "45.28px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal",
+   "IBM Plex Sans 600 normal"
+  ]
+ },
+ {
+  "page": "booking",
+  "url": "/dat-tiec",
+  "vw": 390,
+  "status": 200,
+  "overflow": 0,
+  "errors": [
+   "Failed to load resource: the server responded with a status of 404 ()",
+   "Refused to execute script from 'https://cdn.jsdelivr.net/npm/jquery.validation.unobtrusive@4.0.0/dist/jquery.validate.unobtrusive.min.js' because its MIME type ('text/plain') is not executable, and strict MIME type checking is enabled."
+  ],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "32px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal",
+   "IBM Plex Sans 600 normal"
+  ]
+ },
+ {
+  "page": "booking",
+  "url": "/dat-tiec",
+  "vw": 1024,
+  "status": 200,
+  "overflow": 0,
+  "errors": [
+   "Failed to load resource: the server responded with a status of 404 ()",
+   "Refused to execute script from 'https://cdn.jsdelivr.net/npm/jquery.validation.unobtrusive@4.0.0/dist/jquery.validate.unobtrusive.min.js' because its MIME type ('text/plain') is not executable, and strict MIME type checking is enabled."
+  ],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "41.184px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal",
+   "IBM Plex Sans 600 normal"
+  ]
+ },
+ {
+  "page": "booking",
+  "url": "/dat-tiec",
+  "vw": 360,
+  "status": 200,
+  "overflow": 0,
+  "errors": [
+   "Failed to load resource: the server responded with a status of 404 ()",
+   "Refused to execute script from 'https://cdn.jsdelivr.net/npm/jquery.validation.unobtrusive@4.0.0/dist/jquery.validate.unobtrusive.min.js' because its MIME type ('text/plain') is not executable, and strict MIME type checking is enabled."
+  ],
+  "h1Font": "\"EB Garamond\"",
+  "h1Size": "32px",
+  "bodyFont": "\"EB Garamond\"",
+  "loadedFonts": [
+   "EB Garamond 500 normal",
+   "EB Garamond 600 normal",
+   "IBM Plex Sans 400 italic",
+   "IBM Plex Sans 400 normal",
+   "IBM Plex Sans 500 normal",
+   "IBM Plex Sans 600 normal"
+  ]
+ }
+]

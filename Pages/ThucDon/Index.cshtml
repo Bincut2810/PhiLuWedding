@@ -2,6 +2,14 @@
 @model PhiluWedding.Pages.ThucDon.IndexModel
 @{
     ViewData["Title"] = "Thực đơn";
+
+    // The catalog is ready when the database answered and it holds at
+    // least one menu set.
+    var catalogReady = Model.DatabaseAvailable && Model.MenuSets.Count > 0;
+
+    // The introduction is the wording of the wedding menu set itself, so
+    // the page never invents a promise the restaurant did not make.
+    var intro = Model.WeddingMenuSet?.ShortDescription ?? Model.WeddingMenuSet?.Description;
 }
 
 @section Styles {
@@ -9,25 +17,59 @@
 }
 
 @* =====================================================================
-   PUBLIC MENU LISTING
-   Reads from the database via IndexModel. The page renders a grid
-   of menu set cards; when the database is unavailable or has no rows
-   yet, it shows a polite empty state instead of crashing.
+   PUBLIC MENU LANDING PAGE
+   The prices come first: a compact hero, the four public price tiers
+   with the menu options of every tier, then the venue price sheets, the
+   menu sets and the booking call to action. Every tier and every option
+   is read through PublicMenuScope, so this page shows exactly what the
+   venue price sheets show.
    ===================================================================== *@
 
-<section class="menus-page" aria-labelledby="menus-page-heading">
+<section class="menus-page menus-landing" aria-labelledby="menus-page-heading">
     <div class="container">
-        <header class="menus-page__head">
-            <p class="eyebrow">THỰC ĐƠƠN TIỆC CƯỚI</p>
-            <h1 id="menus-page-heading" class="menus-page__title">
-                <span>Tinh hoa ẩm thực,</span>
-                <span>chọn lọc cho ngày trọng đại</span>
+
+        <header class="menus-landing__hero">
+            <p class="eyebrow">TIỆC CƯỚI PHÌ LŨ</p>
+            <h1 id="menus-page-heading" class="menus-landing__title">
+                <span>Chọn thực đơn</span>
+                <span>cho ngày trọng đại của bạn</span>
             </h1>
-            <p class="menus-page__lede">
-                Khám phá các bộ thực đơn tiệc cưới của NHÀ HÀNG TIỆC CƯỚI PHÌ LŨ.
-                Mỗi bộ thực đơn được chăm chút với sự cân bằng giữa hương vị,
-                hình thức và phong cách phục vụ.
-            </p>
+            @if (!string.IsNullOrWhiteSpace(intro))
+            {
+                <p class="menus-landing__lede">@intro</p>
+            }
+            @if (catalogReady && Model.Tiers.Count > 0)
+            {
+                <ul class="menus-landing__facts" role="list">
+                    <li class="menus-landing__fact">
+                        <span class="menus-landing__fact-value">@Model.Tiers.Count</span>
+                        <span class="menus-landing__fact-label">mức giá</span>
+                    </li>
+                    <li class="menus-landing__fact">
+                        <span class="menus-landing__fact-value">@Model.OptionCount</span>
+                        <span class="menus-landing__fact-label">phương án món ăn</span>
+                    </li>
+                    <li class="menus-landing__fact">
+                        <span class="menus-landing__fact-value">@Model.GuestsPerTable</span>
+                        <span class="menus-landing__fact-label">khách mỗi bàn</span>
+                    </li>
+                </ul>
+
+                @* The primary action of the hero is an in-page jump to
+                   the price tiers — the page is about the prices, so
+                   they come first. The secondary action is the
+                   consultation the page already supports. *@
+                <div class="menus-landing__hero-actions">
+                    <a class="btn btn--primary" href="#menus-landing-tiers">
+                        XEM CÁC MỨC GIÁ
+                        <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                    <a class="btn btn--outline" asp-page="/DatTiec">
+                        TƯ VẤN THỰC ĐƠN
+                        <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+            }
         </header>
 
         @if (!Model.DatabaseAvailable)
@@ -56,22 +98,164 @@
         }
         else
         {
-            <ul class="menus-page__grid" role="list">
-                @foreach (var menuSet in Model.MenuSets)
-                {
-                    <li class="menus-card">
-                        <a class="menus-card__link"
-                           asp-page="/ThucDon/Details"
-                           asp-route-id="@menuSet.Id"
-                           aria-label="@($"Xem chi tiết {menuSet.Name}")">
-                            <div class="menus-card__media" aria-hidden="true">
-                                <div class="menus-card__placeholder-mark">
-                                    <span>THỰC ĐƠN</span>
-                                </div>
-                            </div>
-                            <div class="menus-card__body">
-                                <p class="menus-card__meta">BỘ THỰC ĐƠN</p>
-                                <h2 class="menus-card__title">@menuSet.Name</h2>
+            @* ---------- The four public price tiers ---------- *@
+            <section id="menus-landing-tiers"
+                     class="menus-landing__section menus-landing__tiers"
+                     aria-labelledby="menus-landing-tiers-heading">
+                <div class="menus-landing__section-head">
+                    <p class="eyebrow">BẢNG GIÁ THỰC ĐƠN</p>
+                    <h2 id="menus-landing-tiers-heading" class="menus-landing__section-title">
+                        Bốn mức giá, chín phương án món ăn
+                    </h2>
+                    <p class="menus-landing__section-note">
+                        Giá tính theo bàn @Model.GuestsPerTable khách.
+                        @if (Model.IsSharedPricing)
+                        {
+                            <text>Các mức giá dùng chung cho Trung tâm Hội nghị Tiệc cưới Phì Lũ và Golden Phoenix.</text>
+                        }
+                    </p>
+                </div>
+
+                <ul class="menus-tiers" role="list">
+                    @foreach (var tier in Model.Tiers)
+                    {
+                        <li class="menus-tier">
+                            <article class="menus-tier__card">
+                                <p class="menus-tier__price">
+                                    <span class="menus-tier__amount">
+                                        @(tier.PriceDisplay ?? "Liên hệ nhà hàng")
+                                    </span>
+                                    <span class="menus-tier__unit">/ bàn @tier.GuestsPerTable khách</span>
+                                </p>
+                                <h3 class="menus-tier__name">@tier.Name</h3>
+                                @if (!string.IsNullOrWhiteSpace(tier.Description))
+                                {
+                                    <p class="menus-tier__desc">@tier.Description</p>
+                                }
+
+                                @if (tier.Options.Count > 0)
+                                {
+                                    <div class="menus-tier__options">
+                                        <p class="menus-tier__options-label">Phương án món ăn</p>
+                                        <ul class="menus-tier__options-list" role="list">
+                                            @foreach (var option in tier.Options)
+                                            {
+                                                <li class="menus-tier__options-item">
+                                                    <a class="menus-tier__option"
+                                                       asp-page="/ThucDon/ComboDetails"
+                                                       asp-route-id="@option.Id">
+                                                        <span class="menus-tier__option-name">@option.ShortName</span>
+                                                        @if (option.DishCount > 0)
+                                                        {
+                                                            <span class="menus-tier__option-count">@option.DishCount món</span>
+                                                        }
+                                                        <span class="menus-tier__option-arrow" aria-hidden="true">&rarr;</span>
+                                                        @* The tier name is hidden from the eye but read by the
+                                                           screen reader, so two options that share a name
+                                                           stay distinguishable without repeating the tier
+                                                           in the visible text. *@
+                                                        <span class="visually-hidden"> — @tier.Name</span>
+                                                    </a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                }
+
+                                <a class="menus-tier__cta"
+                                   asp-page="/ThucDon/PhiLu"
+                                   asp-route-muc="@tier.Slug">
+                                    Xem mức giá này
+                                    <span aria-hidden="true">&rarr;</span>
+                                    @* The tier name is read by the screen reader so the
+                                       four identical links stay distinguishable. *@
+                                    <span class="visually-hidden"> — @tier.Name</span>
+                                </a>
+                            </article>
+                        </li>
+                    }
+                </ul>
+            </section>
+
+            @* ---------- Notes about the prices ---------- *@
+            @if (Model.PriceNotes.Count > 0)
+            {
+                <section class="menus-landing__notes" aria-labelledby="menus-landing-notes-heading">
+                    <h2 id="menus-landing-notes-heading" class="menus-landing__notes-title">
+                        Ghi chú về giá
+                    </h2>
+                    @foreach (var note in Model.PriceNotes)
+                    {
+                        <div class="menus-landing__note">
+                            <p class="menus-landing__note-title">@note.Title</p>
+                            <p class="menus-landing__note-body">@note.Content</p>
+                            @if (!string.IsNullOrWhiteSpace(note.VatNote))
+                            {
+                                <p class="menus-landing__note-meta">@note.VatNote</p>
+                            }
+                        </div>
+                    }
+                </section>
+            }
+        }
+
+        @* The venue price sheets stay reachable even when the catalog
+           cannot be loaded, and they sit right below the prices so they
+           are never buried at the bottom of the page. *@
+        <nav class="menus-landing__venues" aria-labelledby="menus-landing-venues-heading">
+            <div class="menus-landing__venues-head">
+                <p class="eyebrow">BẢNG GIÁ THEO NHÀ HÀNG</p>
+                <h2 id="menus-landing-venues-heading" class="menus-landing__section-title">
+                    Bảng thực đơn của từng nhà hàng
+                </h2>
+            </div>
+            <ul class="menus-landing__venues-list" role="list">
+                <li>
+                    <a class="menus-landing__venue" asp-page="/ThucDon/PhiLu">
+                        <span class="menus-landing__venue-name">
+                            Trung tâm Hội nghị Tiệc cưới Phì Lũ
+                        </span>
+                        <span class="menus-landing__venue-cta">
+                            Xem bảng giá
+                            <span aria-hidden="true">&rarr;</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a class="menus-landing__venue" asp-page="/ThucDon/GoldenPhoenix">
+                        <span class="menus-landing__venue-name">
+                            Golden Phoenix
+                        </span>
+                        <span class="menus-landing__venue-cta">
+                            Xem bảng giá
+                            <span aria-hidden="true">&rarr;</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        @if (catalogReady)
+        {
+            @* ---------- The menu sets behind the prices ---------- *@
+            <section class="menus-landing__section" aria-labelledby="menus-landing-sets-heading">
+                <div class="menus-landing__section-head">
+                    <p class="eyebrow">BỘ THỰC ĐƠN</p>
+                    <h2 id="menus-landing-sets-heading" class="menus-landing__section-title">
+                        Toàn bộ món ăn theo từng bộ thực đơn
+                    </h2>
+                </div>
+
+                <ul class="menus-landing__sets" role="list">
+                    @foreach (var menuSet in Model.MenuSets)
+                    {
+                        <li class="menus-card">
+                            <a class="menus-card__link"
+                               asp-page="/ThucDon/Details"
+                               asp-route-id="@menuSet.Id"
+                               aria-label="@($"Xem chi tiết {menuSet.Name}")">
+                                <p class="menus-card__meta">Bộ thực đơn</p>
+                                <h3 class="menus-card__title">@menuSet.Name</h3>
                                 @if (!string.IsNullOrWhiteSpace(menuSet.ShortDescription))
                                 {
                                     <p class="menus-card__desc">@menuSet.ShortDescription</p>
@@ -86,7 +270,7 @@
                                 }
 
                                 <p class="menus-card__meta-row">
-                                    <span class="menus-card__meta-label">Số combo</span>
+                                    <span class="menus-card__meta-label">Số phương án</span>
                                     <span class="menus-card__meta-value">
                                         @(menuSet.ComboCount > 0 ? menuSet.ComboCount.ToString() : "—")
                                     </span>
@@ -96,47 +280,29 @@
                                     Xem thực đơn
                                     <span aria-hidden="true">&rarr;</span>
                                 </span>
-                            </div>
-                        </a>
-                    </li>
-                }
-            </ul>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </section>
 
-            <div class="menus-page__cta">
-                <p class="menus-page__cta-note">
-                    Mỗi bộ thực đơn có phong cách và mức giá khác nhau. Hãy để đội ngũ
-                    Phì Lũ giúp bạn chọn thực đơn phù hợp nhất với sảnh và ngân sách.
+            @* ---------- Booking call to action ---------- *@
+            <section class="menus-landing__cta" aria-labelledby="menus-landing-cta-heading">
+                <h2 id="menus-landing-cta-heading" class="menus-landing__cta-title">
+                    Mỗi bộ thực đơn có phong cách và mức giá khác nhau
+                </h2>
+                <p class="menus-landing__cta-note">
+                    Hãy để đội ngũ Phì Lũ giúp bạn chọn thực đơn phù hợp nhất với sảnh và ngân sách.
                 </p>
                 <a class="btn btn--primary" asp-page="/DatTiec">
                     ĐẶT LỊCH TƯ VẤN
                     <span class="btn__arrow" aria-hidden="true">&rarr;</span>
                 </a>
-                <a class="link-arrow menus-page__cta-secondary" asp-page="/Index">
+                <a class="link-arrow menus-landing__cta-secondary" asp-page="/Index">
                     VỀ TRANG CHỦ
                     <span aria-hidden="true">&rarr;</span>
                 </a>
-            </div>
-
+            </section>
         }
-
-        @* The venue price sheets are published under their own pages, so they
-           stay reachable even when the menu-set list cannot be loaded. *@
-        <nav class="menus-page__venues" aria-label="Thực đơn theo nhà hàng">
-            <p class="menus-page__venues-title">Bảng giá thực đơn theo nhà hàng</p>
-            <ul class="menus-page__venues-list" role="list">
-                <li>
-                    <a class="link-arrow" asp-page="/ThucDon/PhiLu">
-                        THỰC ĐƠN TRUNG TÂM HỘI NGHỊ TIỆC CƯỚI PHÌ LŨ
-                        <span aria-hidden="true">&rarr;</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="link-arrow" asp-page="/ThucDon/GoldenPhoenix">
-                        THỰC ĐƠN GOLDEN PHOENIX
-                        <span aria-hidden="true">&rarr;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
     </div>
 </section>

@@ -4,6 +4,10 @@
    All classes are prefixed with `halls-page` (or use the `.halls-`
    prefix) so they never collide with the homepage `.hall-*` rules
    in home.css.
+
+   Phase UI/UX-03 — the shared foundations from site.css (semantic
+   text colours, --font-weight-* tokens, --measure-text) are applied
+   here so every page speaks the same type vocabulary.
    ===================================================================== */
 
 /* ---------- Listing page hero ---------- */
@@ -13,42 +17,43 @@
     background-color: var(--color-paper);
 }
 
+/* Phase 02B: the hall-listing head was a centred block with an
+   italic second line, identical in shape to the menu, venue and
+   booking heads. It is now left-aligned with the title flowing as
+   one sentence, so the two listing pages no longer read as the same
+   template with different words. */
 .halls-page__head {
-    max-width: 760px;
-    margin: 0 auto var(--space-10);
-    text-align: center;
+    max-width: 720px;
+    margin: 0 0 var(--space-10);
+    text-align: left;
 }
 
 .halls-page__head .eyebrow {
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .halls-page__title {
     font-size: var(--fs-h1);
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -0.015em;
-    color: var(--color-ink);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--lh-display);
+    letter-spacing: var(--ls-display);
+    color: var(--color-text-strong);
+    max-width: 20ch;
 }
 
+/* The <span> markers are line-break hints, not a two-slab layout. */
 .halls-page__title span {
-    display: block;
-}
-
-.halls-page__title span:nth-child(even) {
-    font-style: italic;
-    color: var(--color-brown);
-    font-weight: 600;
+    display: inline;
 }
 
 .halls-page__lede {
     margin-top: var(--space-5);
     font-size: var(--fs-body-lg);
-    color: var(--color-muted-brown);
-    line-height: 1.75;
-    max-width: 56ch;
-    margin-left: auto;
-    margin-right: auto;
+    color: var(--color-text-muted);
+    line-height: var(--lh-relaxed);
+    max-width: var(--measure-text);
+    margin-left: 0;
+    margin-right: 0;
 }
 
 /* ---------- Notices (DB down / empty) ---------- */
@@ -72,17 +77,17 @@
 
 .halls-page__notice-title {
     font-family: var(--font-serif);
-    font-size: 1.625rem;
-    font-weight: 600;
-    color: var(--color-ink);
+    font-size: var(--fs-h3);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
     margin-bottom: var(--space-3);
-    line-height: 1.3;
+    line-height: var(--lh-tight);
 }
 
 .halls-page__notice-body {
-    color: var(--color-muted-brown);
+    color: var(--color-text-muted);
     font-size: var(--fs-body);
-    line-height: 1.7;
+    line-height: var(--lh-body);
     margin-bottom: var(--space-6);
 }
 
@@ -176,13 +181,15 @@
     text-align: center;
     font-family: var(--font-sans);
     font-size: var(--fs-body-sm);
-    letter-spacing: 0.18em;
+    letter-spacing: var(--ls-caption);
     text-transform: uppercase;
-    color: var(--color-muted-brown);
+    /* Decorative placeholder — the subtle tone is enough. */
+    color: var(--color-text-subtle);
     background:
         linear-gradient(135deg, transparent 49%, var(--color-line) 49% 51%, transparent 51%) center / 22px 22px no-repeat,
         var(--color-cream);
 }
+
 
 .halls-card__link:hover .halls-card__media,
 .halls-card__link:focus-visible .halls-card__media {
@@ -202,21 +209,21 @@
 
 .halls-card__meta {
     font-family: var(--font-sans);
-    font-size: var(--fs-eyebrow);
-    font-weight: 500;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--color-muted-brown);
+    font-size: var(--fs-body-sm);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--ls-body);
+    color: var(--color-text-muted);
     margin-bottom: var(--space-3);
 }
 
+
 .halls-card__title {
     font-family: var(--font-serif);
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-ink);
+    font-size: var(--fs-h4);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
     margin-bottom: var(--space-3);
-    line-height: 1.25;
+    line-height: var(--lh-tight);
 }
 
 .halls-card__meta-row {
@@ -230,15 +237,15 @@
 }
 
 .halls-card__meta-label {
-    color: var(--color-muted-brown);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-size: var(--fs-eyebrow);
+    color: var(--color-text-muted);
+    letter-spacing: var(--ls-body);
+    font-size: var(--fs-body-sm);
 }
 
+
 .halls-card__meta-value {
-    color: var(--color-brown);
-    font-weight: 500;
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
 }
 
 .halls-card .link-arrow--inline {
@@ -259,7 +266,7 @@
     }
 
     .halls-card__title {
-        font-size: 1.625rem;
+        font-size: var(--fs-h3);
     }
 }
 
@@ -276,11 +283,11 @@
 }
 
 .halls-page__cta-note {
-    max-width: 56ch;
+    max-width: var(--measure-text);
     margin: 0 auto var(--space-6);
     font-size: var(--fs-body-lg);
-    color: var(--color-muted-brown);
-    line-height: 1.7;
+    color: var(--color-text-muted);
+    line-height: var(--lh-body);
 }
 
 .halls-page__cta .btn {
@@ -300,13 +307,14 @@
     margin-bottom: var(--space-8);
     font-family: var(--font-sans);
     font-size: var(--fs-body-sm);
-    letter-spacing: 0.18em;
+    letter-spacing: var(--ls-caption);
     text-transform: uppercase;
-    color: var(--color-muted-brown);
+    color: var(--color-text-muted);
 }
 
+
 .halls-detail__crumbs a {
-    color: var(--color-brown);
+    color: var(--color-text);
     border-bottom: 1px solid transparent;
     transition: color var(--dur-fast) var(--ease-soft),
                 border-bottom-color var(--dur-fast) var(--ease-soft);
@@ -314,29 +322,32 @@
 
 .halls-detail__crumbs a:hover,
 .halls-detail__crumbs a:focus-visible {
-    color: var(--color-ink);
+    color: var(--color-text-strong);
     border-bottom-color: var(--color-champagne);
 }
 
 .halls-detail__crumbs span[aria-current] {
-    color: var(--color-ink);
+    color: var(--color-text-strong);
 }
 
+/* Phase 02B: the hall detail head was centred as well. The venue
+   and hall pages now share one left-aligned editorial grammar. */
 .halls-detail__head {
-    text-align: center;
-    max-width: 760px;
-    margin: 0 auto var(--space-9);
+    text-align: left;
+    max-width: 720px;
+    margin: 0 0 var(--space-9);
 }
 
 .halls-detail__head .eyebrow {
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .halls-detail__lede {
     margin-top: var(--space-5);
     font-size: var(--fs-body-lg);
-    color: var(--color-muted-brown);
-    line-height: 1.75;
+    color: var(--color-text-muted);
+    line-height: var(--lh-relaxed);
+    max-width: var(--measure-text);
 }
 
 /* Gallery */
@@ -364,10 +375,12 @@
     justify-content: center;
     font-family: var(--font-sans);
     font-size: var(--fs-body-sm);
-    letter-spacing: 0.18em;
+    letter-spacing: var(--ls-caption);
     text-transform: uppercase;
-    color: var(--color-muted-brown);
+    /* Decorative placeholder — the subtle tone is enough. */
+    color: var(--color-text-subtle);
 }
+
 
 .halls-gallery__thumbs {
     display: grid;
@@ -408,7 +421,7 @@
     padding: var(--space-9) var(--space-5);
     background-color: var(--color-ivory);
     border: 1px solid var(--color-border);
-    color: var(--color-muted-brown);
+    color: var(--color-text-muted);
     font-style: italic;
 }
 
@@ -428,9 +441,9 @@
 
 .halls-detail__sub {
     font-family: var(--font-serif);
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-ink);
+    font-size: var(--fs-h4);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
     margin-bottom: var(--space-5);
     position: relative;
     padding-bottom: var(--space-4);
@@ -447,13 +460,13 @@
 }
 
 .halls-detail__body {
-    max-width: 64ch;
+    max-width: var(--measure-text);
 }
 
 .halls-detail__description {
-    color: var(--color-brown);
+    color: var(--color-text);
     font-size: var(--fs-body-lg);
-    line-height: 1.85;
+    line-height: var(--lh-relaxed);
     white-space: pre-line;
 }
 
@@ -486,16 +499,17 @@
 
 .halls-detail__row dt {
     font-family: var(--font-sans);
-    font-size: var(--fs-eyebrow);
-    font-weight: 500;
-    letter-spacing: 0.24em;
+    font-size: var(--fs-label);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--ls-label);
     text-transform: uppercase;
-    color: var(--color-muted-brown);
+    color: var(--color-text-muted);
 }
+
 
 .halls-detail__row dd {
     margin: 0;
-    color: var(--color-brown);
+    color: var(--color-text);
     font-size: var(--fs-body);
 }
 
@@ -509,8 +523,8 @@
     margin: 0 0 var(--space-5);
     text-align: center;
     font-size: var(--fs-body-sm);
-    color: var(--color-muted-brown);
-    line-height: 1.6;
+    color: var(--color-text-muted);
+    line-height: var(--lh-body);
 }
 
 .halls-detail__back {
@@ -525,7 +539,7 @@
     }
 
     .halls-detail__sub {
-        font-size: 1.75rem;
+        font-size: var(--fs-h3);
     }
 }
 

@@ -1,0 +1,1266 @@
+{
+ "fontCoverage": {
+  "EB Garamond": {
+   "loadedFaces": [
+    "400/italic/unloaded",
+    "400/italic/unloaded",
+    "400/italic/unloaded",
+    "400/italic/unloaded",
+    "400/italic/loaded",
+    "400/italic/loaded",
+    "400/italic/loaded",
+    "400/normal/unloaded",
+    "400/normal/unloaded",
+    "400/normal/unloaded",
+    "400/normal/unloaded",
+    "400/normal/loaded",
+    "400/normal/loaded",
+    "400/normal/loaded",
+    "500/normal/unloaded",
+    "500/normal/unloaded",
+    "500/normal/unloaded",
+    "500/normal/unloaded",
+    "500/normal/loaded",
+    "500/normal/loaded",
+    "500/normal/loaded",
+    "600/normal/unloaded",
+    "600/normal/unloaded",
+    "600/normal/unloaded",
+    "600/normal/unloaded",
+    "600/normal/loaded",
+    "600/normal/loaded",
+    "600/normal/loaded"
+   ],
+   "charsTested": 35,
+   "charsDifferingFromFallback": 35,
+   "fullVietnameseCoverage": true,
+   "checkVietnamese": true,
+   "checkVietnameseItalic": true,
+   "checkVietnameseMedium": true
+  },
+  "IBM Plex Sans": {
+   "loadedFaces": [
+    "400/italic/unloaded",
+    "400/italic/unloaded",
+    "400/italic/unloaded",
+    "400/italic/loaded",
+    "400/italic/loaded",
+    "400/italic/loaded",
+    "400/normal/unloaded",
+    "400/normal/unloaded",
+    "400/normal/unloaded",
+    "400/normal/loaded",
+    "400/normal/loaded",
+    "400/normal/loaded",
+    "500/normal/unloaded",
+    "500/normal/unloaded",
+    "500/normal/unloaded",
+    "500/normal/loaded",
+    "500/normal/loaded",
+    "500/normal/loaded",
+    "600/normal/unloaded",
+    "600/normal/unloaded",
+    "600/normal/unloaded",
+    "600/normal/loaded",
+    "600/normal/loaded",
+    "600/normal/loaded"
+   ],
+   "charsTested": 35,
+   "charsDifferingFromFallback": 26,
+   "fullVietnameseCoverage": false,
+   "checkVietnamese": true,
+   "checkVietnameseItalic": true,
+   "checkVietnameseMedium": true
+  }
+ },
+ "pages": [
+  {
+   "page": "home",
+   "vw": 360,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "home",
+   "vw": 390,
+   "status": 200,
+   "fontReqs": [
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "home",
+   "vw": 768,
+   "status": 200,
+   "fontReqs": [
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "home",
+   "vw": 1024,
+   "status": 200,
+   "fontReqs": [
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "home",
+   "vw": 1280,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "home",
+   "vw": 1440,
+   "status": 200,
+   "fontReqs": [
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "menus",
+   "vw": 360,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".menus-landing__note-meta::Giá chưa bao gồm VAT (theo bản",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": {
+    "font": "IBM Plex Sans",
+    "tnum": "tabular-nums"
+   },
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "menus",
+   "vw": 390,
+   "status": 200,
+   "fontReqs": [
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".menus-landing__note-meta::Giá chưa bao gồm VAT (theo bản",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": {
+    "font": "IBM Plex Sans",
+    "tnum": "tabular-nums"
+   },
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "menus",
+   "vw": 768,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".menus-landing__note-meta::Giá chưa bao gồm VAT (theo bản",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": {
+    "font": "IBM Plex Sans",
+    "tnum": "tabular-nums"
+   },
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "menus",
+   "vw": 1024,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".menus-landing__note-meta::Giá chưa bao gồm VAT (theo bản",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": {
+    "font": "IBM Plex Sans",
+    "tnum": "tabular-nums"
+   },
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "menus",
+   "vw": 1280,
+   "status": 200,
+   "fontReqs": [
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".menus-landing__note-meta::Giá chưa bao gồm VAT (theo bản",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": {
+    "font": "IBM Plex Sans",
+    "tnum": "tabular-nums"
+   },
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "menus",
+   "vw": 1440,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".menus-landing__note-meta::Giá chưa bao gồm VAT (theo bản",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": {
+    "font": "IBM Plex Sans",
+    "tnum": "tabular-nums"
+   },
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "combo",
+   "vw": 360,
+   "status": 200,
+   "fontReqs": [
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".combo-detail__price-note::Giá đang được cập nhật",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "combo",
+   "vw": 390,
+   "status": 200,
+   "fontReqs": [
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".combo-detail__price-note::Giá đang được cập nhật",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "combo",
+   "vw": 768,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".combo-detail__price-note::Giá đang được cập nhật",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "combo",
+   "vw": 1024,
+   "status": 200,
+   "fontReqs": [
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".combo-detail__price-note::Giá đang được cập nhật",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "combo",
+   "vw": 1280,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".combo-detail__price-note::Giá đang được cập nhật",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "combo",
+   "vw": 1440,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".combo-detail__price-note::Giá đang được cập nhật",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "venues",
+   "vw": 360,
+   "status": 200,
+   "fontReqs": [
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "venues",
+   "vw": 390,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "venues",
+   "vw": 768,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "venues",
+   "vw": 1024,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "venues",
+   "vw": 1280,
+   "status": 200,
+   "fontReqs": [
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "venues",
+   "vw": 1440,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "philu",
+   "vw": 360,
+   "status": 200,
+   "fontReqs": [
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9zU6ingQ",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9yU6ingQ",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL99U6g.wo",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".halls-page__lede::Khám phá các sảnh tiệc của Tru",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "philu",
+   "vw": 390,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9zU6ingQ",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL99U6g.wo",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9yU6ingQ",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".halls-page__lede::Khám phá các sảnh tiệc của Tru",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "philu",
+   "vw": 768,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9yU6ingQ",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9zU6ingQ",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL99U6g.wo",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".halls-page__lede::Khám phá các sảnh tiệc của Tru",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "philu",
+   "vw": 1024,
+   "status": 200,
+   "fontReqs": [
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9zU6ingQ",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL99U6g.wo",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9yU6ingQ",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".halls-page__lede::Khám phá các sảnh tiệc của Tru",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "philu",
+   "vw": 1280,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL99U6g.wo",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9zU6ingQ",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9yU6ingQ",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".halls-page__lede::Khám phá các sảnh tiệc của Tru",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "philu",
+   "vw": 1440,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL99U6g.wo",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9zU6ingQ",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9yU6ingQ",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".halls-page__lede::Khám phá các sảnh tiệc của Tru",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "golden",
+   "vw": 360,
+   "status": 200,
+   "fontReqs": [
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL99U6g.wo",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9zU6ingQ",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9yU6ingQ",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".halls-page__lede::Mỗi sảnh tại Golden Phoenix đư",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "golden",
+   "vw": 390,
+   "status": 200,
+   "fontReqs": [
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL99U6g.wo",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9yU6ingQ",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9zU6ingQ",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".halls-page__lede::Mỗi sảnh tại Golden Phoenix đư",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "golden",
+   "vw": 768,
+   "status": 200,
+   "fontReqs": [
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL99U6g.wo",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9zU6ingQ",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9yU6ingQ",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".halls-page__lede::Mỗi sảnh tại Golden Phoenix đư",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "golden",
+   "vw": 1024,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9yU6ingQ",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9zU6ingQ",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL99U6g.wo",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".halls-page__lede::Mỗi sảnh tại Golden Phoenix đư",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "golden",
+   "vw": 1280,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9yU6ingQ",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL99U6g.wo",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9zU6ingQ",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".halls-page__lede::Mỗi sảnh tại Golden Phoenix đư",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "golden",
+   "vw": 1440,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9zU6ingQ",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL9yU6ingQ",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGFmQSNjdsmc35JDF1K5GRwUjcdlttVFm-rI7e8QL99U6g.wo",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    ".halls-page__lede::Mỗi sảnh tại Golden Phoenix đư",
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "booking",
+   "vw": 360,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Refused to execute script from 'https://cdn.jsdelivr.net/npm/jquery.validation.unobtrusive@4.0.0/dis"
+   ],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "booking",
+   "vw": 390,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Refused to execute script from 'https://cdn.jsdelivr.net/npm/jquery.validation.unobtrusive@4.0.0/dis"
+   ],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "booking",
+   "vw": 768,
+   "status": 200,
+   "fontReqs": [
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Refused to execute script from 'https://cdn.jsdelivr.net/npm/jquery.validation.unobtrusive@4.0.0/dis"
+   ],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "booking",
+   "vw": 1024,
+   "status": 200,
+   "fontReqs": [
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Refused to execute script from 'https://cdn.jsdelivr.net/npm/jquery.validation.unobtrusive@4.0.0/dis"
+   ],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "booking",
+   "vw": 1280,
+   "status": 200,
+   "fontReqs": [
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Refused to execute script from 'https://cdn.jsdelivr.net/npm/jquery.validation.unobtrusive@4.0.0/dis"
+   ],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  },
+  {
+   "page": "booking",
+   "vw": 1440,
+   "status": 200,
+   "fontReqs": [
+    "SlGUmQSNjdsmc35JDF1K5GR6SDktYw.woff2",
+    "zYXEKVElMYYaJe8bpLHnCwDKhdTEG46kmUZQCX598fQbM4jw8V",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.wo",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA",
+    "zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA",
+    "SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2",
+    "SlGUmQSNjdsmc35JDF1K5GR7SDktYw.woff2"
+   ],
+   "errors": [
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Refused to execute script from 'https://cdn.jsdelivr.net/npm/jquery.validation.unobtrusive@4.0.0/dis"
+   ],
+   "overflow": 0,
+   "overflowing": [],
+   "clipped": [],
+   "italicHeadings": [],
+   "italics": [
+    "EM::(cập nhật sau)"
+   ],
+   "wideLabels": [],
+   "price": null,
+   "h1Font": "EB Garamond",
+   "bodyFont": "IBM Plex Sans"
+  }
+ ]
+}

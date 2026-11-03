@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNetCore.Mvc.RazorPages
+@using Microsoft.AspNetCore.Mvc.RazorPages
 @inject Microsoft.Extensions.Configuration.IConfiguration Configuration
 @{
     var brandName = Configuration["Brand:Name"] ?? "NHÀ HÀNG PHÌ LŨ";
@@ -27,10 +27,19 @@
     <meta name="description" content="@brandName — Nhà hàng tiệc cưới sang trọng tại Đà Nẵng. Không gian tinh tế, ẩm thực tinh hoa, dịch vụ tận tâm." />
     <title>@fullTitle</title>
 
-    <!-- Fonts: Cormorant Garamond (serif) + Inter (sans-serif) -->
+    <!-- Fonts: Newsreader (display serif) + Source Sans 3 (body sans)
+         Phase 02B. Both families are served from Google Fonts with the
+         Vietnamese subset — they cover ă â ê ô ơ ư đ and every
+         stacked accent. Only the weights the design system actually
+         uses are requested — 400, 500 and 600, plus the italic 400
+         that the single editorial accent and the italic notes need —
+         so no extra font file is downloaded. `display=swap` keeps the
+         text visible while the webfont arrives, and the fallback
+         stacks in site.css keep a Vietnamese-capable face at every
+         step. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&amp;family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&amp&display=swap" />
 
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />

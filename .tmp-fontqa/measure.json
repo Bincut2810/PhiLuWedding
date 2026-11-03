@@ -1,0 +1,1688 @@
+[
+ {
+  "page": "home",
+  "vw": 360,
+  "overflow": 0,
+  "h1Size": "36px",
+  "h1Width": 304,
+  "h1Height": 118,
+  "h1Lines": 3,
+  "h1Text": "Nơi hạnh phúc được kiến tạo bằng từng khoảnh khắc",
+  "spanLines": [
+   {
+    "t": "Nơi hạnh phúc",
+    "size": "36px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "được kiến tạo bằng từng khoảnh",
+    "size": "29.52px",
+    "lines": 2,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "home",
+  "vw": 390,
+  "overflow": 0,
+  "h1Size": "36px",
+  "h1Width": 304,
+  "h1Height": 118,
+  "h1Lines": 3,
+  "h1Text": "Nơi hạnh phúc được kiến tạo bằng từng khoảnh khắc",
+  "spanLines": [
+   {
+    "t": "Nơi hạnh phúc",
+    "size": "36px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "được kiến tạo bằng từng khoảnh",
+    "size": "29.52px",
+    "lines": 2,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "home",
+  "vw": 768,
+  "overflow": 0,
+  "h1Size": "42.592px",
+  "h1Width": 360,
+  "h1Height": 139,
+  "h1Lines": 3,
+  "h1Text": "Nơi hạnh phúc được kiến tạo bằng từng khoảnh khắc",
+  "spanLines": [
+   {
+    "t": "Nơi hạnh phúc",
+    "size": "42.592px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "được kiến tạo bằng từng khoảnh",
+    "size": "34.9254px",
+    "lines": 2,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "home",
+  "vw": 1024,
+  "overflow": 0,
+  "h1Size": "47.456px",
+  "h1Width": 340,
+  "h1Height": 154,
+  "h1Lines": 3,
+  "h1Text": "Nơi hạnh phúc được kiến tạo bằng từng khoảnh khắc",
+  "spanLines": [
+   {
+    "t": "Nơi hạnh phúc",
+    "size": "47.456px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "được kiến tạo bằng từng khoảnh",
+    "size": "38.9139px",
+    "lines": 2,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "home",
+  "vw": 1280,
+  "overflow": 0,
+  "h1Size": "52.32px",
+  "h1Width": 442,
+  "h1Height": 170,
+  "h1Lines": 3,
+  "h1Text": "Nơi hạnh phúc được kiến tạo bằng từng khoảnh khắc",
+  "spanLines": [
+   {
+    "t": "Nơi hạnh phúc",
+    "size": "52.32px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "được kiến tạo bằng từng khoảnh",
+    "size": "42.9024px",
+    "lines": 2,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "home",
+  "vw": 1440,
+  "overflow": 0,
+  "h1Size": "55.36px",
+  "h1Width": 468,
+  "h1Height": 179,
+  "h1Lines": 3,
+  "h1Text": "Nơi hạnh phúc được kiến tạo bằng từng khoảnh khắc",
+  "spanLines": [
+   {
+    "t": "Nơi hạnh phúc",
+    "size": "55.36px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "được kiến tạo bằng từng khoảnh",
+    "size": "45.3952px",
+    "lines": 2,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "menus",
+  "vw": 360,
+  "overflow": 0,
+  "h1Size": "36px",
+  "h1Width": 328,
+  "h1Height": 81,
+  "h1Lines": 2,
+  "h1Text": "Chọn thực đơn cho ngày trọng đại của bạn",
+  "spanLines": [
+   {
+    "t": "Chọn thực đơn",
+    "size": "36px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "cho ngày trọng đại của bạn",
+    "size": "24.48px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "14px",
+   "ls": "1.68px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "menus",
+  "vw": 390,
+  "overflow": 0,
+  "h1Size": "36px",
+  "h1Width": 358,
+  "h1Height": 81,
+  "h1Lines": 2,
+  "h1Text": "Chọn thực đơn cho ngày trọng đại của bạn",
+  "spanLines": [
+   {
+    "t": "Chọn thực đơn",
+    "size": "36px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "cho ngày trọng đại của bạn",
+    "size": "24.48px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "14px",
+   "ls": "1.68px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "menus",
+  "vw": 768,
+  "overflow": 0,
+  "h1Size": "42.592px",
+  "h1Width": 707,
+  "h1Height": 94,
+  "h1Lines": 2,
+  "h1Text": "Chọn thực đơn cho ngày trọng đại của bạn",
+  "spanLines": [
+   {
+    "t": "Chọn thực đơn",
+    "size": "42.592px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "cho ngày trọng đại của bạn",
+    "size": "28.9626px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "14px",
+   "ls": "1.68px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "menus",
+  "vw": 1024,
+  "overflow": 0,
+  "h1Size": "47.456px",
+  "h1Width": 900,
+  "h1Height": 104,
+  "h1Lines": 2,
+  "h1Text": "Chọn thực đơn cho ngày trọng đại của bạn",
+  "spanLines": [
+   {
+    "t": "Chọn thực đơn",
+    "size": "47.456px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "cho ngày trọng đại của bạn",
+    "size": "32.2701px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "14px",
+   "ls": "1.68px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "menus",
+  "vw": 1280,
+  "overflow": 0,
+  "h1Size": "52.32px",
+  "h1Width": 900,
+  "h1Height": 113,
+  "h1Lines": 2,
+  "h1Text": "Chọn thực đơn cho ngày trọng đại của bạn",
+  "spanLines": [
+   {
+    "t": "Chọn thực đơn",
+    "size": "52.32px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "cho ngày trọng đại của bạn",
+    "size": "35.5776px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "14px",
+   "ls": "1.68px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "menus",
+  "vw": 1440,
+  "overflow": 0,
+  "h1Size": "55.36px",
+  "h1Width": 900,
+  "h1Height": 120,
+  "h1Lines": 2,
+  "h1Text": "Chọn thực đơn cho ngày trọng đại của bạn",
+  "spanLines": [
+   {
+    "t": "Chọn thực đơn",
+    "size": "55.36px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "cho ngày trọng đại của bạn",
+    "size": "37.6448px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "14px",
+   "ls": "1.68px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "combo",
+  "vw": 360,
+  "overflow": 0,
+  "h1Size": "32px",
+  "h1Width": 328,
+  "h1Height": 77,
+  "h1Lines": 2,
+  "h1Text": "Thực đơn 2.500.000 đồng/bàn - Phương án A",
+  "spanLines": [
+   {
+    "t": "Thực đơn 2.500.000 đồng/bàn - ",
+    "size": "32px",
+    "lines": 2,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "combo",
+  "vw": 390,
+  "overflow": 0,
+  "h1Size": "32px",
+  "h1Width": 358,
+  "h1Height": 77,
+  "h1Lines": 2,
+  "h1Text": "Thực đơn 2.500.000 đồng/bàn - Phương án A",
+  "spanLines": [
+   {
+    "t": "Thực đơn 2.500.000 đồng/bàn - ",
+    "size": "32px",
+    "lines": 2,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "combo",
+  "vw": 768,
+  "overflow": 0,
+  "h1Size": "37.088px",
+  "h1Width": 707,
+  "h1Height": 45,
+  "h1Lines": 1,
+  "h1Text": "Thực đơn 2.500.000 đồng/bàn - Phương án A",
+  "spanLines": [
+   {
+    "t": "Thực đơn 2.500.000 đồng/bàn - ",
+    "size": "37.088px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "combo",
+  "vw": 1024,
+  "overflow": 0,
+  "h1Size": "41.184px",
+  "h1Width": 720,
+  "h1Height": 99,
+  "h1Lines": 2,
+  "h1Text": "Thực đơn 2.500.000 đồng/bàn - Phương án A",
+  "spanLines": [
+   {
+    "t": "Thực đơn 2.500.000 đồng/bàn - ",
+    "size": "41.184px",
+    "lines": 2,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "combo",
+  "vw": 1280,
+  "overflow": 0,
+  "h1Size": "45.28px",
+  "h1Width": 720,
+  "h1Height": 109,
+  "h1Lines": 2,
+  "h1Text": "Thực đơn 2.500.000 đồng/bàn - Phương án A",
+  "spanLines": [
+   {
+    "t": "Thực đơn 2.500.000 đồng/bàn - ",
+    "size": "45.28px",
+    "lines": 2,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "combo",
+  "vw": 1440,
+  "overflow": 0,
+  "h1Size": "46px",
+  "h1Width": 720,
+  "h1Height": 110,
+  "h1Lines": 2,
+  "h1Text": "Thực đơn 2.500.000 đồng/bàn - Phương án A",
+  "spanLines": [
+   {
+    "t": "Thực đơn 2.500.000 đồng/bàn - ",
+    "size": "46px",
+    "lines": 2,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "venues",
+  "vw": 360,
+  "overflow": 0,
+  "h1Size": "32px",
+  "h1Width": 328,
+  "h1Height": 107,
+  "h1Lines": 3,
+  "h1Text": "Lựa chọn không gian phù hợp cho ngày trọng đại của bạn",
+  "spanLines": [
+   {
+    "t": "Lựa chọn không gian phù hợp",
+    "size": "32px",
+    "lines": 2,
+    "style": "normal"
+   },
+   {
+    "t": "cho ngày trọng đại của bạn",
+    "size": "25.6px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "venues",
+  "vw": 390,
+  "overflow": 0,
+  "h1Size": "32px",
+  "h1Width": 358,
+  "h1Height": 107,
+  "h1Lines": 3,
+  "h1Text": "Lựa chọn không gian phù hợp cho ngày trọng đại của bạn",
+  "spanLines": [
+   {
+    "t": "Lựa chọn không gian phù hợp",
+    "size": "32px",
+    "lines": 2,
+    "style": "normal"
+   },
+   {
+    "t": "cho ngày trọng đại của bạn",
+    "size": "25.6px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "venues",
+  "vw": 768,
+  "overflow": 0,
+  "h1Size": "37.088px",
+  "h1Width": 707,
+  "h1Height": 80,
+  "h1Lines": 2,
+  "h1Text": "Lựa chọn không gian phù hợp cho ngày trọng đại của bạn",
+  "spanLines": [
+   {
+    "t": "Lựa chọn không gian phù hợp",
+    "size": "37.088px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "cho ngày trọng đại của bạn",
+    "size": "29.6704px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "venues",
+  "vw": 1024,
+  "overflow": 0,
+  "h1Size": "41.184px",
+  "h1Width": 720,
+  "h1Height": 89,
+  "h1Lines": 2,
+  "h1Text": "Lựa chọn không gian phù hợp cho ngày trọng đại của bạn",
+  "spanLines": [
+   {
+    "t": "Lựa chọn không gian phù hợp",
+    "size": "41.184px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "cho ngày trọng đại của bạn",
+    "size": "32.9472px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "venues",
+  "vw": 1280,
+  "overflow": 0,
+  "h1Size": "45.28px",
+  "h1Width": 720,
+  "h1Height": 98,
+  "h1Lines": 2,
+  "h1Text": "Lựa chọn không gian phù hợp cho ngày trọng đại của bạn",
+  "spanLines": [
+   {
+    "t": "Lựa chọn không gian phù hợp",
+    "size": "45.28px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "cho ngày trọng đại của bạn",
+    "size": "36.224px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "venues",
+  "vw": 1440,
+  "overflow": 0,
+  "h1Size": "46px",
+  "h1Width": 720,
+  "h1Height": 99,
+  "h1Lines": 2,
+  "h1Text": "Lựa chọn không gian phù hợp cho ngày trọng đại của bạn",
+  "spanLines": [
+   {
+    "t": "Lựa chọn không gian phù hợp",
+    "size": "46px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "cho ngày trọng đại của bạn",
+    "size": "36.8px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "philu",
+  "vw": 360,
+  "overflow": 0,
+  "h1Size": "32px",
+  "h1Width": 328,
+  "h1Height": 69,
+  "h1Lines": 2,
+  "h1Text": "Bốn sảnh tiệc, một phong cách",
+  "spanLines": [
+   {
+    "t": "Bốn sảnh tiệc,",
+    "size": "32px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "một phong cách",
+    "size": "25.6px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "philu",
+  "vw": 390,
+  "overflow": 0,
+  "h1Size": "32px",
+  "h1Width": 358,
+  "h1Height": 69,
+  "h1Lines": 2,
+  "h1Text": "Bốn sảnh tiệc, một phong cách",
+  "spanLines": [
+   {
+    "t": "Bốn sảnh tiệc,",
+    "size": "32px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "một phong cách",
+    "size": "25.6px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "philu",
+  "vw": 768,
+  "overflow": 0,
+  "h1Size": "37.088px",
+  "h1Width": 707,
+  "h1Height": 80,
+  "h1Lines": 2,
+  "h1Text": "Bốn sảnh tiệc, một phong cách",
+  "spanLines": [
+   {
+    "t": "Bốn sảnh tiệc,",
+    "size": "37.088px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "một phong cách",
+    "size": "29.6704px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "philu",
+  "vw": 1024,
+  "overflow": 0,
+  "h1Size": "41.184px",
+  "h1Width": 720,
+  "h1Height": 89,
+  "h1Lines": 2,
+  "h1Text": "Bốn sảnh tiệc, một phong cách",
+  "spanLines": [
+   {
+    "t": "Bốn sảnh tiệc,",
+    "size": "41.184px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "một phong cách",
+    "size": "32.9472px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "philu",
+  "vw": 1280,
+  "overflow": 0,
+  "h1Size": "45.28px",
+  "h1Width": 720,
+  "h1Height": 98,
+  "h1Lines": 2,
+  "h1Text": "Bốn sảnh tiệc, một phong cách",
+  "spanLines": [
+   {
+    "t": "Bốn sảnh tiệc,",
+    "size": "45.28px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "một phong cách",
+    "size": "36.224px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "philu",
+  "vw": 1440,
+  "overflow": 0,
+  "h1Size": "46px",
+  "h1Width": 720,
+  "h1Height": 99,
+  "h1Lines": 2,
+  "h1Text": "Bốn sảnh tiệc, một phong cách",
+  "spanLines": [
+   {
+    "t": "Bốn sảnh tiệc,",
+    "size": "46px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "một phong cách",
+    "size": "36.8px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "golden",
+  "vw": 360,
+  "overflow": 0,
+  "h1Size": "32px",
+  "h1Width": 328,
+  "h1Height": 69,
+  "h1Lines": 2,
+  "h1Text": "Bốn sảnh tiệc, một đẳng cấp",
+  "spanLines": [
+   {
+    "t": "Bốn sảnh tiệc,",
+    "size": "32px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "một đẳng cấp",
+    "size": "25.6px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "golden",
+  "vw": 390,
+  "overflow": 0,
+  "h1Size": "32px",
+  "h1Width": 358,
+  "h1Height": 69,
+  "h1Lines": 2,
+  "h1Text": "Bốn sảnh tiệc, một đẳng cấp",
+  "spanLines": [
+   {
+    "t": "Bốn sảnh tiệc,",
+    "size": "32px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "một đẳng cấp",
+    "size": "25.6px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "golden",
+  "vw": 768,
+  "overflow": 0,
+  "h1Size": "37.088px",
+  "h1Width": 707,
+  "h1Height": 80,
+  "h1Lines": 2,
+  "h1Text": "Bốn sảnh tiệc, một đẳng cấp",
+  "spanLines": [
+   {
+    "t": "Bốn sảnh tiệc,",
+    "size": "37.088px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "một đẳng cấp",
+    "size": "29.6704px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "golden",
+  "vw": 1024,
+  "overflow": 0,
+  "h1Size": "41.184px",
+  "h1Width": 720,
+  "h1Height": 89,
+  "h1Lines": 2,
+  "h1Text": "Bốn sảnh tiệc, một đẳng cấp",
+  "spanLines": [
+   {
+    "t": "Bốn sảnh tiệc,",
+    "size": "41.184px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "một đẳng cấp",
+    "size": "32.9472px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "golden",
+  "vw": 1280,
+  "overflow": 0,
+  "h1Size": "45.28px",
+  "h1Width": 720,
+  "h1Height": 98,
+  "h1Lines": 2,
+  "h1Text": "Bốn sảnh tiệc, một đẳng cấp",
+  "spanLines": [
+   {
+    "t": "Bốn sảnh tiệc,",
+    "size": "45.28px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "một đẳng cấp",
+    "size": "36.224px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "golden",
+  "vw": 1440,
+  "overflow": 0,
+  "h1Size": "46px",
+  "h1Width": 720,
+  "h1Height": 99,
+  "h1Lines": 2,
+  "h1Text": "Bốn sảnh tiệc, một đẳng cấp",
+  "spanLines": [
+   {
+    "t": "Bốn sảnh tiệc,",
+    "size": "46px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "một đẳng cấp",
+    "size": "36.8px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "booking",
+  "vw": 360,
+  "overflow": 0,
+  "h1Size": "32px",
+  "h1Width": 328,
+  "h1Height": 69,
+  "h1Lines": 2,
+  "h1Text": "Cùng Phì Lũ chuẩn bị một ngày cưới trọn vẹn",
+  "spanLines": [
+   {
+    "t": "Cùng Phì Lũ chuẩn bị",
+    "size": "32px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "một ngày cưới trọn vẹn",
+    "size": "25.6px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "booking",
+  "vw": 390,
+  "overflow": 0,
+  "h1Size": "32px",
+  "h1Width": 358,
+  "h1Height": 69,
+  "h1Lines": 2,
+  "h1Text": "Cùng Phì Lũ chuẩn bị một ngày cưới trọn vẹn",
+  "spanLines": [
+   {
+    "t": "Cùng Phì Lũ chuẩn bị",
+    "size": "32px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "một ngày cưới trọn vẹn",
+    "size": "25.6px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "booking",
+  "vw": 768,
+  "overflow": 0,
+  "h1Size": "37.088px",
+  "h1Width": 707,
+  "h1Height": 80,
+  "h1Lines": 2,
+  "h1Text": "Cùng Phì Lũ chuẩn bị một ngày cưới trọn vẹn",
+  "spanLines": [
+   {
+    "t": "Cùng Phì Lũ chuẩn bị",
+    "size": "37.088px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "một ngày cưới trọn vẹn",
+    "size": "29.6704px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "booking",
+  "vw": 1024,
+  "overflow": 0,
+  "h1Size": "41.184px",
+  "h1Width": 720,
+  "h1Height": 89,
+  "h1Lines": 2,
+  "h1Text": "Cùng Phì Lũ chuẩn bị một ngày cưới trọn vẹn",
+  "spanLines": [
+   {
+    "t": "Cùng Phì Lũ chuẩn bị",
+    "size": "41.184px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "một ngày cưới trọn vẹn",
+    "size": "32.9472px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "booking",
+  "vw": 1280,
+  "overflow": 0,
+  "h1Size": "45.28px",
+  "h1Width": 720,
+  "h1Height": 98,
+  "h1Lines": 2,
+  "h1Text": "Cùng Phì Lũ chuẩn bị một ngày cưới trọn vẹn",
+  "spanLines": [
+   {
+    "t": "Cùng Phì Lũ chuẩn bị",
+    "size": "45.28px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "một ngày cưới trọn vẹn",
+    "size": "36.224px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ },
+ {
+  "page": "booking",
+  "vw": 1440,
+  "overflow": 0,
+  "h1Size": "46px",
+  "h1Width": 720,
+  "h1Height": 99,
+  "h1Lines": 2,
+  "h1Text": "Cùng Phì Lũ chuẩn bị một ngày cưới trọn vẹn",
+  "spanLines": [
+   {
+    "t": "Cùng Phì Lũ chuẩn bị",
+    "size": "46px",
+    "lines": 1,
+    "style": "normal"
+   },
+   {
+    "t": "một ngày cưới trọn vẹn",
+    "size": "36.8px",
+    "lines": 1,
+    "style": "normal"
+   }
+  ],
+  "nav": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "eyebrow": {
+   "size": "12px",
+   "ls": "1.44px",
+   "weight": "500"
+  },
+  "btn": {
+   "size": "13px",
+   "ls": "1.17px",
+   "weight": "500"
+  },
+  "wide": [],
+  "h1Family": "\"EB Garamond\""
+ }
+]

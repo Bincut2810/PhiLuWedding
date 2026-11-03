@@ -25,27 +25,25 @@
 
 .menus-page__title {
     font-size: var(--fs-h1);
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -0.015em;
-    color: var(--color-ink);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--lh-display);
+    letter-spacing: var(--ls-display);
+    color: var(--color-text-strong);
 }
 
+
+/* Phase 02B: the shared menu page title no longer switches the even
+   <span> to italic. Headings are upright by default; italic is an
+   explicit accent, not a positional rule. */
 .menus-page__title span {
-    display: block;
-}
-
-.menus-page__title span:nth-child(even) {
-    font-style: italic;
-    color: var(--color-brown);
-    font-weight: 600;
+    display: inline;
 }
 
 .menus-page__lede {
     margin-top: var(--space-5);
     font-size: var(--fs-body-lg);
-    color: var(--color-muted-brown);
-    line-height: 1.75;
+    color: var(--color-text-muted);
+    line-height: var(--lh-relaxed);
     max-width: 56ch;
     margin-left: auto;
     margin-right: auto;
@@ -72,17 +70,17 @@
 
 .menus-page__notice-title {
     font-family: var(--font-serif);
-    font-size: 1.625rem;
-    font-weight: 600;
-    color: var(--color-ink);
+    font-size: var(--fs-h3);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
     margin-bottom: var(--space-3);
-    line-height: 1.3;
+    line-height: var(--lh-tight);
 }
 
 .menus-page__notice-body {
-    color: var(--color-muted-brown);
+    color: var(--color-text-muted);
     font-size: var(--fs-body);
-    line-height: 1.7;
+    line-height: var(--lh-body);
     margin-bottom: var(--space-6);
 }
 
@@ -149,10 +147,11 @@
 
 .menus-card__placeholder-mark span {
     font-family: var(--font-serif);
-    font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: 0.32em;
-    color: var(--color-muted-brown);
+    font-size: var(--fs-h4);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--ls-label-wide);
+    /* Placeholder ornament — decorative, so the subtle tone is enough. */
+    color: var(--color-text-subtle);
 }
 
 .menus-card__link:hover .menus-card__media,
@@ -165,29 +164,33 @@
     padding: 0 var(--space-2);
 }
 
+/* Phase 02B: card category labels are sentence case now. The
+   uppercase treatment is reserved for the eyebrows and the buttons —
+   applying it to every small string was one of the reasons the site
+   read like a generated template. */
 .menus-card__meta {
     font-family: var(--font-sans);
-    font-size: var(--fs-eyebrow);
-    font-weight: 600;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--color-muted-brown);
+    font-size: var(--fs-body-sm);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--ls-body);
+    color: var(--color-text-muted);
     margin-bottom: var(--space-3);
 }
 
+
 .menus-card__title {
     font-family: var(--font-serif);
-    font-size: 1.625rem;
-    font-weight: 600;
-    color: var(--color-ink);
+    font-size: var(--fs-h3);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
     margin-bottom: var(--space-3);
-    line-height: 1.25;
+    line-height: var(--lh-tight);
 }
 
 .menus-card__desc {
     font-size: var(--fs-body);
-    color: var(--color-brown);
-    line-height: 1.7;
+    color: var(--color-text);
+    line-height: var(--lh-body);
     margin-bottom: var(--space-4);
 }
 
@@ -202,16 +205,16 @@
 }
 
 .menus-card__meta-label {
-    color: var(--color-muted-brown);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-size: var(--fs-eyebrow);
-    font-weight: 600;
+    color: var(--color-text-muted);
+    letter-spacing: var(--ls-body);
+    font-size: var(--fs-body-sm);
+    font-weight: var(--font-weight-medium);
 }
 
+
 .menus-card__meta-value {
-    color: var(--color-brown);
-    font-weight: 600;
+    color: var(--color-text);
+    font-weight: var(--font-weight-semibold);
 }
 
 .menus-card .link-arrow--inline {
@@ -242,8 +245,8 @@
     max-width: 56ch;
     margin: 0 auto var(--space-6);
     font-size: var(--fs-body-lg);
-    color: var(--color-muted-brown);
-    line-height: 1.7;
+    color: var(--color-text-muted);
+    line-height: var(--lh-body);
 }
 
 .menus-page__cta .btn {
@@ -263,13 +266,14 @@
     margin-bottom: var(--space-8);
     font-family: var(--font-sans);
     font-size: var(--fs-body-sm);
-    letter-spacing: 0.18em;
+    letter-spacing: var(--ls-caption);
     text-transform: uppercase;
-    color: var(--color-muted-brown);
+    color: var(--color-text-muted);
 }
 
+
 .menus-detail__crumbs a {
-    color: var(--color-brown);
+    color: var(--color-text);
     border-bottom: 1px solid transparent;
     transition: color var(--dur-fast) var(--ease-soft),
                 border-bottom-color var(--dur-fast) var(--ease-soft);
@@ -277,29 +281,34 @@
 
 .menus-detail__crumbs a:hover,
 .menus-detail__crumbs a:focus-visible {
-    color: var(--color-ink);
+    color: var(--color-text-strong);
     border-bottom-color: var(--color-champagne);
 }
 
 .menus-detail__crumbs span[aria-current] {
-    color: var(--color-ink);
+    color: var(--color-text-strong);
 }
 
+/* Phase 02B: the menu detail head is left-aligned like the venue
+   and hall heads, so the three listing/detail pages share one
+   grammar. The menu landing itself keeps its centred price-first
+   hero — that structure was approved in Phase 01. */
 .menus-detail__head {
-    text-align: center;
-    max-width: 760px;
-    margin: 0 auto var(--space-9);
+    text-align: left;
+    max-width: 720px;
+    margin: 0 0 var(--space-9);
 }
 
 .menus-detail__head .eyebrow {
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .menus-detail__lede {
     margin-top: var(--space-5);
     font-size: var(--fs-body-lg);
-    color: var(--color-muted-brown);
-    line-height: 1.75;
+    color: var(--color-text-muted);
+    line-height: var(--lh-relaxed);
+    max-width: var(--measure-text);
 }
 
 .menus-detail__intro {
@@ -310,16 +319,16 @@
 
 .menus-detail__intro p {
     font-size: var(--fs-body-lg);
-    color: var(--color-brown);
-    line-height: 1.85;
+    color: var(--color-text);
+    line-height: var(--lh-relaxed);
     white-space: pre-line;
 }
 
 .menus-detail__sub {
     font-family: var(--font-serif);
-    font-size: 1.625rem;
-    font-weight: 600;
-    color: var(--color-ink);
+    font-size: var(--fs-h3);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
     margin-bottom: var(--space-5);
     position: relative;
     padding-bottom: var(--space-4);
@@ -340,7 +349,7 @@
     padding: var(--space-9) var(--space-5);
     background-color: var(--color-ivory);
     border: 1px solid var(--color-border);
-    color: var(--color-muted-brown);
+    color: var(--color-text-muted);
     font-style: italic;
     margin-bottom: var(--space-10);
 }
@@ -356,8 +365,8 @@
     max-width: 56ch;
     margin: 0 auto var(--space-6);
     font-size: var(--fs-body-lg);
-    color: var(--color-muted-brown);
-    line-height: 1.7;
+    color: var(--color-text-muted);
+    line-height: var(--lh-body);
 }
 
 .menus-detail__back {
@@ -395,20 +404,20 @@
 
 .combo-card__meta {
     font-family: var(--font-sans);
-    font-size: var(--fs-eyebrow);
-    font-weight: 600;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--color-muted-brown);
+    font-size: var(--fs-body-sm);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--ls-body);
+    color: var(--color-text-muted);
     margin-bottom: var(--space-3);
 }
 
+
 .combo-card__title {
     font-family: var(--font-serif);
-    font-size: clamp(1.5rem, 1.2rem + 1vw, 1.875rem);
-    font-weight: 600;
-    color: var(--color-ink);
-    line-height: 1.2;
+    font-size: var(--fs-h3);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
+    line-height: var(--lh-tight);
     margin-bottom: var(--space-4);
 }
 
@@ -421,45 +430,55 @@
     border-bottom: 1px solid var(--color-line);
 }
 
+/* Price amounts use the sans face: a display serif would give the
+   digits different widths and the price columns would not line up.
+   Source Sans 3 draws every digit on the same width by default, so
+   the amounts stay comparable across the price blocks; the explicit
+   `tabular-nums` below keeps that intent explicit. */
 .combo-card__price-amount {
-    font-family: var(--font-serif);
-    font-size: 1.625rem;
-    font-weight: 600;
-    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--fs-price);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: var(--ls-body);
 }
+
 
 .combo-card__price-unit {
     font-family: var(--font-sans);
-    font-size: var(--fs-eyebrow);
-    font-weight: 500;
-    letter-spacing: 0.2em;
+    font-size: var(--fs-label);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--ls-caption);
     text-transform: uppercase;
-    color: var(--color-muted-brown);
+    color: var(--color-text-muted);
 }
+
 
 .combo-card__price-note {
     font-family: var(--font-sans);
     font-size: var(--fs-body-sm);
-    color: var(--color-muted-brown);
+    color: var(--color-text-muted);
     font-style: italic;
 }
 
 .combo-card__desc {
     font-size: var(--fs-body);
-    color: var(--color-brown);
-    line-height: 1.75;
+    color: var(--color-text);
+    line-height: var(--lh-body);
     margin-bottom: var(--space-6);
 }
 
 .combo-card__dishes-label {
     font-family: var(--font-sans);
-    font-size: var(--fs-eyebrow);
-    font-weight: 600;
-    letter-spacing: 0.28em;
+    font-size: var(--fs-label);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--ls-label);
     text-transform: uppercase;
-    color: var(--color-muted-brown);
+    color: var(--color-text-muted);
     margin-bottom: var(--space-4);
 }
+
 
 .combo-card__dishes {
     display: grid;
@@ -534,28 +553,30 @@
     align-items: center;
     justify-content: center;
     font-family: var(--font-sans);
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
+    font-size: var(--fs-label);
+    letter-spacing: var(--ls-caption);
     text-transform: uppercase;
-    color: var(--color-muted-brown);
+    /* Decorative placeholder — the subtle tone is enough. */
+    color: var(--color-text-subtle);
     background:
         linear-gradient(135deg, transparent 49%, var(--color-line) 49% 51%, transparent 51%) center / 18px 18px no-repeat,
         var(--color-cream);
 }
 
+
 .combo-card__dish-name {
     padding: var(--space-3) var(--space-4);
     font-family: var(--font-sans);
     font-size: var(--fs-body-sm);
-    font-weight: 600;
-    color: var(--color-ink);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
     text-align: center;
-    line-height: 1.4;
+    line-height: var(--lh-snug);
 }
 
 .combo-card__dishes-empty {
     font-style: italic;
-    color: var(--color-muted-brown);
+    color: var(--color-text-muted);
     font-size: var(--fs-body-sm);
     margin-bottom: var(--space-6);
 }
@@ -584,25 +605,29 @@
 }
 
 .combo-detail__price-amount {
-    font-family: var(--font-serif);
-    font-size: clamp(1.75rem, 1.3rem + 1.5vw, 2.25rem);
-    font-weight: 600;
-    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--fs-price-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: var(--ls-body);
 }
+
 
 .combo-detail__price-unit {
     font-family: var(--font-sans);
-    font-size: var(--fs-eyebrow);
-    font-weight: 500;
-    letter-spacing: 0.24em;
+    font-size: var(--fs-label);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--ls-label);
     text-transform: uppercase;
-    color: var(--color-muted-brown);
+    color: var(--color-text-muted);
 }
+
 
 .combo-detail__price-note {
     font-family: var(--font-sans);
     font-size: var(--fs-body-sm);
-    color: var(--color-muted-brown);
+    color: var(--color-text-muted);
     font-style: italic;
 }
 
@@ -690,9 +715,10 @@
     justify-content: center;
     font-family: var(--font-sans);
     font-size: var(--fs-body-sm);
-    letter-spacing: 0.2em;
+    letter-spacing: var(--ls-caption);
     text-transform: uppercase;
-    color: var(--color-muted-brown);
+    /* Decorative placeholder — the subtle tone is enough. */
+    color: var(--color-text-subtle);
     background:
         linear-gradient(135deg, transparent 49%, var(--color-line) 49% 51%, transparent 51%) center / 22px 22px no-repeat,
         var(--color-cream);
@@ -715,43 +741,44 @@
 
 .combo-dish__name {
     font-family: var(--font-serif);
-    font-size: 1.375rem;
-    font-weight: 600;
-    color: var(--color-ink);
-    line-height: 1.3;
+    font-size: var(--fs-h5);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
+    line-height: var(--lh-tight);
 }
 
 .combo-dish__qty {
     font-family: var(--font-sans);
     font-size: var(--fs-body-sm);
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    color: var(--color-muted-brown);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--ls-caption);
+    color: var(--color-text-muted);
     white-space: nowrap;
 }
 
 .combo-dish__desc {
     margin: 0;
     font-size: var(--fs-body-sm);
-    color: var(--color-brown);
-    line-height: 1.7;
+    color: var(--color-text);
+    line-height: var(--lh-body);
 }
 
 .combo-dish__ingredients {
     margin: var(--space-2) 0 0;
     font-size: var(--fs-body-sm);
-    color: var(--color-muted-brown);
-    line-height: 1.7;
+    color: var(--color-text-muted);
+    line-height: var(--lh-body);
 }
 
 .combo-dish__ingredients-label {
     display: inline-block;
     margin-right: var(--space-2);
-    font-weight: 600;
-    letter-spacing: 0.12em;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--ls-caption);
     text-transform: uppercase;
-    font-size: var(--fs-eyebrow);
+    font-size: var(--fs-label);
 }
+
 
 @media (min-width: 720px) {
     .combo-dish__link {
@@ -795,10 +822,12 @@
     justify-content: center;
     font-family: var(--font-sans);
     font-size: var(--fs-body-sm);
-    letter-spacing: 0.18em;
+    letter-spacing: var(--ls-caption);
     text-transform: uppercase;
-    color: var(--color-muted-brown);
+    /* Decorative placeholder — the subtle tone is enough. */
+    color: var(--color-text-subtle);
 }
+
 
 .dish-gallery__thumbs {
     display: grid;
@@ -833,7 +862,7 @@
     padding: var(--space-9) var(--space-5);
     background-color: var(--color-ivory);
     border: 1px solid var(--color-border);
-    color: var(--color-muted-brown);
+    color: var(--color-text-muted);
     font-style: italic;
 }
 
@@ -855,17 +884,17 @@
 }
 
 .dish-detail__description {
-    color: var(--color-brown);
+    color: var(--color-text);
     font-size: var(--fs-body-lg);
-    line-height: 1.85;
+    line-height: var(--lh-relaxed);
     white-space: pre-line;
 }
 
 .dish-detail__ingredients {
     margin: 0;
-    color: var(--color-brown);
+    color: var(--color-text);
     font-size: var(--fs-body);
-    line-height: 1.8;
+    line-height: var(--lh-relaxed);
     padding: var(--space-5);
     background-color: var(--color-ivory);
     border-left: 2px solid var(--color-champagne);
@@ -900,16 +929,17 @@
 
 .dish-detail__row dt {
     font-family: var(--font-sans);
-    font-size: var(--fs-eyebrow);
-    font-weight: 600;
-    letter-spacing: 0.24em;
+    font-size: var(--fs-label);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--ls-label);
     text-transform: uppercase;
-    color: var(--color-muted-brown);
+    color: var(--color-text-muted);
 }
+
 
 .dish-detail__row dd {
     margin: 0;
-    color: var(--color-brown);
+    color: var(--color-text);
     font-size: var(--fs-body);
 }
 
@@ -923,8 +953,8 @@
     margin: 0 0 var(--space-5);
     text-align: center;
     font-size: var(--fs-body-sm);
-    color: var(--color-muted-brown);
-    line-height: 1.6;
+    color: var(--color-text-muted);
+    line-height: var(--lh-body);
 }
 
 .dish-detail__combos {
@@ -957,28 +987,30 @@
 .dish-detail__combo-meta {
     margin: 0 0 var(--space-2);
     font-family: var(--font-sans);
-    font-size: var(--fs-eyebrow);
-    font-weight: 600;
-    letter-spacing: 0.24em;
+    font-size: var(--fs-label);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--ls-label);
     text-transform: uppercase;
-    color: var(--color-muted-brown);
+    color: var(--color-text-muted);
 }
+
 
 .dish-detail__combo-name {
     margin: 0 0 var(--space-2);
     font-family: var(--font-serif);
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--color-ink);
-    line-height: 1.3;
+    font-size: var(--fs-h5);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
+    line-height: var(--lh-tight);
 }
 
 .dish-detail__combo-price {
     margin: 0;
     font-family: var(--font-sans);
     font-size: var(--fs-body-sm);
-    color: var(--color-brown);
-    font-weight: 500;
+    color: var(--color-text);
+    font-weight: var(--font-weight-semibold);
+    font-variant-numeric: tabular-nums;
 }
 
 @media (min-width: 720px) {
@@ -1005,13 +1037,14 @@
 
 .menus-page__venues-title {
     font-family: var(--font-sans);
-    font-size: var(--fs-eyebrow);
-    font-weight: 600;
-    letter-spacing: 0.18em;
+    font-size: var(--fs-label);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--ls-label);
     text-transform: uppercase;
-    color: var(--color-muted-brown);
+    color: var(--color-text-muted);
     margin-bottom: var(--space-4);
 }
+
 
 .menus-page__venues-list {
     list-style: none;
@@ -1021,6 +1054,578 @@
     flex-wrap: wrap;
     gap: var(--space-3) var(--space-6);
     justify-content: center;
+}
+
+/* =====================================================================
+   PUBLIC MENU LANDING PAGE — /thuc-don
+   The tier-first landing page. Every rule below is scoped under
+   `.menus-landing` so the combo listing, the combo detail, the dish
+   detail and the venue price sheets keep their own styles untouched.
+
+   The design reuses the site tokens only: the ivory/cream/champagne
+   palette, the serif display face for headings, the sans face for
+   prices and metadata, the spacing scale, the focus ring and the
+   existing focus-visible treatment. No new palette, no new scale.
+   ===================================================================== */
+
+/* ---------- Hero ---------- */
+/* The micro-labels of the landing page (the eyebrows and the card
+   meta lines) keep the small-caps lettering of the shared tokens, but
+   they are read as sentences on a phone, so they are raised to the
+   body-small size instead of the 11px eyebrow size. */
+.menus-landing .eyebrow,
+.menus-landing__sets .menus-card__meta,
+.menus-landing__sets .menus-card__meta-label {
+    font-size: var(--fs-body-sm);
+}
+
+.menus-landing__hero {
+    max-width: 900px;
+    margin: 0 auto var(--space-11);
+    text-align: center;
+}
+
+.menus-landing__hero .eyebrow {
+    justify-content: center;
+}
+
+.menus-landing__title {
+    font-family: var(--font-serif);
+    font-size: var(--fs-display);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--lh-display);
+    letter-spacing: var(--ls-display);
+    color: var(--color-text-strong);
+}
+
+
+/* Phase 02B: the menu landing title used the same "second line is
+   italic" device as every other page heading. The two-beat structure
+   is kept — it was approved in Phase 01 and it suits a prices-first
+   page — but the second line is now set smaller and upright, so the
+   italic no longer appears on every single title on the site. */
+.menus-landing__title span {
+    display: block;
+}
+
+/* The second line is the softer half of the sentence: a touch
+   smaller, so the title reads as two beats instead of one block. */
+.menus-landing__title span + span {
+    margin-top: var(--space-2);
+    font-size: 0.68em;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-muted);
+}
+
+.menus-landing__lede {
+    max-width: 58ch;
+    margin: var(--space-5) auto 0;
+    font-size: var(--fs-body-lg);
+    color: var(--color-text-muted);
+    line-height: var(--lh-relaxed);
+}
+
+/* The three figures are read at a glance, so they sit on one row with
+   a hairline between them. They wrap into a column on a narrow phone
+   instead of squeezing. */
+.menus-landing__facts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-4) var(--space-7);
+    margin-top: var(--space-7);
+}
+
+.menus-landing__fact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    min-width: 0;
+}
+
+.menus-landing__fact-value {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h3);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1;
+    color: var(--color-text-strong);
+    font-variant-numeric: tabular-nums;
+}
+
+.menus-landing__fact-label {
+    font-size: var(--fs-body-sm);
+    color: var(--color-text-muted);
+    line-height: var(--lh-snug);
+}
+
+/* ---------- Hero actions ---------- */
+.menus-landing__hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3) var(--space-4);
+    margin-top: var(--space-7);
+}
+
+/* ---------- Shared section head ---------- */
+.menus-landing__section {
+    margin-bottom: var(--space-11);
+}
+
+/* The in-page jump from the hero lands below the sticky header, so the
+   target reserves the header height. */
+.menus-landing__tiers {
+    scroll-margin-top: calc(var(--header-height) + var(--space-4));
+}
+
+.menus-landing__section-head {
+    max-width: 720px;
+    margin: 0 auto var(--space-8);
+    text-align: center;
+}
+
+.menus-landing__section-head .eyebrow {
+    justify-content: center;
+}
+
+.menus-landing__section-title {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h2);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--lh-display);
+    letter-spacing: var(--ls-heading);
+    color: var(--color-text-strong);
+}
+
+
+.menus-landing__section-note {
+    margin-top: var(--space-4);
+    font-size: var(--fs-body);
+    color: var(--color-text-muted);
+    line-height: var(--lh-body);
+}
+
+/* ---------- Tier grid ---------- */
+/* One column on a phone, two from the small-tablet band, four only
+   once the container is wide enough for the price and the option rows
+   to stay readable. The grid never forces a column count the width
+   cannot carry. */
+.menus-tiers {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+}
+
+.menus-tier {
+    display: flex;
+    min-width: 0;
+}
+
+.menus-tier__card {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: clamp(1.5rem, 2.4vw, 2.25rem);
+    background-color: var(--color-ivory);
+    border: 1px solid var(--color-border);
+    transition: border-color var(--dur-base) var(--ease-soft),
+                background-color var(--dur-base) var(--ease-soft);
+}
+
+.menus-tier:hover .menus-tier__card,
+.menus-tier:focus-within .menus-tier__card {
+    border-color: var(--color-champagne);
+    background-color: var(--color-paper);
+}
+
+/* The price sits at the top of the card so the four tiers can be
+   compared on one horizontal line. */
+.menus-tier__price {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-line);
+}
+
+.menus-tier__amount {
+    font-family: var(--font-sans);
+    font-size: var(--fs-price);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--lh-tight);
+    color: var(--color-text-strong);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: var(--ls-body);
+    overflow-wrap: anywhere;
+}
+
+
+.menus-tier__unit {
+    font-size: var(--fs-body-sm);
+    color: var(--color-text-muted);
+    line-height: var(--lh-snug);
+}
+
+.menus-tier__name {
+    margin-top: var(--space-4);
+    font-family: var(--font-serif);
+    font-size: var(--fs-h4);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--lh-tight);
+    color: var(--color-text-strong);
+}
+
+.menus-tier__desc {
+    margin-top: var(--space-3);
+    font-size: var(--fs-body-sm);
+    color: var(--color-text-muted);
+    line-height: var(--lh-body);
+}
+
+/* ---------- Options of a tier ---------- */
+.menus-tier__options {
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-line);
+}
+
+.menus-tier__options-label {
+    font-size: var(--fs-body-sm);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--ls-caption);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-3);
+}
+
+
+.menus-tier__options-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+/* The list item itself carries no look of its own — the option link
+   inside it is the visible row. It only has to keep its width so a
+   long option name can shrink instead of pushing the card wider. */
+.menus-tier__options-item {
+    min-width: 0;
+}
+
+/* Every option is a link with its own frame, so the click target is
+   obvious and the whole row is tappable. */
+.menus-tier__option {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: 44px;
+    padding: var(--space-2) var(--space-3);
+    background-color: var(--color-paper);
+    border: 1px solid var(--color-line);
+    transition: border-color var(--dur-base) var(--ease-soft),
+                background-color var(--dur-base) var(--ease-soft);
+}
+
+.menus-tier__option:hover,
+.menus-tier__option:focus-visible {
+    border-color: var(--color-champagne);
+    background-color: var(--color-paper);
+}
+
+.menus-tier__option-name {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: var(--fs-body-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
+    line-height: var(--lh-snug);
+}
+
+.menus-tier__option-count {
+    flex: 0 0 auto;
+    font-size: var(--fs-body-sm);
+    color: var(--color-text-muted);
+    white-space: nowrap;
+}
+
+.menus-tier__option-arrow {
+    flex: 0 0 auto;
+    color: var(--color-text-muted);
+    transition: transform var(--dur-base) var(--ease-soft);
+}
+
+.menus-tier__option:hover .menus-tier__option-arrow,
+.menus-tier__option:focus-visible .menus-tier__option-arrow {
+    transform: translateX(4px);
+    color: var(--color-text-strong);
+}
+
+/* ---------- Tier call to action ---------- */
+.menus-tier__cta {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    align-self: flex-start;
+    min-height: 44px;
+    padding-top: var(--space-4);
+    font-size: var(--fs-body-sm);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--ls-caption);
+    text-transform: uppercase;
+    color: var(--color-brown);
+    border-bottom: 1px solid var(--color-border);
+    transition: color var(--dur-base) var(--ease-soft),
+                border-bottom-color var(--dur-base) var(--ease-soft);
+}
+
+
+.menus-tier__cta:hover,
+.menus-tier__cta:focus-visible {
+    color: var(--color-ink);
+    border-bottom-color: var(--color-ink);
+}
+
+.menus-tier__cta span {
+    transition: transform var(--dur-base) var(--ease-soft);
+}
+
+.menus-tier__cta:hover span,
+.menus-tier__cta:focus-visible span {
+    transform: translateX(4px);
+}
+
+/* ---------- Notes about the prices ---------- */
+.menus-landing__notes {
+    margin-bottom: var(--space-11);
+    padding: clamp(1.75rem, 3.5vw, 3rem);
+    background-color: var(--color-ivory);
+    border: 1px solid var(--color-border);
+}
+
+.menus-landing__notes-title {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h4);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
+    text-align: center;
+    margin-bottom: var(--space-6);
+}
+
+.menus-landing__note {
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-line);
+}
+
+.menus-landing__note:first-of-type {
+    padding-top: 0;
+    border-top: 0;
+}
+
+.menus-landing__note-title {
+    font-size: var(--fs-body);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-strong);
+    margin-bottom: var(--space-2);
+}
+
+.menus-landing__note-body {
+    font-size: var(--fs-body-sm);
+    color: var(--color-text);
+    line-height: var(--lh-body);
+}
+
+.menus-landing__note-meta {
+    margin-top: var(--space-2);
+    font-size: var(--fs-body-sm);
+    font-style: italic;
+    color: var(--color-text-muted);
+    line-height: var(--lh-body);
+}
+
+/* ---------- Venue price sheets ---------- */
+.menus-landing__venues {
+    margin-bottom: var(--space-11);
+    padding-top: var(--space-9);
+    border-top: 1px solid var(--color-line);
+}
+
+.menus-landing__venues-head {
+    max-width: 720px;
+    margin: 0 auto var(--space-7);
+    text-align: center;
+}
+
+.menus-landing__venues-head .eyebrow {
+    justify-content: center;
+}
+
+.menus-landing__venues-list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+}
+
+.menus-landing__venue {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3) var(--space-5);
+    min-height: 88px;
+    padding: var(--space-5) var(--space-6);
+    background-color: var(--color-ivory);
+    border: 1px solid var(--color-border);
+    transition: border-color var(--dur-base) var(--ease-soft),
+                background-color var(--dur-base) var(--ease-soft);
+}
+
+.menus-landing__venue:hover,
+.menus-landing__venue:focus-visible {
+    border-color: var(--color-champagne);
+    background-color: var(--color-paper);
+}
+
+.menus-landing__venue-name {
+    flex: 1 1 14rem;
+    min-width: 0;
+    font-family: var(--font-serif);
+    font-size: var(--fs-h5);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--lh-tight);
+    color: var(--color-text-strong);
+}
+
+.menus-landing__venue-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--fs-body-sm);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--ls-caption);
+    text-transform: uppercase;
+    color: var(--color-brown);
+    white-space: nowrap;
+}
+
+
+.menus-landing__venue:hover .menus-landing__venue-cta,
+.menus-landing__venue:focus-visible .menus-landing__venue-cta {
+    color: var(--color-ink);
+}
+
+/* ---------- Menu sets ---------- */
+.menus-landing__sets {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+}
+
+/* The card chrome is scoped to the landing page so the shared
+   `.menus-card` typography keeps working everywhere else. */
+.menus-landing__sets .menus-card {
+    background-color: var(--color-ivory);
+    border: 1px solid var(--color-border);
+    transition: border-color var(--dur-base) var(--ease-soft),
+                background-color var(--dur-base) var(--ease-soft);
+}
+
+.menus-landing__sets .menus-card:hover,
+.menus-landing__sets .menus-card:focus-within {
+    border-color: var(--color-champagne);
+    background-color: var(--color-paper);
+}
+
+.menus-landing__sets .menus-card__link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: clamp(1.5rem, 2.6vw, 2.25rem);
+    text-align: center;
+}
+
+.menus-landing__sets .menus-card__desc {
+    margin-bottom: var(--space-5);
+}
+
+/* The arrow sits at the bottom of every card, so the row of cards
+   ends on one line however long the descriptions are. */
+.menus-landing__sets .menus-card .link-arrow--inline {
+    margin-top: auto;
+    align-self: center;
+}
+
+/* ---------- Closing call to action ---------- */
+.menus-landing__cta {
+    margin-top: var(--space-10);
+    padding: clamp(2rem, 4.5vw, 3.75rem) clamp(1.25rem, 4vw, 3rem);
+    text-align: center;
+    background-color: var(--color-ivory);
+    border: 1px solid var(--color-border);
+}
+
+.menus-landing__cta-title {
+    max-width: 24ch;
+    margin: 0 auto;
+    font-family: var(--font-serif);
+    font-size: var(--fs-h2);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--lh-display);
+    color: var(--color-text-strong);
+}
+
+.menus-landing__cta-note {
+    max-width: 56ch;
+    margin: var(--space-4) auto var(--space-7);
+    font-size: var(--fs-body-lg);
+    color: var(--color-text-muted);
+    line-height: var(--lh-relaxed);
+}
+
+.menus-landing__cta-secondary {
+    margin-top: var(--space-4);
+}
+
+/* =====================================================================
+   RESPONSIVE
+   ===================================================================== */
+
+/* Two tiers side by side once a phone landscape or a small tablet
+   gives the card enough width. */
+@media (min-width: 640px) {
+    .menus-tiers {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .menus-landing__venues-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .menus-landing__sets {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* The price and the option rows need roughly 240px to stay readable,
+   so the fourth column only appears when the container can carry it. */
+@media (min-width: 1200px) {
+    .menus-tiers {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .menus-landing__sets {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* On the narrowest phones the venue row stacks so the name keeps its
+   line and the call to action stays a full-width tap target. */
+@media (max-width: 479.98px) {
+    .menus-landing__venue {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 /* ---------- Reduced motion ---------- */
