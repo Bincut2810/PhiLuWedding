@@ -1,14 +1,16 @@
 @* =====================================================================
-   FLOATING CONTACT BUBBLES — Facebook & Zalo
-   Two stacked icon-only buttons in the bottom-right corner. They
+   FLOATING CONTACT BUBBLES — Hotline, Facebook & Zalo
+   Three stacked icon-only buttons in the bottom-right corner. They
    float above the page content and stay visible while scrolling.
    No external icon library: lightweight inline SVG is used so the
    page ships no extra dependency.
 
-   The Facebook URL and Zalo phone number come from configuration
-   (Brand:Contact:FacebookUrl / Brand:Contact:ZaloPhone) so the
-   address can be changed without touching the markup. When the keys
-   are missing the partial falls back to safe placeholder values.
+   The hotline number comes from configuration
+   (Brand:Contact:HotlinePhone) so it can be changed without touching
+   the markup; the Facebook URL and Zalo phone number follow the same
+   convention (Brand:Contact:FacebookUrl / Brand:Contact:ZaloPhone).
+   When the keys are missing the partial falls back to safe placeholder
+   values.
    ===================================================================== *@
 @using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
@@ -16,6 +18,7 @@
     var facebookUrl = Configuration["Brand:Contact:FacebookUrl"]
         ?? "https://www.facebook.com/share/1BqiX3HRck/";
     var zaloPhone = Configuration["Brand:Contact:ZaloPhone"] ?? "0989821022";
+    var hotlinePhone = Configuration["Brand:Contact:HotlinePhone"] ?? "0905434115";
 
     // Public Zalo contact URL format is https://zalo.me/<phone> with
     // no separators, matching what Zalo's mobile and web apps
@@ -24,9 +27,29 @@
     var zaloUrl = string.IsNullOrEmpty(zaloDigits)
         ? "https://zalo.me/"
         : $"https://zalo.me/{zaloDigits}";
+
+    // The tel: link carries the number without separators, so the
+    // dialer reads it correctly on every device.
+    var hotlineDigits = new string(hotlinePhone.Where(char.IsDigit).ToArray());
+    var hotlineTel = string.IsNullOrEmpty(hotlineDigits)
+        ? "tel:"
+        : $"tel:{hotlineDigits}";
 }
 
-<aside class="contact-bubbles" aria-label="Liên hệ nhanh qua mạng xã hội">
+<aside class="contact-bubbles" aria-label="Liên hệ nhanh">
+    <div class="contact-bubbles__item">
+        <a class="contact-bubbles__link contact-bubbles__link--hotline"
+           href="@hotlineTel"
+           aria-label="Gọi hotline @hotlinePhone của Nhà hàng tiệc cưới Phì Lũ">
+            @* Classic handset glyph — the universal sign for a call
+               action, so the bubble reads without any text. *@
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a.996.996 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57c.11.35.03.74-.25 1.02l-2.2 2.2z" />
+            </svg>
+        </a>
+        <span class="contact-bubbles__tooltip" role="tooltip">Hotline @hotlinePhone</span>
+    </div>
+
     <div class="contact-bubbles__item">
         <a class="contact-bubbles__link contact-bubbles__link--facebook"
            href="@facebookUrl"

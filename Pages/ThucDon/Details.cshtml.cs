@@ -17,7 +17,6 @@ namespace PhiluWedding.Pages.ThucDon;
 public class DetailsModel : PageModel
 {
     private readonly PhiluWeddingDbContext? _db;
-    private readonly IDishImageUrlResolver _imageUrl;
     private readonly ILogger<DetailsModel> _logger;
 
     public MenuSetViewModel? MenuSet { get; private set; }
@@ -25,12 +24,10 @@ public class DetailsModel : PageModel
     public bool DatabaseAvailable { get; private set; } = true;
 
     public DetailsModel(
-        IDishImageUrlResolver imageUrl,
         ILogger<DetailsModel> logger,
         PhiluWeddingDbContext? db = null)
     {
         _db = db;
-        _imageUrl = imageUrl;
         _logger = logger;
     }
 
@@ -81,12 +78,7 @@ public class DetailsModel : PageModel
                             cd.SortOrder,
                             cd.Quantity,
                             cd.Note,
-                            Dish = cd.Dish!,
-                            PrimaryImage = cd.Dish!.Images
-                                .OrderByDescending(i => i.IsPrimary)
-                                .ThenBy(i => i.SortOrder)
-                                .ThenBy(i => i.Id)
-                                .FirstOrDefault()
+                            Dish = cd.Dish!
                         })
                         .ToList()
                 })
@@ -100,17 +92,13 @@ public class DetailsModel : PageModel
                 c.Combo.Price,
                 c.Combo.GuestCount,
                 c.Dishes.Select(d =>
-                {
-                    var image = _imageUrl.Resolve(d.PrimaryImage);
-                    return new ComboDishPreviewViewModel(
+                    new ComboDishPreviewViewModel(
                         d.DishId,
                         d.Dish.Name,
                         d.Dish.Slug,
-                        image,
-                        d.PrimaryImage?.AltText,
                         d.Quantity,
-                        d.Note);
-                }).ToList()
+                        d.Note))
+                .ToList()
             )).ToList();
 
             MenuSet = new MenuSetViewModel(
@@ -159,8 +147,6 @@ public class DetailsModel : PageModel
         int Id,
         string Name,
         string Slug,
-        string? ImageUrl,
-        string? ImageAlt,
         int Quantity,
         string? Note);
 }

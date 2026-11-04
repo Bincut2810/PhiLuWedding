@@ -119,21 +119,9 @@
                                 <ul class="combo-card__dishes" role="list">
                                     @foreach (var dish in combo.DishPreviews.Take(4))
                                     {
+                                        @* No dish photo yet — the restaurant has not
+                                           provided them — so only the name is shown. *@
                                         <li class="combo-card__dish">
-                                            <div class="combo-card__dish-media" aria-hidden="true">
-                                                @if (!string.IsNullOrEmpty(dish.ImageUrl))
-                                                {
-                                                    <img src="@dish.ImageUrl"
-                                                         alt="@(dish.ImageAlt ?? $"Hình ảnh {dish.Name}")"
-                                                         loading="lazy" />
-                                                }
-                                                else
-                                                {
-                                                    <div class="combo-card__dish-placeholder">
-                                                        <span>Đang cập nhật</span>
-                                                    </div>
-                                                }
-                                            </div>
                                             <p class="combo-card__dish-name">@dish.Name</p>
                                         </li>
                                     }

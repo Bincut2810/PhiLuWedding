@@ -3,6 +3,7 @@
 @{
     var brandName = Configuration["Brand:Name"] ?? "NHÀ HÀNG PHÌ LŨ";
     var brandCity = Configuration["Brand:City"] ?? "Đà Nẵng";
+    var hotlinePhone = Configuration["Brand:Contact:HotlinePhone"] ?? "0905434115";
     var year = DateTime.UtcNow.Year;
 }
 <footer class="site-footer" id="lien-he">
@@ -30,7 +31,10 @@
         <div class="site-footer__contact">
             <p class="site-footer__label">Liên hệ tư vấn</p>
             <p class="site-footer__placeholder">Địa chỉ: <em>(cập nhật sau)</em></p>
-            <p class="site-footer__placeholder">Hotline: <em>(cập nhật sau)</em></p>
+            <p class="site-footer__hotline">
+                Hotline:
+                <a href="tel:@hotlinePhone">@hotlinePhone</a>
+            </p>
             <p class="site-footer__placeholder">Email: <em>(cập nhật sau)</em></p>
             <a class="link-arrow site-footer__cta" asp-page="/DatTiec">
                 GỬI YÊU CẦU TƯ VẤN

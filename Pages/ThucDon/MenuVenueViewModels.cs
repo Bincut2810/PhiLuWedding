@@ -63,18 +63,4 @@ public static class MenuVenueViewModels
         string Slug,
         int Quantity,
         string? Note);
-
-    // -----------------------------------------------------------------
-    // Price notes
-    // -----------------------------------------------------------------
-
-    /// <summary>A note about the prices themselves (validity, VAT).</summary>
-    public sealed record MenuPriceNoteViewModel(
-        int Id,
-        string Title,
-        string Content,
-        System.DateOnly? ValidUntil,
-        string? ValidUntilDisplay,
-        string? VatNote,
-        int SortOrder);
 }

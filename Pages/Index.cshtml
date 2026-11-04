@@ -15,8 +15,8 @@
        ↓ Choose a hall
        Hall detail (/tiec-cuoi/{id})
 
-   The hero image and intro media still use Unsplash placeholders
-   pending Cloudinary delivery; venue / hall images use the public
+   The hero and intro media use the static assets under
+   wwwroot/images/home/; venue / hall images use the public
    static assets under wwwroot/images/venues/.
    ===================================================================== *@
 
@@ -25,10 +25,11 @@
     <div class="hero__grid">
         <div class="hero__media">
             <img class="hero__image"
-                 src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=80"
-                 alt="Không gian sảnh tiệc cưới sang trọng với ánh nến và hoa trắng — hình minh họa tạm thời"
+                 src="~/images/home/hero-khoanh-khac-chung-doi.jpg"
+                 alt="Cặp đôi trao nhẫn cưới trong không gian tiệc cưới sang trọng của Phì Lũ"
                  loading="eager"
-                 fetchpriority="high" />
+                 fetchpriority="high"
+                 asp-append-version="true" />
         </div>
         <div class="hero__content">
             <p class="eyebrow">Nhà hàng tiệc cưới</p>
@@ -71,9 +72,10 @@
             <div class="intro__media">
                 <div class="intro__frame">
                     <img class="intro__image"
-                         src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1200&q=80"
-                         alt="Sảnh tiệc được trang trí hoa và ánh sáng dịu — hình minh họa tạm thời"
-                         loading="lazy" />
+                         src="~/images/home/intro-gia-huy-minh-an.jpg"
+                         alt="Sảnh tiệc Phì Lũ trang trí hoa và ánh sáng dịu"
+                         loading="lazy"
+                         asp-append-version="true" />
                 </div>
             </div>
         </div>

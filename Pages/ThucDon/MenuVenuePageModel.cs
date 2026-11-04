@@ -95,10 +95,6 @@ public abstract class MenuVenuePageModel : PageModel
     /// <summary>The tier the visitor is currently looking at.</summary>
     public MenuViewModels.MenuTierViewModel? SelectedTier { get; private set; }
 
-    /// <summary>Notes about the prices (provisional status, validity, VAT).</summary>
-    public IReadOnlyList<MenuViewModels.MenuPriceNoteViewModel> PriceNotes { get; private set; } =
-        Array.Empty<MenuViewModels.MenuPriceNoteViewModel>();
-
     /// <summary>
     /// False when the menu data could not be read. The page then shows a
     /// branded unavailable state instead of an empty menu.
@@ -155,8 +151,6 @@ public abstract class MenuVenuePageModel : PageModel
             await ReportLegacyOptionsAsync();
 
             Tiers = BuildTiers(tierRows, optionRows);
-
-            PriceNotes = BuildPriceNotes(await LoadPriceNotesAsync());
 
             SelectedTier = ResolveSelectedTier(Tiers, tierSelector);
         }
@@ -221,16 +215,6 @@ public abstract class MenuVenuePageModel : PageModel
             .ToListAsync();
 
         return rows;
-    }
-
-    private async Task<List<MenuPriceNote>> LoadPriceNotesAsync()
-    {
-        return await _db!.MenuPriceNotes
-            .AsNoTracking()
-            .Where(n => n.IsPublished)
-            .OrderBy(n => n.SortOrder)
-            .ThenBy(n => n.Id)
-            .ToListAsync();
     }
 
     /// <summary>
@@ -354,21 +338,6 @@ public abstract class MenuVenuePageModel : PageModel
         }
 
         return name.Trim();
-    }
-
-    private static IReadOnlyList<MenuViewModels.MenuPriceNoteViewModel> BuildPriceNotes(
-        IReadOnlyList<MenuPriceNote> rows)
-    {
-        return rows
-            .Select(n => new MenuViewModels.MenuPriceNoteViewModel(
-                n.Id,
-                n.Title,
-                n.Content,
-                n.ValidUntil,
-                n.ValidUntil?.ToString("dd/MM/yyyy"),
-                n.VatNote,
-                n.SortOrder))
-            .ToList();
     }
 
     private MenuViewModels.MenuTierViewModel? ResolveSelectedTier(

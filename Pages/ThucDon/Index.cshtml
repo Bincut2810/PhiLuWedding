@@ -177,26 +177,8 @@
                 </ul>
             </section>
 
-            @* ---------- Notes about the prices ---------- *@
-            @if (Model.PriceNotes.Count > 0)
-            {
-                <section class="menus-landing__notes" aria-labelledby="menus-landing-notes-heading">
-                    <h2 id="menus-landing-notes-heading" class="menus-landing__notes-title">
-                        Ghi chú về giá
-                    </h2>
-                    @foreach (var note in Model.PriceNotes)
-                    {
-                        <div class="menus-landing__note">
-                            <p class="menus-landing__note-title">@note.Title</p>
-                            <p class="menus-landing__note-body">@note.Content</p>
-                            @if (!string.IsNullOrWhiteSpace(note.VatNote))
-                            {
-                                <p class="menus-landing__note-meta">@note.VatNote</p>
-                            }
-                        </div>
-                    }
-                </section>
-            }
+            @* The price-note section was removed: the prices shown here are
+               the current, valid prices of the restaurant. *@
         }
 
         @* The venue price sheets stay reachable even when the catalog

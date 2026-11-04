@@ -12,9 +12,12 @@
 
 @* =====================================================================
    PUBLIC MENU COMBO DETAIL
-   Renders one combo with its full dish list. Each dish links to its
-   own detail page. When the database is unavailable or the combo is
-   not found, the page returns 404 from the page model.
+   Renders one combo with its full dish list. The restaurant has not
+   provided dish photos or dish descriptions yet, so the list shows the
+   dish names and quantities only — no image placeholders and no link to
+   a dish page that would have nothing to show. When the database is
+   unavailable or the combo is not found, the page returns 404 from the
+   page model.
    ===================================================================== *@
 
 @if (Model.Combo is null)
@@ -97,45 +100,26 @@
                     @foreach (var dish in Model.Combo.Dishes)
                     {
                         <li class="combo-dish">
-                            <a class="combo-dish__link"
-                               asp-page="/ThucDon/DishDetails"
-                               asp-route-id="@dish.Id"
-                               aria-label="@($"Xem chi tiết {dish.Name}")">
-                                <div class="combo-dish__media" aria-hidden="true">
-                                    @if (!string.IsNullOrEmpty(dish.ImageUrl))
+                            <div class="combo-dish__body">
+                                <p class="combo-dish__meta">
+                                    <span class="combo-dish__name">@dish.Name</span>
+                                    @if (dish.Quantity > 1)
                                     {
-                                        <img src="@dish.ImageUrl"
-                                             alt="@(dish.ImageAlt ?? $"Hình ảnh {dish.Name}")"
-                                             loading="lazy" />
+                                        <span class="combo-dish__qty">× @dish.Quantity</span>
                                     }
-                                    else
-                                    {
-                                        <div class="combo-dish__placeholder">
-                                            <span>Đang cập nhật</span>
-                                        </div>
-                                    }
-                                </div>
-                                <div class="combo-dish__body">
-                                    <p class="combo-dish__meta">
-                                        <span class="combo-dish__name">@dish.Name</span>
-                                        @if (dish.Quantity > 1)
-                                        {
-                                            <span class="combo-dish__qty">× @dish.Quantity</span>
-                                        }
+                                </p>
+                                @if (!string.IsNullOrWhiteSpace(dish.Description))
+                                {
+                                    <p class="combo-dish__desc">@dish.Description</p>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(dish.Ingredients))
+                                {
+                                    <p class="combo-dish__ingredients">
+                                        <span class="combo-dish__ingredients-label">Nguyên liệu:</span>
+                                        <span>@dish.Ingredients</span>
                                     </p>
-                                    @if (!string.IsNullOrWhiteSpace(dish.Description))
-                                    {
-                                        <p class="combo-dish__desc">@dish.Description</p>
-                                    }
-                                    @if (!string.IsNullOrWhiteSpace(dish.Ingredients))
-                                    {
-                                        <p class="combo-dish__ingredients">
-                                            <span class="combo-dish__ingredients-label">Nguyên liệu:</span>
-                                            <span>@dish.Ingredients</span>
-                                        </p>
-                                    }
-                                </div>
-                            </a>
+                                }
+                            </div>
                         </li>
                     }
                 </ol>

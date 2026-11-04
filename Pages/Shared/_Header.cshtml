@@ -6,8 +6,8 @@
 
     // Decide which nav item is active based on the current page route.
     // The "Sảnh tiệc" item covers both /TiecCuoi and /TiecCuoi/Details.
-    // The "Thực đơn" item covers /ThucDon, /ThucDon/Details,
-    // /ThucDon/ComboDetails, and /ThucDon/DishDetails.
+    // The "Thực đơn" item covers /ThucDon, /ThucDon/Details and
+    // /ThucDon/ComboDetails.
     var currentPage = (ViewContext?.RouteData.Values["page"] as string) ?? string.Empty;
     var isHome = string.Equals(currentPage, "/Index", StringComparison.OrdinalIgnoreCase);
     var isHalls = currentPage.StartsWith("/TiecCuoi", StringComparison.OrdinalIgnoreCase);

@@ -14,7 +14,7 @@ namespace PhiluWedding.Services;
 /// options in total. This class is the single place that states which
 /// price tiers and which option codes are public, so every public route
 /// (<c>/thuc-don</c>, <c>/thuc-don/{id}</c>, <c>/thuc-don/combo/{id}</c>,
-/// <c>/thuc-don/mon-an/{id}</c>, <c>/thuc-don/philu</c> and
+/// <c>/thuc-don/philu</c> and
 /// <c>/thuc-don/golden-phoenix</c>) applies exactly the same rule instead
 /// of repeating a slightly different one.
 /// </para>

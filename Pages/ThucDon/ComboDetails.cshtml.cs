@@ -11,12 +11,12 @@ namespace PhiluWedding.Pages.ThucDon;
 /// Public detail page for a single <see cref="MenuCombo"/>. The route is
 /// overridden in <c>ComboDetails.cshtml</c> via
 /// <c>@page "/thuc-don/combo/{id:int}"</c>. The page lists every dish in
-/// the combo and links each dish to its own detail page.
+/// the combo. The restaurant has not provided dish photos yet, so the
+/// list shows the dish names and quantities only.
 /// </summary>
 public class ComboDetailsModel : PageModel
 {
     private readonly PhiluWeddingDbContext? _db;
-    private readonly IDishImageUrlResolver _imageUrl;
     private readonly ILogger<ComboDetailsModel> _logger;
 
     public ComboViewModel? Combo { get; private set; }
@@ -24,12 +24,10 @@ public class ComboDetailsModel : PageModel
     public bool DatabaseAvailable { get; private set; } = true;
 
     public ComboDetailsModel(
-        IDishImageUrlResolver imageUrl,
         ILogger<ComboDetailsModel> logger,
         PhiluWeddingDbContext? db = null)
     {
         _db = db;
-        _imageUrl = imageUrl;
         _logger = logger;
     }
 
@@ -66,7 +64,8 @@ public class ComboDetailsModel : PageModel
                 .Select(m => new { m.Id, m.Name, m.Slug })
                 .FirstOrDefaultAsync();
 
-            // Dishes in the combo with their primary image.
+            // Dishes in the combo. The restaurant has not provided dish
+            // photos yet, so no image is loaded here.
             var dishes = await _db.MenuComboDishes
                 .AsNoTracking()
                 .Where(cd => cd.MenuComboId == id && cd.Dish != null && cd.Dish.IsPublished)
@@ -75,30 +74,21 @@ public class ComboDetailsModel : PageModel
                 .Select(cd => new
                 {
                     Link = cd,
-                    Dish = cd.Dish!,
-                    PrimaryImage = cd.Dish!.Images
-                        .OrderByDescending(i => i.IsPrimary)
-                        .ThenBy(i => i.SortOrder)
-                        .ThenBy(i => i.Id)
-                        .FirstOrDefault()
+                    Dish = cd.Dish!
                 })
                 .ToListAsync();
 
             var dishVms = dishes.Select(d =>
-            {
-                var image = _imageUrl.Resolve(d.PrimaryImage);
-                return new ComboDishViewModel(
+                new ComboDishViewModel(
                     d.Dish.Id,
                     d.Dish.Name,
                     d.Dish.Slug,
                     d.Dish.Description,
                     d.Dish.Ingredients,
                     d.Dish.Price,
-                    image,
-                    d.PrimaryImage?.AltText,
                     d.Link.Quantity,
-                    d.Link.Note);
-            }).ToList();
+                    d.Link.Note))
+                .ToList();
 
             Combo = new ComboViewModel(
                 combo.Id,
@@ -143,8 +133,6 @@ public class ComboDetailsModel : PageModel
         string? Description,
         string? Ingredients,
         decimal? Price,
-        string? ImageUrl,
-        string? ImageAlt,
         int Quantity,
         string? Note);
 }

@@ -171,18 +171,18 @@ public class MenuVenuePageTests
     }
 
     [Fact]
-    public async Task The_price_notes_are_still_shown()
+    public async Task The_price_notes_are_not_published_on_the_venue_page()
     {
         var db = await SeedAsync();
 
         var model = PhiLu(db);
         await model.OnGetAsync(null);
 
-        Assert.Equal(2, model.PriceNotes.Count);
-
-        var note = model.PriceNotes.First();
-        Assert.Equal("Giá tham khảo", note.Title);
-        Assert.Equal("31/08/2026", note.ValidUntilDisplay);
-        Assert.Equal("Giá chưa bao gồm VAT (theo bảng giá gốc).", note.VatNote);
+        // The prices are the current, valid prices of the restaurant, so
+        // the page no longer carries a price-note section.
+        Assert.Equal(4, model.Tiers.Count);
+        Assert.DoesNotContain(
+            model.Tiers,
+            t => t.PriceDisplay is null);
     }
 }

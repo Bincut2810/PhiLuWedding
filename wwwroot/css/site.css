@@ -923,6 +923,31 @@ main {
     color: var(--color-text-muted);
 }
 
+/* The hotline is the one contact detail the restaurant has confirmed,
+   so it is a real link instead of a placeholder note. */
+.site-footer__hotline {
+    font-size: var(--fs-body-sm);
+    color: var(--color-text);
+    margin-bottom: var(--space-1);
+    line-height: var(--lh-body);
+}
+
+.site-footer__hotline a {
+    color: var(--color-brown);
+    font-weight: var(--font-weight-semibold);
+    font-variant-numeric: tabular-nums;
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-champagne);
+    transition: color var(--dur-fast) var(--ease-soft),
+                border-color var(--dur-fast) var(--ease-soft);
+}
+
+.site-footer__hotline a:hover,
+.site-footer__hotline a:focus-visible {
+    color: var(--color-ink);
+    border-color: var(--color-brown);
+}
+
 .site-footer__cta {
     margin-top: var(--space-5);
 }
@@ -1032,6 +1057,62 @@ main {
 .contact-bubbles__link--zalo:focus-visible {
     background-color: #0068FF;
     border-color: #0068FF;
+}
+
+/* ---------- Hotline bubble ----------
+   The hotline is the primary contact action, so it sits at the top of
+   the stack and wears the brand brown. A single soft pulse ring
+   spreads out of it every few seconds — enough to catch the eye
+   without nagging. The ring is a pseudo-element, so the markup stays
+   the same single <a> as the other two bubbles. */
+.contact-bubbles__link--hotline {
+    position: relative;
+    background-color: var(--color-brown);
+    border-color: var(--color-brown);
+    color: var(--color-paper);
+}
+
+.contact-bubbles__link--hotline::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid var(--color-brown);
+    pointer-events: none;
+    animation: contact-bubbles__pulse 2.8s var(--ease-soft) infinite;
+}
+
+/* The pulse only fades the ring out; the bubble itself never moves,
+   so the animation cannot distract from the content behind it. */
+@keyframes contact-bubbles__pulse {
+    0% {
+        opacity: 0.55;
+        transform: scale(1);
+    }
+    70% {
+        opacity: 0;
+        transform: scale(1.45);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.45);
+    }
+}
+
+/* The browser's reduced-motion setting wins: the ring stays still and
+   the bubble is marked as the primary action with a static outline
+   instead. */
+@media (prefers-reduced-motion: reduce) {
+    .contact-bubbles__link--hotline::after {
+        animation: none;
+        opacity: 0;
+        transform: none;
+    }
+
+    .contact-bubbles__link--hotline {
+        outline: 2px solid var(--color-champagne);
+        outline-offset: 2px;
+    }
 }
 
 .contact-bubbles__tooltip {

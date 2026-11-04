@@ -260,15 +260,15 @@ and their options can never drift apart between the two venues. The pages
 are read-only: they never write, migrate or seed.
 
 The price sheet shows, in this order: the four public price tiers (one tile
-per tier, the selected tier is opened with `?muc=<slug>`), the menu options
-of the selected tier, and the notes about the prices. A tier that is not
+per tier, the selected tier is opened with `?muc=<slug>`) and the menu options
+of the selected tier. A tier that is not
 public is never shown, and a `?muc=` selector that points to a hidden or
 unknown tier falls back to the first public tier.
 
 The public scope is stated in one place, `Services/PublicMenuScope.cs`:
 `tier-02`, `tier-04` and `tier-07` sell the options A and B, `tier-08`
 sells A, B and C. Every public route (`/thuc-don`, `/thuc-don/{id}`,
-`/thuc-don/combo/{id}`, `/thuc-don/mon-an/{id}`, `/thuc-don/philu` and
+`/thuc-don/combo/{id}`, `/thuc-don/philu` and
 `/thuc-don/golden-phoenix`) applies that same rule, so an option that is
 not public answers with 404 instead of being shown on one page and hidden
 on another.
@@ -277,7 +277,8 @@ Every wording comes from the source price sheet:
 
 - The unit of a price is shown only where the source states one.
 - A row without a numeric price shows the source wording instead of `0đ`.
-- The price notes keep the validity date and the VAT note of the source.
+- The prices are the current, valid prices of the restaurant, so the pages
+  carry no price-note section.
 
 The supporting sections that are no longer sold — the additional services,
 the beverages, the appetizer nuts, the promotion tiers and the deposit
@@ -355,8 +356,8 @@ All copy in this phase is **placeholder text** for visual foundation:
 
 - Hall names use `SẢNH 01` – `SẢNH 04`.
 - Hall descriptions are temporary.
-- Contact information in the footer is intentionally marked
-  `(cập nhật sau)`.
+- The address and the email in the footer are intentionally marked
+  `(cập nhật sau)`. The hotline is confirmed and shown as a `tel:` link.
 - Hero and intro images come from Unsplash and are clearly marked as
   `hình minh họa tạm thời` in alt text. They will be replaced with real
   Cloudinary assets in a later phase.

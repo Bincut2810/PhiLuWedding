@@ -56,10 +56,6 @@
                 <ul class="menu-jump__list" role="list">
                     <li><a class="menu-jump__link" href="#menu-prices">Mức giá</a></li>
                     <li><a class="menu-jump__link" href="#menu-options">Phương án món ăn</a></li>
-                    @if (Model.PriceNotes.Count > 0)
-                    {
-                        <li><a class="menu-jump__link" href="#menu-notes">Ghi chú về giá</a></li>
-                    }
                 </ul>
             </nav>
 
@@ -141,26 +137,6 @@
                             </article>
                         }
                     </div>
-                </section>
-            }
-
-            @* ---------- Notes about the prices ---------- *@
-            @if (Model.PriceNotes.Count > 0)
-            {
-                <section class="menu-section menu-section--notes" id="menu-notes" aria-labelledby="menu-notes-heading">
-                    <p class="eyebrow">GHI CHÚ</p>
-                    <h2 id="menu-notes-heading" class="menu-section__title">Ghi chú về giá</h2>
-                    @foreach (var note in Model.PriceNotes)
-                    {
-                        <div class="menu-note">
-                            <h3 class="menu-note__title">@note.Title</h3>
-                            <p class="menu-note__body">@note.Content</p>
-                            @if (!string.IsNullOrWhiteSpace(note.VatNote))
-                            {
-                                <p class="menu-note__meta">@note.VatNote</p>
-                            }
-                        </div>
-                    }
                 </section>
             }
 

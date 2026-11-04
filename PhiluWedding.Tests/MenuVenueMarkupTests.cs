@@ -92,16 +92,18 @@ public class MenuVenueMarkupTests : IClassFixture<MenuWebApplicationFactory>
     }
 
     [Fact]
-    public async Task The_venue_page_still_shows_the_price_notes_and_the_booking_call_to_action()
+    public async Task The_venue_page_shows_the_prices_and_the_booking_call_to_action()
     {
         var html = await GetPageAsync("/thuc-don/philu");
 
         Assert.Contains("menu-prices", html);
         Assert.Contains("menu-options", html);
-        Assert.Contains("menu-notes", html);
-        Assert.Contains("Ghi chú về giá", html);
-        Assert.Contains("Giá tham khảo", html);
         Assert.Contains("ĐẶT LỊCH TƯ VẤN", html);
+
+        // The price-note section was removed — the prices are valid.
+        Assert.DoesNotContain("menu-notes", html);
+        Assert.DoesNotContain("Ghi chú về giá", html);
+        Assert.DoesNotContain("#menu-notes", html);
     }
 
     [Fact]

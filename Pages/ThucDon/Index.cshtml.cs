@@ -44,13 +44,6 @@ public class IndexModel : PageModel
         Array.Empty<MenuTierCardViewModel>();
 
     /// <summary>
-    /// The notes about the table prices. The notes of the other sections of
-    /// the source price sheet stay on the venue price sheets.
-    /// </summary>
-    public IReadOnlyList<MenuPriceNoteViewModel> PriceNotes { get; private set; } =
-        Array.Empty<MenuPriceNoteViewModel>();
-
-    /// <summary>
     /// The wedding menu set — the menu the price tiers belong to. It is
     /// <c>null</c> when the catalog holds no wedding menu set yet.
     /// </summary>
@@ -127,8 +120,6 @@ public class IndexModel : PageModel
             // so the landing page shows exactly the tiers and options the
             // venue price sheets show.
             Tiers = await LoadTiersAsync(scope);
-
-            PriceNotes = await LoadPriceNotesAsync();
         }
         catch (Exception ex)
         {
@@ -224,44 +215,6 @@ public class IndexModel : PageModel
     }
 
     /// <summary>
-    /// Loads the notes about the table prices.
-    /// <para>
-    /// Only the notes that speak about the prices of this page are
-    /// published here. The notes of the other sections of the source price
-    /// sheet — the drinks note, for example — belong to the venue price
-    /// sheets, which publish them in full. The rows are matched on their
-    /// stable key, never on a display name.
-    /// </para>
-    /// </summary>
-    private async Task<IReadOnlyList<MenuPriceNoteViewModel>> LoadPriceNotesAsync()
-    {
-        var rows = await _db!.MenuPriceNotes
-            .AsNoTracking()
-            .Where(n => n.IsPublished && n.Key != ExcludedPriceNoteKey)
-            .OrderBy(n => n.SortOrder)
-            .ThenBy(n => n.Id)
-            .ToListAsync();
-
-        return rows
-            .Select(n => new MenuPriceNoteViewModel(
-                n.Id,
-                n.Title,
-                n.Content,
-                n.ValidUntil,
-                n.ValidUntil?.ToString("dd/MM/yyyy"),
-                n.VatNote,
-                n.SortOrder))
-            .ToList();
-    }
-
-    /// <summary>
-    /// The key of the price note that belongs to the drinks section of the
-    /// source price sheet. The landing page publishes the table prices, so
-    /// this note stays on the venue price sheets.
-    /// </summary>
-    private const string ExcludedPriceNoteKey = "price-note-beverage";
-
-    /// <summary>
     /// Builds the short name of a menu option. The stored name repeats the
     /// price tier ("Thực đơn 2.500.000 đồng/bàn - Phương án A"); the page
     /// shows the part after the separator, because the tier is already
@@ -335,18 +288,6 @@ public class IndexModel : PageModel
         int SortOrder,
         /// <summary>The number of published dishes of this option.</summary>
         int DishCount);
-
-    /// <summary>
-    /// Flat projection of a note about the table prices.
-    /// </summary>
-    public sealed record MenuPriceNoteViewModel(
-        int Id,
-        string Title,
-        string Content,
-        DateOnly? ValidUntil,
-        string? ValidUntilDisplay,
-        string? VatNote,
-        int SortOrder);
 
     /// <summary>One option row of a price tier, as it is read from the database.</summary>
     private sealed record OptionRow(

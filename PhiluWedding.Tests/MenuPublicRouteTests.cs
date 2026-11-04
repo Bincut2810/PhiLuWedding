@@ -96,7 +96,7 @@ public class MenuPublicRouteTests
             .Select(s => s.Id)
             .SingleAsync();
 
-        var model = new DetailsModel(new StubImageResolver(), NullLogger<DetailsModel>.Instance, db);
+        var model = new DetailsModel(NullLogger<DetailsModel>.Instance, db);
         var result = await model.OnGetAsync(menuSetId);
 
         Assert.IsType<PageResult>(result);
@@ -113,7 +113,7 @@ public class MenuPublicRouteTests
         var db = await SeedAsync();
         var excluded = await AddExcludedOptionAsync(db);
 
-        var model = new ComboDetailsModel(new StubImageResolver(), NullLogger<ComboDetailsModel>.Instance, db);
+        var model = new ComboDetailsModel(NullLogger<ComboDetailsModel>.Instance, db);
         var result = await model.OnGetAsync(excluded.Id);
 
         Assert.IsType<NotFoundResult>(result);
@@ -128,7 +128,7 @@ public class MenuPublicRouteTests
             .Include(c => c.MenuTier!)
             .FirstAsync(c => c.MenuTier!.Key == "tier-08" && c.OptionCode == "C");
 
-        var model = new ComboDetailsModel(new StubImageResolver(), NullLogger<ComboDetailsModel>.Instance, db);
+        var model = new ComboDetailsModel(NullLogger<ComboDetailsModel>.Instance, db);
         var result = await model.OnGetAsync(option.Id);
 
         Assert.IsType<PageResult>(result);
@@ -171,67 +171,10 @@ public class MenuPublicRouteTests
         db.MenuCombos.Add(demoCombo);
         await db.SaveChangesAsync();
 
-        var model = new ComboDetailsModel(new StubImageResolver(), NullLogger<ComboDetailsModel>.Instance, db);
+        var model = new ComboDetailsModel(NullLogger<ComboDetailsModel>.Instance, db);
         var result = await model.OnGetAsync(demoCombo.Id);
 
         Assert.IsType<PageResult>(result);
-    }
-
-    [Fact]
-    public async Task The_dish_page_does_not_link_to_an_excluded_option()
-    {
-        var db = await SeedAsync();
-        var excluded = await AddExcludedOptionAsync(db);
-
-        var dish = new Dish
-        {
-            Name = "Món của mức giá đã bị gỡ",
-            Slug = "mon-cua-muc-gia-da-bi-go",
-            SortOrder = 9999,
-            IsPublished = true,
-            CreatedAt = DateTime.UtcNow,
-            UpdatedAt = DateTime.UtcNow
-        };
-
-        db.Dishes.Add(dish);
-        await db.SaveChangesAsync();
-
-        db.MenuComboDishes.Add(new MenuComboDish
-        {
-            MenuComboId = excluded.Id,
-            DishId = dish.Id,
-            SortOrder = 1,
-            Quantity = 1
-        });
-
-        await db.SaveChangesAsync();
-
-        var model = new DishDetailsModel(new StubImageResolver(), NullLogger<DishDetailsModel>.Instance, db);
-        var result = await model.OnGetAsync(dish.Id);
-
-        // The dish page itself still exists ...
-        Assert.IsType<PageResult>(result);
-        Assert.NotNull(model.Dish);
-
-        // ... but it does not link to the excluded option.
-        Assert.Empty(model.Dish!.Combos);
-    }
-
-    [Fact]
-    public async Task The_dish_page_links_to_the_public_options_of_a_dish()
-    {
-        var db = await SeedAsync();
-
-        var dish = await db.Dishes.FirstAsync(d => d.Name == "Trái cây");
-
-        var model = new DishDetailsModel(new StubImageResolver(), NullLogger<DishDetailsModel>.Instance, db);
-        var result = await model.OnGetAsync(dish.Id);
-
-        Assert.IsType<PageResult>(result);
-        Assert.NotNull(model.Dish);
-
-        // "Trái cây" is part of five public options.
-        Assert.Equal(5, model.Dish!.Combos.Count);
     }
 
     [Fact]
@@ -264,11 +207,5 @@ public class MenuPublicRouteTests
 
         Assert.NotNull(catalog.MenuSet);
         Assert.Equal(PublicMenuScope.WeddingMenuSetSlug, catalog.MenuSet!.Slug);
-    }
-
-    private sealed class StubImageResolver : IDishImageUrlResolver
-    {
-        public string? Resolve(DishImage? image, int? width = null, int? height = null) =>
-            image?.ImageUrl;
     }
 }
