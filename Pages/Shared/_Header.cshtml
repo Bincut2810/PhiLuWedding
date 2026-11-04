@@ -13,6 +13,7 @@
     var isHalls = currentPage.StartsWith("/TiecCuoi", StringComparison.OrdinalIgnoreCase);
     var isMenus = currentPage.StartsWith("/ThucDon", StringComparison.OrdinalIgnoreCase);
     var isBooking = string.Equals(currentPage, "/DatTiec", StringComparison.OrdinalIgnoreCase);
+    var isContact = string.Equals(currentPage, "/LienHe", StringComparison.OrdinalIgnoreCase);
 }
 <header class="site-header" data-header>
     <div class="container site-header__inner">
@@ -66,7 +67,11 @@
                        asp-page="/DatTiec"
                        aria-current="@(isBooking ? "page" : null)">ĐẶT TIỆC</a>
                 </li>
-                <li><a class="site-nav__link" href="#lien-he">LIÊN HỆ</a></li>
+                <li>
+                    <a class="site-nav__link @(isContact ? "is-active" : null)"
+                       asp-page="/LienHe"
+                       aria-current="@(isContact ? "page" : null)">LIÊN HỆ</a>
+                </li>
             </ul>
         </nav>
     </div>

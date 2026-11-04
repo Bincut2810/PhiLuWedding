@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="NH&#xC0; H&#xC0;NG PH&#xCC; L&#x168; — Nhà hàng tiệc cưới sang trọng tại Đà Nẵng. Không gian tinh tế, ẩm thực tinh hoa, dịch vụ tận tâm." />
+    <title>Li&#xEA;n h&#x1EC7; &#x2014; NH&#xC0; H&#xC0;NG PH&#xCC; L&#x168;</title>
+
+    <!-- Fonts: Newsreader (display serif) + Source Sans 3 (body sans)
+         Phase 02B. Both families are served from Google Fonts with the
+         Vietnamese subset — they cover ă â ê ô ơ ư đ and every
+         stacked accent. Only the weights the design system actually
+         uses are requested — 400, 500 and 600, plus the italic 400
+         that the single editorial accent and the italic notes need —
+         so no extra font file is downloaded. `display=swap` keeps the
+         text visible while the webfont arrives, and the fallback
+         stacks in site.css keep a Vietnamese-capable face at every
+         step. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&amp;family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&amp&display=swap" />
+
+    <link rel="stylesheet" href="/css/site.css?v=4OjS7wRgG03TqGBxW34D6FBBZHxhG7IvVgW1P4ccs4U" />
+    <link rel="stylesheet" href="/css/home.css?v=cEw1Dzm_0_aSMzTRGD0Vhs3xe2g5dU1bzeu-W4h0X0g" />
+    <link rel="stylesheet" href="/css/venues.css?v=_TTGO7KrN-44QpGuUt0eM84ydyHdCq2p6DAiIDUKCrs" />
+    
+    <link rel="stylesheet" href="/css/contact.css?v=CkIqFRG-2fy54HFR1Qvtip_dcRbQ_OvvEtTPTo3PEfY" />
+
+</head>
+<body class="">
+    <a class="skip-link" href="#main-content">Bỏ qua đến nội dung chính</a>
+
+    
+<div class="page-loader"
+     data-page-loader
+     role="status"
+     aria-live="polite"
+     aria-label="Đang tải trang NH&#xC0; H&#xC0;NG PH&#xCC; L&#x168;">
+    <div class="page-loader__contain">
+        <img class="page-loader__logo" src="/images/logo/logoPhiLu.png?v=bR4sw56MoKPYzlexA8uGktHRRRIQHIXJWf2V2aBMwNI" alt="NH&#xC0; H&#xC0;NG PH&#xCC; L&#x168;" width="311" height="150" />
+        <p class="page-loader__caption" aria-hidden="true">
+            <span class="page-loader__caption-name">NH&#xC0; H&#xC0;NG PH&#xCC; L&#x168;</span>
+            <span class="page-loader__caption-sep">·</span>
+            <span class="page-loader__caption-city">&#x110;&#xE0; N&#x1EB5;ng</span>
+        </p>
+    </div>
+</div>
+
+
+    <header class="site-header" data-header>
+    <div class="container site-header__inner">
+        <a class="site-brand" aria-label="NH&#xC0; H&#xC0;NG PH&#xCC; L&#x168; &#x2014; Trang ch&#x1EE7;" href="/">
+            <span class="site-brand-logos" aria-hidden="true">
+                <img class="site-brand-logos__img site-brand-logos__img--philu" src="/images/logo/logoPhiLu.png?v=bR4sw56MoKPYzlexA8uGktHRRRIQHIXJWf2V2aBMwNI" alt="" width="311" height="150" />
+                <img class="site-brand-logos__img site-brand-logos__img--golden" src="/images/logo/logoGolden.png?v=v7yr7n2xkz0y8mwZb_CBEUEaNdoW1Yfn0_d2GrFZS9g" alt="" width="432" height="238" />
+            </span>
+        </a>
+
+        <button class="site-nav-toggle"
+                type="button"
+                aria-controls="primary-nav"
+                aria-expanded="false"
+                aria-label="Mở menu điều hướng"
+                data-nav-toggle>
+            <span class="site-nav-toggle__bar" aria-hidden="true"></span>
+            <span class="site-nav-toggle__bar" aria-hidden="true"></span>
+            <span class="site-nav-toggle__bar" aria-hidden="true"></span>
+        </button>
+
+        <nav class="site-nav" id="primary-nav" data-nav aria-label="Điều hướng chính">
+            <ul class="site-nav__list">
+                <li>
+                    <a class="site-nav__link" href="/">TRANG CHỦ</a>
+                </li>
+                <li>
+                    <a class="site-nav__link" href="/tiec-cuoi">SẢNH TIỆC</a>
+                </li>
+                <li>
+                    <a class="site-nav__link" href="/thuc-don">THỰC ĐƠN</a>
+                </li>
+                <li>
+                    <a class="site-nav__link" href="/dat-tiec">ĐẶT TIỆC</a>
+                </li>
+                <li>
+                    <a class="site-nav__link is-active" aria-current="page" href="/lien-he">LIÊN HỆ</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+    <main id="main-content" role="main">
+        
+
+
+<section class="contact-hero" aria-labelledby="contact-hero-heading">
+    <div class="container contact-hero__grid">
+        <div class="contact-hero__content">
+            <p class="eyebrow contact-eyebrow">Liên hệ</p>
+            <h1 id="contact-hero-heading" class="contact-hero__title">
+                Kết nối cùng <span class="contact-hero__accent">Phì Lũ</span>
+            </h1>
+            <p class="contact-hero__lede">
+                Hai không gian tiệc cưới tại Đà Nẵng, một đội ngũ tư vấn tận tâm.
+                Gọi trực tiếp, nhắn tin, hoặc để lại thông tin — bạn chọn cách nhanh
+                nhất, chúng tôi sẽ sẵn sàng cùng bạn trao đổi về không gian,
+                sức chứa và phương án tiệc phù hợp cho ngày trọng đại.
+            </p>
+            <div class="contact-hero__actions">
+                <a class="btn btn--primary" href="/dat-tiec">
+                    ĐẶT LỊCH TƯ VẤN
+                    <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                </a>
+                <a class="contact-link" href="#dia-chi-nhan-hang">
+                    Xem địa chỉ hai nhà hàng
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+        </div>
+        <div class="contact-hero__media">
+            <figure class="contact-hero__figure">
+                <div class="contact-hero__plate">
+                    <img class="contact-hero__image" src="/images/home/hero-khoanh-khac-chung-doi.jpg?v=eKejZSqCq2O10TFkRr__N7-qW_Oa83ZvL6PRw21OR0o" alt="Cặp đôi trao nhẫn cưới trong không gian tiệc cưới sang trọng của Phì Lũ" loading="eager" fetchpriority="high" />
+                </div>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<section class="contact-venues" id="dia-chi-nhan-hang" aria-labelledby="contact-venues-heading">
+    <div class="container">
+        <header class="section-head section-head--center contact-venues__head">
+            <p class="eyebrow contact-eyebrow">Hai không gian tiệc cưới</p>
+            <h2 id="contact-venues-heading" class="section-title">
+                <span>Địa chỉ nhà hàng</span>
+                <span>Phì Lũ &amp; Golden Phoenix</span>
+            </h2>
+            <p class="contact-venues__lede">
+                Cả hai địa chỉ nằm trên cùng trục đường 2 Tháng 9, quận Hòa Cường —
+                Đà Nẵng. Bạn có thể đến tham quan trực tiếp, hoặc xem trước trên bản đồ.
+            </p>
+        </header>
+
+        <ul class="contact-venue-grid" role="list">
+                <li class="contact-venue-card">
+                    <div class="contact-venue-card__media">
+                        <img src="/images/venues/philu/cover.webp?v=OQCKBoZiYPWPZD6yFPSUYS4vzqnwZDBIdvecq4XBG7Q" alt="S&#x1EA3;nh &#x111;&#xF3;n kh&#xE1;ch c&#x1EE7;a Trung t&#xE2;m H&#x1ED9;i ngh&#x1ECB; Ti&#x1EC7;c c&#x1B0;&#x1EDB;i Ph&#xEC; L&#x169;" loading="lazy" />
+                    </div>
+                    <div class="contact-venue-card__body">
+                        <p class="contact-venue-card__meta">Trung t&#xE2;m H&#x1ED9;i ngh&#x1ECB; Ti&#x1EC7;c c&#x1B0;&#x1EDB;i</p>
+                        <h3 class="contact-venue-card__title">Ti&#x1EC7;c c&#x1B0;&#x1EDB;i Ph&#xEC; L&#x169;</h3>
+                        <address class="contact-venue-card__address">
+                            <span class="contact-venue-card__address-label">Địa chỉ</span>
+                            <span class="contact-venue-card__address-text">3 &#x110;. 2 Th&#xE1;ng 9, H&#xF2;a C&#x1B0;&#x1EDD;ng, &#x110;&#xE0; N&#x1EB5;ng 550000, Vi&#x1EC7;t Nam</span>
+                        </address>
+                        <div class="contact-venue-card__actions">
+                            <a class="btn btn--outline contact-btn"
+                               href="https://www.google.com/maps/dir/?api=1&amp;destination=3%20%C4%90.%202%20Th%C3%A1ng%209%2C%20H%C3%B2a%20C%C6%B0%E1%BB%9Dng%2C%20%C4%90%C3%A0%20N%E1%BA%B5ng%20550000%2C%20Vi%E1%BB%87t%20Nam"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               aria-label="Ch&#x1EC9; &#x111;&#x1B0;&#x1EDD;ng &#x111;&#x1EBF;n Ti&#x1EC7;c c&#x1B0;&#x1EDB;i Ph&#xEC; L&#x169; tr&#xEA;n Google Maps">
+                                Chỉ đường
+                                <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                            </a>
+                            <a class="contact-link"
+                               href="/tiec-cuoi/philu"
+                               aria-label="Xem c&#xE1;c s&#x1EA3;nh ti&#x1EC7;c c&#x1EE7;a Ti&#x1EC7;c c&#x1B0;&#x1EDB;i Ph&#xEC; L&#x169;">
+                                Xem sảnh tiệc
+                                <span aria-hidden="true">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="contact-venue-card">
+                    <div class="contact-venue-card__media">
+                        <img src="/images/venues/golden-phoenix/cover.webp?v=w1ndPGFu8ASQ9Vgt5OZULfRhGoit_zDrn-1-gnqOM7c" alt="Khu &#x111;&#xF3;n kh&#xE1;ch c&#x1EE7;a nh&#xE0; h&#xE0;ng ti&#x1EC7;c c&#x1B0;&#x1EDB;i Golden Phoenix" loading="lazy" />
+                    </div>
+                    <div class="contact-venue-card__body">
+                        <p class="contact-venue-card__meta">Nh&#xE0; h&#xE0;ng ti&#x1EC7;c c&#x1B0;&#x1EDB;i</p>
+                        <h3 class="contact-venue-card__title">Golden Phoenix</h3>
+                        <address class="contact-venue-card__address">
+                            <span class="contact-venue-card__address-label">Địa chỉ</span>
+                            <span class="contact-venue-card__address-text">A8.2 L&#xF4; 1, 2 &#x110;. 2 Th&#xE1;ng 9, H&#xF2;a C&#x1B0;&#x1EDD;ng, &#x110;&#xE0; N&#x1EB5;ng 550000, Vi&#x1EC7;t Nam</span>
+                        </address>
+                        <div class="contact-venue-card__actions">
+                            <a class="btn btn--outline contact-btn"
+                               href="https://www.google.com/maps/dir/?api=1&amp;destination=A8.2%20L%C3%B4%201%2C%202%20%C4%90.%202%20Th%C3%A1ng%209%2C%20H%C3%B2a%20C%C6%B0%E1%BB%9Dng%2C%20%C4%90%C3%A0%20N%E1%BA%B5ng%20550000%2C%20Vi%E1%BB%87t%20Nam"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               aria-label="Ch&#x1EC9; &#x111;&#x1B0;&#x1EDD;ng &#x111;&#x1EBF;n Golden Phoenix tr&#xEA;n Google Maps">
+                                Chỉ đường
+                                <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                            </a>
+                            <a class="contact-link"
+                               href="/tiec-cuoi/golden-phoenix"
+                               aria-label="Xem c&#xE1;c s&#x1EA3;nh ti&#x1EC7;c c&#x1EE7;a Golden Phoenix">
+                                Xem sảnh tiệc
+                                <span aria-hidden="true">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+        </ul>
+    </div>
+</section>
+
+<section class="contact-maps" id="ban-do" aria-labelledby="contact-maps-heading">
+    <div class="container">
+        <header class="section-head section-head--center contact-maps__head">
+            <p class="eyebrow contact-eyebrow">Bản đồ</p>
+            <h2 id="contact-maps-heading" class="section-title">
+                <span>Tìm đường đến</span>
+                <span>nhà hàng gần bạn nhất</span>
+            </h2>
+        </header>
+
+        <div class="contact-map-grid">
+                <figure class="contact-map">
+                    <div class="contact-map__frame">
+                        <iframe class="contact-map__embed"
+                                src="https://maps.google.com/maps?q=3%20%C4%90.%202%20Th%C3%A1ng%209%2C%20H%C3%B2a%20C%C6%B0%E1%BB%9Dng%2C%20%C4%90%C3%A0%20N%E1%BA%B5ng%20550000%2C%20Vi%E1%BB%87t%20Nam&amp;hl=vi&amp;z=16&amp;output=embed"
+                                title="B&#x1EA3;n &#x111;&#x1ED3; &#x111;&#x1ECB;a ch&#x1EC9; Ti&#x1EC7;c c&#x1B0;&#x1EDB;i Ph&#xEC; L&#x169; &#x2014; 3 &#x110;. 2 Th&#xE1;ng 9, H&#xF2;a C&#x1B0;&#x1EDD;ng, &#x110;&#xE0; N&#x1EB5;ng 550000, Vi&#x1EC7;t Nam"
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                allowfullscreen></iframe>
+                    </div>
+                    <figcaption class="contact-map__caption">
+                        <p class="contact-map__name">Ti&#x1EC7;c c&#x1B0;&#x1EDB;i Ph&#xEC; L&#x169;</p>
+                        <p class="contact-map__address">3 &#x110;. 2 Th&#xE1;ng 9, H&#xF2;a C&#x1B0;&#x1EDD;ng, &#x110;&#xE0; N&#x1EB5;ng 550000, Vi&#x1EC7;t Nam</p>
+                        <a class="contact-link"
+                           href="https://www.google.com/maps/dir/?api=1&amp;destination=3%20%C4%90.%202%20Th%C3%A1ng%209%2C%20H%C3%B2a%20C%C6%B0%E1%BB%9Dng%2C%20%C4%90%C3%A0%20N%E1%BA%B5ng%20550000%2C%20Vi%E1%BB%87t%20Nam"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="M&#x1EDF; h&#x1B0;&#x1EDB;ng d&#x1EAB;n &#x111;&#x1B0;&#x1EDD;ng &#x111;&#x1EBF;n Ti&#x1EC7;c c&#x1B0;&#x1EDB;i Ph&#xEC; L&#x169; tr&#xEA;n Google Maps">
+                            Mở hướng dẫn đường
+                            <span aria-hidden="true">&rarr;</span>
+                        </a>
+                    </figcaption>
+                </figure>
+                <figure class="contact-map">
+                    <div class="contact-map__frame">
+                        <iframe class="contact-map__embed"
+                                src="https://maps.google.com/maps?q=A8.2%20L%C3%B4%201%2C%202%20%C4%90.%202%20Th%C3%A1ng%209%2C%20H%C3%B2a%20C%C6%B0%E1%BB%9Dng%2C%20%C4%90%C3%A0%20N%E1%BA%B5ng%20550000%2C%20Vi%E1%BB%87t%20Nam&amp;hl=vi&amp;z=16&amp;output=embed"
+                                title="B&#x1EA3;n &#x111;&#x1ED3; &#x111;&#x1ECB;a ch&#x1EC9; Golden Phoenix &#x2014; A8.2 L&#xF4; 1, 2 &#x110;. 2 Th&#xE1;ng 9, H&#xF2;a C&#x1B0;&#x1EDD;ng, &#x110;&#xE0; N&#x1EB5;ng 550000, Vi&#x1EC7;t Nam"
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                allowfullscreen></iframe>
+                    </div>
+                    <figcaption class="contact-map__caption">
+                        <p class="contact-map__name">Golden Phoenix</p>
+                        <p class="contact-map__address">A8.2 L&#xF4; 1, 2 &#x110;. 2 Th&#xE1;ng 9, H&#xF2;a C&#x1B0;&#x1EDD;ng, &#x110;&#xE0; N&#x1EB5;ng 550000, Vi&#x1EC7;t Nam</p>
+                        <a class="contact-link"
+                           href="https://www.google.com/maps/dir/?api=1&amp;destination=A8.2%20L%C3%B4%201%2C%202%20%C4%90.%202%20Th%C3%A1ng%209%2C%20H%C3%B2a%20C%C6%B0%E1%BB%9Dng%2C%20%C4%90%C3%A0%20N%E1%BA%B5ng%20550000%2C%20Vi%E1%BB%87t%20Nam"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="M&#x1EDF; h&#x1B0;&#x1EDB;ng d&#x1EAB;n &#x111;&#x1B0;&#x1EDD;ng &#x111;&#x1EBF;n Golden Phoenix tr&#xEA;n Google Maps">
+                            Mở hướng dẫn đường
+                            <span aria-hidden="true">&rarr;</span>
+                        </a>
+                    </figcaption>
+                </figure>
+        </div>
+    </div>
+</section>
+
+<section class="contact-channels" id="lien-he-truc-tuyen" aria-labelledby="contact-channels-heading">
+    <div class="container">
+        <header class="section-head section-head--center contact-channels__head">
+            <p class="eyebrow contact-eyebrow">Liên hệ trực tiếp</p>
+            <h2 id="contact-channels-heading" class="section-title">
+                <span>Một cuộc gọi</span>
+                <span>đủ để bắt đầu</span>
+            </h2>
+        </header>
+
+        <div class="contact-channels__grid">
+            <div class="contact-channel contact-channel--hotline">
+                <p class="contact-channel__label">Hotline tư vấn tiệc cưới</p>
+                <a class="contact-channel__hotline"
+                   href="tel:0905434115"
+                   aria-label="G&#x1ECD;i hotline 0905434115">
+                    0905434115
+                </a>
+                <p class="contact-channel__body">
+                    Gọi trực tiếp để được tư vấn sớm nhất về sức chứa, thực đơn
+                    và phương án tổ chức tiệc.
+                </p>
+                <a class="contact-link contact-link--invert"
+                   href="tel:0905434115"
+                   aria-label="G&#x1ECD;i hotline 0905434115">
+                    Nhấn để gọi ngay
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+
+            <div class="contact-channel">
+                <p class="contact-channel__label">Facebook</p>
+                <a class="contact-link"
+                   href="https://www.facebook.com/share/1BqiX3HRck/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Mở trang Facebook của Nhà hàng tiệc cưới Phì Lũ trong cửa sổ mới">
+                    Theo dõi fanpage
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+                <p class="contact-channel__body">
+                    Xem hình ảnh không gian, thực đơn mới và các chương trình
+                    ưu đãi đang diễn ra tại Phì Lũ.
+                </p>
+            </div>
+
+            <div class="contact-channel">
+                <p class="contact-channel__label">Zalo</p>
+                <a class="contact-link"
+                   href="https://zalo.me/0989821022"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Mở cuộc trò chuyện Zalo với Nhà hàng tiệc cưới Phì Lũ trong cửa sổ mới">
+                    Chat ngay
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+                <p class="contact-channel__body">
+                    Nhắn tin nhanh để gửi thông tin dự kiến của bạn, hoặc hỏi
+                    thông tin về từng sảnh tiệc.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact-closing" aria-labelledby="contact-closing-heading">
+    <div class="container contact-closing__inner">
+        <div class="contact-closing__frame">
+            <p class="eyebrow contact-eyebrow">Ngày trọng đại</p>
+            <h2 id="contact-closing-heading" class="section-title">
+                <span>Để Phì Lũ chuẩn bị</span>
+                <span>trọn vẹn cùng bạn</span>
+            </h2>
+            <p class="contact-closing__lede">
+                Mỗi đám cưới bắt đầu từ một câu chuyện. Hãy gửi vài thông tin
+                dự kiến — ngày, số khách, ý tưởng của bạn — và đội ngũ tư vấn
+                sẽ liên hệ lại để cùng bạn hoàn thiện phương án tiệc.
+            </p>
+            <div class="contact-closing__actions">
+                <a class="btn btn--primary" href="/dat-tiec">
+                    ĐẶT LỚCH TƯ VẤN
+                    <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                </a>
+                <a class="contact-link" href="/thuc-don">
+                    Xem thực đơn
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <footer class="site-footer">
+    <div class="container site-footer__inner">
+        <div class="site-footer__brand">
+            <p class="site-footer__name">NH&#xC0; H&#xC0;NG PH&#xCC; L&#x168;</p>
+            <p class="site-footer__tagline">Nhà Hàng Tiệc Cưới — &#x110;&#xE0; N&#x1EB5;ng, Việt Nam</p>
+            <p class="site-footer__claim">
+                Đội ngũ Phì Lũ đồng hành cùng bạn chuẩn bị không gian và phương án
+                tiệc phù hợp cho ngày trọng đại.
+            </p>
+        </div>
+
+        <nav class="site-footer__nav" aria-label="Điều hướng chân trang">
+            <p class="site-footer__label">Khám phá</p>
+            <ul>
+                <li><a href="/">Trang chủ</a></li>
+                <li><a href="/tiec-cuoi">Sảnh tiệc</a></li>
+                <li><a href="/thuc-don">Thực đơn</a></li>
+                <li><a href="/dat-tiec">Đặt tiệc</a></li>
+                <li><a href="/lien-he">Liên hệ</a></li>
+            </ul>
+        </nav>
+
+        <div class="site-footer__contact">
+            <p class="site-footer__label">Liên hệ tư vấn</p>
+                <p class="site-footer__address">
+                    Ti&#x1EC7;c c&#x1B0;&#x1EDB;i Ph&#xEC; L&#x169; — <span>3 &#x110;. 2 Th&#xE1;ng 9, H&#xF2;a C&#x1B0;&#x1EDD;ng, &#x110;&#xE0; N&#x1EB5;ng 550000, Vi&#x1EC7;t Nam</span>
+                </p>
+                <p class="site-footer__address">
+                    Golden Phoenix — <span>A8.2 L&#xF4; 1, 2 &#x110;. 2 Th&#xE1;ng 9, H&#xF2;a C&#x1B0;&#x1EDD;ng, &#x110;&#xE0; N&#x1EB5;ng 550000, Vi&#x1EC7;t Nam</span>
+                </p>
+            <p class="site-footer__hotline">
+                Hotline:
+                <a href="tel:0905434115">0905434115</a>
+            </p>
+            <p class="site-footer__placeholder">Email: <em>(cập nhật sau)</em></p>
+            <a class="link-arrow site-footer__cta" href="/dat-tiec">
+                GỬI YÊU CẦU TƯ VẤN
+                <span aria-hidden="true">&rarr;</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="site-footer__bottom">
+        <div class="container">
+            <p>&copy; 2026 NH&#xC0; H&#xC0;NG PH&#xCC; L&#x168;. Bảo lưu mọi quyền.</p>
+        </div>
+    </div>
+</footer>
+
+
+    
+<aside class="contact-bubbles" aria-label="Liên hệ nhanh">
+    <div class="contact-bubbles__item">
+        <a class="contact-bubbles__link contact-bubbles__link--hotline"
+           href="tel:0905434115"
+           aria-label="Gọi hotline 0905434115 của Nhà hàng tiệc cưới Phì Lũ">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a.996.996 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57c.11.35.03.74-.25 1.02l-2.2 2.2z" />
+            </svg>
+        </a>
+        <span class="contact-bubbles__tooltip" role="tooltip">Hotline 0905434115</span>
+    </div>
+
+    <div class="contact-bubbles__item">
+        <a class="contact-bubbles__link contact-bubbles__link--facebook"
+           href="https://www.facebook.com/share/1BqiX3HRck/"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Mở trang Facebook của Nhà hàng tiệc cưới Phì Lũ trong cửa sổ mới">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M22 12.07C22 6.51 17.52 2 12 2S2 6.51 2 12.07C2 17.1 5.66 21.27 10.44 22v-7.02H7.9v-2.91h2.54v-2.2c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.91h-2.34V22C18.34 21.27 22 17.1 22 12.07z" />
+            </svg>
+        </a>
+        <span class="contact-bubbles__tooltip" role="tooltip">Facebook</span>
+    </div>
+
+    <div class="contact-bubbles__item">
+        <a class="contact-bubbles__link contact-bubbles__link--zalo"
+           href="https://zalo.me/0989821022"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Mở cuộc trò chuyện Zalo với Nhà hàng tiệc cưới Phì Lũ trong cửa sổ mới">
+            <img src="/images/logo/logoZalo.jpg?v=HCyXAxNbeBVEy-qDz6WNVtHP2IB3YSObFo2EntrdRPc" alt="" width="866" height="650" />
+        </a>
+        <span class="contact-bubbles__tooltip" role="tooltip">Chat Zalo</span>
+    </div>
+</aside>
+
+
+    <script src="/js/site.js?v=zJT0DMrDLBxrprYYPlW2SsX885axqlTnVabG9c7ejaI"></script>
+    
+</body>
+</html>

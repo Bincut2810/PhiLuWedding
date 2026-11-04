@@ -1,0 +1,264 @@
+@page "/lien-he"
+@model PhiluWedding.Pages.LienHeModel
+@{
+    ViewData["Title"] = "Liên hệ";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/contact.css" asp-append-version="true" />
+}
+
+@* =====================================================================
+   CONTACT — NHÀ HÀNG PHÌ LŨ  (/lien-he)
+   A single, complete page for everything a visitor needs to reach the
+   restaurant:
+     1. Hero — the promise + the booking CTA
+     2. Two venue cards — confirmed addresses + directions links
+     3. Maps — responsive Google Maps embeds for both addresses
+     4. Contact channels — hotline, Facebook, Zalo
+     5. Closing CTA — back to /dat-tiec
+
+   Every phone number, address and social URL comes from the same
+   configuration and catalogue the floating bubbles and the footer
+   use, so the page can never disagree with the rest of the site.
+
+   Typography note: the page is deliberately quiet. Major headings
+   are set in the display serif, everything else in the body sans.
+   No italic is used anywhere on the page, the micro-labels are
+   sentence case, and the tracking is restrained — the luxury is
+   carried by the spacing, the rules and the photography, not by
+   capitalised labels.
+   ===================================================================== *@
+
+<section class="contact-hero" aria-labelledby="contact-hero-heading">
+    <div class="container contact-hero__grid">
+        <div class="contact-hero__content">
+            <p class="eyebrow contact-eyebrow">Liên hệ</p>
+            <h1 id="contact-hero-heading" class="contact-hero__title">
+                Kết nối cùng <span class="contact-hero__accent">Phì Lũ</span>
+            </h1>
+            <p class="contact-hero__lede">
+                Hai không gian tiệc cưới tại Đà Nẵng, một đội ngũ tư vấn tận tâm.
+                Gọi trực tiếp, nhắn tin, hoặc để lại thông tin — bạn chọn cách nhanh
+                nhất, chúng tôi sẽ sẵn sàng cùng bạn trao đổi về không gian,
+                sức chứa và phương án tiệc phù hợp cho ngày trọng đại.
+            </p>
+            <div class="contact-hero__actions">
+                <a class="btn btn--primary" asp-page="/DatTiec">
+                    ĐẶT LỊCH TƯ VẤN
+                    <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                </a>
+                <a class="contact-link" href="#dia-chi-nhan-hang">
+                    Xem địa chỉ hai nhà hàng
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+        </div>
+        <div class="contact-hero__media">
+            @* Editorial photograph, not a matted poster: the image
+               fills its frame edge to edge and a single champagne rule
+               is offset behind it, the way a magazine spreads a
+               photograph over the page. *@
+            <figure class="contact-hero__figure">
+                <div class="contact-hero__plate">
+                    <img class="contact-hero__image"
+                         src="~/images/home/hero-khoanh-khac-chung-doi.jpg"
+                         alt="Cặp đôi trao nhẫn cưới trong không gian tiệc cưới sang trọng của Phì Lũ"
+                         loading="eager"
+                         fetchpriority="high"
+                         asp-append-version="true" />
+                </div>
+            </figure>
+        </div>
+    </div>
+</section>
+
+@* ---------- VENUE CARDS ---------- *@
+<section class="contact-venues" id="dia-chi-nhan-hang" aria-labelledby="contact-venues-heading">
+    <div class="container">
+        <header class="section-head section-head--center contact-venues__head">
+            <p class="eyebrow contact-eyebrow">Hai không gian tiệc cưới</p>
+            <h2 id="contact-venues-heading" class="section-title">
+                <span>Địa chỉ nhà hàng</span>
+                <span>Phì Lũ &amp; Golden Phoenix</span>
+            </h2>
+            <p class="contact-venues__lede">
+                Cả hai địa chỉ nằm trên cùng trục đường 2 Tháng 9, quận Hòa Cường —
+                Đà Nẵng. Bạn có thể đến tham quan trực tiếp, hoặc xem trước trên bản đồ.
+            </p>
+        </header>
+
+        <ul class="contact-venue-grid" role="list">
+            @foreach (var venue in Model.Venues)
+            {
+                <li class="contact-venue-card">
+                    <div class="contact-venue-card__media">
+                        <img src="@venue.ImageUrl"
+                             alt="@venue.ImageAlt"
+                             loading="lazy"
+                             asp-append-version="true" />
+                    </div>
+                    <div class="contact-venue-card__body">
+                        <p class="contact-venue-card__meta">@venue.Role</p>
+                        <h3 class="contact-venue-card__title">@venue.Name</h3>
+                        <address class="contact-venue-card__address">
+                            <span class="contact-venue-card__address-label">Địa chỉ</span>
+                            <span class="contact-venue-card__address-text">@venue.Address</span>
+                        </address>
+                        <div class="contact-venue-card__actions">
+                            <a class="btn btn--outline contact-btn"
+                               href="@venue.MapDirectionsUrl"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               aria-label="@($"Chỉ đường đến {venue.Name} trên Google Maps")">
+                                Chỉ đường
+                                <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                            </a>
+                            <a class="contact-link"
+                               href="@venue.DetailsUrl"
+                               aria-label="@($"Xem các sảnh tiệc của {venue.Name}")">
+                                Xem sảnh tiệc
+                                <span aria-hidden="true">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</section>
+
+@* ---------- MAPS ---------- *@
+<section class="contact-maps" id="ban-do" aria-labelledby="contact-maps-heading">
+    <div class="container">
+        <header class="section-head section-head--center contact-maps__head">
+            <p class="eyebrow contact-eyebrow">Bản đồ</p>
+            <h2 id="contact-maps-heading" class="section-title">
+                <span>Tìm đường đến</span>
+                <span>nhà hàng gần bạn nhất</span>
+            </h2>
+        </header>
+
+        <div class="contact-map-grid">
+            @foreach (var venue in Model.Venues)
+            {
+                <figure class="contact-map">
+                    <div class="contact-map__frame">
+                        <iframe class="contact-map__embed"
+                                src="@venue.MapEmbedUrl"
+                                title="@($"Bản đồ địa chỉ {venue.Name} — {venue.Address}")"
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                allowfullscreen></iframe>
+                    </div>
+                    <figcaption class="contact-map__caption">
+                        <p class="contact-map__name">@venue.Name</p>
+                        <p class="contact-map__address">@venue.Address</p>
+                        <a class="contact-link"
+                           href="@venue.MapDirectionsUrl"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="@($"Mở hướng dẫn đường đến {venue.Name} trên Google Maps")">
+                            Mở hướng dẫn đường
+                            <span aria-hidden="true">&rarr;</span>
+                        </a>
+                    </figcaption>
+                </figure>
+            }
+        </div>
+    </div>
+</section>
+
+@* ---------- CONTACT CHANNELS ---------- *@
+<section class="contact-channels" id="lien-he-truc-tuyen" aria-labelledby="contact-channels-heading">
+    <div class="container">
+        <header class="section-head section-head--center contact-channels__head">
+            <p class="eyebrow contact-eyebrow">Liên hệ trực tiếp</p>
+            <h2 id="contact-channels-heading" class="section-title">
+                <span>Một cuộc gọi</span>
+                <span>đủ để bắt đầu</span>
+            </h2>
+        </header>
+
+        <div class="contact-channels__grid">
+            <div class="contact-channel contact-channel--hotline">
+                <p class="contact-channel__label">Hotline tư vấn tiệc cưới</p>
+                <a class="contact-channel__hotline"
+                   href="@Model.Contact.HotlineTel"
+                   aria-label="@($"Gọi hotline {Model.Contact.HotlinePhone}")">
+                    @Model.Contact.HotlinePhone
+                </a>
+                <p class="contact-channel__body">
+                    Gọi trực tiếp để được tư vấn sớm nhất về sức chứa, thực đơn
+                    và phương án tổ chức tiệc.
+                </p>
+                <a class="contact-link contact-link--invert"
+                   href="@Model.Contact.HotlineTel"
+                   aria-label="@($"Gọi hotline {Model.Contact.HotlinePhone}")">
+                    Nhấn để gọi ngay
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+
+            <div class="contact-channel">
+                <p class="contact-channel__label">Facebook</p>
+                <a class="contact-link"
+                   href="@Model.Contact.FacebookUrl"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Mở trang Facebook của Nhà hàng tiệc cưới Phì Lũ trong cửa sổ mới">
+                    Theo dõi fanpage
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+                <p class="contact-channel__body">
+                    Xem hình ảnh không gian, thực đơn mới và các chương trình
+                    ưu đãi đang diễn ra tại Phì Lũ.
+                </p>
+            </div>
+
+            <div class="contact-channel">
+                <p class="contact-channel__label">Zalo</p>
+                <a class="contact-link"
+                   href="@Model.Contact.ZaloUrl"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Mở cuộc trò chuyện Zalo với Nhà hàng tiệc cưới Phì Lũ trong cửa sổ mới">
+                    Chat ngay
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+                <p class="contact-channel__body">
+                    Nhắn tin nhanh để gửi thông tin dự kiến của bạn, hoặc hỏi
+                    thông tin về từng sảnh tiệc.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+@* ---------- CLOSING CTA ---------- *@
+<section class="contact-closing" aria-labelledby="contact-closing-heading">
+    <div class="container contact-closing__inner">
+        <div class="contact-closing__frame">
+            <p class="eyebrow contact-eyebrow">Ngày trọng đại</p>
+            <h2 id="contact-closing-heading" class="section-title">
+                <span>Để Phì Lũ chuẩn bị</span>
+                <span>trọn vẹn cùng bạn</span>
+            </h2>
+            <p class="contact-closing__lede">
+                Mỗi đám cưới bắt đầu từ một câu chuyện. Hãy gửi vài thông tin
+                dự kiến — ngày, số khách, ý tưởng của bạn — và đội ngũ tư vấn
+                sẽ liên hệ lại để cùng bạn hoàn thiện phương án tiệc.
+            </p>
+            <div class="contact-closing__actions">
+                <a class="btn btn--primary" asp-page="/DatTiec">
+                    ĐẶT LỚCH TƯ VẤN
+                    <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                </a>
+                <a class="contact-link" asp-page="/ThucDon/Index">
+                    Xem thực đơn
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

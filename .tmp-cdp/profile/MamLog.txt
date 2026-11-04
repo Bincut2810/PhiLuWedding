@@ -1,0 +1,37 @@
+[2026-11-04T15:00:54.078Z] [INFO] ========================================================================================================================
+[2026-11-04T15:00:54.078Z] [INFO] Initializing MAM Client.
+App: com.microsoft.edge 156.0.4314.58
+SDK: 2.4.2.0
+OS: windows 10.0.26200.9711
+DeviceType: Desktop
+Manufacturer: LENOVO
+Model: 82EY
+Telemetry: yes
+Managed device support: enabled
+[2026-11-04T15:00:54.078Z] [INFO] Telemetry session f34a0359-c34a-4802-b3d3-7154cd01a53f.
+[2026-11-04T15:00:54.078Z] [INFO] ECS client initialized.
+[2026-11-04T15:00:54.078Z] [INFO] Started ECS service request processing.
+[2026-11-04T15:00:54.079Z] [INFO] Initializing cache (v1).
+[2026-11-04T15:00:54.079Z] [INFO] Flight configuration defaults:
+{"924da161-897f-4061-ad83-eca72d58a16e_0":{"source":0,"value":false},"DesktopMAM_Canary":{"source":0,"value":0},"f9fec151-8ff5-437c-a028-0e92e9878d8d_0":{"source":0,"value":false},"f9fec151-8ff5-437c-a028-0e92e9878d8d_1":{"source":0,"value":false}}
+[2026-11-04T15:00:54.080Z] [INFO] Registered Flight Client FlightClientId:6a1b553f-06f8-43f5-8e14-2f7a7e4c3a01 with new flight key ca0fcd21-3205-4c80-ab37-f34438422986.
+[2026-11-04T15:00:54.080Z] [INFO] Fetching flight data for flight key ca0fcd21-3205-4c80-ab37-f34438422986...
+[2026-11-04T15:00:54.116Z] [INFO] Registered Flight Client FlightClientId:7745e695-5abe-4589-8dc6-35e7671359d1 with new flight key f7c2dcdb-a1d5-4812-833c-7e896f9aaca4.
+[2026-11-04T15:00:54.116Z] [INFO] Registered UserID:7745e695-5abe-4589-8dc6-35e7671359d1 (TenantID:447080b4-b9c6-4b0b-92fd-b543a68b4e97) in the Azure public cloud.
+[2026-11-04T15:00:54.116Z] [INFO] Conditional Access is blocked for UserID:7745e695-5abe-4589-8dc6-35e7671359d1 pre-enrollment; compliance reporting will be accelerated to unblock the user.
+[2026-11-04T15:00:54.116Z] [INFO] Queuing pre-enrollment policy assignment check for UserID:7745e695-5abe-4589-8dc6-35e7671359d1 to run as soon as possible.
+[2026-11-04T15:00:54.116Z] [INFO] Scheduler background thread starting for UserID:7745e695-5abe-4589-8dc6-35e7671359d1.
+[2026-11-04T15:00:54.377Z] [INFO] Flight data fetch for flight key ca0fcd21-3205-4c80-ab37-f34438422986 succeeded. (EcsCorrelationId:Ref A: 133A69E09EF44B77ADAD5C8704166A41 Ref B: SGN30EDGE0519 Ref C: 2026-11-04T15:01:01Z)
+[2026-11-04T15:00:54.377Z] [INFO] Scheduling next ECS request for flight key ca0fcd21-3205-4c80-ab37-f34438422986 at 2026-11-04T16:00:54.377Z.
+[2026-11-04T15:00:54.377Z] [INFO] Application flight configuration updated:
+{"924da161-897f-4061-ad83-eca72d58a16e_0":{"source":0,"value":false},"DesktopMAM_Canary":{"source":1,"value":1},"f9fec151-8ff5-437c-a028-0e92e9878d8d_0":{"source":0,"value":false},"f9fec151-8ff5-437c-a028-0e92e9878d8d_1":{"source":0,"value":false}}
+[2026-11-04T15:00:54.377Z] [INFO] Fetching flight data for flight key f7c2dcdb-a1d5-4812-833c-7e896f9aaca4...
+[2026-11-04T15:00:54.492Z] [INFO] Flight data fetch for flight key f7c2dcdb-a1d5-4812-833c-7e896f9aaca4 succeeded. (EcsCorrelationId:Ref A: 60F6F1FA59474780803B5A64E52D2329 Ref B: SGN30EDGE0519 Ref C: 2026-11-04T15:01:01Z)
+[2026-11-04T15:00:54.493Z] [INFO] Scheduling next ECS request for flight key f7c2dcdb-a1d5-4812-833c-7e896f9aaca4 at 2026-11-04T16:00:54.492Z.
+[2026-11-04T15:00:54.493Z] [INFO] User flight configuration for UserID:7745e695-5abe-4589-8dc6-35e7671359d1 updated:
+{"924da161-897f-4061-ad83-eca72d58a16e_0":{"source":0,"value":false},"DesktopMAM_Canary":{"source":1,"value":1},"f9fec151-8ff5-437c-a028-0e92e9878d8d_0":{"source":0,"value":false},"f9fec151-8ff5-437c-a028-0e92e9878d8d_1":{"source":0,"value":false}}
+[2026-11-04T15:00:56.579Z] [INFO] Following redirect (302) from "https://go.microsoft.com/fwlink/?linkid=2138939" to "https://mamservice.manage.microsoft.com/api/Locations" for UserID:7745e695-5abe-4589-8dc6-35e7671359d1.
+[2026-11-04T15:00:56.738Z] [INFO] Resolved MAM Location Service address "https://mamservice.manage.microsoft.com/api/Locations" for UserID:7745e695-5abe-4589-8dc6-35e7671359d1.
+[2026-11-04T15:00:56.786Z] [ERROR] MAM Location Service request for UserID:7745e695-5abe-4589-8dc6-35e7671359d1 failed with a status (404) indicating the tenant has not completed onboarding, or the user is not licensed for Intune. (client-request-id:1aadda0f-14a4-4887-9795-cf0bec92ffce)
+[2026-11-04T15:00:56.787Z] [ERROR] Unable to retrieve or validate the MAM Service address during check for MAM policy assignment for UserID:7745e695-5abe-4589-8dc6-35e7671359d1; the operation will be reattempted at a later time.
+[2026-11-04T15:00:56.787Z] [INFO] Queuing pre-enrollment policy assignment check for UserID:7745e695-5abe-4589-8dc6-35e7671359d1 to run at 2026-11-05T15:00:57.786Z.

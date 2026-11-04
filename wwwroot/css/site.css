@@ -923,6 +923,22 @@ main {
     color: var(--color-text-muted);
 }
 
+/* The confirmed venue addresses are real content now, so they are set
+   as a labelled line instead of an italic placeholder note. The venue
+   name stays in the brand tone; the address itself wraps cleanly on
+   narrow screens. */
+.site-footer__address {
+    font-size: var(--fs-body-sm);
+    color: var(--color-text);
+    margin-bottom: var(--space-2);
+    line-height: var(--lh-body);
+    overflow-wrap: anywhere;
+}
+
+.site-footer__address span {
+    color: var(--color-text-muted);
+}
+
 /* The hotline is the one contact detail the restaurant has confirmed,
    so it is a real link instead of a placeholder note. */
 .site-footer__hotline {

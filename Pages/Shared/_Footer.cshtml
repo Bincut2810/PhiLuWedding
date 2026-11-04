@@ -1,12 +1,14 @@
 @using Microsoft.Extensions.Configuration
+@using PhiluWedding.Services
 @inject IConfiguration Configuration
 @{
     var brandName = Configuration["Brand:Name"] ?? "NHÀ HÀNG PHÌ LŨ";
     var brandCity = Configuration["Brand:City"] ?? "Đà Nẵng";
-    var hotlinePhone = Configuration["Brand:Contact:HotlinePhone"] ?? "0905434115";
+    var contact = BrandContact.Resolve(Configuration);
+    var hotlinePhone = contact.HotlinePhone;
     var year = DateTime.UtcNow.Year;
 }
-<footer class="site-footer" id="lien-he">
+<footer class="site-footer">
     <div class="container site-footer__inner">
         <div class="site-footer__brand">
             <p class="site-footer__name">@brandName</p>
@@ -24,16 +26,21 @@
                 <li><a asp-page="/TiecCuoi">Sảnh tiệc</a></li>
                 <li><a asp-page="/ThucDon/Index">Thực đơn</a></li>
                 <li><a asp-page="/DatTiec">Đặt tiệc</a></li>
-                <li><a href="#lien-he">Liên hệ</a></li>
+                <li><a asp-page="/LienHe">Liên hệ</a></li>
             </ul>
         </nav>
 
         <div class="site-footer__contact">
             <p class="site-footer__label">Liên hệ tư vấn</p>
-            <p class="site-footer__placeholder">Địa chỉ: <em>(cập nhật sau)</em></p>
+            @foreach (var venue in VenueContactCatalog.Venues)
+            {
+                <p class="site-footer__address">
+                    @venue.Name — <span>@venue.Address</span>
+                </p>
+            }
             <p class="site-footer__hotline">
                 Hotline:
-                <a href="tel:@hotlinePhone">@hotlinePhone</a>
+                <a href="@contact.HotlineTel">@hotlinePhone</a>
             </p>
             <p class="site-footer__placeholder">Email: <em>(cập nhật sau)</em></p>
             <a class="link-arrow site-footer__cta" asp-page="/DatTiec">

@@ -11,29 +11,22 @@
    convention (Brand:Contact:FacebookUrl / Brand:Contact:ZaloPhone).
    When the keys are missing the partial falls back to safe placeholder
    values.
+
+   The links are resolved through the shared BrandContact helper — the
+   same one the public /lien-he page uses — so the bubbles and the
+   contact page can never point at different numbers or profiles.
    ===================================================================== *@
 @using Microsoft.Extensions.Configuration
+@using PhiluWedding.Services
 @inject IConfiguration Configuration
 @{
-    var facebookUrl = Configuration["Brand:Contact:FacebookUrl"]
-        ?? "https://www.facebook.com/share/1BqiX3HRck/";
-    var zaloPhone = Configuration["Brand:Contact:ZaloPhone"] ?? "0989821022";
-    var hotlinePhone = Configuration["Brand:Contact:HotlinePhone"] ?? "0905434115";
+    var contact = BrandContact.Resolve(Configuration);
 
-    // Public Zalo contact URL format is https://zalo.me/<phone> with
-    // no separators, matching what Zalo's mobile and web apps
-    // recognize.
-    var zaloDigits = new string(zaloPhone.Where(char.IsDigit).ToArray());
-    var zaloUrl = string.IsNullOrEmpty(zaloDigits)
-        ? "https://zalo.me/"
-        : $"https://zalo.me/{zaloDigits}";
-
-    // The tel: link carries the number without separators, so the
-    // dialer reads it correctly on every device.
-    var hotlineDigits = new string(hotlinePhone.Where(char.IsDigit).ToArray());
-    var hotlineTel = string.IsNullOrEmpty(hotlineDigits)
-        ? "tel:"
-        : $"tel:{hotlineDigits}";
+    var facebookUrl = contact.FacebookUrl;
+    var zaloPhone = contact.ZaloPhone;
+    var hotlinePhone = contact.HotlinePhone;
+    var zaloUrl = contact.ZaloUrl;
+    var hotlineTel = contact.HotlineTel;
 }
 
 <aside class="contact-bubbles" aria-label="Liên hệ nhanh">
